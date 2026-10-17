@@ -13,6 +13,18 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/login/login.page').then((m) => m.LoginPage),
   },
   {
+    path: 'check-in',
+    canActivate: [guestGuard],
+    title: $localize`:@@title.checkIn:First appointment · Nails by Scooby`,
+    loadComponent: () => import('./features/auth/check-in/check-in.page').then((m) => m.CheckInPage),
+  },
+  {
+    path: 'activate',
+    canActivate: [guestGuard],
+    title: $localize`:@@title.activate:Create your password · Nails by Scooby`,
+    loadComponent: () => import('./features/auth/activate/activate.page').then((m) => m.ActivatePage),
+  },
+  {
     path: 'appointments',
     canActivate: [authGuard],
     title: $localize`:@@title.appointments:My appointments · Nails by Scooby`,

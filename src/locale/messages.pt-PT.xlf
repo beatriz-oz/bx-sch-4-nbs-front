@@ -14,6 +14,14 @@
         <source>Log in · Nails by Scooby</source>
         <target>Entrar · Nails by Scooby</target>
       </trans-unit>
+      <trans-unit id="title.checkIn" datatype="html">
+        <source>First appointment · Nails by Scooby</source>
+        <target>Primeira marcação · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.activate" datatype="html">
+        <source>Create your password · Nails by Scooby</source>
+        <target>Criar palavra-passe · Nails by Scooby</target>
+      </trans-unit>
       <trans-unit id="title.appointments" datatype="html">
         <source>My appointments · Nails by Scooby</source>
         <target>As minhas marcações · Nails by Scooby</target>
@@ -646,13 +654,13 @@
         <source><x id="count" equiv-text="changed.length"/> price(s) updated. New estimates use them from now on.</source>
         <target><x id="count" equiv-text="changed.length"/> preço(s) atualizado(s). As novas estimativas já os usam.</target>
       </trans-unit>
-      <trans-unit id="login.title" datatype="html">
-        <source>Log in</source>
-        <target>Entrar</target>
+      <trans-unit id="activate.title" datatype="html">
+        <source>Create your password</source>
+        <target>Crie a sua palavra-passe</target>
       </trans-unit>
-      <trans-unit id="login.subtitle" datatype="html">
-        <source>Use your phone number and password.</source>
-        <target>Use o seu número de telemóvel e a sua palavra-passe.</target>
+      <trans-unit id="activate.subtitle" datatype="html">
+        <source> Already had your first appointment? Create a password to book whenever you want. We will send a code to the email you gave us. </source>
+        <target> Já fez a sua primeira marcação? Crie uma palavra-passe para marcar quando quiser. Vamos enviar um código para o email que nos deu. </target>
       </trans-unit>
       <trans-unit id="login.phone.hint" datatype="html">
         <source>With the country code, e.g. +351 or +55.</source>
@@ -661,6 +669,134 @@
       <trans-unit id="login.phone.required" datatype="html">
         <source>Enter your phone number.</source>
         <target>Indique o seu número de telemóvel.</target>
+      </trans-unit>
+      <trans-unit id="link.login" datatype="html">
+        <source>Log in</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="link.checkIn" datatype="html">
+        <source>Book your first appointment</source>
+        <target>Fazer a primeira marcação</target>
+      </trans-unit>
+      <trans-unit id="checkin.sendCode" datatype="html">
+        <source> Send me the code </source>
+        <target> Enviar-me o código </target>
+      </trans-unit>
+      <trans-unit id="code.title" datatype="html">
+        <source>Check your email</source>
+        <target>Verifique o seu email</target>
+      </trans-unit>
+      <trans-unit id="code.sentTo" datatype="html">
+        <source>We sent a 6-digit code to <x id="INTERPOLATION" equiv-text="{{ sentTo() }}"/>.</source>
+        <target>Enviámos um código de 6 dígitos para <x id="INTERPOLATION" equiv-text="{{ sentTo() }}"/>.</target>
+      </trans-unit>
+      <trans-unit id="code.label" datatype="html">
+        <source>Code</source>
+        <target>Código</target>
+      </trans-unit>
+      <trans-unit id="code.format" datatype="html">
+        <source>The code has 6 digits.</source>
+        <target>O código tem 6 dígitos.</target>
+      </trans-unit>
+      <trans-unit id="activate.password" datatype="html">
+        <source>New password</source>
+        <target>Nova palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="activate.passwordHint" datatype="html">
+        <source>At least 8 characters.</source>
+        <target>Pelo menos 8 caracteres.</target>
+      </trans-unit>
+      <trans-unit id="activate.confirmation" datatype="html">
+        <source>Repeat the password</source>
+        <target>Repita a palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="activate.error.short" datatype="html">
+        <source>The password needs at least 8 characters.</source>
+        <target>A palavra-passe precisa de pelo menos 8 caracteres.</target>
+      </trans-unit>
+      <trans-unit id="activate.submit" datatype="html">
+        <source> Create password and log in </source>
+        <target> Criar palavra-passe e entrar </target>
+      </trans-unit>
+      <trans-unit id="activate.changePhone" datatype="html">
+        <source> Change phone </source>
+        <target> Alterar telemóvel </target>
+      </trans-unit>
+      <trans-unit id="code.resend" datatype="html">
+        <source> Send a new code </source>
+        <target> Enviar um novo código </target>
+      </trans-unit>
+      <trans-unit id="checkin.resent" datatype="html">
+        <source>A new code was sent. Check also the spam folder.</source>
+        <target>Enviámos um novo código. Veja também a pasta de spam.</target>
+      </trans-unit>
+      <trans-unit id="activate.error.mismatch" datatype="html">
+        <source>The two passwords are different.</source>
+        <target>As duas palavras-passe são diferentes.</target>
+      </trans-unit>
+      <trans-unit id="code.invalid" datatype="html">
+        <source>This code is not valid or has expired. Check it, or ask for a new one.</source>
+        <target>Este código não é válido ou expirou. Verifique-o ou peça um novo.</target>
+      </trans-unit>
+      <trans-unit id="activate.error.notFound" datatype="html">
+        <source>We don&apos;t know this phone number yet. Your first appointment is booked with your Instagram.</source>
+        <target>Ainda não conhecemos este número. A primeira marcação é feita com o seu Instagram.</target>
+      </trans-unit>
+      <trans-unit id="activate.error.active" datatype="html">
+        <source>Your account already has a password.</source>
+        <target>A sua conta já tem palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="code.wait" datatype="html">
+        <source>A code was sent a moment ago. Wait a little before asking for a new one.</source>
+        <target>Enviámos um código há pouco. Aguarde um momento antes de pedir outro.</target>
+      </trans-unit>
+      <trans-unit id="checkin.title" datatype="html">
+        <source>Your first appointment</source>
+        <target>A sua primeira marcação</target>
+      </trans-unit>
+      <trans-unit id="checkin.subtitle" datatype="html">
+        <source> Use the Instagram the studio approved. We will send a code to your email to confirm it is you. </source>
+        <target> Use o Instagram que o estúdio aprovou. Vamos enviar um código para o seu email para confirmar que é você. </target>
+      </trans-unit>
+      <trans-unit id="booking.client.instagram.required" datatype="html">
+        <source>Instagram</source>
+        <target>Instagram</target>
+      </trans-unit>
+      <trans-unit id="checkin.fillAll" datatype="html">
+        <source>Fill in all the fields, with a valid email.</source>
+        <target>Preencha todos os campos, com um email válido.</target>
+      </trans-unit>
+      <trans-unit id="link.createPassword" datatype="html">
+        <source>Create your password</source>
+        <target>Criar a sua palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="checkin.haveAccount" datatype="html">
+        <source>Already a client?</source>
+        <target>Já é cliente?</target>
+      </trans-unit>
+      <trans-unit id="code.confirm" datatype="html">
+        <source> Confirm </source>
+        <target> Confirmar </target>
+      </trans-unit>
+      <trans-unit id="checkin.changeDetails" datatype="html">
+        <source> Change my details </source>
+        <target> Alterar os meus dados </target>
+      </trans-unit>
+      <trans-unit id="checkin.error.notApproved" datatype="html">
+        <source>This Instagram is not on the list yet. Send a message to @nailsbyscooby on Instagram to book your first appointment.</source>
+        <target>Este Instagram ainda não está na lista. Envie uma mensagem para @nailsbyscooby no Instagram para fazer a sua primeira marcação.</target>
+      </trans-unit>
+      <trans-unit id="checkin.error.registered" datatype="html">
+        <source>You already have an account, or this phone or email is already in use.</source>
+        <target>Já tem uma conta, ou este telemóvel ou email já está a ser usado.</target>
+      </trans-unit>
+      <trans-unit id="login.title" datatype="html">
+        <source>Log in</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="login.subtitle" datatype="html">
+        <source>Use your phone number and password.</source>
+        <target>Use o seu número de telemóvel e a sua palavra-passe.</target>
       </trans-unit>
       <trans-unit id="login.password" datatype="html">
         <source>Password</source>
@@ -677,6 +813,22 @@
       <trans-unit id="login.submit" datatype="html">
         <source>Log in</source>
         <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="login.firstTime" datatype="html">
+        <source>First appointment?</source>
+        <target>Primeira marcação?</target>
+      </trans-unit>
+      <trans-unit id="login.firstTimeHint" datatype="html">
+        <source>Book with the Instagram the studio approved.</source>
+        <target>Marque com o Instagram que o estúdio aprovou.</target>
+      </trans-unit>
+      <trans-unit id="login.noPassword" datatype="html">
+        <source>Already a client, but no password?</source>
+        <target>Já é cliente, mas sem palavra-passe?</target>
+      </trans-unit>
+      <trans-unit id="login.noPasswordHint" datatype="html">
+        <source>Create it with your phone number.</source>
+        <target>Crie-a com o seu número de telemóvel.</target>
       </trans-unit>
       <trans-unit id="login.error.invalid" datatype="html">
         <source>Phone or password incorrect.</source>

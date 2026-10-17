@@ -1,0 +1,100 @@
+<section class="mx-4 mt-8 max-w-md sm:mx-auto rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+  @if (step() === 'details') {
+    <h2 i18n="@@checkin.title" class="text-2xl font-semibold">Your first appointment</h2>
+    <p i18n="@@checkin.subtitle" class="mt-1 mb-6 text-sm text-gray-500">
+      Use the Instagram the studio approved. We will send a code to your email to confirm it is you.
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="sendCode()" class="space-y-4" novalidate>
+      <label class="block text-sm">
+        <span i18n="@@booking.client.instagram.required" class="mb-1 block font-medium">Instagram</span>
+        <input formControlName="instagram" autocomplete="username" placeholder="@" autocapitalize="none"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+      </label>
+
+      <div class="grid grid-cols-2 gap-3">
+        <label class="block text-sm">
+          <span i18n="@@booking.client.name" class="mb-1 block font-medium">Name</span>
+          <input formControlName="name" autocomplete="given-name"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+        </label>
+        <label class="block text-sm">
+          <span i18n="@@booking.client.lastName" class="mb-1 block font-medium">Last name</span>
+          <input formControlName="last_name" autocomplete="family-name"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+        </label>
+      </div>
+
+      <label class="block text-sm">
+        <span i18n="@@booking.client.email" class="mb-1 block font-medium">Email</span>
+        <input type="email" formControlName="email" autocomplete="email"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+      </label>
+
+      <label class="block text-sm">
+        <span i18n="@@login.phone" class="mb-1 block font-medium">Phone</span>
+        <input type="tel" formControlName="phone" autocomplete="tel" placeholder="+351 912 345 678"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+        <span i18n="@@login.phone.hint" class="mt-1 block text-xs text-gray-500">With the country code, e.g. +351 or +55.</span>
+      </label>
+
+      @if (form.touched && form.invalid) {
+        <p i18n="@@checkin.fillAll" class="text-sm text-red-600">Fill in all the fields, with a valid email.</p>
+      }
+      @if (error(); as message) {
+        <div role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          <p>{{ message }}</p>
+          @if (hasAccount()) {
+            <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-medium">
+              <a routerLink="/login" i18n="@@link.login" class="underline">Log in</a>
+              <a routerLink="/activate" i18n="@@link.createPassword" class="underline">Create your password</a>
+            </p>
+          }
+        </div>
+      }
+
+      <button type="submit" [disabled]="busy()" i18n="@@checkin.sendCode"
+        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        Send me the code
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-sm text-gray-500">
+      <ng-container i18n="@@checkin.haveAccount">Already a client?</ng-container>
+      <a routerLink="/login" i18n="@@link.login" class="ml-1 font-medium text-gray-900 underline">Log in</a>
+    </p>
+  } @else {
+    <h2 i18n="@@code.title" class="text-2xl font-semibold">Check your email</h2>
+    <p class="mt-1 mb-6 text-sm text-gray-500">
+      <ng-container i18n="@@code.sentTo">We sent a 6-digit code to {{ sentTo() }}.</ng-container>
+    </p>
+
+    <form (submit)="$event.preventDefault(); verify()" class="space-y-4" novalidate>
+      <input [formControl]="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"
+        aria-label="Code" i18n-aria-label="@@code.label"
+        class="w-full rounded-lg border border-gray-300 px-3 py-3 text-center text-2xl tracking-[0.5em] focus:border-gray-900 focus:outline-none" />
+      @if (code.touched && code.invalid) {
+        <p i18n="@@code.format" class="text-sm text-red-600">The code has 6 digits.</p>
+      }
+      @if (notice(); as message) {
+        <p role="status" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+      }
+      @if (error(); as message) {
+        <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+      }
+      <button type="submit" [disabled]="busy()" i18n="@@code.confirm"
+        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        Confirm
+      </button>
+    </form>
+
+    <div class="mt-6 flex justify-between text-sm">
+      <button type="button" (click)="changeDetails()" i18n="@@checkin.changeDetails" class="font-medium text-gray-600 underline">
+        Change my details
+      </button>
+      <button type="button" (click)="resend()" [disabled]="busy()" i18n="@@code.resend" class="font-medium text-gray-900 underline">
+        Send a new code
+      </button>
+    </div>
+  }
+</section>

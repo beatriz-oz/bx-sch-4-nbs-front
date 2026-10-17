@@ -1,0 +1,83 @@
+<section class="mx-4 mt-8 max-w-md sm:mx-auto rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+  @if (step() === 'phone') {
+    <h2 i18n="@@activate.title" class="text-2xl font-semibold">Create your password</h2>
+    <p i18n="@@activate.subtitle" class="mt-1 mb-6 text-sm text-gray-500">
+      Already had your first appointment? Create a password to book whenever you want. We will send a code to the email you gave us.
+    </p>
+
+    <form (submit)="$event.preventDefault(); sendCode()" class="space-y-4" novalidate>
+      <label class="block text-sm">
+        <span i18n="@@login.phone" class="mb-1 block font-medium">Phone</span>
+        <input type="tel" [formControl]="phone" autocomplete="tel" placeholder="+351 912 345 678"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+        <span i18n="@@login.phone.hint" class="mt-1 block text-xs text-gray-500">With the country code, e.g. +351 or +55.</span>
+      </label>
+      @if (phone.touched && phone.invalid) {
+        <p i18n="@@login.phone.required" class="text-sm text-red-600">Enter your phone number.</p>
+      }
+      @if (error(); as message) {
+        <div role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          <p>{{ message }}</p>
+          @if (redirect() === 'login') {
+            <a routerLink="/login" i18n="@@link.login" class="mt-2 inline-block font-medium underline">Log in</a>
+          } @else if (redirect() === 'check-in') {
+            <a routerLink="/check-in" i18n="@@link.checkIn" class="mt-2 inline-block font-medium underline">Book your first appointment</a>
+          }
+        </div>
+      }
+      <button type="submit" [disabled]="busy()" i18n="@@checkin.sendCode"
+        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        Send me the code
+      </button>
+    </form>
+  } @else {
+    <h2 i18n="@@code.title" class="text-2xl font-semibold">Check your email</h2>
+    <p class="mt-1 mb-6 text-sm text-gray-500">
+      <ng-container i18n="@@code.sentTo">We sent a 6-digit code to {{ sentTo() }}.</ng-container>
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="confirm()" class="space-y-4" novalidate>
+      <input formControlName="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"
+        aria-label="Code" i18n-aria-label="@@code.label"
+        class="w-full rounded-lg border border-gray-300 px-3 py-3 text-center text-2xl tracking-[0.5em] focus:border-gray-900 focus:outline-none" />
+      @if (form.controls.code.touched && form.controls.code.invalid) {
+        <p i18n="@@code.format" class="text-sm text-red-600">The code has 6 digits.</p>
+      }
+
+      <label class="block text-sm">
+        <span i18n="@@activate.password" class="mb-1 block font-medium">New password</span>
+        <input type="password" formControlName="password" autocomplete="new-password"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+        <span i18n="@@activate.passwordHint" class="mt-1 block text-xs text-gray-500">At least 8 characters.</span>
+      </label>
+      <label class="block text-sm">
+        <span i18n="@@activate.confirmation" class="mb-1 block font-medium">Repeat the password</span>
+        <input type="password" formControlName="confirmation" autocomplete="new-password"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+      </label>
+      @if (form.controls.password.touched && form.controls.password.invalid) {
+        <p i18n="@@activate.error.short" class="text-sm text-red-600">The password needs at least 8 characters.</p>
+      }
+
+      @if (notice(); as message) {
+        <p role="status" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+      }
+      @if (error(); as message) {
+        <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+      }
+      <button type="submit" [disabled]="busy()" i18n="@@activate.submit"
+        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        Create password and log in
+      </button>
+    </form>
+
+    <div class="mt-6 flex justify-between text-sm">
+      <button type="button" (click)="changePhone()" i18n="@@activate.changePhone" class="font-medium text-gray-600 underline">
+        Change phone
+      </button>
+      <button type="button" (click)="resend()" [disabled]="busy()" i18n="@@code.resend" class="font-medium text-gray-900 underline">
+        Send a new code
+      </button>
+    </div>
+  }
+</section>

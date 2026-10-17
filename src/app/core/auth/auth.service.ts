@@ -3,7 +3,16 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ApiResponse, Login, TokenResult, User } from '../api/types';
+import {
+  ActivationConfirm,
+  ApiResponse,
+  CheckInStart,
+  CheckInVerify,
+  CodeSent,
+  Login,
+  TokenResult,
+  User,
+} from '../api/types';
 
 const TOKEN_KEY = 'nbs_token';
 
@@ -50,6 +59,35 @@ export class AuthService {
         tap((response) => this.setToken(response.detail.access_token)),
         switchMap(() => this.loadMe()),
       );
+  }
+
+  // --- first booking (check-in) and becoming a regular client (activation) ---
+
+  /** Sends a code to the email. Returns where it went, masked (e.g. "a***@gmail.com"). */
+  checkInStart(data: CheckInStart): Observable<string> {
+    return this.http
+      .post<ApiResponse<CodeSent>>(`${this.api}/auth/checkin/start`, data)
+      .pipe(map((response) => response.detail.sent_to));
+  }
+
+  checkInVerify(data: CheckInVerify): Observable<User> {
+    return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/checkin/verify`, data).pipe(
+      tap((response) => this.setToken(response.detail.access_token)),
+      switchMap(() => this.loadMe()),
+    );
+  }
+
+  activationStart(phone: string): Observable<string> {
+    return this.http
+      .post<ApiResponse<CodeSent>>(`${this.api}/auth/activation/start`, { phone })
+      .pipe(map((response) => response.detail.sent_to));
+  }
+
+  activationConfirm(data: ActivationConfirm): Observable<User> {
+    return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/activation/confirm`, data).pipe(
+      tap((response) => this.setToken(response.detail.access_token)),
+      switchMap(() => this.loadMe()),
+    );
   }
 
   /** Used after the check-in and the activation, which also return a token. */
