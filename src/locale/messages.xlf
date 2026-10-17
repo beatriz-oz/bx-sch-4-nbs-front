@@ -107,32 +107,46 @@
           <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="nav.payments" datatype="html">
+        <source>Payments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.clients" datatype="html">
+        <source>Clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="nav.openingHours" datatype="html">
         <source>Opening hours</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">22,24</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.preApproved" datatype="html">
         <source>Pre-approved Instagram</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">32,34</context>
+          <context context-type="linenumber">52,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.prices" datatype="html">
         <source>Prices</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.policies" datatype="html">
         <source>Policies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">52,54</context>
+          <context context-type="linenumber">72,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
@@ -142,32 +156,46 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title.payments" datatype="html">
+        <source>Payments · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title.clients" datatype="html">
+        <source>Clients · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.prices" datatype="html">
         <source>Prices · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.policies" datatype="html">
         <source>Policies · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
@@ -194,6 +222,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
           <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">47,49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="badge.depositPending" datatype="html">
@@ -230,6 +262,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
           <context context-type="linenumber">43,45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">108,109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.brokenNails" datatype="html">
@@ -289,6 +325,10 @@
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
           <context context-type="linenumber">85</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="action.complete" datatype="html">
         <source> Complete </source>
@@ -309,6 +349,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
           <context context-type="linenumber">106,108</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">53,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.cancel" datatype="html">
@@ -735,6 +779,10 @@
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
           <context context-type="linenumber">171</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="dashboard.noShow.question" datatype="html">
         <source>Mark this appointment as a no-show? This cannot be undone.</source>
@@ -776,6 +824,116 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
           <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.title" datatype="html">
+        <source>Clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.subtitle" datatype="html">
+        <source> Registered clients have a password. Pending ones only booked once, or were added by you, and have not created a password yet. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.registered" datatype="html">
+        <source>Registered</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.pending" datatype="html">
+        <source>Pending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.search" datatype="html">
+        <source>Search by name, @, email or phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.visits" datatype="html">
+        <source>Visits</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.lastVisit" datatype="html">
+        <source>Last visit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">61,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.emailVerified" datatype="html">
+        <source>Email confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">69,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.emailNotVerified" datatype="html">
+        <source>Email not confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">71,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.since" datatype="html">
+        <source>Since</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.noMatch" datatype="html">
+        <source>No client matches this search.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">84,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.empty" datatype="html">
+        <source>No clients here yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">86,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">92,95</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">127,130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">235,239</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">48,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.title" datatype="html">
@@ -1085,6 +1243,108 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.ts</context>
           <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.title" datatype="html">
+        <source>Payments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.subtitle" datatype="html">
+        <source>Deposits to receive, deposits to give back, and the latest cancellations.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.tab.deposits" datatype="html">
+        <source>Pending deposits</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.tab.refunds" datatype="html">
+        <source>Refunds to make</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.tab.cancellations" datatype="html">
+        <source>Cancellations (30 days)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.empty.deposits" datatype="html">
+        <source>No deposits waiting. 🎉</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">57,61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.wasFor" datatype="html">
+        <source>Was for</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.refundDone" datatype="html">
+        <source> Refund done </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.empty.refunds" datatype="html">
+        <source>No refunds to make.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">84,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.refunded" datatype="html">
+        <source>Refunded on</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.depositKept" datatype="html">
+        <source>Deposit kept</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">114,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.noDeposit" datatype="html">
+        <source>No deposit paid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">116,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.empty.cancellations" datatype="html">
+        <source>No cancellations in the last 30 days.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">121,125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="payments.refund.question" datatype="html">
+        <source>Confirm that you gave the deposit back to <x id="name" equiv-text="appointment.client.name"/>?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.ts</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="policies.title" datatype="html">
@@ -1872,17 +2132,6 @@
           <context context-type="linenumber">230,232</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="dashboard.loading" datatype="html">
-        <source>Loading…</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">235,239</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
-          <context context-type="linenumber">48,52</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="book.done.title" datatype="html">
         <source>Appointment booked!</source>
         <context-group purpose="location">
@@ -2228,116 +2477,144 @@
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="reason.clientEarly" datatype="html">
+        <source>By the client, more than 48h before</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reason.clientLate" datatype="html">
+        <source>By the client, less than 48h before</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reason.notConfirmed" datatype="html">
+        <source>Attendance not confirmed in time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reason.studio" datatype="html">
+        <source>By the studio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
         <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="art.level2.hint" datatype="html">
         <source>Airbrush, chrome, simple 3D, bubbles, velvet, medium design, up to 4 big charms</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="art.level3.hint" datatype="html">
         <source>3D chrome, elaborate 3D, 3D velvet, elaborate design, claws, up to 8 big charms</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="extra.removal" datatype="html">
         <source>Complete removal (nails from another professional)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="extra.charm" datatype="html">
         <source>Extra charm</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="addon.brokenNail" datatype="html">
         <source>Broken nail (each)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="addon.extraCharm" datatype="html">
         <source>Extra charm (each)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.scheduled" datatype="html">
         <source>Scheduled</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.confirmed" datatype="html">
         <source>Confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.completed" datatype="html">
         <source>Completed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.cancelled" datatype="html">
         <source>Cancelled</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.noShow" datatype="html">
         <source>No-show</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.application" datatype="html">
         <source>Application</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.maintenance" datatype="html">
         <source>Maintenance</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.removal" datatype="html">
         <source>Removal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.other" datatype="html">
         <source>Other</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
     </body>

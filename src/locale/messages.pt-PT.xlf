@@ -62,6 +62,14 @@
         <source>Calendar</source>
         <target>Agenda</target>
       </trans-unit>
+      <trans-unit id="nav.payments" datatype="html">
+        <source>Payments</source>
+        <target>Pagamentos</target>
+      </trans-unit>
+      <trans-unit id="nav.clients" datatype="html">
+        <source>Clients</source>
+        <target>Clientes</target>
+      </trans-unit>
       <trans-unit id="nav.openingHours" datatype="html">
         <source>Opening hours</source>
         <target>Horários</target>
@@ -81,6 +89,14 @@
       <trans-unit id="title.calendar" datatype="html">
         <source>Calendar · Nails by Scooby</source>
         <target>Agenda · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.payments" datatype="html">
+        <source>Payments · Nails by Scooby</source>
+        <target>Pagamentos · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.clients" datatype="html">
+        <source>Clients · Nails by Scooby</source>
+        <target>Clientes · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
@@ -386,6 +402,62 @@
         <source> Cancel appointment </source>
         <target> Cancelar marcação </target>
       </trans-unit>
+      <trans-unit id="clients.title" datatype="html">
+        <source>Clients</source>
+        <target>Clientes</target>
+      </trans-unit>
+      <trans-unit id="clients.subtitle" datatype="html">
+        <source> Registered clients have a password. Pending ones only booked once, or were added by you, and have not created a password yet. </source>
+        <target> As clientes registadas têm palavra-passe. As pendentes só marcaram uma vez, ou foram adicionadas por si, e ainda não criaram palavra-passe. </target>
+      </trans-unit>
+      <trans-unit id="clients.registered" datatype="html">
+        <source>Registered</source>
+        <target>Registadas</target>
+      </trans-unit>
+      <trans-unit id="clients.pending" datatype="html">
+        <source>Pending</source>
+        <target>Pendentes</target>
+      </trans-unit>
+      <trans-unit id="clients.search" datatype="html">
+        <source>Search by name, @, email or phone</source>
+        <target>Procurar por nome, @, email ou telemóvel</target>
+      </trans-unit>
+      <trans-unit id="clients.visits" datatype="html">
+        <source>Visits</source>
+        <target>Visitas</target>
+      </trans-unit>
+      <trans-unit id="clients.lastVisit" datatype="html">
+        <source>Last visit</source>
+        <target>Última visita</target>
+      </trans-unit>
+      <trans-unit id="clients.next" datatype="html">
+        <source>Next</source>
+        <target>Próxima</target>
+      </trans-unit>
+      <trans-unit id="clients.emailVerified" datatype="html">
+        <source>Email confirmed</source>
+        <target>Email confirmado</target>
+      </trans-unit>
+      <trans-unit id="clients.emailNotVerified" datatype="html">
+        <source>Email not confirmed</source>
+        <target>Email por confirmar</target>
+      </trans-unit>
+      <trans-unit id="clients.since" datatype="html">
+        <source>Since</source>
+        <target>Desde</target>
+      </trans-unit>
+      <trans-unit id="clients.noMatch" datatype="html">
+        <source>No client matches this search.</source>
+        <target>Nenhuma cliente corresponde a esta pesquisa.</target>
+      </trans-unit>
+      <trans-unit id="clients.empty" datatype="html">
+        <source>No clients here yet.</source>
+        <target>Ainda não há clientes aqui.</target>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <target>A carregar…</target>
+      </trans-unit>
       <trans-unit id="complete.title" datatype="html">
         <source>Complete appointment</source>
         <target>Concluir marcação</target>
@@ -541,6 +613,62 @@
       <trans-unit id="hours.published" datatype="html">
         <source>Published. <x id="count" equiv-text="published.notified_clients"/> regular client(s) notified by email.</source>
         <target>Publicado. <x id="count" equiv-text="published.notified_clients"/> cliente(s) habitual(is) avisada(s) por email.</target>
+      </trans-unit>
+      <trans-unit id="payments.title" datatype="html">
+        <source>Payments</source>
+        <target>Pagamentos</target>
+      </trans-unit>
+      <trans-unit id="payments.subtitle" datatype="html">
+        <source>Deposits to receive, deposits to give back, and the latest cancellations.</source>
+        <target>Sinais a receber, sinais a devolver e os cancelamentos mais recentes.</target>
+      </trans-unit>
+      <trans-unit id="payments.tab.deposits" datatype="html">
+        <source>Pending deposits</source>
+        <target>Sinais pendentes</target>
+      </trans-unit>
+      <trans-unit id="payments.tab.refunds" datatype="html">
+        <source>Refunds to make</source>
+        <target>Reembolsos a fazer</target>
+      </trans-unit>
+      <trans-unit id="payments.tab.cancellations" datatype="html">
+        <source>Cancellations (30 days)</source>
+        <target>Cancelamentos (30 dias)</target>
+      </trans-unit>
+      <trans-unit id="payments.empty.deposits" datatype="html">
+        <source>No deposits waiting. 🎉</source>
+        <target>Nenhum sinal à espera. 🎉</target>
+      </trans-unit>
+      <trans-unit id="payments.wasFor" datatype="html">
+        <source>Was for</source>
+        <target>Era para</target>
+      </trans-unit>
+      <trans-unit id="payments.refundDone" datatype="html">
+        <source> Refund done </source>
+        <target> Reembolso feito </target>
+      </trans-unit>
+      <trans-unit id="payments.empty.refunds" datatype="html">
+        <source>No refunds to make.</source>
+        <target>Nenhum reembolso a fazer.</target>
+      </trans-unit>
+      <trans-unit id="payments.refunded" datatype="html">
+        <source>Refunded on</source>
+        <target>Devolvido em</target>
+      </trans-unit>
+      <trans-unit id="payments.depositKept" datatype="html">
+        <source>Deposit kept</source>
+        <target>Sinal retido</target>
+      </trans-unit>
+      <trans-unit id="payments.noDeposit" datatype="html">
+        <source>No deposit paid</source>
+        <target>Sem sinal pago</target>
+      </trans-unit>
+      <trans-unit id="payments.empty.cancellations" datatype="html">
+        <source>No cancellations in the last 30 days.</source>
+        <target>Nenhum cancelamento nos últimos 30 dias.</target>
+      </trans-unit>
+      <trans-unit id="payments.refund.question" datatype="html">
+        <source>Confirm that you gave the deposit back to <x id="name" equiv-text="appointment.client.name"/>?</source>
+        <target>Confirmar que devolveu o sinal a <x id="name" equiv-text="appointment.client.name"/>?</target>
       </trans-unit>
       <trans-unit id="policies.title" datatype="html">
         <source>Booking policies</source>
@@ -954,10 +1082,6 @@
         <source>I have read and accept the booking policies, including the deposit and the cancellation rules.</source>
         <target>Li e aceito as políticas de marcação, incluindo as regras do sinal e do cancelamento.</target>
       </trans-unit>
-      <trans-unit id="dashboard.loading" datatype="html">
-        <source>Loading…</source>
-        <target>A carregar…</target>
-      </trans-unit>
       <trans-unit id="book.done.title" datatype="html">
         <source>Appointment booked!</source>
         <target>Marcação feita!</target>
@@ -1145,6 +1269,22 @@
       <trans-unit id="profile.agendaOff" datatype="html">
         <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
         <target>Feito: deixa de receber os emails de "agenda aberta".</target>
+      </trans-unit>
+      <trans-unit id="reason.clientEarly" datatype="html">
+        <source>By the client, more than 48h before</source>
+        <target>Pela cliente, com mais de 48h</target>
+      </trans-unit>
+      <trans-unit id="reason.clientLate" datatype="html">
+        <source>By the client, less than 48h before</source>
+        <target>Pela cliente, com menos de 48h</target>
+      </trans-unit>
+      <trans-unit id="reason.notConfirmed" datatype="html">
+        <source>Attendance not confirmed in time</source>
+        <target>Presença não confirmada a tempo</target>
+      </trans-unit>
+      <trans-unit id="reason.studio" datatype="html">
+        <source>By the studio</source>
+        <target>Pelo estúdio</target>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
         <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>

@@ -14,6 +14,16 @@ export const adminRoutes: Routes = [
         loadComponent: () => import('./calendar/calendar.page').then((m) => m.CalendarPage),
       },
       {
+        path: 'payments',
+        title: $localize`:@@title.payments:Payments · Nails by Scooby`,
+        loadComponent: () => import('./payments/payments.page').then((m) => m.PaymentsPage),
+      },
+      {
+        path: 'clients',
+        title: $localize`:@@title.clients:Clients · Nails by Scooby`,
+        loadComponent: () => import('./clients/clients.page').then((m) => m.ClientsPage),
+      },
+      {
         path: 'opening-hours',
         title: $localize`:@@title.openingHours:Opening hours · Nails by Scooby`,
         loadComponent: () => import('./opening-hours/opening-hours.page').then((m) => m.OpeningHoursPage),

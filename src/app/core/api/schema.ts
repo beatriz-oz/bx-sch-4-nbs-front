@@ -380,6 +380,66 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/payments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Payments
+         * @description Pending deposits, refunds still to make and the cancellations of the last 30 days
+         */
+        get: operations["get_payments_v1_admin_payments_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/appointments/{appointment_id}/refund": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark Deposit Refunded
+         * @description Records that the studio gave the deposit back. Safe to repeat
+         */
+        post: operations["mark_deposit_refunded_v1_admin_appointments__appointment_id__refund_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/clients/overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Clients Overview
+         * @description All clients: registered (with password) or pending (without), with their visits
+         */
+        get: operations["get_clients_overview_v1_admin_clients_overview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -736,6 +796,8 @@ export interface components {
             /** Cancelled At */
             cancelled_at: string | null;
             cancellation_reason: components["schemas"]["CancellationReason"] | null;
+            /** Deposit Refunded At */
+            deposit_refunded_at: string | null;
             client: components["schemas"]["ClientSummary"];
             /** Deposit Paid */
             deposit_paid: boolean;
@@ -745,6 +807,15 @@ export interface components {
             deposit_overdue: boolean;
             /** Refund Due */
             refund_due: boolean;
+        };
+        /** AdminPayments */
+        AdminPayments: {
+            /** Pending Deposits */
+            pending_deposits: components["schemas"]["AdminAppointmentResult"][];
+            /** Refunds Due */
+            refunds_due: components["schemas"]["AdminAppointmentResult"][];
+            /** Recent Cancellations */
+            recent_cancellations: components["schemas"]["AdminAppointmentResult"][];
         };
         /** AgendaDay */
         AgendaDay: {
@@ -893,6 +964,15 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["AdminAppointmentResult"];
+        };
+        /** BaseResponse[AdminPayments] */
+        BaseResponse_AdminPayments_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["AdminPayments"];
         };
         /** BaseResponse[AgendaMonth] */
         BaseResponse_AgendaMonth_: {
@@ -1068,6 +1148,16 @@ export interface components {
             /** Detail */
             detail: components["schemas"]["AvailableDay"][];
         };
+        /** BaseResponse[list[ClientOverview]] */
+        BaseResponse_list_ClientOverview__: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            /** Detail */
+            detail: components["schemas"]["ClientOverview"][];
+        };
         /** BaseResponse[list[ClientResult]] */
         BaseResponse_list_ClientResult__: {
             /**
@@ -1167,6 +1257,33 @@ export interface components {
             instagram: string;
             /** Code */
             code: string;
+        };
+        /** ClientOverview */
+        ClientOverview: {
+            /** Id */
+            id: number;
+            /** Name */
+            name: string;
+            /** Last Name */
+            last_name: string;
+            /** Instagram */
+            instagram: string | null;
+            /** Email */
+            email: string;
+            /** Phone */
+            phone: string;
+            /** Is Active */
+            is_active: boolean;
+            /** Email Verified */
+            email_verified: boolean;
+            /** Created At */
+            created_at: string | null;
+            /** Visits */
+            visits: number;
+            /** Last Visit */
+            last_visit: string | null;
+            /** Next Appointment */
+            next_appointment: string | null;
         };
         /** ClientResult */
         ClientResult: {
@@ -2355,6 +2472,102 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BaseResponse_list_ClientResult__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_payments_v1_admin_payments_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_AdminPayments_"];
+                };
+            };
+        };
+    };
+    mark_deposit_refunded_v1_admin_appointments__appointment_id__refund_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appointment_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_AdminAppointmentResult_"];
+                };
+            };
+            /** @description Appointment does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description No refund is due for this appointment */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_clients_overview_v1_admin_clients_overview_get: {
+        parameters: {
+            query?: {
+                group?: "registered" | "pending";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_list_ClientOverview__"];
                 };
             };
             /** @description Validation Error */

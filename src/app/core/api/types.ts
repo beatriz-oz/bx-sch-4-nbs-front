@@ -50,6 +50,8 @@ export type AgendaSlot = Schemas['AgendaSlotResult'];
 export type ScheduleException = Schemas['ScheduleExceptionResult'];
 export type ScheduleExceptionSet = Schemas['ScheduleExceptionSet'];
 export type MonthPublished = Schemas['MonthPublished'];
+export type AdminPayments = Schemas['AdminPayments'];
+export type ClientOverview = Schemas['ClientOverview'];
 
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];
@@ -57,3 +59,4 @@ export type Service = Schemas['Service'];
 export type NailSize = Schemas['NailSize'];
 export type NailArtLevel = Schemas['NailArtLevel'];
 export type Addon = Schemas['Addon'];
+export type CancellationReason = Schemas['CancellationReason'];

@@ -18,6 +18,7 @@ function appointment(id: number, time: string, service: Service = 'Removal'): Ad
     created_at: null,
     cancelled_at: null,
     cancellation_reason: null,
+    deposit_refunded_at: null,
     client: { id: 1, name: 'Ana', last_name: 'Silva', instagram: null },
     deposit_paid: false,
     attendance_confirmed: false,

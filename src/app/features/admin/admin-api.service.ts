@@ -6,10 +6,12 @@ import { environment } from '../../../environments/environment';
 import {
   Addon,
   AdminAppointment,
+  AdminPayments,
   AgendaMonth,
   ApiResponse,
   AppointmentStatus,
   Client,
+  ClientOverview,
   FinalPriceDetails,
   FinalPriceEstimate,
   MonthPublished,
@@ -146,6 +148,22 @@ export class AdminApiService {
   publishPolicy(version: string, content: string): Observable<Policy> {
     return this.http
       .post<ApiResponse<Policy>>(`${environment.apiUrl}/admin/policies`, { version, content })
+      .pipe(map((r) => r.detail));
+  }
+
+  // --- payments and clients ---
+
+  payments(): Observable<AdminPayments> {
+    return this.http.get<ApiResponse<AdminPayments>>(`${environment.apiUrl}/admin/payments`).pipe(map((r) => r.detail));
+  }
+
+  markRefunded(id: number): Observable<AdminAppointment> {
+    return this.post(`${id}/refund`, null);
+  }
+
+  clientsOverview(group: 'registered' | 'pending'): Observable<ClientOverview[]> {
+    return this.http
+      .get<ApiResponse<ClientOverview[]>>(`${environment.apiUrl}/admin/clients/overview`, { params: { group } })
       .pipe(map((r) => r.detail));
   }
 

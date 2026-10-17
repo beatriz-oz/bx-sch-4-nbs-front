@@ -1,5 +1,13 @@
 // Translated names for the values that come from the API.
-import { Addon, AppointmentStatus, NailArtLevel, Service } from '../core/api/types';
+import { Addon, AppointmentStatus, CancellationReason, NailArtLevel, Service } from '../core/api/types';
+
+/** Short names for why an appointment was cancelled. */
+export const CANCELLATION_LABELS: Record<CancellationReason, string> = {
+  'Cancelled by the client, more than 48h before': $localize`:@@reason.clientEarly:By the client, more than 48h before`,
+  'Cancelled by the client, less than 48h before': $localize`:@@reason.clientLate:By the client, less than 48h before`,
+  'Attendance not confirmed in time': $localize`:@@reason.notConfirmed:Attendance not confirmed in time`,
+  'Cancelled by the studio': $localize`:@@reason.studio:By the studio`,
+};
 
 /** What each nail art level includes (each level includes the ones below). */
 export const ART_LEVEL_HINTS: Record<NailArtLevel, string> = {
