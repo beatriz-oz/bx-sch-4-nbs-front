@@ -22,6 +22,26 @@
     </div>
   </header>
 
+  <!-- The client's menu (the manicure has her own side menu in the admin) -->
+  @if (auth.user() && !auth.isAdmin()) {
+      <nav class="border-b border-gray-200 bg-white">
+        <ul class="mx-auto flex max-w-xl justify-around text-sm">
+          <li>
+            <a routerLink="/book" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.book"
+              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Book</a>
+          </li>
+          <li>
+            <a routerLink="/appointments" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.appointments"
+              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">My appointments</a>
+          </li>
+          <li>
+            <a routerLink="/profile" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.profile"
+              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Profile</a>
+          </li>
+        </ul>
+      </nav>
+  }
+
   <!-- Each page sets its own width: the calendar uses the whole screen. -->
   <main>
     <router-outlet />

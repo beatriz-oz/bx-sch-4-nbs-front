@@ -38,6 +38,19 @@ export const routes: Routes = [
       import('./features/client/my-appointments/my-appointments.page').then((m) => m.MyAppointmentsPage),
   },
   {
+    path: 'profile',
+    canActivate: [authGuard],
+    title: $localize`:@@title.profile:My profile · Nails by Scooby`,
+    loadComponent: () => import('./features/client/profile/profile.page').then((m) => m.ProfilePage),
+  },
+  {
+    // The link in the reminder email. No login needed: the token in the link is the proof.
+    path: 'confirm-attendance',
+    title: $localize`:@@title.attendance:Confirm attendance · Nails by Scooby`,
+    loadComponent: () =>
+      import('./features/client/confirm-attendance/confirm-attendance.page').then((m) => m.ConfirmAttendancePage),
+  },
+  {
     path: 'admin',
     canActivate: [adminGuard],
     loadChildren: () => import('./features/admin/admin.routes').then((m) => m.adminRoutes),

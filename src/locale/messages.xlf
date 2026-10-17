@@ -16,6 +16,27 @@
           <context context-type="linenumber">18,19</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="clientNav.book" datatype="html">
+        <source>Book</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">31,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNav.appointments" datatype="html">
+        <source>My appointments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">35,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNav.profile" datatype="html">
+        <source>Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.login" datatype="html">
         <source>Log in · Nails by Scooby</source>
         <context-group purpose="location">
@@ -49,6 +70,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title.profile" datatype="html">
+        <source>My profile · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title.attendance" datatype="html">
+        <source>Confirm attendance · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error.network" datatype="html">
@@ -378,6 +413,10 @@
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
           <context context-type="linenumber">29,30</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="login.phone" datatype="html">
         <source>Phone</source>
@@ -396,6 +435,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
           <context context-type="linenumber">7,9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.instagram" datatype="html">
@@ -1336,6 +1379,10 @@
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
           <context context-type="linenumber">64,66</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="link.checkIn" datatype="html">
         <source>Book your first appointment</source>
@@ -1538,6 +1585,10 @@
         <source>Create your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
+          <context context-type="linenumber">50,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
           <context context-type="linenumber">50,53</context>
         </context-group>
       </trans-unit>
@@ -1928,6 +1979,69 @@
           <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="attendance.title" datatype="html">
+        <source>Attendance confirmed!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.seeYou" datatype="html">
+        <source>See you soon!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.errorTitle" datatype="html">
+        <source>We could not confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.contact" datatype="html">
+        <source>If you think this is a mistake, send a message to @nailsbyscooby on Instagram.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.confirming" datatype="html">
+        <source>Confirming your attendance…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">15,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.myAppointments" datatype="html">
+        <source>See my appointments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.error.notActive" datatype="html">
+        <source>This appointment is no longer active: it was cancelled or has already happened.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.error.notFound" datatype="html">
+        <source>We could not find this appointment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="attendance.error.invalid" datatype="html">
+        <source>This link is not valid or has expired: the deadline written in the email may have passed.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="myAppointments.awaitingDeposit" datatype="html">
         <source>Waiting for the deposit</source>
         <context-group purpose="location">
@@ -2052,6 +2166,66 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.ts</context>
           <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.title" datatype="html">
+        <source>My profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.changeDetails" datatype="html">
+        <source> To change your details, send a message to @nailsbyscooby on Instagram. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">29,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.agendaEmails" datatype="html">
+        <source>Emails when the agenda opens</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.agendaEmailsHint" datatype="html">
+        <source>Be the first to know when a new month is open for booking.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.agendaNeedsPassword" datatype="html">
+        <source>These emails go to regular clients, with a password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.otherEmails" datatype="html">
+        <source> Emails about your own appointments (reminders, cancellations) are always sent. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">60,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.agendaOn" datatype="html">
+        <source>Done: we will email you when a new month opens.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.agendaOff" datatype="html">
+        <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.ts</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">

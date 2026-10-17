@@ -10,6 +10,7 @@ import {
   CheckInVerify,
   CodeSent,
   Login,
+  ProfileUpdate,
   TokenResult,
   User,
 } from '../api/types';
@@ -87,6 +88,13 @@ export class AuthService {
     return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/activation/confirm`, data).pipe(
       tap((response) => this.setToken(response.detail.access_token)),
       switchMap(() => this.loadMe()),
+    );
+  }
+
+  updateProfile(data: ProfileUpdate): Observable<User> {
+    return this.http.patch<ApiResponse<User>>(`${this.api}/auth/me`, data).pipe(
+      map((response) => response.detail),
+      tap((user) => this.user.set(user)),
     );
   }
 

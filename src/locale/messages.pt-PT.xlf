@@ -10,6 +10,18 @@
         <source> Log out </source>
         <target> Sair </target>
       </trans-unit>
+      <trans-unit id="clientNav.book" datatype="html">
+        <source>Book</source>
+        <target>Marcar</target>
+      </trans-unit>
+      <trans-unit id="clientNav.appointments" datatype="html">
+        <source>My appointments</source>
+        <target>As minhas marcações</target>
+      </trans-unit>
+      <trans-unit id="clientNav.profile" datatype="html">
+        <source>Profile</source>
+        <target>Perfil</target>
+      </trans-unit>
       <trans-unit id="title.login" datatype="html">
         <source>Log in · Nails by Scooby</source>
         <target>Entrar · Nails by Scooby</target>
@@ -29,6 +41,14 @@
       <trans-unit id="title.appointments" datatype="html">
         <source>My appointments · Nails by Scooby</source>
         <target>As minhas marcações · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.profile" datatype="html">
+        <source>My profile · Nails by Scooby</source>
+        <target>O meu perfil · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.attendance" datatype="html">
+        <source>Confirm attendance · Nails by Scooby</source>
+        <target>Confirmar presença · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="error.network" datatype="html">
         <source>Could not reach the server. Check your connection and try again.</source>
@@ -986,6 +1006,42 @@
         <source>This time was just booked by someone else. Please choose another one.</source>
         <target>Este horário acabou de ser marcado por outra pessoa. Escolha outro, por favor.</target>
       </trans-unit>
+      <trans-unit id="attendance.title" datatype="html">
+        <source>Attendance confirmed!</source>
+        <target>Presença confirmada!</target>
+      </trans-unit>
+      <trans-unit id="attendance.seeYou" datatype="html">
+        <source>See you soon!</source>
+        <target>Até breve!</target>
+      </trans-unit>
+      <trans-unit id="attendance.errorTitle" datatype="html">
+        <source>We could not confirm</source>
+        <target>Não foi possível confirmar</target>
+      </trans-unit>
+      <trans-unit id="attendance.contact" datatype="html">
+        <source>If you think this is a mistake, send a message to @nailsbyscooby on Instagram.</source>
+        <target>Se acha que é um engano, envie uma mensagem para @nailsbyscooby no Instagram.</target>
+      </trans-unit>
+      <trans-unit id="attendance.confirming" datatype="html">
+        <source>Confirming your attendance…</source>
+        <target>A confirmar a sua presença…</target>
+      </trans-unit>
+      <trans-unit id="attendance.myAppointments" datatype="html">
+        <source>See my appointments</source>
+        <target>Ver as minhas marcações</target>
+      </trans-unit>
+      <trans-unit id="attendance.error.notActive" datatype="html">
+        <source>This appointment is no longer active: it was cancelled or has already happened.</source>
+        <target>Esta marcação já não está ativa: foi cancelada ou já aconteceu.</target>
+      </trans-unit>
+      <trans-unit id="attendance.error.notFound" datatype="html">
+        <source>We could not find this appointment.</source>
+        <target>Não encontrámos esta marcação.</target>
+      </trans-unit>
+      <trans-unit id="attendance.error.invalid" datatype="html">
+        <source>This link is not valid or has expired: the deadline written in the email may have passed.</source>
+        <target>Este link não é válido ou expirou: o prazo indicado no email pode já ter passado.</target>
+      </trans-unit>
       <trans-unit id="myAppointments.awaitingDeposit" datatype="html">
         <source>Waiting for the deposit</source>
         <target>À espera do sinal</target>
@@ -1057,6 +1113,38 @@
       <trans-unit id="myAppointments.cancelled" datatype="html">
         <source>Appointment cancelled. The studio was told.</source>
         <target>Marcação cancelada. O estúdio foi avisado.</target>
+      </trans-unit>
+      <trans-unit id="profile.title" datatype="html">
+        <source>My profile</source>
+        <target>O meu perfil</target>
+      </trans-unit>
+      <trans-unit id="profile.changeDetails" datatype="html">
+        <source> To change your details, send a message to @nailsbyscooby on Instagram. </source>
+        <target> Para alterar os seus dados, envie uma mensagem para @nailsbyscooby no Instagram. </target>
+      </trans-unit>
+      <trans-unit id="profile.agendaEmails" datatype="html">
+        <source>Emails when the agenda opens</source>
+        <target>Emails quando a agenda abre</target>
+      </trans-unit>
+      <trans-unit id="profile.agendaEmailsHint" datatype="html">
+        <source>Be the first to know when a new month is open for booking.</source>
+        <target>Seja a primeira a saber quando um novo mês abre para marcações.</target>
+      </trans-unit>
+      <trans-unit id="profile.agendaNeedsPassword" datatype="html">
+        <source>These emails go to regular clients, with a password.</source>
+        <target>Estes emails vão para as clientes habituais, com palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="profile.otherEmails" datatype="html">
+        <source> Emails about your own appointments (reminders, cancellations) are always sent. </source>
+        <target> Os emails sobre as suas marcações (lembretes, cancelamentos) são sempre enviados. </target>
+      </trans-unit>
+      <trans-unit id="profile.agendaOn" datatype="html">
+        <source>Done: we will email you when a new month opens.</source>
+        <target>Feito: vamos avisá-la por email quando um novo mês abrir.</target>
+      </trans-unit>
+      <trans-unit id="profile.agendaOff" datatype="html">
+        <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
+        <target>Feito: deixa de receber os emails de "agenda aberta".</target>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
         <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>
