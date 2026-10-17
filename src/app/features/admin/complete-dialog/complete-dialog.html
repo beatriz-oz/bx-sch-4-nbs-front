@@ -1,0 +1,113 @@
+<div class="fixed inset-0 z-10 flex items-center justify-center bg-black/40 p-4" (click)="closed.emit()">
+  <section
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="complete-title"
+    class="w-full max-w-md rounded-2xl bg-white p-6 shadow-lg"
+    (click)="$event.stopPropagation()"
+  >
+    <h3 id="complete-title" i18n="@@complete.title" class="text-lg font-semibold text-brand-700">Complete appointment</h3>
+    <p class="mt-1 text-sm text-gray-600">
+      {{ appointment().client.name }} {{ appointment().client.last_name }} ·
+      {{ serviceLabels[appointment().service] }} · {{ appointment().scheduled_at | studioDate: 'dateTime' }}
+    </p>
+
+    @if (hasDetails()) {
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <label class="col-span-2 text-sm">
+          <span i18n="@@complete.nailArt" class="mb-1 block font-medium">Nail art</span>
+          <select
+            [ngModel]="nailArtLevel()"
+            (ngModelChange)="nailArtLevel.set($event)"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2"
+          >
+            @for (level of artLevels; track level) {
+              <option [ngValue]="level">{{ level }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="text-sm">
+          <span i18n="@@complete.brokenNails" class="mb-1 block font-medium">Broken nails</span>
+          <input
+            type="number"
+            min="0"
+            max="10"
+            [ngModel]="brokenNails()"
+            (ngModelChange)="brokenNails.set($event ?? 0)"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2"
+          />
+        </label>
+
+        <label class="text-sm">
+          <span i18n="@@complete.extraCharms" class="mb-1 block font-medium">Extra charms</span>
+          <input
+            type="number"
+            min="0"
+            max="50"
+            [ngModel]="extraCharms()"
+            (ngModelChange)="extraCharms.set($event ?? 0)"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2"
+          />
+        </label>
+
+        <label class="col-span-2 flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            [ngModel]="completeRemoval()"
+            (ngModelChange)="completeRemoval.set($event)"
+            class="h-4 w-4 accent-brand-600"
+          />
+          <span i18n="@@complete.removal">Complete removal (nails from another professional)</span>
+        </label>
+      </div>
+
+      <button
+        type="button"
+        (click)="recalculate()"
+        [disabled]="busy()"
+        i18n="@@complete.recalculate"
+        class="mt-3 w-full rounded-lg border border-brand-300 px-4 py-2 text-sm text-brand-700 hover:bg-brand-50 disabled:opacity-60"
+      >
+        Recalculate price
+      </button>
+    }
+
+    <label class="mt-4 block text-sm">
+      <span i18n="@@complete.finalPrice" class="mb-1 block font-medium">Final price (€)</span>
+      <input
+        inputmode="decimal"
+        [ngModel]="finalPrice()"
+        (ngModelChange)="finalPrice.set($event)"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-lg font-semibold"
+      />
+      <span class="mt-1 block text-xs text-gray-500">
+        <ng-container i18n="@@complete.estimated">Estimated when booked: {{ appointment().estimated_price }} €</ng-container>
+      </span>
+    </label>
+
+    @if (error(); as message) {
+      <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+
+    <div class="mt-6 flex justify-end gap-2">
+      <button
+        type="button"
+        (click)="closed.emit()"
+        i18n="@@dialog.back"
+        class="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50"
+      >
+        Back
+      </button>
+      <button
+        type="button"
+        (click)="complete()"
+        [disabled]="busy()"
+        i18n="@@complete.confirm"
+        class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-60"
+      >
+        Complete
+      </button>
+    </div>
+  </section>
+</div>

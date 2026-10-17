@@ -34,9 +34,141 @@
         <source>Studio dashboard</source>
         <target>Painel do estúdio</target>
       </trans-unit>
-      <trans-unit id="admin.home.placeholder" datatype="html">
-        <source>The appointments of the week will appear here.</source>
-        <target>As marcações da semana vão aparecer aqui.</target>
+      <trans-unit id="dashboard.previousWeek" datatype="html">
+        <source>Previous</source>
+        <target>Anterior</target>
+      </trans-unit>
+      <trans-unit id="dashboard.thisWeek" datatype="html">
+        <source> This week </source>
+        <target>Esta semana</target>
+      </trans-unit>
+      <trans-unit id="dashboard.nextWeek" datatype="html">
+        <source>Next</source>
+        <target>Seguinte</target>
+      </trans-unit>
+      <trans-unit id="dashboard.overdueCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 sinal em atraso} other {<x id="INTERPOLATION"/> sinais em atraso}}</target>
+      </trans-unit>
+      <trans-unit id="dashboard.refundCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 refund to make} other {<x id="INTERPOLATION"/> refunds to make}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 reembolso a fazer} other {<x id="INTERPOLATION"/> reembolsos a fazer}}</target>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <target>A carregar…</target>
+      </trans-unit>
+      <trans-unit id="badge.depositOverdue" datatype="html">
+        <source>Deposit overdue</source>
+        <target>Sinal em atraso</target>
+      </trans-unit>
+      <trans-unit id="badge.depositPending" datatype="html">
+        <source>Deposit pending</source>
+        <target>Sinal pendente</target>
+      </trans-unit>
+      <trans-unit id="badge.depositPaid" datatype="html">
+        <source>Deposit paid</source>
+        <target>Sinal pago</target>
+      </trans-unit>
+      <trans-unit id="badge.attendanceConfirmed" datatype="html">
+        <source>Attendance confirmed</source>
+        <target>Presença confirmada</target>
+      </trans-unit>
+      <trans-unit id="badge.refundDue" datatype="html">
+        <source>Refund due</source>
+        <target>Reembolso pendente</target>
+      </trans-unit>
+      <trans-unit id="action.complete" datatype="html">
+        <source> Complete </source>
+        <target> Concluir </target>
+      </trans-unit>
+      <trans-unit id="action.noShow" datatype="html">
+        <source> No-show </source>
+        <target> Faltou </target>
+      </trans-unit>
+      <trans-unit id="action.confirmDeposit" datatype="html">
+        <source> Deposit paid </source>
+        <target> Sinal pago </target>
+      </trans-unit>
+      <trans-unit id="action.cancel" datatype="html">
+        <source> Cancel </source>
+        <target> Cancelar </target>
+      </trans-unit>
+      <trans-unit id="dashboard.noAppointments" datatype="html">
+        <source>No appointments.</source>
+        <target>Sem marcações.</target>
+      </trans-unit>
+      <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
+        <source>Confirm that the deposit was paid? The client will get an email.</source>
+        <target>Confirmar que o sinal foi pago? A cliente vai receber um email.</target>
+      </trans-unit>
+      <trans-unit id="dashboard.noShow.question" datatype="html">
+        <source>Mark this appointment as a no-show? This cannot be undone.</source>
+        <target>Marcar esta marcação como falta? Não é possível desfazer.</target>
+      </trans-unit>
+      <trans-unit id="cancel.title" datatype="html">
+        <source>Cancel appointment</source>
+        <target>Cancelar marcação</target>
+      </trans-unit>
+      <trans-unit id="cancel.refundWarning" datatype="html">
+        <source> The deposit was paid: the client will be told it will be refunded. </source>
+        <target> O sinal foi pago: a cliente vai ser informada de que será reembolsado. </target>
+      </trans-unit>
+      <trans-unit id="cancel.messageLabel" datatype="html">
+        <source> Message to the client (optional) </source>
+        <target> Mensagem para a cliente (opcional) </target>
+      </trans-unit>
+      <trans-unit id="cancel.emailNote" datatype="html">
+        <source>The client receives an email about the cancellation.</source>
+        <target>A cliente recebe um email sobre o cancelamento.</target>
+      </trans-unit>
+      <trans-unit id="dialog.back" datatype="html">
+        <source> Back </source>
+        <target> Voltar </target>
+      </trans-unit>
+      <trans-unit id="cancel.confirm" datatype="html">
+        <source> Cancel appointment </source>
+        <target> Cancelar marcação </target>
+      </trans-unit>
+      <trans-unit id="complete.title" datatype="html">
+        <source>Complete appointment</source>
+        <target>Concluir marcação</target>
+      </trans-unit>
+      <trans-unit id="complete.nailArt" datatype="html">
+        <source>Nail art</source>
+        <target>Nail art</target>
+      </trans-unit>
+      <trans-unit id="complete.brokenNails" datatype="html">
+        <source>Broken nails</source>
+        <target>Unhas partidas</target>
+      </trans-unit>
+      <trans-unit id="complete.extraCharms" datatype="html">
+        <source>Extra charms</source>
+        <target>Charms extra</target>
+      </trans-unit>
+      <trans-unit id="complete.removal" datatype="html">
+        <source>Complete removal (nails from another professional)</source>
+        <target>Remoção completa (unhas de outra profissional)</target>
+      </trans-unit>
+      <trans-unit id="complete.recalculate" datatype="html">
+        <source> Recalculate price </source>
+        <target> Recalcular preço </target>
+      </trans-unit>
+      <trans-unit id="complete.finalPrice" datatype="html">
+        <source>Final price (€)</source>
+        <target>Preço final (€)</target>
+      </trans-unit>
+      <trans-unit id="complete.estimated" datatype="html">
+        <source>Estimated when booked: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</source>
+        <target>Estimado na marcação: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</target>
+      </trans-unit>
+      <trans-unit id="complete.confirm" datatype="html">
+        <source> Complete </source>
+        <target> Concluir </target>
+      </trans-unit>
+      <trans-unit id="complete.invalidPrice" datatype="html">
+        <source>Enter a valid price, e.g. 45 or 45.50.</source>
+        <target>Indique um preço válido, por exemplo 45 ou 45,50.</target>
       </trans-unit>
       <trans-unit id="login.title" datatype="html">
         <source>Log in</source>
@@ -85,6 +217,42 @@
       <trans-unit id="client.home.placeholder" datatype="html">
         <source>Your appointments will appear here.</source>
         <target>As suas marcações vão aparecer aqui.</target>
+      </trans-unit>
+      <trans-unit id="status.scheduled" datatype="html">
+        <source>Scheduled</source>
+        <target>Marcada</target>
+      </trans-unit>
+      <trans-unit id="status.confirmed" datatype="html">
+        <source>Confirmed</source>
+        <target>Confirmada</target>
+      </trans-unit>
+      <trans-unit id="status.completed" datatype="html">
+        <source>Completed</source>
+        <target>Concluída</target>
+      </trans-unit>
+      <trans-unit id="status.cancelled" datatype="html">
+        <source>Cancelled</source>
+        <target>Cancelada</target>
+      </trans-unit>
+      <trans-unit id="status.noShow" datatype="html">
+        <source>No-show</source>
+        <target>Faltou</target>
+      </trans-unit>
+      <trans-unit id="service.application" datatype="html">
+        <source>Application</source>
+        <target>Aplicação</target>
+      </trans-unit>
+      <trans-unit id="service.maintenance" datatype="html">
+        <source>Maintenance</source>
+        <target>Manutenção</target>
+      </trans-unit>
+      <trans-unit id="service.removal" datatype="html">
+        <source>Removal</source>
+        <target>Remoção</target>
+      </trans-unit>
+      <trans-unit id="service.other" datatype="html">
+        <source>Other</source>
+        <target>Outro</target>
       </trans-unit>
     </body>
   </file>

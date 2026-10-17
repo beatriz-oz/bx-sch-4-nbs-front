@@ -1,0 +1,58 @@
+<div class="fixed inset-0 z-10 flex items-center justify-center bg-black/40 p-4" (click)="closed.emit()">
+  <section
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cancel-title"
+    class="w-full max-w-md rounded-2xl bg-white p-6 shadow-lg"
+    (click)="$event.stopPropagation()"
+  >
+    <h3 id="cancel-title" i18n="@@cancel.title" class="text-lg font-semibold text-brand-700">Cancel appointment</h3>
+    <p class="mt-1 text-sm text-gray-600">
+      {{ appointment().client.name }} {{ appointment().client.last_name }} ·
+      {{ appointment().scheduled_at | studioDate: 'dateTime' }}
+    </p>
+
+    @if (appointment().deposit_paid) {
+      <p i18n="@@cancel.refundWarning" class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+        The deposit was paid: the client will be told it will be refunded.
+      </p>
+    }
+
+    <label for="cancel-message" i18n="@@cancel.messageLabel" class="mt-4 mb-1 block text-sm font-medium">
+      Message to the client (optional)
+    </label>
+    <textarea
+      id="cancel-message"
+      rows="3"
+      maxlength="500"
+      [ngModel]="message()"
+      (ngModelChange)="message.set($event)"
+      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+    ></textarea>
+    <p i18n="@@cancel.emailNote" class="mt-1 text-xs text-gray-500">The client receives an email about the cancellation.</p>
+
+    @if (error(); as message) {
+      <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+
+    <div class="mt-6 flex justify-end gap-2">
+      <button
+        type="button"
+        (click)="closed.emit()"
+        i18n="@@dialog.back"
+        class="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50"
+      >
+        Back
+      </button>
+      <button
+        type="button"
+        (click)="submit()"
+        [disabled]="submitting()"
+        i18n="@@cancel.confirm"
+        class="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-60"
+      >
+        Cancel appointment
+      </button>
+    </div>
+  </section>
+</div>

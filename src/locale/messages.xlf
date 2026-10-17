@@ -54,15 +54,250 @@
       <trans-unit id="admin.home.title" datatype="html">
         <source>Studio dashboard</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/admin-home.page.ts</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="admin.home.placeholder" datatype="html">
-        <source>The appointments of the week will appear here.</source>
+      <trans-unit id="dashboard.previousWeek" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.thisWeek" datatype="html">
+        <source> This week </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.nextWeek" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">15,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.overdueCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.refundCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 refund to make} other {<x id="INTERPOLATION"/> refunds to make}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="badge.depositOverdue" datatype="html">
+        <source>Deposit overdue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="badge.depositPending" datatype="html">
+        <source>Deposit pending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="badge.depositPaid" datatype="html">
+        <source>Deposit paid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">82,84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="badge.attendanceConfirmed" datatype="html">
+        <source>Attendance confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">85,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="badge.refundDue" datatype="html">
+        <source>Refund due</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">88,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action.complete" datatype="html">
+        <source> Complete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">98,99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action.noShow" datatype="html">
+        <source> No-show </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action.confirmDeposit" datatype="html">
+        <source> Deposit paid </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">108,109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action.cancel" datatype="html">
+        <source> Cancel </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">113,114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.noAppointments" datatype="html">
+        <source>No appointments.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.html</context>
+          <context context-type="linenumber">120,124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
+        <source>Confirm that the deposit was paid? The client will get an email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-home.page.ts</context>
-          <context context-type="linenumber">9,12</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.noShow.question" datatype="html">
+        <source>Mark this appointment as a no-show? This cannot be undone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-home.page.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel.title" datatype="html">
+        <source>Cancel appointment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel.refundWarning" datatype="html">
+        <source> The deposit was paid: the client will be told it will be refunded. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">17,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel.messageLabel" datatype="html">
+        <source> Message to the client (optional) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">22,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel.emailNote" datatype="html">
+        <source>The client receives an email about the cancellation.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dialog.back" datatype="html">
+        <source> Back </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">100,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel.confirm" datatype="html">
+        <source> Cancel appointment </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.title" datatype="html">
+        <source>Complete appointment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.nailArt" datatype="html">
+        <source>Nail art</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.brokenNails" datatype="html">
+        <source>Broken nails</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">31,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.extraCharms" datatype="html">
+        <source>Extra charms</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">43,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.removal" datatype="html">
+        <source>Complete removal (nails from another professional)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.recalculate" datatype="html">
+        <source> Recalculate price </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">72,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.finalPrice" datatype="html">
+        <source>Final price (€)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.estimated" datatype="html">
+        <source>Estimated when booked: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">85,86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.confirm" datatype="html">
+        <source> Complete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">109,111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.invalidPrice" datatype="html">
+        <source>Enter a valid price, e.g. 45 or 45.50.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.title" datatype="html">
@@ -147,6 +382,69 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/client-home.page.ts</context>
           <context context-type="linenumber">11,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="status.scheduled" datatype="html">
+        <source>Scheduled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="status.confirmed" datatype="html">
+        <source>Confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="status.completed" datatype="html">
+        <source>Completed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="status.cancelled" datatype="html">
+        <source>Cancelled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="status.noShow" datatype="html">
+        <source>No-show</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="service.application" datatype="html">
+        <source>Application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="service.maintenance" datatype="html">
+        <source>Maintenance</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="service.removal" datatype="html">
+        <source>Removal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="service.other" datatype="html">
+        <source>Other</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
     </body>
