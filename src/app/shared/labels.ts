@@ -1,5 +1,10 @@
 // Translated names for the values that come from the API.
-import { AppointmentStatus, Service } from '../core/api/types';
+import { Addon, AppointmentStatus, Service } from '../core/api/types';
+
+export const ADDON_LABELS: Record<Addon, string> = {
+  'Broken nail': $localize`:@@addon.brokenNail:Broken nail (each)`,
+  'Extra charm': $localize`:@@addon.extraCharm:Extra charm (each)`,
+};
 
 export const STATUS_LABELS: Record<AppointmentStatus, string> = {
   Scheduled: $localize`:@@status.scheduled:Scheduled`,

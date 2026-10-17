@@ -1,0 +1,108 @@
+<div class="mx-auto max-w-4xl p-4 pb-28 md:p-6 md:pb-28">
+  <h2 i18n="@@prices.title" class="text-2xl font-semibold">Prices</h2>
+  <p class="text-sm text-gray-500">
+    <ng-container i18n="@@prices.subtitle">Changes apply to new estimates and bookings. Existing appointments keep the price they were booked with.</ng-container>
+    @if (lastUpdate(); as date) {
+      <span class="block"><ng-container i18n="@@prices.lastChange">Last change:</ng-container> {{ date | studioDate: 'dateTime' }}</span>
+    }
+  </p>
+
+  @if (notice(); as message) {
+    <p role="status" class="mt-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <!-- One input, used for every price -->
+  <ng-template #priceInput let-key>
+    <div class="relative">
+      <input inputmode="decimal" [value]="values()[key] ?? ''" (input)="setValue(key, $any($event.target).value)"
+        [attr.aria-invalid]="isInvalid(key)"
+        class="w-full rounded-lg border px-2 py-1.5 pr-6 text-right font-medium focus:outline-none"
+        [class]="isInvalid(key) ? 'border-red-400 bg-red-50' : isChanged(key) ? 'border-amber-400 bg-amber-50' : 'border-gray-300 focus:border-gray-900'" />
+      <span class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-sm text-gray-400">€</span>
+    </div>
+  </ng-template>
+
+  <!-- Services by nail size -->
+  <section class="mt-6 rounded-2xl border border-gray-200">
+    <h3 i18n="@@prices.services" class="border-b border-gray-200 px-4 py-3 font-semibold">Services by nail size</h3>
+    <div class="overflow-x-auto p-4">
+      <table class="w-full min-w-[32rem] text-sm">
+        <thead>
+          <tr class="text-gray-500">
+            <th class="pb-2 text-left font-medium"></th>
+            @for (size of sizes; track size) {
+              <th class="pb-2 font-medium">{{ size }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (service of sizedServices; track service) {
+            <tr>
+              <th class="py-1.5 pr-3 text-left font-medium">{{ serviceLabels[service] }}</th>
+              @for (size of sizes; track size) {
+                <td class="px-1 py-1.5">
+                  <ng-container *ngTemplateOutlet="priceInput; context: { $implicit: serviceKey(service, size) }" />
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="mt-6 grid gap-6 md:grid-cols-2">
+    <!-- Removal, nail art, add-ons -->
+    <section class="rounded-2xl border border-gray-200">
+      <h3 i18n="@@prices.nailArt" class="border-b border-gray-200 px-4 py-3 font-semibold">Nail art</h3>
+      <ul class="space-y-2 p-4 text-sm">
+        @for (level of artLevels; track level) {
+          <li class="flex items-center justify-between gap-3">
+            <span class="font-medium">{{ level }}</span>
+            <div class="w-28"><ng-container *ngTemplateOutlet="priceInput; context: { $implicit: artKey(level) }" /></div>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-gray-200">
+      <h3 i18n="@@prices.others" class="border-b border-gray-200 px-4 py-3 font-semibold">Removal and extras</h3>
+      <ul class="space-y-2 p-4 text-sm">
+        <li class="flex items-center justify-between gap-3">
+          <span class="font-medium">{{ serviceLabels['Removal'] }}</span>
+          <div class="w-28"><ng-container *ngTemplateOutlet="priceInput; context: { $implicit: serviceKey('Removal', null) }" /></div>
+        </li>
+        @for (addon of addons; track addon) {
+          <li class="flex items-center justify-between gap-3">
+            <span class="font-medium">{{ addonLabels[addon] }}</span>
+            <div class="w-28"><ng-container *ngTemplateOutlet="priceInput; context: { $implicit: addonKey(addon) }" /></div>
+          </li>
+        }
+      </ul>
+    </section>
+  </div>
+</div>
+
+<!-- Save bar: appears only when something changed -->
+@if (changedKeys().length) {
+  <div class="fixed right-0 bottom-0 left-0 z-20 border-t border-gray-200 bg-white px-4 py-3 shadow-lg md:left-56">
+    <div class="mx-auto flex max-w-4xl items-center justify-between gap-3">
+      <span class="text-sm text-gray-600">
+        <ng-container i18n="@@prices.unsaved">{changedKeys().length, plural, =1 {1 unsaved change} other {{{ changedKeys().length }} unsaved changes}}</ng-container>
+      </span>
+      <div class="flex gap-2">
+        <button type="button" (click)="discard()" i18n="@@prices.discard"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-100">
+          Discard
+        </button>
+        <button type="button" (click)="save()" [disabled]="saving()" i18n="@@prices.save"
+          class="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+}

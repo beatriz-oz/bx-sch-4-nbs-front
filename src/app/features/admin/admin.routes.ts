@@ -19,6 +19,16 @@ export const adminRoutes: Routes = [
         loadComponent: () => import('./opening-hours/opening-hours.page').then((m) => m.OpeningHoursPage),
       },
       {
+        path: 'prices',
+        title: $localize`:@@title.prices:Prices · Nails by Scooby`,
+        loadComponent: () => import('./prices/prices.page').then((m) => m.PricesPage),
+      },
+      {
+        path: 'policies',
+        title: $localize`:@@title.policies:Policies · Nails by Scooby`,
+        loadComponent: () => import('./policies/policies.page').then((m) => m.PoliciesPage),
+      },
+      {
         path: 'pre-approved',
         title: $localize`:@@title.preApproved:Pre-approved Instagram · Nails by Scooby`,
         loadComponent: () => import('./pre-approved/pre-approved.page').then((m) => m.PreApprovedPage),

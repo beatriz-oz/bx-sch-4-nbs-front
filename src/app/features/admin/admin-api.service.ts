@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import {
+  Addon,
   AdminAppointment,
   AgendaMonth,
   ApiResponse,
@@ -12,10 +13,14 @@ import {
   FinalPriceDetails,
   FinalPriceEstimate,
   MonthPublished,
+  NailArtLevel,
+  NailSize,
+  Policy,
   PreApprovedInstagram,
   PriceList,
   ScheduleException,
   ScheduleExceptionSet,
+  Service,
   StudioAppointment,
 } from '../../core/api/types';
 
@@ -117,6 +122,30 @@ export class AdminApiService {
   publishMonth(year: number, month: number): Observable<MonthPublished> {
     return this.http
       .post<ApiResponse<MonthPublished>>(`${environment.apiUrl}/admin/published-months`, { year, month })
+      .pipe(map((r) => r.detail));
+  }
+
+  // --- prices and policies ---
+
+  updateServicePrice(service: Service, nailSize: NailSize | null, amount: string): Observable<unknown> {
+    return this.http.put(`${environment.apiUrl}/admin/prices/service`, { service, nail_size: nailSize, amount });
+  }
+
+  updateNailArtPrice(level: NailArtLevel, amount: string): Observable<unknown> {
+    return this.http.put(`${environment.apiUrl}/admin/prices/nail-art`, { nail_art_level: level, amount });
+  }
+
+  updateAddonPrice(addon: Addon, amount: string): Observable<unknown> {
+    return this.http.put(`${environment.apiUrl}/admin/prices/addon`, { addon, amount });
+  }
+
+  currentPolicy(): Observable<Policy> {
+    return this.http.get<ApiResponse<Policy>>(`${environment.apiUrl}/policies/current`).pipe(map((r) => r.detail));
+  }
+
+  publishPolicy(version: string, content: string): Observable<Policy> {
+    return this.http
+      .post<ApiResponse<Policy>>(`${environment.apiUrl}/admin/policies`, { version, content })
       .pipe(map((r) => r.detail));
   }
 

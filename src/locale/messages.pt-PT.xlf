@@ -38,6 +38,14 @@
         <source>Pre-approved Instagram</source>
         <target>Instagram pré-aprovados</target>
       </trans-unit>
+      <trans-unit id="nav.prices" datatype="html">
+        <source>Prices</source>
+        <target>Preços</target>
+      </trans-unit>
+      <trans-unit id="nav.policies" datatype="html">
+        <source>Policies</source>
+        <target>Políticas</target>
+      </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
         <source>Calendar · Nails by Scooby</source>
         <target>Agenda · Nails by Scooby</target>
@@ -45,6 +53,14 @@
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
         <target>Horários · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.prices" datatype="html">
+        <source>Prices · Nails by Scooby</source>
+        <target>Preços · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.policies" datatype="html">
+        <source>Policies · Nails by Scooby</source>
+        <target>Políticas · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
@@ -494,6 +510,58 @@
         <source>Published. <x id="count" equiv-text="published.notified_clients"/> regular client(s) notified by email.</source>
         <target>Publicado. <x id="count" equiv-text="published.notified_clients"/> cliente(s) habitual(is) avisada(s) por email.</target>
       </trans-unit>
+      <trans-unit id="policies.title" datatype="html">
+        <source>Booking policies</source>
+        <target>Políticas de marcação</target>
+      </trans-unit>
+      <trans-unit id="policies.subtitle" datatype="html">
+        <source> Clients read and accept these rules when they book. A change creates a new version; old appointments keep theirs. </source>
+        <target> As clientes leem e aceitam estas regras ao marcar. Uma alteração cria uma nova versão; as marcações antigas mantêm a sua. </target>
+      </trans-unit>
+      <trans-unit id="policies.newVersion" datatype="html">
+        <source> New version </source>
+        <target> Nova versão </target>
+      </trans-unit>
+      <trans-unit id="policies.version" datatype="html">
+        <source>Version name</source>
+        <target>Nome da versão</target>
+      </trans-unit>
+      <trans-unit id="policies.versionPlaceholder" datatype="html">
+        <source>e.g. 2026-11</source>
+        <target>ex.: 2026-11</target>
+      </trans-unit>
+      <trans-unit id="policies.currentVersion" datatype="html">
+        <source>Current version:</source>
+        <target>Versão atual:</target>
+      </trans-unit>
+      <trans-unit id="policies.text" datatype="html">
+        <source>Text</source>
+        <target>Texto</target>
+      </trans-unit>
+      <trans-unit id="policies.publish" datatype="html">
+        <source> Publish version </source>
+        <target> Publicar versão </target>
+      </trans-unit>
+      <trans-unit id="policies.versionLabel" datatype="html">
+        <source>Version</source>
+        <target>Versão</target>
+      </trans-unit>
+      <trans-unit id="policies.publishedOn" datatype="html">
+        <source>Published on</source>
+        <target>Publicada em</target>
+      </trans-unit>
+      <trans-unit id="policies.none" datatype="html">
+        <source> No policy published yet. Clients cannot book until there is one. </source>
+        <target> Ainda não há políticas publicadas. As clientes não podem marcar até existir uma. </target>
+      </trans-unit>
+      <trans-unit id="policies.publish.question" datatype="html">
+        <source>Publish this version? From now on, clients must accept it to book. Existing appointments keep the version they accepted.</source>
+        <target>Publicar esta versão? A partir de agora, as clientes têm de a aceitar para marcar. As marcações existentes mantêm a versão que aceitaram.</target>
+      </trans-unit>
+      <trans-unit id="policies.published" datatype="html">
+        <source>Version <x id="version" equiv-text="policy.version"/> published.</source>
+        <target>Versão <x id="version" equiv-text="policy.version"/> publicada.</target>
+      </trans-unit>
       <trans-unit id="preApproved.title" datatype="html">
         <source>Pre-approved Instagram</source>
         <target>Instagram pré-aprovados</target>
@@ -533,6 +601,50 @@
       <trans-unit id="preApproved.remove.question" datatype="html">
         <source>Remove @<x id="handle" equiv-text="entry.instagram"/>? She will no longer be able to check in.</source>
         <target>Remover @<x id="handle" equiv-text="entry.instagram"/>? Ela deixa de poder fazer o check-in.</target>
+      </trans-unit>
+      <trans-unit id="prices.title" datatype="html">
+        <source>Prices</source>
+        <target>Preços</target>
+      </trans-unit>
+      <trans-unit id="prices.subtitle" datatype="html">
+        <source>Changes apply to new estimates and bookings. Existing appointments keep the price they were booked with.</source>
+        <target>As alterações valem para as novas estimativas e marcações. As marcações existentes mantêm o preço com que foram feitas.</target>
+      </trans-unit>
+      <trans-unit id="prices.lastChange" datatype="html">
+        <source>Last change:</source>
+        <target>Última alteração:</target>
+      </trans-unit>
+      <trans-unit id="prices.services" datatype="html">
+        <source>Services by nail size</source>
+        <target>Serviços por tamanho de unha</target>
+      </trans-unit>
+      <trans-unit id="prices.nailArt" datatype="html">
+        <source>Nail art</source>
+        <target>Nail art</target>
+      </trans-unit>
+      <trans-unit id="prices.others" datatype="html">
+        <source>Removal and extras</source>
+        <target>Remoção e extras</target>
+      </trans-unit>
+      <trans-unit id="prices.unsaved" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 unsaved change} other {<x id="INTERPOLATION"/> unsaved changes}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 alteração por guardar} other {<x id="INTERPOLATION"/> alterações por guardar}}</target>
+      </trans-unit>
+      <trans-unit id="prices.discard" datatype="html">
+        <source> Discard </source>
+        <target> Descartar </target>
+      </trans-unit>
+      <trans-unit id="prices.save" datatype="html">
+        <source> Save changes </source>
+        <target> Guardar alterações </target>
+      </trans-unit>
+      <trans-unit id="prices.error.invalid" datatype="html">
+        <source>Check the highlighted prices: use numbers above zero, e.g. 40 or 40.50.</source>
+        <target>Verifique os preços destacados: use números acima de zero, por exemplo 40 ou 40,50.</target>
+      </trans-unit>
+      <trans-unit id="prices.saved" datatype="html">
+        <source><x id="count" equiv-text="changed.length"/> price(s) updated. New estimates use them from now on.</source>
+        <target><x id="count" equiv-text="changed.length"/> preço(s) atualizado(s). As novas estimativas já os usam.</target>
       </trans-unit>
       <trans-unit id="login.title" datatype="html">
         <source>Log in</source>
@@ -577,6 +689,14 @@
       <trans-unit id="client.home.placeholder" datatype="html">
         <source>Your appointments will appear here.</source>
         <target>As suas marcações vão aparecer aqui.</target>
+      </trans-unit>
+      <trans-unit id="addon.brokenNail" datatype="html">
+        <source>Broken nail (each)</source>
+        <target>Unha partida (cada)</target>
+      </trans-unit>
+      <trans-unit id="addon.extraCharm" datatype="html">
+        <source>Extra charm (each)</source>
+        <target>Charm extra (cada)</target>
       </trans-unit>
       <trans-unit id="status.scheduled" datatype="html">
         <source>Scheduled</source>

@@ -1,0 +1,71 @@
+<div class="mx-auto max-w-3xl p-4 md:p-6">
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div>
+      <h2 i18n="@@policies.title" class="text-2xl font-semibold">Booking policies</h2>
+      <p i18n="@@policies.subtitle" class="text-sm text-gray-500">
+        Clients read and accept these rules when they book. A change creates a new version; old appointments keep theirs.
+      </p>
+    </div>
+    @if (loaded() && !editing()) {
+      <button type="button" (click)="startNewVersion()" i18n="@@policies.newVersion"
+        class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700">
+        New version
+      </button>
+    }
+  </div>
+
+  @if (notice(); as message) {
+    <p role="status" class="mt-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  @if (editing()) {
+    <!-- New version -->
+    <form (ngSubmit)="publish()" class="mt-6 space-y-4 rounded-2xl border border-gray-200 p-5">
+      <label class="block text-sm">
+        <span i18n="@@policies.version" class="mb-1 block font-medium">Version name</span>
+        <input name="version" maxlength="20" [ngModel]="version()" (ngModelChange)="version.set($event)" placeholder="e.g. 2026-11" i18n-placeholder="@@policies.versionPlaceholder"
+          class="w-48 rounded-lg border border-gray-300 px-3 py-2 focus:border-gray-900 focus:outline-none" />
+        @if (current(); as policy) {
+          <span class="mt-1 block text-xs text-gray-500"><ng-container i18n="@@policies.currentVersion">Current version:</ng-container> {{ policy.version }}</span>
+        }
+      </label>
+
+      <label class="block text-sm">
+        <span i18n="@@policies.text" class="mb-1 block font-medium">Text</span>
+        <textarea name="content" rows="18" [ngModel]="content()" (ngModelChange)="content.set($event)"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 font-mono text-sm leading-relaxed focus:border-gray-900 focus:outline-none"></textarea>
+      </label>
+
+      <div class="flex justify-end gap-2">
+        <button type="button" (click)="editing.set(false)" i18n="@@dialog.back"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-100">
+          Back
+        </button>
+        <button type="submit" [disabled]="publishing() || !canPublish()" i18n="@@policies.publish"
+          class="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-50">
+          Publish version
+        </button>
+      </div>
+    </form>
+  } @else if (current(); as policy) {
+    <!-- Current version -->
+    <article class="mt-6 rounded-2xl border border-gray-200">
+      <header class="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 px-5 py-3">
+        <span class="rounded-full bg-gray-900 px-3 py-1 text-sm font-medium text-white">
+          <ng-container i18n="@@policies.versionLabel">Version</ng-container> {{ policy.version }}
+        </span>
+        <span class="text-sm text-gray-500">
+          <ng-container i18n="@@policies.publishedOn">Published on</ng-container> {{ policy.published_at | studioDate: 'dateTime' }}
+        </span>
+      </header>
+      <div class="px-5 py-4 text-sm leading-relaxed whitespace-pre-line text-gray-800">{{ policy.content }}</div>
+    </article>
+  } @else if (loaded()) {
+    <p i18n="@@policies.none" class="mt-6 rounded-2xl border border-dashed border-gray-300 p-6 text-center text-gray-500">
+      No policy published yet. Clients cannot book until there is one.
+    </p>
+  }
+</div>

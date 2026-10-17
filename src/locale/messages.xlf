@@ -65,6 +65,20 @@
           <context context-type="linenumber">32,34</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="nav.prices" datatype="html">
+        <source>Prices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.policies" datatype="html">
+        <source>Policies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">52,54</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
         <source>Calendar · Nails by Scooby</source>
         <context-group purpose="location">
@@ -79,11 +93,25 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title.prices" datatype="html">
+        <source>Prices · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title.policies" datatype="html">
+        <source>Policies · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
@@ -435,6 +463,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
           <context context-type="linenumber">100,102</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">45,46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.save" datatype="html">
@@ -899,6 +931,97 @@
           <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="policies.title" datatype="html">
+        <source>Booking policies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.subtitle" datatype="html">
+        <source> Clients read and accept these rules when they book. A change creates a new version; old appointments keep theirs. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.newVersion" datatype="html">
+        <source> New version </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">12,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.version" datatype="html">
+        <source>Version name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.versionPlaceholder" datatype="html">
+        <source>e.g. 2026-11</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.currentVersion" datatype="html">
+        <source>Current version:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.text" datatype="html">
+        <source>Text</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.publish" datatype="html">
+        <source> Publish version </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">49,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.versionLabel" datatype="html">
+        <source>Version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.publishedOn" datatype="html">
+        <source>Published on</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.none" datatype="html">
+        <source> No policy published yet. Clients cannot book until there is one. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
+          <context context-type="linenumber">68,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.publish.question" datatype="html">
+        <source>Publish this version? From now on, clients must accept it to book. Existing appointments keep the version they accepted.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="policies.published" datatype="html">
+        <source>Version <x id="version" equiv-text="policy.version"/> published.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/policies/policies.page.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="preApproved.title" datatype="html">
         <source>Pre-approved Instagram</source>
         <context-group purpose="location">
@@ -967,6 +1090,83 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/pre-approved/pre-approved.page.ts</context>
           <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.title" datatype="html">
+        <source>Prices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.subtitle" datatype="html">
+        <source>Changes apply to new estimates and bookings. Existing appointments keep the price they were booked with.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.lastChange" datatype="html">
+        <source>Last change:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.services" datatype="html">
+        <source>Services by nail size</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.nailArt" datatype="html">
+        <source>Nail art</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.others" datatype="html">
+        <source>Removal and extras</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">72,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.unsaved" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 unsaved change} other {<x id="INTERPOLATION"/> unsaved changes}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.discard" datatype="html">
+        <source> Discard </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">99,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.save" datatype="html">
+        <source> Save changes </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
+          <context context-type="linenumber">103,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.error.invalid" datatype="html">
+        <source>Check the highlighted prices: use numbers above zero, e.g. 40 or 40.50.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="prices.saved" datatype="html">
+        <source><x id="count" equiv-text="changed.length"/> price(s) updated. New estimates use them from now on.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/prices/prices.page.ts</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.title" datatype="html">
@@ -1046,67 +1246,81 @@
           <context context-type="linenumber">12,16</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="addon.brokenNail" datatype="html">
+        <source>Broken nail (each)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addon.extraCharm" datatype="html">
+        <source>Extra charm (each)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/labels.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="status.scheduled" datatype="html">
         <source>Scheduled</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.confirmed" datatype="html">
         <source>Confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.completed" datatype="html">
         <source>Completed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.cancelled" datatype="html">
         <source>Cancelled</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="status.noShow" datatype="html">
         <source>No-show</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.application" datatype="html">
         <source>Application</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.maintenance" datatype="html">
         <source>Maintenance</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.removal" datatype="html">
         <source>Removal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="service.other" datatype="html">
         <source>Other</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
     </body>
