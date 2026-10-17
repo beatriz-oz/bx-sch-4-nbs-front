@@ -21,8 +21,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     canActivate: [adminGuard],
-    title: $localize`:@@title.admin:Dashboard · Nails by Scooby`,
-    loadComponent: () => import('./features/admin/admin-home.page').then((m) => m.AdminHomePage),
+    loadChildren: () => import('./features/admin/admin.routes').then((m) => m.adminRoutes),
   },
   { path: '**', redirectTo: '' },
 ];

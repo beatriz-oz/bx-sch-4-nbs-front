@@ -1,0 +1,207 @@
+<div class="fixed inset-0 z-30 bg-black/20" (click)="closed.emit()"></div>
+
+<aside role="dialog" aria-modal="true" aria-labelledby="booking-title"
+  class="fixed top-0 right-0 z-40 flex h-full w-full max-w-lg flex-col bg-white shadow-xl">
+
+  <header class="flex items-center justify-between border-b border-gray-200 p-5">
+    <h3 id="booking-title" i18n="@@booking.title" class="text-2xl font-semibold">New appointment</h3>
+    <button type="button" (click)="closed.emit()" aria-label="Close" i18n-aria-label="@@dialog.close"
+      class="rounded-full px-2 text-2xl leading-none text-gray-500 hover:bg-gray-100">×</button>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-1 flex-col overflow-hidden" novalidate>
+    <div class="flex-1 space-y-6 overflow-y-auto p-5">
+
+      <!-- Client -->
+      <section>
+        <div class="mb-3 flex items-center justify-between">
+          <h4 i18n="@@booking.client" class="font-semibold">Client</h4>
+          <div class="flex rounded-full border border-gray-300 p-0.5 text-sm">
+            <button type="button" (click)="clientMode.set('existing')" i18n="@@booking.client.existing"
+              [class]="clientMode() === 'existing' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
+              Existing
+            </button>
+            <button type="button" (click)="clientMode.set('new')" i18n="@@booking.client.new"
+              [class]="clientMode() === 'new' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
+              New
+            </button>
+          </div>
+        </div>
+
+        @if (clientMode() === 'existing') {
+          @if (selectedClient(); as client) {
+            <div class="flex items-center justify-between rounded-xl border border-gray-200 p-3">
+              <div>
+                <p class="font-medium">{{ client.name }} {{ client.last_name }}</p>
+                <p class="text-sm text-gray-500">
+                  @if (client.instagram) { &#64;{{ client.instagram }} · } {{ client.phone }}
+                </p>
+              </div>
+              <button type="button" (click)="selectedClient.set(null)" i18n="@@booking.client.change"
+                class="text-sm font-medium text-brand-700 hover:underline">Change</button>
+            </div>
+          } @else {
+            <input type="search" [value]="searchTerm()" (input)="onSearch($any($event.target).value)"
+              placeholder="Name, @instagram, email or phone" i18n-placeholder="@@booking.client.searchPlaceholder"
+              class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-gray-900 focus:outline-none" />
+            @if (searching()) {
+              <p i18n="@@booking.client.searching" class="mt-2 text-sm text-gray-500">Searching…</p>
+            } @else if (results().length) {
+              <ul class="mt-2 divide-y divide-gray-100 rounded-xl border border-gray-200">
+                @for (client of results(); track client.id) {
+                  <li>
+                    <button type="button" (click)="selectClient(client)" class="w-full px-3 py-2 text-left hover:bg-gray-50">
+                      <span class="font-medium">{{ client.name }} {{ client.last_name }}</span>
+                      <span class="block text-sm text-gray-500">
+                        @if (client.instagram) { &#64;{{ client.instagram }} · } {{ client.phone }}
+                      </span>
+                    </button>
+                  </li>
+                }
+              </ul>
+            } @else if (searchTerm().trim().length >= 2) {
+              <p class="mt-2 text-sm text-gray-500">
+                <ng-container i18n="@@booking.client.notFound">No client found.</ng-container>
+                <button type="button" (click)="clientMode.set('new')" i18n="@@booking.client.registerNew"
+                  class="font-medium text-brand-700 hover:underline">Register a new client</button>
+              </p>
+            }
+          }
+        } @else {
+          <div [formGroup]="newClient" class="grid grid-cols-2 gap-3 text-sm">
+            <label>
+              <span i18n="@@booking.client.name" class="mb-1 block font-medium">Name</span>
+              <input formControlName="name" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+            </label>
+            <label>
+              <span i18n="@@booking.client.lastName" class="mb-1 block font-medium">Last name</span>
+              <input formControlName="last_name" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+            </label>
+            <label class="col-span-2">
+              <span i18n="@@booking.client.email" class="mb-1 block font-medium">Email</span>
+              <input type="email" formControlName="email" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+            </label>
+            <label>
+              <span i18n="@@login.phone" class="mb-1 block font-medium">Phone</span>
+              <input type="tel" formControlName="phone" placeholder="+351 912 345 678" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+            </label>
+            <label>
+              <span i18n="@@booking.client.instagram" class="mb-1 block font-medium">Instagram (optional)</span>
+              <input formControlName="instagram" placeholder="@" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+            </label>
+            <p i18n="@@booking.client.emailNote" class="col-span-2 text-xs text-gray-500">
+              Check the email with the client: reminders and notices go there.
+            </p>
+          </div>
+        }
+      </section>
+
+      <!-- When -->
+      <section>
+        <h4 i18n="@@booking.when" class="mb-3 font-semibold">When</h4>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <input type="date" formControlName="day" class="rounded-lg border border-gray-300 px-3 py-2" />
+          <input type="time" step="900" formControlName="time" class="rounded-lg border border-gray-300 px-3 py-2" />
+        </div>
+        <p i18n="@@booking.whenNote" class="mt-1 text-xs text-gray-500">
+          Any day and time, Lisbon time. Bookings in the next 24 hours count as confirmed and send no email.
+        </p>
+      </section>
+
+      <!-- Service -->
+      <section>
+        <h4 i18n="@@booking.service" class="mb-3 font-semibold">Service</h4>
+        <div class="flex flex-wrap gap-2">
+          @for (option of services; track option) {
+            <label class="cursor-pointer">
+              <input type="radio" formControlName="service" [value]="option" class="peer sr-only" />
+              <span class="block rounded-full border border-gray-300 px-4 py-1.5 text-sm peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-white">
+                {{ serviceLabels[option] }}
+              </span>
+            </label>
+          }
+        </div>
+
+        @if (hasDetails()) {
+          <div class="mt-4 space-y-3 text-sm">
+            <div>
+              <span i18n="@@booking.size" class="mb-1 block font-medium">Nail size</span>
+              <div class="flex flex-wrap gap-2">
+                @for (size of sizes; track size) {
+                  <label class="cursor-pointer">
+                    <input type="radio" formControlName="nail_size" [value]="size" class="peer sr-only" />
+                    <span class="block min-w-11 rounded-full border border-gray-300 px-3 py-1 text-center peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-white">
+                      {{ size }}
+                    </span>
+                  </label>
+                }
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <label>
+                <span i18n="@@complete.nailArt" class="mb-1 block font-medium">Nail art</span>
+                <select formControlName="nail_art_level" class="w-full rounded-lg border border-gray-300 px-3 py-2">
+                  <option [ngValue]="null" disabled i18n="@@booking.choose">Choose…</option>
+                  @for (level of artLevels; track level) {
+                    <option [ngValue]="level">{{ level }}</option>
+                  }
+                </select>
+              </label>
+              <label>
+                <span i18n="@@complete.brokenNails" class="mb-1 block font-medium">Broken nails</span>
+                <input type="number" min="0" max="10" formControlName="broken_nails" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+              </label>
+            </div>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" formControlName="has_other_professional_nails" class="h-4 w-4 accent-gray-900" />
+              <span i18n="@@panel.otherProfessional">Nails from another professional</span>
+            </label>
+          </div>
+        }
+
+        <label class="mt-4 block text-sm">
+          <span class="mb-1 block font-medium">
+            @if (service() === 'Other') {
+              <ng-container i18n="@@booking.notesRequired">What will be done</ng-container>
+            } @else {
+              <ng-container i18n="@@booking.notes">Notes (optional)</ng-container>
+            }
+          </span>
+          <textarea rows="2" formControlName="notes" class="w-full rounded-lg border border-gray-300 px-3 py-2"
+            placeholder="e.g. Repair of 1 broken nail" i18n-placeholder="@@booking.notesPlaceholder"></textarea>
+        </label>
+      </section>
+
+      <!-- Price -->
+      <section>
+        <h4 i18n="@@booking.price" class="mb-3 font-semibold">Estimated price (€)</h4>
+        <input inputmode="decimal" formControlName="estimated_price" (input)="onPriceTyped()"
+          class="w-40 rounded-lg border border-gray-300 px-3 py-2 text-lg font-semibold" />
+        @if (suggestion(); as suggested) {
+          @if (form.controls.estimated_price.value !== suggested) {
+            <button type="button" (click)="useSuggestion()" class="ml-2 text-sm font-medium text-brand-700 hover:underline">
+              <ng-container i18n="@@booking.useSuggestion">Use table price: {{ suggested }} €</ng-container>
+            </button>
+          } @else {
+            <span i18n="@@booking.fromTable" class="ml-2 text-sm text-gray-500">from the price table</span>
+          }
+        }
+      </section>
+
+      @if (error(); as message) {
+        <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+      }
+    </div>
+
+    <footer class="flex gap-2 border-t border-gray-200 p-5">
+      <button type="button" (click)="closed.emit()" i18n="@@dialog.back"
+        class="rounded-full border border-gray-300 px-5 py-2.5 font-medium hover:bg-gray-100">
+        Back
+      </button>
+      <button type="submit" [disabled]="submitting()" i18n="@@booking.save"
+        class="flex-1 rounded-full bg-gray-900 px-5 py-2.5 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        Save appointment
+      </button>
+    </footer>
+  </form>
+</aside>

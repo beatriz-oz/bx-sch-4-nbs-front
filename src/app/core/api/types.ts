@@ -43,6 +43,7 @@ export type StudioCancellation = Schemas['StudioCancellation'];
 export type AppointmentCompletion = Schemas['AppointmentCompletion'];
 export type FinalPriceDetails = Schemas['FinalPriceDetails'];
 export type FinalPriceEstimate = Schemas['FinalPriceEstimate'];
+export type PreApprovedInstagram = Schemas['PreApprovedInstagramResult'];
 
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];

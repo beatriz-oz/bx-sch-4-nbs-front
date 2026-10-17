@@ -7,8 +7,12 @@ import {
   AdminAppointment,
   ApiResponse,
   AppointmentStatus,
+  Client,
   FinalPriceDetails,
   FinalPriceEstimate,
+  PreApprovedInstagram,
+  PriceList,
+  StudioAppointment,
 } from '../../core/api/types';
 
 /** The admin endpoints for appointments. Each method returns just the "detail". */
@@ -45,6 +49,38 @@ export class AdminApiService {
 
   noShow(id: number): Observable<AdminAppointment> {
     return this.post(`${id}/no-show`, null);
+  }
+
+  book(data: StudioAppointment): Observable<AdminAppointment> {
+    return this.http.post<ApiResponse<AdminAppointment>>(this.url, data).pipe(map((r) => r.detail));
+  }
+
+  searchClients(search: string): Observable<Client[]> {
+    return this.http
+      .get<ApiResponse<Client[]>>(`${environment.apiUrl}/admin/clients`, { params: { search } })
+      .pipe(map((r) => r.detail));
+  }
+
+  prices(): Observable<PriceList> {
+    return this.http.get<ApiResponse<PriceList>>(`${environment.apiUrl}/prices`).pipe(map((r) => r.detail));
+  }
+
+  preApproved(): Observable<PreApprovedInstagram[]> {
+    return this.http
+      .get<ApiResponse<PreApprovedInstagram[]>>(`${environment.apiUrl}/admin/pre-approved-instagrams`)
+      .pipe(map((r) => r.detail));
+  }
+
+  addPreApproved(instagram: string): Observable<PreApprovedInstagram> {
+    return this.http
+      .post<ApiResponse<PreApprovedInstagram>>(`${environment.apiUrl}/admin/pre-approved-instagrams`, { instagram })
+      .pipe(map((r) => r.detail));
+  }
+
+  removePreApproved(id: number): Observable<void> {
+    return this.http
+      .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/pre-approved-instagrams/${id}`)
+      .pipe(map(() => undefined));
   }
 
   private post(path: string, body: unknown): Observable<AdminAppointment> {

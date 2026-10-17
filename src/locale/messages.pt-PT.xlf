@@ -18,10 +18,6 @@
         <source>My appointments · Nails by Scooby</source>
         <target>As minhas marcações · Nails by Scooby</target>
       </trans-unit>
-      <trans-unit id="title.admin" datatype="html">
-        <source>Dashboard · Nails by Scooby</source>
-        <target>Painel · Nails by Scooby</target>
-      </trans-unit>
       <trans-unit id="error.network" datatype="html">
         <source>Could not reach the server. Check your connection and try again.</source>
         <target>Não foi possível contactar o servidor. Verifique a sua ligação e tente novamente.</target>
@@ -30,33 +26,25 @@
         <source>Something went wrong. Please try again.</source>
         <target>Algo correu mal. Por favor, tente novamente.</target>
       </trans-unit>
-      <trans-unit id="admin.home.title" datatype="html">
-        <source>Studio dashboard</source>
-        <target>Painel do estúdio</target>
+      <trans-unit id="nav.calendar" datatype="html">
+        <source>Calendar</source>
+        <target>Agenda</target>
       </trans-unit>
-      <trans-unit id="dashboard.previousWeek" datatype="html">
-        <source>Previous</source>
-        <target>Anterior</target>
+      <trans-unit id="nav.preApproved" datatype="html">
+        <source>Pre-approved Instagram</source>
+        <target>Instagram pré-aprovados</target>
       </trans-unit>
-      <trans-unit id="dashboard.thisWeek" datatype="html">
-        <source> This week </source>
-        <target>Esta semana</target>
+      <trans-unit id="title.calendar" datatype="html">
+        <source>Calendar · Nails by Scooby</source>
+        <target>Agenda · Nails by Scooby</target>
       </trans-unit>
-      <trans-unit id="dashboard.nextWeek" datatype="html">
-        <source>Next</source>
-        <target>Seguinte</target>
+      <trans-unit id="title.preApproved" datatype="html">
+        <source>Pre-approved Instagram · Nails by Scooby</source>
+        <target>Instagram pré-aprovados · Nails by Scooby</target>
       </trans-unit>
-      <trans-unit id="dashboard.overdueCount" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
-        <target>{VAR_PLURAL, plural, =1 {1 sinal em atraso} other {<x id="INTERPOLATION"/> sinais em atraso}}</target>
-      </trans-unit>
-      <trans-unit id="dashboard.refundCount" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {1 refund to make} other {<x id="INTERPOLATION"/> refunds to make}}</source>
-        <target>{VAR_PLURAL, plural, =1 {1 reembolso a fazer} other {<x id="INTERPOLATION"/> reembolsos a fazer}}</target>
-      </trans-unit>
-      <trans-unit id="dashboard.loading" datatype="html">
-        <source>Loading…</source>
-        <target>A carregar…</target>
+      <trans-unit id="dialog.close" datatype="html">
+        <source>Close</source>
+        <target>Fechar</target>
       </trans-unit>
       <trans-unit id="badge.depositOverdue" datatype="html">
         <source>Deposit overdue</source>
@@ -78,6 +66,30 @@
         <source>Refund due</source>
         <target>Reembolso pendente</target>
       </trans-unit>
+      <trans-unit id="panel.brokenNails" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 broken nail} other {<x id="INTERPOLATION"/> broken nails}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 unha partida} other {<x id="INTERPOLATION"/> unhas partidas}}</target>
+      </trans-unit>
+      <trans-unit id="panel.otherProfessional" datatype="html">
+        <source>Nails from another professional</source>
+        <target>Unhas de outra profissional</target>
+      </trans-unit>
+      <trans-unit id="panel.estimated" datatype="html">
+        <source>estimated</source>
+        <target>estimado</target>
+      </trans-unit>
+      <trans-unit id="panel.estimatedLabel" datatype="html">
+        <source>estimated</source>
+        <target>estimado</target>
+      </trans-unit>
+      <trans-unit id="panel.cancelledAt" datatype="html">
+        <source>Cancelled on</source>
+        <target>Cancelada em</target>
+      </trans-unit>
+      <trans-unit id="panel.bookedAt" datatype="html">
+        <source>Booked on</source>
+        <target>Marcada em</target>
+      </trans-unit>
       <trans-unit id="action.complete" datatype="html">
         <source> Complete </source>
         <target> Concluir </target>
@@ -94,9 +106,201 @@
         <source> Cancel </source>
         <target> Cancelar </target>
       </trans-unit>
-      <trans-unit id="dashboard.noAppointments" datatype="html">
-        <source>No appointments.</source>
-        <target>Sem marcações.</target>
+      <trans-unit id="booking.title" datatype="html">
+        <source>New appointment</source>
+        <target>Nova marcação</target>
+      </trans-unit>
+      <trans-unit id="booking.client" datatype="html">
+        <source>Client</source>
+        <target>Cliente</target>
+      </trans-unit>
+      <trans-unit id="booking.client.existing" datatype="html">
+        <source> Existing </source>
+        <target> Existente </target>
+      </trans-unit>
+      <trans-unit id="booking.client.new" datatype="html">
+        <source> New </source>
+        <target> Nova </target>
+      </trans-unit>
+      <trans-unit id="booking.client.change" datatype="html">
+        <source>Change</source>
+        <target>Alterar</target>
+      </trans-unit>
+      <trans-unit id="booking.client.searchPlaceholder" datatype="html">
+        <source>Name, @instagram, email or phone</source>
+        <target>Nome, @instagram, email ou telemóvel</target>
+      </trans-unit>
+      <trans-unit id="booking.client.searching" datatype="html">
+        <source>Searching…</source>
+        <target>A procurar…</target>
+      </trans-unit>
+      <trans-unit id="booking.client.notFound" datatype="html">
+        <source>No client found.</source>
+        <target>Nenhuma cliente encontrada.</target>
+      </trans-unit>
+      <trans-unit id="booking.client.registerNew" datatype="html">
+        <source>Register a new client</source>
+        <target>Registar uma nova cliente</target>
+      </trans-unit>
+      <trans-unit id="booking.client.name" datatype="html">
+        <source>Name</source>
+        <target>Nome</target>
+      </trans-unit>
+      <trans-unit id="booking.client.lastName" datatype="html">
+        <source>Last name</source>
+        <target>Apelido</target>
+      </trans-unit>
+      <trans-unit id="booking.client.email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="login.phone" datatype="html">
+        <source>Phone</source>
+        <target>Telemóvel</target>
+      </trans-unit>
+      <trans-unit id="booking.client.instagram" datatype="html">
+        <source>Instagram (optional)</source>
+        <target>Instagram (opcional)</target>
+      </trans-unit>
+      <trans-unit id="booking.client.emailNote" datatype="html">
+        <source> Check the email with the client: reminders and notices go there. </source>
+        <target> Confirme o email com a cliente: os lembretes e avisos vão para lá. </target>
+      </trans-unit>
+      <trans-unit id="booking.when" datatype="html">
+        <source>When</source>
+        <target>Quando</target>
+      </trans-unit>
+      <trans-unit id="booking.whenNote" datatype="html">
+        <source> Any day and time, Lisbon time. Bookings in the next 24 hours count as confirmed and send no email. </source>
+        <target> Qualquer dia e hora, hora de Lisboa. Marcações nas próximas 24 horas ficam confirmadas e não enviam email. </target>
+      </trans-unit>
+      <trans-unit id="booking.service" datatype="html">
+        <source>Service</source>
+        <target>Serviço</target>
+      </trans-unit>
+      <trans-unit id="booking.size" datatype="html">
+        <source>Nail size</source>
+        <target>Tamanho das unhas</target>
+      </trans-unit>
+      <trans-unit id="complete.nailArt" datatype="html">
+        <source>Nail art</source>
+        <target>Nail art</target>
+      </trans-unit>
+      <trans-unit id="booking.choose" datatype="html">
+        <source>Choose…</source>
+        <target>Escolher…</target>
+      </trans-unit>
+      <trans-unit id="complete.brokenNails" datatype="html">
+        <source>Broken nails</source>
+        <target>Unhas partidas</target>
+      </trans-unit>
+      <trans-unit id="booking.notesRequired" datatype="html">
+        <source>What will be done</source>
+        <target>O que vai ser feito</target>
+      </trans-unit>
+      <trans-unit id="booking.notes" datatype="html">
+        <source>Notes (optional)</source>
+        <target>Notas (opcional)</target>
+      </trans-unit>
+      <trans-unit id="booking.notesPlaceholder" datatype="html">
+        <source>e.g. Repair of 1 broken nail</source>
+        <target>ex.: Reparação de 1 unha partida</target>
+      </trans-unit>
+      <trans-unit id="booking.price" datatype="html">
+        <source>Estimated price (€)</source>
+        <target>Preço estimado (€)</target>
+      </trans-unit>
+      <trans-unit id="booking.useSuggestion" datatype="html">
+        <source>Use table price: <x id="INTERPOLATION" equiv-text="{{ suggested }}"/> €</source>
+        <target>Usar o preço da tabela: <x id="INTERPOLATION" equiv-text="{{ suggested }}"/> €</target>
+      </trans-unit>
+      <trans-unit id="booking.fromTable" datatype="html">
+        <source>from the price table</source>
+        <target>da tabela de preços</target>
+      </trans-unit>
+      <trans-unit id="dialog.back" datatype="html">
+        <source> Back </source>
+        <target> Voltar </target>
+      </trans-unit>
+      <trans-unit id="booking.save" datatype="html">
+        <source> Save appointment </source>
+        <target> Guardar marcação </target>
+      </trans-unit>
+      <trans-unit id="booking.error.client" datatype="html">
+        <source>Choose a client, or register a new one.</source>
+        <target>Escolha uma cliente ou registe uma nova.</target>
+      </trans-unit>
+      <trans-unit id="booking.error.newClient" datatype="html">
+        <source>Fill in the new client&apos;s name, last name, email and phone.</source>
+        <target>Preencha o nome, apelido, email e telemóvel da nova cliente.</target>
+      </trans-unit>
+      <trans-unit id="booking.error.details" datatype="html">
+        <source>Choose the nail size and the nail art level.</source>
+        <target>Escolha o tamanho das unhas e o nível de nail art.</target>
+      </trans-unit>
+      <trans-unit id="booking.error.notes" datatype="html">
+        <source>Describe the service in the notes.</source>
+        <target>Descreva o serviço nas notas.</target>
+      </trans-unit>
+      <trans-unit id="booking.error.form" datatype="html">
+        <source>Check the date, time and price.</source>
+        <target>Verifique a data, a hora e o preço.</target>
+      </trans-unit>
+      <trans-unit id="calendar.today" datatype="html">
+        <source> Today </source>
+        <target> Hoje </target>
+      </trans-unit>
+      <trans-unit id="calendar.previous" datatype="html">
+        <source>Previous</source>
+        <target>Anterior</target>
+      </trans-unit>
+      <trans-unit id="calendar.next" datatype="html">
+        <source>Next</source>
+        <target>Seguinte</target>
+      </trans-unit>
+      <trans-unit id="dashboard.overdueCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 sinal em atraso} other {<x id="INTERPOLATION"/> sinais em atraso}}</target>
+      </trans-unit>
+      <trans-unit id="dashboard.refundCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 refund to make} other {<x id="INTERPOLATION"/> refunds to make}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 reembolso a fazer} other {<x id="INTERPOLATION"/> reembolsos a fazer}}</target>
+      </trans-unit>
+      <trans-unit id="calendar.showCancelled" datatype="html">
+        <source>Show cancelled</source>
+        <target>Mostrar canceladas</target>
+      </trans-unit>
+      <trans-unit id="calendar.day" datatype="html">
+        <source> Day </source>
+        <target> Dia </target>
+      </trans-unit>
+      <trans-unit id="calendar.week" datatype="html">
+        <source> Week </source>
+        <target> Semana </target>
+      </trans-unit>
+      <trans-unit id="calendar.new" datatype="html">
+        <source> + New appointment </source>
+        <target> + Nova marcação </target>
+      </trans-unit>
+      <trans-unit id="legend.awaitingDeposit" datatype="html">
+        <source>Awaiting deposit</source>
+        <target>A aguardar sinal</target>
+      </trans-unit>
+      <trans-unit id="legend.confirmed" datatype="html">
+        <source>Deposit paid</source>
+        <target>Sinal pago</target>
+      </trans-unit>
+      <trans-unit id="legend.noDeposit" datatype="html">
+        <source>No deposit needed</source>
+        <target>Sem sinal</target>
+      </trans-unit>
+      <trans-unit id="legend.completed" datatype="html">
+        <source>Completed</source>
+        <target>Concluída</target>
+      </trans-unit>
+      <trans-unit id="legend.noShow" datatype="html">
+        <source>No-show</source>
+        <target>Faltou</target>
       </trans-unit>
       <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
         <source>Confirm that the deposit was paid? The client will get an email.</source>
@@ -122,10 +326,6 @@
         <source>The client receives an email about the cancellation.</source>
         <target>A cliente recebe um email sobre o cancelamento.</target>
       </trans-unit>
-      <trans-unit id="dialog.back" datatype="html">
-        <source> Back </source>
-        <target> Voltar </target>
-      </trans-unit>
       <trans-unit id="cancel.confirm" datatype="html">
         <source> Cancel appointment </source>
         <target> Cancelar marcação </target>
@@ -133,14 +333,6 @@
       <trans-unit id="complete.title" datatype="html">
         <source>Complete appointment</source>
         <target>Concluir marcação</target>
-      </trans-unit>
-      <trans-unit id="complete.nailArt" datatype="html">
-        <source>Nail art</source>
-        <target>Nail art</target>
-      </trans-unit>
-      <trans-unit id="complete.brokenNails" datatype="html">
-        <source>Broken nails</source>
-        <target>Unhas partidas</target>
       </trans-unit>
       <trans-unit id="complete.extraCharms" datatype="html">
         <source>Extra charms</source>
@@ -170,6 +362,46 @@
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <target>Indique um preço válido, por exemplo 45 ou 45,50.</target>
       </trans-unit>
+      <trans-unit id="preApproved.title" datatype="html">
+        <source>Pre-approved Instagram</source>
+        <target>Instagram pré-aprovados</target>
+      </trans-unit>
+      <trans-unit id="preApproved.subtitle" datatype="html">
+        <source> A new client can only make her first booking if her Instagram is on this list. </source>
+        <target> Uma nova cliente só pode fazer a primeira marcação se o Instagram dela estiver nesta lista. </target>
+      </trans-unit>
+      <trans-unit id="preApproved.add" datatype="html">
+        <source> Add </source>
+        <target> Adicionar </target>
+      </trans-unit>
+      <trans-unit id="preApproved.added" datatype="html">
+        <source>@<x id="INTERPOLATION" equiv-text="{{ handle }}"/> can now check in.</source>
+        <target>@<x id="INTERPOLATION" equiv-text="{{ handle }}"/> já pode fazer o check-in.</target>
+      </trans-unit>
+      <trans-unit id="preApproved.count" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No handles yet} =1 {1 handle} other {<x id="INTERPOLATION"/> handles}}</source>
+        <target>{VAR_PLURAL, plural, =0 {Ainda sem Instagram} =1 {1 Instagram} other {<x id="INTERPOLATION"/> Instagram}}</target>
+      </trans-unit>
+      <trans-unit id="preApproved.filter" datatype="html">
+        <source>Filter</source>
+        <target>Filtrar</target>
+      </trans-unit>
+      <trans-unit id="preApproved.addedOn" datatype="html">
+        <source>Added on</source>
+        <target>Adicionado em</target>
+      </trans-unit>
+      <trans-unit id="preApproved.remove" datatype="html">
+        <source> Remove </source>
+        <target> Remover </target>
+      </trans-unit>
+      <trans-unit id="preApproved.empty" datatype="html">
+        <source>Nothing here.</source>
+        <target>Nada por aqui.</target>
+      </trans-unit>
+      <trans-unit id="preApproved.remove.question" datatype="html">
+        <source>Remove @<x id="handle" equiv-text="entry.instagram"/>? She will no longer be able to check in.</source>
+        <target>Remover @<x id="handle" equiv-text="entry.instagram"/>? Ela deixa de poder fazer o check-in.</target>
+      </trans-unit>
       <trans-unit id="login.title" datatype="html">
         <source>Log in</source>
         <target>Entrar</target>
@@ -177,10 +409,6 @@
       <trans-unit id="login.subtitle" datatype="html">
         <source>Use your phone number and password.</source>
         <target>Use o seu número de telemóvel e a sua palavra-passe.</target>
-      </trans-unit>
-      <trans-unit id="login.phone" datatype="html">
-        <source>Phone</source>
-        <target>Telemóvel</target>
       </trans-unit>
       <trans-unit id="login.phone.hint" datatype="html">
         <source>With the country code, e.g. +351 or +55.</source>

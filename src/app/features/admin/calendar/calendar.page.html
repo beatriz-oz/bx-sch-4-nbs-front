@@ -1,0 +1,152 @@
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-2 border-b border-gray-200 px-4 py-3">
+  <button type="button" (click)="goToToday()" i18n="@@calendar.today"
+    class="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100">
+    Today
+  </button>
+  <div class="flex">
+    <button type="button" (click)="move(-1)" aria-label="Previous" i18n-aria-label="@@calendar.previous"
+      class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">‹</button>
+    <button type="button" (click)="move(1)" aria-label="Next" i18n-aria-label="@@calendar.next"
+      class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">›</button>
+  </div>
+  <h2 class="text-lg font-semibold capitalize">
+    @if (view() === 'week') {
+      {{ days()[0] | studioDate: 'day' }} – {{ days()[6] | studioDate: 'day' }}
+    } @else {
+      {{ selectedDay() | studioDate: 'dayLong' }}
+    }
+  </h2>
+
+  <div class="ml-auto flex flex-wrap items-center gap-2 text-sm">
+    @if (overdueCount()) {
+      <span class="rounded-full bg-red-100 px-3 py-1 text-red-700">
+        <ng-container i18n="@@dashboard.overdueCount">{overdueCount(), plural, =1 {1 deposit overdue} other {{{ overdueCount() }} deposits overdue}}</ng-container>
+      </span>
+    }
+    @if (refundCount()) {
+      <span class="rounded-full bg-amber-100 px-3 py-1 text-amber-800">
+        <ng-container i18n="@@dashboard.refundCount">{refundCount(), plural, =1 {1 refund to make} other {{{ refundCount() }} refunds to make}}</ng-container>
+      </span>
+    }
+
+    <label class="flex items-center gap-1.5 text-gray-600">
+      <input type="checkbox" [checked]="showCancelled()" (change)="showCancelled.set(!showCancelled())" class="accent-gray-900" />
+      <span i18n="@@calendar.showCancelled">Show cancelled</span>
+    </label>
+
+    <div class="flex rounded-full border border-gray-300 p-0.5">
+      <button type="button" (click)="setView('day')" i18n="@@calendar.day"
+        [class]="view() === 'day' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
+        Day
+      </button>
+      <button type="button" (click)="setView('week')" i18n="@@calendar.week"
+        [class]="view() === 'week' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
+        Week
+      </button>
+    </div>
+
+    <button type="button" (click)="newBookingNow()" i18n="@@calendar.new"
+      class="rounded-full bg-gray-900 px-4 py-1.5 font-medium text-white hover:bg-gray-700">
+      + New appointment
+    </button>
+  </div>
+</div>
+
+@if (error(); as message) {
+  <p role="alert" class="mx-4 mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+}
+
+<!-- Time grid -->
+<div class="relative overflow-auto" style="max-height: calc(100vh - 9rem)" [class.opacity-60]="loading()">
+  <div class="flex min-w-fit">
+    <!-- Hours column -->
+    <div class="sticky left-0 z-10 w-14 shrink-0 bg-white">
+      <div class="h-14 border-b border-gray-200"></div>
+      <div class="relative" [style.height.px]="gridHeight">
+        @for (hour of hours; track hour) {
+          <span class="absolute right-2 -translate-y-1/2 text-xs text-gray-400" [style.top.px]="(hour - hours[0]) * hourHeight">
+            @if (hour !== hours[0]) { {{ formatMinutes(hour * 60) }} }
+          </span>
+        }
+      </div>
+    </div>
+
+    <!-- Days -->
+    @for (column of columns(); track column.day) {
+      <div class="min-w-[8rem] flex-1 border-l border-gray-200">
+        <button type="button" (click)="openDay(column.day)"
+          class="sticky top-0 z-10 flex h-14 w-full flex-col items-center justify-center border-b border-gray-200 bg-white hover:bg-gray-50">
+          <span class="text-xs text-gray-500 uppercase">{{ column.day | studioDate: 'weekday' }}</span>
+          <span class="flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold"
+            [class]="column.day === today() ? 'bg-brand-600 text-white' : 'text-gray-800'">
+            {{ column.day.slice(8) }}
+          </span>
+        </button>
+
+        <!-- The hour lines are a background; a click on an empty spot opens a new booking. -->
+        <div class="relative cursor-pointer"
+          [style.height.px]="gridHeight"
+          [style.background-image]="'repeating-linear-gradient(to bottom, transparent 0, transparent ' + (hourHeight - 1) + 'px, #f3f4f6 ' + (hourHeight - 1) + 'px, #f3f4f6 ' + hourHeight + 'px)'"
+          (click)="onGridClick(column.day, $event)">
+
+          @for (item of column.blocks; track item.appointment.id) {
+            <button type="button" (click)="selected.set(item.appointment)"
+              class="absolute flex flex-col justify-start overflow-hidden rounded-md border-l-4 px-1.5 py-1 text-left text-xs shadow-sm hover:z-10 hover:shadow-md"
+              [class]="blockClasses(item)"
+              [style.top.px]="item.top + 1"
+              [style.height.px]="item.height - 2"
+              [style.left]="'calc(' + (item.lane / item.lanes) * 100 + '% + 2px)'"
+              [style.width]="'calc(' + 100 / item.lanes + '% - 4px)'">
+              <span class="flex items-center gap-1 font-semibold">
+                {{ formatMinutes(item.start) }}
+                @if (item.appointment.deposit_overdue) {
+                  <span class="h-2 w-2 rounded-full bg-red-500" title="Deposit overdue" i18n-title="@@badge.depositOverdue"></span>
+                }
+              </span>
+              <span class="block truncate">{{ item.appointment.client.name }} {{ item.appointment.client.last_name }}</span>
+              <span class="block truncate opacity-75">{{ serviceLabels[item.appointment.service] }}</span>
+            </button>
+          }
+
+          @if (column.day === today() && nowOffset() !== null) {
+            <div class="pointer-events-none absolute right-0 left-0 z-20 border-t-2 border-red-500" [style.top.px]="nowOffset()">
+              <span class="absolute -top-1.5 -left-1.5 h-3 w-3 rounded-full bg-red-500"></span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="flex flex-wrap gap-3 border-t border-gray-200 px-4 py-2 text-xs text-gray-600">
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-amber-400 bg-amber-50"></span><span i18n="@@legend.awaitingDeposit">Awaiting deposit</span></span>
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-brand-500 bg-brand-100"></span><span i18n="@@legend.confirmed">Deposit paid</span></span>
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-sky-400 bg-sky-50"></span><span i18n="@@legend.noDeposit">No deposit needed</span></span>
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-emerald-500 bg-emerald-50"></span><span i18n="@@legend.completed">Completed</span></span>
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-red-400 bg-red-50"></span><span i18n="@@legend.noShow">No-show</span></span>
+</div>
+
+<!-- Things that open on top -->
+@if (selected(); as appointment) {
+  <app-appointment-panel
+    [appointment]="appointment"
+    [busy]="busy()"
+    (closed)="selected.set(null)"
+    (confirmDeposit)="confirmDeposit(appointment)"
+    (cancel)="toCancel.set(appointment)"
+    (complete)="toComplete.set(appointment)"
+    (noShow)="markNoShow(appointment)"
+  />
+}
+@if (newBooking(); as start) {
+  <app-booking-drawer [day]="start.day" [time]="start.time" (booked)="booked($event)" (closed)="newBooking.set(null)" />
+}
+@if (toCancel(); as appointment) {
+  <app-cancel-dialog [appointment]="appointment" (cancelled)="replace($event)" (closed)="toCancel.set(null)" />
+}
+@if (toComplete(); as appointment) {
+  <app-complete-dialog [appointment]="appointment" (completed)="replace($event)" (closed)="toComplete.set(null)" />
+}

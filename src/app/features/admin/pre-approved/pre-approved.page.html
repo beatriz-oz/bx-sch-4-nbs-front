@@ -1,0 +1,51 @@
+<div class="mx-auto max-w-3xl p-6">
+  <h2 i18n="@@preApproved.title" class="text-2xl font-semibold">Pre-approved Instagram</h2>
+  <p i18n="@@preApproved.subtitle" class="mt-1 text-sm text-gray-500">
+    A new client can only make her first booking if her Instagram is on this list.
+  </p>
+
+  <form (ngSubmit)="add()" class="mt-6 flex gap-2">
+    <input name="handle" [ngModel]="handle()" (ngModelChange)="handle.set($event)" placeholder="@instagram"
+      class="flex-1 rounded-full border border-gray-300 px-4 py-2 focus:border-gray-900 focus:outline-none" />
+    <button type="submit" [disabled]="saving() || !handle().trim()" i18n="@@preApproved.add"
+      class="rounded-full bg-gray-900 px-5 py-2 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+      Add
+    </button>
+  </form>
+
+  @if (added(); as handle) {
+    <p class="mt-3 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+      <ng-container i18n="@@preApproved.added">&#64;{{ handle }} can now check in.</ng-container>
+    </p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <div class="mt-8 flex items-center justify-between gap-3">
+    <h3 class="font-semibold">
+      <ng-container i18n="@@preApproved.count">{entries().length, plural, =0 {No handles yet} =1 {1 handle} other {{{ entries().length }} handles}}</ng-container>
+    </h3>
+    @if (entries().length > 5) {
+      <input type="search" [ngModel]="filter()" (ngModelChange)="filter.set($event)" placeholder="Filter" i18n-placeholder="@@preApproved.filter"
+        class="w-48 rounded-full border border-gray-300 px-4 py-1.5 text-sm" />
+    }
+  </div>
+
+  <ul class="mt-3 divide-y divide-gray-100 rounded-2xl border border-gray-200">
+    @for (entry of visible(); track entry.id) {
+      <li class="flex items-center justify-between px-4 py-3">
+        <div>
+          <p class="font-medium">&#64;{{ entry.instagram }}</p>
+          <p class="text-xs text-gray-500"><ng-container i18n="@@preApproved.addedOn">Added on</ng-container> {{ entry.created_at | studioDate: 'dateTime' }}</p>
+        </div>
+        <button type="button" (click)="remove(entry)" i18n="@@preApproved.remove"
+          class="rounded-full px-3 py-1 text-sm text-red-700 hover:bg-red-50">
+          Remove
+        </button>
+      </li>
+    } @empty {
+      <li i18n="@@preApproved.empty" class="px-4 py-6 text-center text-sm text-gray-500">Nothing here.</li>
+    }
+  </ul>
+</div>

@@ -20,6 +20,33 @@ export function studioToday(): string {
   return studioDay(new Date());
 }
 
+const timeFormat = new Intl.DateTimeFormat('en-GB', {
+  timeZone: STUDIO_TIME_ZONE,
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
+});
+
+/** Minutes since midnight, in the studio, of an instant (14:30 → 870). */
+export function studioMinutes(instant: string | Date): number {
+  const [hours, minutes] = timeFormat.format(new Date(instant)).split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+/** 870 → "14:30" */
+export function formatMinutes(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  return `${String(hours).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+}
+
+/**
+ * A day and a time in the studio, the way the API expects them:
+ * without a time zone, which the API reads as Lisbon time.
+ */
+export function studioDateTime(day: string, time: string): string {
+  return `${day}T${time}:00`;
+}
+
 // Day arithmetic runs in UTC, so summer time changes never shift a day.
 function toUtcDate(day: string): Date {
   const [year, month, date] = day.split('-').map(Number);

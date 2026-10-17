@@ -1,0 +1,31 @@
+<div class="flex min-h-[calc(100vh-4.5rem)] flex-col md:flex-row">
+  <nav class="border-b border-gray-200 bg-white md:w-56 md:shrink-0 md:border-r md:border-b-0">
+    <ul class="flex gap-1 overflow-x-auto p-2 text-sm md:flex-col md:p-3">
+      <li>
+        <a
+          routerLink="/admin"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-gray-900 text-white hover:bg-gray-900"
+          class="flex items-center gap-2 rounded-lg px-3 py-2 whitespace-nowrap text-gray-700 hover:bg-gray-100"
+        >
+          <span aria-hidden="true">📅</span>
+          <span i18n="@@nav.calendar">Calendar</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/admin/pre-approved"
+          routerLinkActive="bg-gray-900 text-white hover:bg-gray-900"
+          class="flex items-center gap-2 rounded-lg px-3 py-2 whitespace-nowrap text-gray-700 hover:bg-gray-100"
+        >
+          <span aria-hidden="true">✅</span>
+          <span i18n="@@nav.preApproved">Pre-approved Instagram</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="min-w-0 flex-1 bg-white">
+    <router-outlet />
+  </section>
+</div>
