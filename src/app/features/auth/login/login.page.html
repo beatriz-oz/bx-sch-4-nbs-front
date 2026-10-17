@@ -1,0 +1,52 @@
+<section class="mx-auto max-w-sm rounded-2xl bg-white p-6 shadow-sm">
+  <h2 i18n="@@login.title" class="mb-1 text-2xl font-semibold text-brand-700">Log in</h2>
+  <p i18n="@@login.subtitle" class="mb-6 text-sm text-gray-500">Use your phone number and password.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4" novalidate>
+    <div>
+      <label for="phone" i18n="@@login.phone" class="mb-1 block text-sm font-medium">Phone</label>
+      <input
+        id="phone"
+        type="tel"
+        autocomplete="tel"
+        formControlName="phone"
+        placeholder="+351 912 345 678"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+      />
+      <p i18n="@@login.phone.hint" class="mt-1 text-xs text-gray-500">With the country code, e.g. +351 or +55.</p>
+      @if (form.controls.phone.touched && form.controls.phone.invalid) {
+        <p i18n="@@login.phone.required" class="mt-1 text-sm text-red-600">Enter your phone number.</p>
+      }
+    </div>
+
+    <div>
+      <label for="password" i18n="@@login.password" class="mb-1 block text-sm font-medium">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        formControlName="password"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+      />
+      @if (form.controls.password.touched && form.controls.password.invalid) {
+        <p i18n="@@login.password.required" class="mt-1 text-sm text-red-600">Enter your password.</p>
+      }
+    </div>
+
+    @if (error(); as message) {
+      <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="submitting()"
+      class="w-full rounded-lg bg-brand-600 px-4 py-2 font-medium text-white hover:bg-brand-700 disabled:opacity-60"
+    >
+      @if (submitting()) {
+        <span i18n="@@login.submitting">Logging in…</span>
+      } @else {
+        <span i18n="@@login.submit">Log in</span>
+      }
+    </button>
+  </form>
+</section>

@@ -1,10 +1,24 @@
 <div class="min-h-screen bg-brand-50 text-gray-800">
   <header class="border-b border-brand-200 bg-white">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-      <div>
+      <a routerLink="/">
         <h1 class="text-xl font-semibold text-brand-700">Nails by Scooby</h1>
         <p i18n="@@header.tagline" class="text-sm text-gray-500">Nail design studio in Porto</p>
-      </div>
+      </a>
+
+      @if (auth.user(); as user) {
+        <div class="flex items-center gap-3 text-sm">
+          <span class="hidden text-gray-600 sm:inline">{{ user.name }} {{ user.last_name }}</span>
+          <button
+            type="button"
+            (click)="logout()"
+            i18n="@@header.logout"
+            class="rounded-lg border border-brand-200 px-3 py-1.5 text-brand-700 hover:bg-brand-50"
+          >
+            Log out
+          </button>
+        </div>
+      }
     </div>
   </header>
 

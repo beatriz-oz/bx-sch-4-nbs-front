@@ -9,7 +9,8 @@
     "test": "ng test",
     "api:types": "npx -y -p typescript@5 -p openapi-typescript@7 openapi-typescript http://localhost:8000/openapi.json -o src/app/core/api/schema.ts",
     "start:pt": "ng serve --configuration=pt",
-    "i18n:extract": "ng extract-i18n"
+    "i18n:extract": "ng extract-i18n",
+    "i18n:sync": "node scripts/i18n-sync.mjs"
   },
   "private": true,
   "packageManager": "npm@11.19.1",

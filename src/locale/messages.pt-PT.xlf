@@ -6,6 +6,86 @@
         <source>Nail design studio in Porto</source>
         <target>Estúdio de nail design no Porto</target>
       </trans-unit>
+      <trans-unit id="header.logout" datatype="html">
+        <source> Log out </source>
+        <target> Sair </target>
+      </trans-unit>
+      <trans-unit id="title.login" datatype="html">
+        <source>Log in · Nails by Scooby</source>
+        <target>Entrar · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.appointments" datatype="html">
+        <source>My appointments · Nails by Scooby</source>
+        <target>As minhas marcações · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.admin" datatype="html">
+        <source>Dashboard · Nails by Scooby</source>
+        <target>Painel · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="error.network" datatype="html">
+        <source>Could not reach the server. Check your connection and try again.</source>
+        <target>Não foi possível contactar o servidor. Verifique a sua ligação e tente novamente.</target>
+      </trans-unit>
+      <trans-unit id="error.unexpected" datatype="html">
+        <source>Something went wrong. Please try again.</source>
+        <target>Algo correu mal. Por favor, tente novamente.</target>
+      </trans-unit>
+      <trans-unit id="admin.home.title" datatype="html">
+        <source>Studio dashboard</source>
+        <target>Painel do estúdio</target>
+      </trans-unit>
+      <trans-unit id="admin.home.placeholder" datatype="html">
+        <source>The appointments of the week will appear here.</source>
+        <target>As marcações da semana vão aparecer aqui.</target>
+      </trans-unit>
+      <trans-unit id="login.title" datatype="html">
+        <source>Log in</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="login.subtitle" datatype="html">
+        <source>Use your phone number and password.</source>
+        <target>Use o seu número de telemóvel e a sua palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="login.phone" datatype="html">
+        <source>Phone</source>
+        <target>Telemóvel</target>
+      </trans-unit>
+      <trans-unit id="login.phone.hint" datatype="html">
+        <source>With the country code, e.g. +351 or +55.</source>
+        <target>Com o indicativo do país, por exemplo +351 ou +55.</target>
+      </trans-unit>
+      <trans-unit id="login.phone.required" datatype="html">
+        <source>Enter your phone number.</source>
+        <target>Indique o seu número de telemóvel.</target>
+      </trans-unit>
+      <trans-unit id="login.password" datatype="html">
+        <source>Password</source>
+        <target>Palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="login.password.required" datatype="html">
+        <source>Enter your password.</source>
+        <target>Indique a sua palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="login.submitting" datatype="html">
+        <source>Logging in…</source>
+        <target>A entrar…</target>
+      </trans-unit>
+      <trans-unit id="login.submit" datatype="html">
+        <source>Log in</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="login.error.invalid" datatype="html">
+        <source>Phone or password incorrect.</source>
+        <target>Telemóvel ou palavra-passe incorretos.</target>
+      </trans-unit>
+      <trans-unit id="client.home.greeting" datatype="html">
+        <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
+        <target>Olá, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</target>
+      </trans-unit>
+      <trans-unit id="client.home.placeholder" datatype="html">
+        <source>Your appointments will appear here.</source>
+        <target>As suas marcações vão aparecer aqui.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

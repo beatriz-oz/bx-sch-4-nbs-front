@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { ApiResponse, Login, TokenResult, User } from '../api/types';
@@ -63,6 +63,34 @@ export class AuthService {
       map((response) => response.detail),
       tap((user) => this.user.set(user)),
     );
+  }
+
+  /**
+   * After a page reload we still have the token, but not the user.
+   * Loads it once; if the token is no longer valid, logs out.
+   */
+  restoreSession(): Observable<User | null> {
+    if (!this.token()) {
+      return of(null);
+    }
+    const user = this.user();
+    if (user) {
+      return of(user);
+    }
+    return this.loadMe().pipe(
+      catchError(() => {
+        this.logout();
+        return of(null);
+      }),
+    );
+  }
+
+  /** Where each kind of user starts. */
+  homeFor(user: User | null): string {
+    if (!user) {
+      return '/login';
+    }
+    return user.role === 'Super_admin' ? '/admin' : '/appointments';
   }
 
   logout(): void {
