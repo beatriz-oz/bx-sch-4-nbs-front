@@ -1,0 +1,54 @@
+<div class="mx-auto max-w-xl px-4 py-6">
+  <div class="flex items-center justify-between gap-3">
+    <h2 class="text-2xl font-semibold">
+      <ng-container i18n="@@client.home.greeting">Hello, {{ auth.user()?.name }}!</ng-container>
+    </h2>
+    <a routerLink="/book" i18n="@@myAppointments.book"
+      class="rounded-full bg-gray-900 px-5 py-2.5 font-medium whitespace-nowrap text-white hover:bg-gray-700">
+      Book
+    </a>
+  </div>
+
+  @if (auth.user() && !auth.user()!.is_active) {
+    <a routerLink="/activate" class="mt-4 block rounded-2xl border border-gray-200 bg-white p-4 hover:bg-gray-50">
+      <span i18n="@@book.done.activate" class="block font-medium">Create your password</span>
+      <span i18n="@@book.done.activateHint" class="block text-sm text-gray-500">To log in again later and follow your appointments.</span>
+    </a>
+  }
+
+  @if (notice(); as message) {
+    <p role="status" class="mt-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  @if (loaded()) {
+    <h3 i18n="@@myAppointments.upcoming" class="mt-8 mb-3 font-semibold">Next appointments</h3>
+    <div class="space-y-3">
+      @for (appointment of upcoming(); track appointment.id) {
+        <app-appointment-card [appointment]="appointment" [upcoming]="true" (cancel)="toCancel.set(appointment)" />
+      } @empty {
+        <div class="rounded-2xl border border-dashed border-gray-300 p-6 text-center">
+          <p i18n="@@myAppointments.none" class="text-gray-600">You have no appointments booked.</p>
+          <a routerLink="/book" i18n="@@myAppointments.bookNow" class="mt-3 inline-block font-medium underline">Book one now</a>
+        </div>
+      }
+    </div>
+
+    @if (history().length) {
+      <h3 i18n="@@myAppointments.history" class="mt-10 mb-3 font-semibold">History</h3>
+      <div class="space-y-3">
+        @for (appointment of history(); track appointment.id) {
+          <app-appointment-card [appointment]="appointment" />
+        }
+      </div>
+    }
+  } @else {
+    <p i18n="@@dashboard.loading" class="mt-8 text-gray-500">Loading…</p>
+  }
+</div>
+
+@if (toCancel(); as appointment) {
+  <app-client-cancel-dialog [appointment]="appointment" (cancelled)="cancelled($event)" (closed)="toCancel.set(null)" />
+}

@@ -986,17 +986,77 @@
         <source>This time was just booked by someone else. Please choose another one.</source>
         <target>Este horário acabou de ser marcado por outra pessoa. Escolha outro, por favor.</target>
       </trans-unit>
+      <trans-unit id="myAppointments.awaitingDeposit" datatype="html">
+        <source>Waiting for the deposit</source>
+        <target>À espera do sinal</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel" datatype="html">
+        <source> Cancel appointment </source>
+        <target> Cancelar marcação </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.title" datatype="html">
+        <source>Cancel this appointment?</source>
+        <target>Cancelar esta marcação?</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.late" datatype="html">
+        <source>It is less than 48 hours before the appointment.</source>
+        <target>Faltam menos de 48 horas para a marcação.</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.lateDeposit" datatype="html">
+        <source>As the policies say, the deposit is not refunded.</source>
+        <target>Como dizem as políticas, o sinal não é devolvido.</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.accept" datatype="html">
+        <source>I understand and want to cancel.</source>
+        <target>Compreendo e quero cancelar.</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.info" datatype="html">
+        <source> The studio is told right away. If you paid the deposit and cancel more than 48 hours before, it is refunded. </source>
+        <target> O estúdio é avisado de imediato. Se pagou o sinal e cancelar com mais de 48 horas de antecedência, ele é devolvido. </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.keep" datatype="html">
+        <source> Keep it </source>
+        <target> Manter </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.confirm" datatype="html">
+        <source> Cancel appointment </source>
+        <target> Cancelar marcação </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.notAllowed" datatype="html">
+        <source>This appointment can no longer be cancelled here. Please contact the studio on Instagram.</source>
+        <target>Esta marcação já não pode ser cancelada aqui. Contacte o estúdio pelo Instagram, por favor.</target>
+      </trans-unit>
       <trans-unit id="client.home.greeting" datatype="html">
         <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
         <target>Olá, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</target>
       </trans-unit>
-      <trans-unit id="client.home.placeholder" datatype="html">
-        <source>Your appointments will appear here.</source>
-        <target>As suas marcações vão aparecer aqui.</target>
-      </trans-unit>
-      <trans-unit id="client.home.book" datatype="html">
-        <source> Book an appointment </source>
+      <trans-unit id="myAppointments.book" datatype="html">
+        <source> Book </source>
         <target> Marcar </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.upcoming" datatype="html">
+        <source>Next appointments</source>
+        <target>Próximas marcações</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.none" datatype="html">
+        <source>You have no appointments booked.</source>
+        <target>Não tem marcações.</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.bookNow" datatype="html">
+        <source>Book one now</source>
+        <target>Marcar agora</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.history" datatype="html">
+        <source>History</source>
+        <target>Histórico</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancelled.refund" datatype="html">
+        <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>
+        <target>Marcação cancelada. O seu sinal vai ser devolvido: o estúdio vai contactá-la.</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancelled" datatype="html">
+        <source>Appointment cancelled. The studio was told.</source>
+        <target>Marcação cancelada. O estúdio foi avisado.</target>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
         <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>

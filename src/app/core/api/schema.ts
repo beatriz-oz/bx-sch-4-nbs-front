@@ -824,6 +824,8 @@ export interface components {
             has_other_professional_nails: boolean;
             /** Estimated Price */
             estimated_price: string;
+            /** Final Price */
+            final_price: string | null;
             /** Policies Accepted At */
             policies_accepted_at: string | null;
             /** Deposit Paid At */

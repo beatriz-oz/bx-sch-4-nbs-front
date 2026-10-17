@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'activate',
-    canActivate: [guestGuard],
+    // Open to a logged-in one-off client too: she creates her password after booking.
     title: $localize`:@@title.activate:Create your password · Nails by Scooby`,
     loadComponent: () => import('./features/auth/activate/activate.page').then((m) => m.ActivatePage),
   },
@@ -34,7 +34,8 @@ export const routes: Routes = [
     path: 'appointments',
     canActivate: [authGuard],
     title: $localize`:@@title.appointments:My appointments · Nails by Scooby`,
-    loadComponent: () => import('./features/client/client-home.page').then((m) => m.ClientHomePage),
+    loadComponent: () =>
+      import('./features/client/my-appointments/my-appointments.page').then((m) => m.MyAppointmentsPage),
   },
   {
     path: 'admin',

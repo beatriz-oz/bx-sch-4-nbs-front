@@ -37,6 +37,19 @@ export class ActivatePage {
   /** Which way to send her when this is not the right page. */
   readonly redirect = signal<'login' | 'check-in' | null>(null);
 
+  constructor() {
+    // This page has no guard, so after a reload the session may not be loaded yet.
+    this.auth.restoreSession().subscribe((user) => {
+      if (user?.is_active) {
+        // Already has a password: nothing to do here.
+        this.router.navigateByUrl(this.auth.homeFor(user));
+      } else if (user) {
+        // A one-off client after her first booking: we already know her phone.
+        this.phone.setValue(user.phone);
+      }
+    });
+  }
+
   sendCode(): void {
     if (this.phone.invalid) {
       this.phone.markAsTouched();

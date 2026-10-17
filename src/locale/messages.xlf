@@ -174,12 +174,20 @@
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
           <context context-type="linenumber">37,39</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="badge.attendanceConfirmed" datatype="html">
         <source>Attendance confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
           <context context-type="linenumber">40,42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">30,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="badge.refundDue" datatype="html">
@@ -227,6 +235,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">185,187</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">17,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.cancelledAt" datatype="html">
@@ -1444,7 +1456,7 @@
         <source>A new code was sent. Check also the spam folder.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.ts</context>
@@ -1455,14 +1467,14 @@
         <source>The two passwords are different.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="code.invalid" datatype="html">
         <source>This code is not valid or has expired. Check it, or ask for a new one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.ts</context>
@@ -1473,21 +1485,21 @@
         <source>We don&apos;t know this phone number yet. Your first appointment is booked with your Instagram.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.error.active" datatype="html">
         <source>Your account already has a password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="code.wait" datatype="html">
         <source>A code was sent a moment ago. Wait a little before asking for a new one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">125</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.ts</context>
@@ -1815,6 +1827,10 @@
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">235,239</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">48,52</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="book.done.title" datatype="html">
         <source>Appointment booked!</source>
@@ -1857,12 +1873,20 @@
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">261,262</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="book.done.activateHint" datatype="html">
         <source>To log in again later and follow your appointments.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">262,266</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">15,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.myAppointments" datatype="html">
@@ -1904,25 +1928,130 @@
           <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="client.home.greeting" datatype="html">
-        <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
+      <trans-unit id="myAppointments.awaitingDeposit" datatype="html">
+        <source>Waiting for the deposit</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/client-home.page.ts</context>
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel" datatype="html">
+        <source> Cancel appointment </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">40,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.title" datatype="html">
+        <source>Cancel this appointment?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.late" datatype="html">
+        <source>It is less than 48 hours before the appointment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
           <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="client.home.placeholder" datatype="html">
-        <source>Your appointments will appear here.</source>
+      <trans-unit id="myAppointments.cancel.lateDeposit" datatype="html">
+        <source>As the policies say, the deposit is not refunded.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/client-home.page.ts</context>
-          <context context-type="linenumber">14,15</context>
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">14,16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="client.home.book" datatype="html">
-        <source> Book an appointment </source>
+      <trans-unit id="myAppointments.cancel.accept" datatype="html">
+        <source>I understand and want to cancel.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/client-home.page.ts</context>
-          <context context-type="linenumber">17,19</context>
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">18,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.info" datatype="html">
+        <source> The studio is told right away. If you paid the deposit and cancel more than 48 hours before, it is refunded. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">23,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.keep" datatype="html">
+        <source> Keep it </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.confirm" datatype="html">
+        <source> Cancel appointment </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.html</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancel.notAllowed" datatype="html">
+        <source>This appointment can no longer be cancelled here. Please contact the studio on Instagram.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="client.home.greeting" datatype="html">
+        <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.book" datatype="html">
+        <source> Book </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">8,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.upcoming" datatype="html">
+        <source>Next appointments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.none" datatype="html">
+        <source>You have no appointments booked.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.bookNow" datatype="html">
+        <source>Book one now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">34,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.history" datatype="html">
+        <source>History</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancelled.refund" datatype="html">
+        <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.cancelled" datatype="html">
+        <source>Appointment cancelled. The studio was told.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.ts</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
