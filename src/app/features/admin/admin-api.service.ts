@@ -5,13 +5,17 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {
   AdminAppointment,
+  AgendaMonth,
   ApiResponse,
   AppointmentStatus,
   Client,
   FinalPriceDetails,
   FinalPriceEstimate,
+  MonthPublished,
   PreApprovedInstagram,
   PriceList,
+  ScheduleException,
+  ScheduleExceptionSet,
   StudioAppointment,
 } from '../../core/api/types';
 
@@ -81,6 +85,39 @@ export class AdminApiService {
     return this.http
       .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/pre-approved-instagrams/${id}`)
       .pipe(map(() => undefined));
+  }
+
+  // --- the studio agenda (which days and slots clients can book) ---
+
+  agenda(year: number, month: number): Observable<AgendaMonth> {
+    return this.http
+      .get<ApiResponse<AgendaMonth>>(`${environment.apiUrl}/admin/agenda`, { params: { year, month } })
+      .pipe(map((r) => r.detail));
+  }
+
+  exceptions(year: number, month: number): Observable<ScheduleException[]> {
+    return this.http
+      .get<ApiResponse<ScheduleException[]>>(`${environment.apiUrl}/admin/schedule-exceptions`, { params: { year, month } })
+      .pipe(map((r) => r.detail));
+  }
+
+  /** Opens or closes a whole day (slot_time null) or one slot. The warning tells about bookings already there. */
+  setException(data: ScheduleExceptionSet): Observable<string | null> {
+    return this.http
+      .put<ApiResponse<ScheduleException> & { warning?: string | null }>(`${environment.apiUrl}/admin/schedule-exceptions`, data)
+      .pipe(map((r) => r.warning ?? null));
+  }
+
+  removeException(id: number): Observable<void> {
+    return this.http
+      .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/schedule-exceptions/${id}`)
+      .pipe(map(() => undefined));
+  }
+
+  publishMonth(year: number, month: number): Observable<MonthPublished> {
+    return this.http
+      .post<ApiResponse<MonthPublished>>(`${environment.apiUrl}/admin/published-months`, { year, month })
+      .pipe(map((r) => r.detail));
   }
 
   private post(path: string, body: unknown): Observable<AdminAppointment> {

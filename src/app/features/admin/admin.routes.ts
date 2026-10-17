@@ -14,6 +14,11 @@ export const adminRoutes: Routes = [
         loadComponent: () => import('./calendar/calendar.page').then((m) => m.CalendarPage),
       },
       {
+        path: 'opening-hours',
+        title: $localize`:@@title.openingHours:Opening hours · Nails by Scooby`,
+        loadComponent: () => import('./opening-hours/opening-hours.page').then((m) => m.OpeningHoursPage),
+      },
+      {
         path: 'pre-approved',
         title: $localize`:@@title.preApproved:Pre-approved Instagram · Nails by Scooby`,
         loadComponent: () => import('./pre-approved/pre-approved.page').then((m) => m.PreApprovedPage),

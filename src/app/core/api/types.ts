@@ -44,6 +44,12 @@ export type AppointmentCompletion = Schemas['AppointmentCompletion'];
 export type FinalPriceDetails = Schemas['FinalPriceDetails'];
 export type FinalPriceEstimate = Schemas['FinalPriceEstimate'];
 export type PreApprovedInstagram = Schemas['PreApprovedInstagramResult'];
+export type AgendaMonth = Schemas['AgendaMonth'];
+export type AgendaDay = Schemas['AgendaDay'];
+export type AgendaSlot = Schemas['AgendaSlotResult'];
+export type ScheduleException = Schemas['ScheduleExceptionResult'];
+export type ScheduleExceptionSet = Schemas['ScheduleExceptionSet'];
+export type MonthPublished = Schemas['MonthPublished'];
 
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];

@@ -51,11 +51,18 @@
           <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="nav.openingHours" datatype="html">
+        <source>Opening hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="nav.preApproved" datatype="html">
         <source>Pre-approved Instagram</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">22,24</context>
+          <context context-type="linenumber">32,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
@@ -65,11 +72,18 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title.openingHours" datatype="html">
+        <source>Opening hours · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
@@ -81,6 +95,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="badge.depositOverdue" datatype="html">
@@ -662,6 +680,223 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
           <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.subtitle" datatype="html">
+        <source>Opening for clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.wholeDay" datatype="html">
+        <source>Whole day</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.dayOpen" datatype="html">
+        <source>Open for bookings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.dayClosed" datatype="html">
+        <source>Closed for bookings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">28,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.slots" datatype="html">
+        <source>Slots</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.booked" datatype="html">
+        <source>Booked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">49,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.bookedNote" datatype="html">
+        <source> Closing a booked slot does not cancel the appointment: cancel it in the calendar if needed. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">62,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayEditor.reset" datatype="html">
+        <source> Back to the weekly default </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
+          <context context-type="linenumber">78,80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.title" datatype="html">
+        <source>Opening hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.subtitle" datatype="html">
+        <source> The slots clients can book. By default Tuesday to Friday are open, weekends closed, and Mondays always closed to clients. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.previousMonth" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.nextMonth" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.publishedOn" datatype="html">
+        <source>Published on</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.notPublished" datatype="html">
+        <source>Not published: clients can&apos;t see it yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.publish" datatype="html">
+        <source> Publish month </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.mon" datatype="html">
+        <source>Mon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.tue" datatype="html">
+        <source>Tue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.wed" datatype="html">
+        <source>Wed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.thu" datatype="html">
+        <source>Thu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.fri" datatype="html">
+        <source>Fri</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.sat" datatype="html">
+        <source>Sat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.sun" datatype="html">
+        <source>Sun</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">55,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.changed" datatype="html">
+        <source>Changed from the weekly default</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.legend.open" datatype="html">
+        <source>Open</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">87,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.legend.booked" datatype="html">
+        <source>Booked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">88,89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.legend.closed" datatype="html">
+        <source>Closed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">89,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.legend.changed" datatype="html">
+        <source>Changed from the default</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">90,93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.locked.monday" datatype="html">
+        <source>Mondays are always closed to clients. You can still book a Monday yourself in the calendar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.locked.past" datatype="html">
+        <source>This day has already passed.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.publish.question" datatype="html">
+        <source>Publish this month? Clients will be able to book it, and the regular clients will get an email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours.published" datatype="html">
+        <source>Published. <x id="count" equiv-text="published.notified_clients"/> regular client(s) notified by email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.ts</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preApproved.title" datatype="html">

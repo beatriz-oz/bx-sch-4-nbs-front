@@ -1,0 +1,103 @@
+<div class="mx-auto max-w-5xl p-4 md:p-6">
+  <div class="flex flex-wrap items-center gap-3">
+    <div>
+      <h2 i18n="@@hours.title" class="text-2xl font-semibold">Opening hours</h2>
+      <p i18n="@@hours.subtitle" class="text-sm text-gray-500">
+        The slots clients can book. By default Tuesday to Friday are open, weekends closed, and Mondays always closed to clients.
+      </p>
+    </div>
+  </div>
+
+  <!-- Month navigation and publishing -->
+  <div class="mt-6 flex flex-wrap items-center gap-3">
+    <div class="flex items-center">
+      <button type="button" (click)="move(-1)" aria-label="Previous month" i18n-aria-label="@@hours.previousMonth"
+        class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">‹</button>
+      <h3 class="w-48 text-center text-lg font-semibold capitalize">{{ firstDay() | studioDate: 'month' }}</h3>
+      <button type="button" (click)="move(1)" aria-label="Next month" i18n-aria-label="@@hours.nextMonth"
+        class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">›</button>
+    </div>
+
+    <div class="ml-auto flex items-center gap-2">
+      @if (agenda()?.published_at; as publishedAt) {
+        <span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+          <ng-container i18n="@@hours.publishedOn">Published on</ng-container> {{ publishedAt | studioDate: 'dateTime' }}
+        </span>
+      } @else if (agenda()) {
+        <span i18n="@@hours.notPublished" class="rounded-full bg-amber-100 px-3 py-1 text-sm text-amber-800">Not published: clients can't see it yet</span>
+        @if (!isPastMonth()) {
+          <button type="button" (click)="publish()" [disabled]="publishing()" i18n="@@hours.publish"
+            class="rounded-full bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+            Publish month
+          </button>
+        }
+      }
+    </div>
+  </div>
+
+  @if (notice(); as message) {
+    <p role="status" class="mt-3 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">{{ message }}</p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <!-- Month grid -->
+  @if (agenda(); as month) {
+    <div class="mt-4 overflow-hidden rounded-2xl border border-gray-200" [class.opacity-60]="loading()">
+      <div class="grid grid-cols-7 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase">
+        <span i18n="@@weekday.mon" class="py-2">Mon</span>
+        <span i18n="@@weekday.tue" class="py-2">Tue</span>
+        <span i18n="@@weekday.wed" class="py-2">Wed</span>
+        <span i18n="@@weekday.thu" class="py-2">Thu</span>
+        <span i18n="@@weekday.fri" class="py-2">Fri</span>
+        <span i18n="@@weekday.sat" class="py-2">Sat</span>
+        <span i18n="@@weekday.sun" class="py-2">Sun</span>
+      </div>
+
+      <div class="grid grid-cols-7">
+        @for (blank of leadingBlanks(); track $index) {
+          <div class="min-h-24 border-r border-b border-gray-100 bg-gray-50/50"></div>
+        }
+        @for (day of month.days; track day.day) {
+          <button type="button" (click)="selectedDay.set(day.day)"
+            class="min-h-24 border-r border-b border-gray-100 p-1.5 text-left align-top hover:bg-gray-50 sm:p-2"
+            [class.opacity-50]="day.day < today">
+            <span class="flex items-center gap-1">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full text-sm font-semibold"
+                [class]="day.day === today ? 'bg-brand-600 text-white' : ''">{{ +day.day.slice(8) }}</span>
+              @if (hasException(day.day)) {
+                <span class="h-1.5 w-1.5 rounded-full bg-gray-900" title="Changed from the weekly default" i18n-title="@@hours.changed"></span>
+              }
+            </span>
+            <span class="mt-1 flex flex-col gap-0.5">
+              @for (slot of day.slots; track slot.time) {
+                <span class="rounded px-1 text-[11px] leading-4 sm:text-xs"
+                  [class]="slot.is_booked ? 'bg-brand-100 font-medium text-brand-800' : slot.is_open ? 'bg-green-50 text-green-800' : 'text-gray-300 line-through'">
+                  {{ slot.time.slice(0, 5) }}
+                </span>
+              }
+            </span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="mt-3 flex flex-wrap gap-4 text-xs text-gray-600">
+      <span class="flex items-center gap-1"><span class="rounded bg-green-50 px-1 text-green-800">10:00</span><span i18n="@@hours.legend.open">Open</span></span>
+      <span class="flex items-center gap-1"><span class="rounded bg-brand-100 px-1 font-medium text-brand-800">10:00</span><span i18n="@@hours.legend.booked">Booked</span></span>
+      <span class="flex items-center gap-1"><span class="px-1 text-gray-300 line-through">10:00</span><span i18n="@@hours.legend.closed">Closed</span></span>
+      <span class="flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-gray-900"></span><span i18n="@@hours.legend.changed">Changed from the default</span></span>
+    </div>
+  }
+</div>
+
+@if (selected(); as day) {
+  <app-day-editor
+    [day]="day"
+    [exceptions]="selectedExceptions()"
+    [lockedReason]="lockedReason(day)"
+    (changed)="load()"
+    (closed)="selectedDay.set(null)"
+  />
+}

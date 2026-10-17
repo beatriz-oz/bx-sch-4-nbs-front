@@ -1,0 +1,82 @@
+<div class="fixed inset-0 z-30 bg-black/20" (click)="closed.emit()"></div>
+
+<aside role="dialog" aria-modal="true" aria-labelledby="day-title"
+  class="fixed top-0 right-0 z-40 flex h-full w-full max-w-md flex-col bg-white shadow-xl">
+
+  <header class="flex items-start justify-between border-b border-gray-200 p-5">
+    <div>
+      <p i18n="@@dayEditor.subtitle" class="text-sm text-gray-500">Opening for clients</p>
+      <h3 id="day-title" class="text-2xl font-semibold capitalize">{{ day().day | studioDate: 'dayLong' }}</h3>
+    </div>
+    <button type="button" (click)="closed.emit()" aria-label="Close" i18n-aria-label="@@dialog.close"
+      class="rounded-full px-2 text-2xl leading-none text-gray-500 hover:bg-gray-100">×</button>
+  </header>
+
+  <div class="flex-1 space-y-5 overflow-y-auto p-5">
+    @if (lockedReason(); as reason) {
+      <p class="rounded-lg bg-gray-100 px-3 py-2 text-sm text-gray-700">{{ reason }}</p>
+    }
+
+    <!-- The whole day -->
+    <div class="flex items-center justify-between rounded-xl border border-gray-200 p-4">
+      <div>
+        <p i18n="@@dayEditor.wholeDay" class="font-medium">Whole day</p>
+        <p class="text-sm text-gray-500">
+          @if (dayOpen()) {
+            <ng-container i18n="@@dayEditor.dayOpen">Open for bookings</ng-container>
+          } @else {
+            <ng-container i18n="@@dayEditor.dayClosed">Closed for bookings</ng-container>
+          }
+        </p>
+      </div>
+      <button type="button" role="switch" [attr.aria-checked]="dayOpen()" (click)="toggleDay()"
+        [disabled]="busy() || lockedReason() !== null"
+        class="relative h-7 w-12 rounded-full transition-colors disabled:opacity-50"
+        [class]="dayOpen() ? 'bg-gray-900' : 'bg-gray-300'">
+        <span class="absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all" [class]="dayOpen() ? 'left-6' : 'left-1'"></span>
+      </button>
+    </div>
+
+    <!-- Each slot -->
+    <div>
+      <p i18n="@@dayEditor.slots" class="mb-2 font-medium">Slots</p>
+      <ul class="divide-y divide-gray-100 rounded-xl border border-gray-200">
+        @for (slot of day().slots; track slot.time) {
+          <li class="flex items-center justify-between px-4 py-3">
+            <div>
+              <p class="font-medium">{{ slot.time.slice(0, 5) }}</p>
+              @if (slot.is_booked) {
+                <p i18n="@@dayEditor.booked" class="text-xs font-medium text-brand-700">Booked</p>
+              }
+            </div>
+            <button type="button" role="switch" [attr.aria-checked]="slot.is_open" (click)="toggleSlot(slot)"
+              [disabled]="busy() || lockedReason() !== null"
+              class="relative h-7 w-12 rounded-full transition-colors disabled:opacity-50"
+              [class]="slot.is_open ? 'bg-gray-900' : 'bg-gray-300'">
+              <span class="absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all" [class]="slot.is_open ? 'left-6' : 'left-1'"></span>
+            </button>
+          </li>
+        }
+      </ul>
+      <p i18n="@@dayEditor.bookedNote" class="mt-2 text-xs text-gray-500">
+        Closing a booked slot does not cancel the appointment: cancel it in the calendar if needed.
+      </p>
+    </div>
+
+    @if (warning(); as message) {
+      <p role="status" class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{{ message }}</p>
+    }
+    @if (error(); as message) {
+      <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+  </div>
+
+  @if (hasExceptions() && lockedReason() === null) {
+    <footer class="border-t border-gray-200 p-5">
+      <button type="button" (click)="resetDay()" [disabled]="busy()" i18n="@@dayEditor.reset"
+        class="w-full rounded-full border border-gray-300 px-4 py-2.5 font-medium hover:bg-gray-100 disabled:opacity-60">
+        Back to the weekly default
+      </button>
+    </footer>
+  }
+</aside>

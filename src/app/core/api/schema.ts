@@ -196,6 +196,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/agenda": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Agenda
+         * @description The standard slots of a month as the clients see them (open or closed, booked or free), after the weekly rule and the exceptions. Read-only: change it with schedule-exceptions
+         */
+        get: operations["get_agenda_v1_admin_agenda_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/admin/availability-preview": {
         parameters: {
             query?: never;
@@ -726,6 +746,39 @@ export interface components {
             /** Refund Due */
             refund_due: boolean;
         };
+        /** AgendaDay */
+        AgendaDay: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Slots */
+            slots: components["schemas"]["AgendaSlotResult"][];
+        };
+        /** AgendaMonth */
+        AgendaMonth: {
+            /** Year */
+            year: number;
+            /** Month */
+            month: number;
+            /** Published At */
+            published_at: string | null;
+            /** Days */
+            days: components["schemas"]["AgendaDay"][];
+        };
+        /** AgendaSlotResult */
+        AgendaSlotResult: {
+            /**
+             * Time
+             * Format: time
+             */
+            time: string;
+            /** Is Open */
+            is_open: boolean;
+            /** Is Booked */
+            is_booked: boolean;
+        };
         /** AppointmentCompletion */
         AppointmentCompletion: {
             /** Final Price */
@@ -838,6 +891,15 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["AdminAppointmentResult"];
+        };
+        /** BaseResponse[AgendaMonth] */
+        BaseResponse_AgendaMonth_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["AgendaMonth"];
         };
         /** BaseResponse[AppointmentResult] */
         BaseResponse_AppointmentResult_: {
@@ -1901,6 +1963,38 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_agenda_v1_admin_agenda_get: {
+        parameters: {
+            query: {
+                year: number;
+                month: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_AgendaMonth_"];
+                };
             };
             /** @description Validation Error */
             422: {

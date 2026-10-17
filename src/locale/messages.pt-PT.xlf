@@ -30,6 +30,10 @@
         <source>Calendar</source>
         <target>Agenda</target>
       </trans-unit>
+      <trans-unit id="nav.openingHours" datatype="html">
+        <source>Opening hours</source>
+        <target>Horários</target>
+      </trans-unit>
       <trans-unit id="nav.preApproved" datatype="html">
         <source>Pre-approved Instagram</source>
         <target>Instagram pré-aprovados</target>
@@ -37,6 +41,10 @@
       <trans-unit id="title.calendar" datatype="html">
         <source>Calendar · Nails by Scooby</source>
         <target>Agenda · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.openingHours" datatype="html">
+        <source>Opening hours · Nails by Scooby</source>
+        <target>Horários · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
@@ -361,6 +369,130 @@
       <trans-unit id="complete.invalidPrice" datatype="html">
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <target>Indique um preço válido, por exemplo 45 ou 45,50.</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.subtitle" datatype="html">
+        <source>Opening for clients</source>
+        <target>Abertura para clientes</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.wholeDay" datatype="html">
+        <source>Whole day</source>
+        <target>Dia inteiro</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.dayOpen" datatype="html">
+        <source>Open for bookings</source>
+        <target>Aberto para marcações</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.dayClosed" datatype="html">
+        <source>Closed for bookings</source>
+        <target>Fechado para marcações</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.slots" datatype="html">
+        <source>Slots</source>
+        <target>Horários</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.booked" datatype="html">
+        <source>Booked</source>
+        <target>Marcado</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.bookedNote" datatype="html">
+        <source> Closing a booked slot does not cancel the appointment: cancel it in the calendar if needed. </source>
+        <target> Fechar um horário marcado não cancela a marcação: cancele-a na agenda, se for preciso. </target>
+      </trans-unit>
+      <trans-unit id="dayEditor.reset" datatype="html">
+        <source> Back to the weekly default </source>
+        <target> Voltar ao padrão semanal </target>
+      </trans-unit>
+      <trans-unit id="hours.title" datatype="html">
+        <source>Opening hours</source>
+        <target>Horários</target>
+      </trans-unit>
+      <trans-unit id="hours.subtitle" datatype="html">
+        <source> The slots clients can book. By default Tuesday to Friday are open, weekends closed, and Mondays always closed to clients. </source>
+        <target> Os horários que as clientes podem marcar. Por padrão, de terça a sexta estão abertos, o fim de semana fechado e as segundas sempre fechadas para clientes. </target>
+      </trans-unit>
+      <trans-unit id="hours.previousMonth" datatype="html">
+        <source>Previous month</source>
+        <target>Mês anterior</target>
+      </trans-unit>
+      <trans-unit id="hours.nextMonth" datatype="html">
+        <source>Next month</source>
+        <target>Mês seguinte</target>
+      </trans-unit>
+      <trans-unit id="hours.publishedOn" datatype="html">
+        <source>Published on</source>
+        <target>Publicado em</target>
+      </trans-unit>
+      <trans-unit id="hours.notPublished" datatype="html">
+        <source>Not published: clients can&apos;t see it yet</source>
+        <target>Não publicado: as clientes ainda não o veem</target>
+      </trans-unit>
+      <trans-unit id="hours.publish" datatype="html">
+        <source> Publish month </source>
+        <target> Publicar mês </target>
+      </trans-unit>
+      <trans-unit id="weekday.mon" datatype="html">
+        <source>Mon</source>
+        <target>Seg</target>
+      </trans-unit>
+      <trans-unit id="weekday.tue" datatype="html">
+        <source>Tue</source>
+        <target>Ter</target>
+      </trans-unit>
+      <trans-unit id="weekday.wed" datatype="html">
+        <source>Wed</source>
+        <target>Qua</target>
+      </trans-unit>
+      <trans-unit id="weekday.thu" datatype="html">
+        <source>Thu</source>
+        <target>Qui</target>
+      </trans-unit>
+      <trans-unit id="weekday.fri" datatype="html">
+        <source>Fri</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="weekday.sat" datatype="html">
+        <source>Sat</source>
+        <target>Sáb</target>
+      </trans-unit>
+      <trans-unit id="weekday.sun" datatype="html">
+        <source>Sun</source>
+        <target>Dom</target>
+      </trans-unit>
+      <trans-unit id="hours.changed" datatype="html">
+        <source>Changed from the weekly default</source>
+        <target>Alterado em relação ao padrão</target>
+      </trans-unit>
+      <trans-unit id="hours.legend.open" datatype="html">
+        <source>Open</source>
+        <target>Aberto</target>
+      </trans-unit>
+      <trans-unit id="hours.legend.booked" datatype="html">
+        <source>Booked</source>
+        <target>Marcado</target>
+      </trans-unit>
+      <trans-unit id="hours.legend.closed" datatype="html">
+        <source>Closed</source>
+        <target>Fechado</target>
+      </trans-unit>
+      <trans-unit id="hours.legend.changed" datatype="html">
+        <source>Changed from the default</source>
+        <target>Alterado em relação ao padrão</target>
+      </trans-unit>
+      <trans-unit id="hours.locked.monday" datatype="html">
+        <source>Mondays are always closed to clients. You can still book a Monday yourself in the calendar.</source>
+        <target>As segundas estão sempre fechadas para clientes. Pode marcar uma segunda na agenda.</target>
+      </trans-unit>
+      <trans-unit id="hours.locked.past" datatype="html">
+        <source>This day has already passed.</source>
+        <target>Este dia já passou.</target>
+      </trans-unit>
+      <trans-unit id="hours.publish.question" datatype="html">
+        <source>Publish this month? Clients will be able to book it, and the regular clients will get an email.</source>
+        <target>Publicar este mês? As clientes vão poder marcar, e as clientes habituais recebem um email.</target>
+      </trans-unit>
+      <trans-unit id="hours.published" datatype="html">
+        <source>Published. <x id="count" equiv-text="published.notified_clients"/> regular client(s) notified by email.</source>
+        <target>Publicado. <x id="count" equiv-text="published.notified_clients"/> cliente(s) habitual(is) avisada(s) por email.</target>
       </trans-unit>
       <trans-unit id="preApproved.title" datatype="html">
         <source>Pre-approved Instagram</source>
