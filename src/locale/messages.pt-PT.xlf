@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="pt-PT" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="header.tagline" datatype="html">
+        <source>Nail design studio in Porto</source>
+        <target>Estúdio de nail design no Porto</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

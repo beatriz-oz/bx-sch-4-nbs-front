@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+/*
+  The studio's colors, in one place. Tailwind creates classes from them:
+  bg-brand-500, text-brand-700, border-brand-200...
+  Change a value here and the whole site follows.
+*/
+@theme {
+  --color-brand-50: #fdf2f8;
+  --color-brand-100: #fce7f3;
+  --color-brand-200: #fbcfe8;
+  --color-brand-300: #f9a8d4;
+  --color-brand-500: #ec4899;
+  --color-brand-600: #db2777;
+  --color-brand-700: #be185d;
+  --color-brand-900: #831843;
+}

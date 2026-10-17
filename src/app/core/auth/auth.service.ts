@@ -1,0 +1,73 @@
+import { HttpClient } from '@angular/common/http';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { map, Observable, switchMap, tap } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
+import { ApiResponse, Login, TokenResult, User } from '../api/types';
+
+const TOKEN_KEY = 'nbs_token';
+
+function readStoredToken(): string | null {
+  // localStorage can fail (private windows, blocked storage): the app must still work.
+  try {
+    return localStorage.getItem(TOKEN_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function storeToken(token: string | null): void {
+  try {
+    if (token) {
+      localStorage.setItem(TOKEN_KEY, token);
+    } else {
+      localStorage.removeItem(TOKEN_KEY);
+    }
+  } catch {
+    // Nothing to do: the session just won't survive a page reload.
+  }
+}
+
+/**
+ * Keeps who is logged in. Components read the signals below;
+ * the interceptor reads token() to add it to every API call.
+ */
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private readonly http = inject(HttpClient);
+  private readonly api = environment.apiUrl;
+
+  readonly token = signal<string | null>(readStoredToken());
+  readonly user = signal<User | null>(null);
+
+  readonly isLoggedIn = computed(() => this.token() !== null);
+  readonly isAdmin = computed(() => this.user()?.role === 'Super_admin');
+
+  login(credentials: Login): Observable<User> {
+    return this.http
+      .post<ApiResponse<TokenResult>>(`${this.api}/auth/login`, credentials)
+      .pipe(
+        tap((response) => this.setToken(response.detail.access_token)),
+        switchMap(() => this.loadMe()),
+      );
+  }
+
+  /** Used after the check-in and the activation, which also return a token. */
+  setToken(token: string): void {
+    storeToken(token);
+    this.token.set(token);
+  }
+
+  loadMe(): Observable<User> {
+    return this.http.get<ApiResponse<User>>(`${this.api}/auth/me`).pipe(
+      map((response) => response.detail),
+      tap((user) => this.user.set(user)),
+    );
+  }
+
+  logout(): void {
+    storeToken(null);
+    this.token.set(null);
+    this.user.set(null);
+  }
+}
