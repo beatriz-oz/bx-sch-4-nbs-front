@@ -1,0 +1,306 @@
+<div class="mx-auto max-w-xl px-4 pt-6 pb-32">
+  <!-- Progress -->
+  @if (step() !== 'done') {
+    <ol class="mb-6 flex gap-2" aria-label="Steps" i18n-aria-label="@@book.steps">
+      @for (name of ['service', 'time', 'summary']; track name; let index = $index) {
+        <li class="h-1.5 flex-1 rounded-full"
+          [class]="['service', 'time', 'summary'].indexOf(step()) >= index ? 'bg-gray-900' : 'bg-gray-200'"></li>
+      }
+    </ol>
+  }
+
+  @if (error(); as message) {
+    <p role="alert" class="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <!-- ===================== 1. Service ===================== -->
+  @if (step() === 'service') {
+    <h2 i18n="@@book.service.title" class="text-2xl font-semibold">What would you like?</h2>
+
+    <div class="mt-5 space-y-3">
+      @for (option of services; track option) {
+        <button type="button" (click)="chooseService(option)"
+          class="flex w-full items-center justify-between rounded-2xl border bg-white p-4 text-left"
+          [class]="service() === option ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
+          <span>
+            <span class="block font-semibold">{{ serviceLabels[option] }}</span>
+            <span class="block text-sm text-gray-500">
+              @switch (option) {
+                @case ('Application') { <ng-container i18n="@@book.service.application.hint">A new set of nails</ng-container> }
+                @case ('Maintenance') { <ng-container i18n="@@book.service.maintenance.hint">For nails done here in the last 35 days</ng-container> }
+                @case ('Removal') { <ng-container i18n="@@book.service.removal.hint">Taking the nails off</ng-container> }
+              }
+            </span>
+          </span>
+          @if (lowestPrice(option); as price) {
+            <span class="text-sm whitespace-nowrap text-gray-600">
+              <ng-container i18n="@@book.from">from</ng-container> {{ price | currency: 'EUR' }}
+            </span>
+          }
+        </button>
+      }
+    </div>
+
+    @if (needsDetails()) {
+      <h3 i18n="@@booking.size" class="mt-8 mb-3 font-semibold">Nail size</h3>
+      <div class="grid grid-cols-5 gap-2">
+        @for (size of sizes; track size) {
+          <button type="button" (click)="chooseSize(size)"
+            class="rounded-xl border py-2 text-center"
+            [class]="nailSize() === size ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white hover:border-gray-400'">
+            <span class="block font-semibold">{{ size }}</span>
+            @if (servicePrice(service()!, size); as price) {
+              <span class="block text-xs opacity-75">{{ price | currency: 'EUR' : 'symbol' : '1.0-0' }}</span>
+            }
+          </button>
+        }
+      </div>
+      @if (nailSize() === 'XL' || nailSize() === 'XXL') {
+        <p i18n="@@book.size.long" class="mt-2 text-xs text-gray-500">Longer nails take more time, so they are only booked at 10:00 or 17:00.</p>
+      }
+
+      <h3 i18n="@@complete.nailArt" class="mt-8 mb-3 font-semibold">Nail art</h3>
+      <div class="space-y-2">
+        @for (level of artLevels; track level) {
+          <button type="button" (click)="artLevel.set(level)"
+            class="flex w-full items-start justify-between gap-3 rounded-2xl border bg-white p-4 text-left"
+            [class]="artLevel() === level ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
+            <span>
+              <span class="block font-semibold">{{ level }}</span>
+              <span class="block text-sm text-gray-500">{{ artHints[level] }}</span>
+            </span>
+            @if (artPrice(level); as price) {
+              <span class="text-sm whitespace-nowrap text-gray-600">+ {{ price | currency: 'EUR' }}</span>
+            }
+          </button>
+        }
+      </div>
+
+      <h3 i18n="@@book.extras.title" class="mt-8 mb-3 font-semibold">Anything else?</h3>
+      <div class="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
+        <div class="flex items-center justify-between gap-3">
+          <span>
+            <span i18n="@@complete.brokenNails" class="block font-medium">Broken nails</span>
+            <span i18n="@@book.broken.hint" class="block text-sm text-gray-500">To repair during the appointment</span>
+          </span>
+          <div class="flex items-center gap-3">
+            <button type="button" (click)="brokenNails.set(brokenNails() - 1)" [disabled]="brokenNails() === 0"
+              aria-label="Fewer" i18n-aria-label="@@book.fewer"
+              class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">−</button>
+            <span class="w-5 text-center font-semibold">{{ brokenNails() }}</span>
+            <button type="button" (click)="brokenNails.set(brokenNails() + 1)" [disabled]="brokenNails() === 10"
+              aria-label="More" i18n-aria-label="@@book.more"
+              class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">+</button>
+          </div>
+        </div>
+        <label class="flex items-start gap-3">
+          <input type="checkbox" [checked]="otherProfessional()" (change)="otherProfessional.set(!otherProfessional())"
+            class="mt-1 h-4 w-4 accent-gray-900" />
+          <span>
+            <span i18n="@@book.otherProfessional" class="block font-medium">My nails were done by another professional</span>
+            <span i18n="@@book.otherProfessional.hint" class="block text-sm text-gray-500">They need a complete removal first.</span>
+          </span>
+        </label>
+      </div>
+    }
+  }
+
+  <!-- ===================== 2. Day and time ===================== -->
+  @if (step() === 'time') {
+    <h2 i18n="@@book.time.title" class="text-2xl font-semibold">Choose a day and time</h2>
+
+    <div class="mt-5 flex items-center justify-between">
+      <button type="button" (click)="moveMonth(-1)" [disabled]="!canGoBackMonth()" aria-label="Previous month" i18n-aria-label="@@hours.previousMonth"
+        class="rounded-full px-3 py-1 text-xl hover:bg-gray-100 disabled:opacity-30">‹</button>
+      <h3 class="font-semibold capitalize">{{ firstDay() | studioDate: 'month' }}</h3>
+      <button type="button" (click)="moveMonth(1)" aria-label="Next month" i18n-aria-label="@@hours.nextMonth"
+        class="rounded-full px-3 py-1 text-xl hover:bg-gray-100">›</button>
+    </div>
+
+    <div class="mt-3 grid grid-cols-7 gap-1 text-center" [class.opacity-50]="busy()">
+      <span i18n="@@weekday.mon" class="py-1 text-xs text-gray-500">Mon</span>
+      <span i18n="@@weekday.tue" class="py-1 text-xs text-gray-500">Tue</span>
+      <span i18n="@@weekday.wed" class="py-1 text-xs text-gray-500">Wed</span>
+      <span i18n="@@weekday.thu" class="py-1 text-xs text-gray-500">Thu</span>
+      <span i18n="@@weekday.fri" class="py-1 text-xs text-gray-500">Fri</span>
+      <span i18n="@@weekday.sat" class="py-1 text-xs text-gray-500">Sat</span>
+      <span i18n="@@weekday.sun" class="py-1 text-xs text-gray-500">Sun</span>
+      @for (blank of calendar().blanks; track $index) {
+        <span></span>
+      }
+      @for (day of calendar().days; track day) {
+        <button type="button" (click)="pickDay(day)" [disabled]="!slotsByDay().has(day)"
+          class="mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm"
+          [class]="day === selectedDay() ? 'bg-gray-900 font-semibold text-white'
+            : slotsByDay().has(day) ? 'font-semibold text-gray-900 hover:bg-gray-100 underline decoration-brand-500 decoration-2 underline-offset-4'
+            : 'text-gray-300'">
+          {{ +day.slice(8) }}
+        </button>
+      }
+    </div>
+
+    @if (!busy() && !days().length) {
+      <p i18n="@@book.time.none" class="mt-4 rounded-xl bg-gray-50 p-4 text-center text-sm text-gray-600">
+        No free times this month. Try the next one, or follow @nailsbyscooby on Instagram to know when the agenda opens.
+      </p>
+    }
+
+    @if (selectedDay(); as day) {
+      <h3 class="mt-6 mb-3 font-semibold capitalize">{{ day | studioDate: 'dayLong' }}</h3>
+      <div class="grid grid-cols-3 gap-2">
+        @for (slot of selectedDaySlots(); track slot) {
+          <button type="button" (click)="selectedSlot.set(slot)"
+            class="rounded-xl border py-3 font-semibold"
+            [class]="selectedSlot() === slot ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white hover:border-gray-400'">
+            {{ slot | studioDate: 'time' }}
+          </button>
+        }
+      </div>
+      <p i18n="@@book.time.zone" class="mt-2 text-xs text-gray-500">Times in Lisbon time.</p>
+    }
+  }
+
+  <!-- ===================== 3. Summary ===================== -->
+  @if (step() === 'summary') {
+    <h2 i18n="@@book.summary.title" class="text-2xl font-semibold">Review and confirm</h2>
+
+    @if (estimate(); as estimated) {
+      <section class="mt-5 rounded-2xl border border-gray-200 bg-white p-5">
+        <p class="text-sm text-gray-500 capitalize">{{ selectedSlot() | studioDate: 'dayLong' }}</p>
+        <p class="text-2xl font-semibold">{{ selectedSlot() | studioDate: 'time' }}</p>
+
+        <div class="mt-4 flex items-start justify-between gap-3 border-t border-gray-100 pt-4">
+          <div>
+            <p class="font-medium">{{ serviceLabels[estimated.service] }}</p>
+            <p class="text-sm text-gray-500">
+              @if (nailSize()) { {{ nailSize() }} }
+              @if (artLevel()) { · {{ artLevel() }} }
+              @if (brokenNails()) {
+                · <ng-container i18n="@@panel.brokenNails">{brokenNails(), plural, =1 {1 broken nail} other {{{ brokenNails() }} broken nails}}</ng-container>
+              }
+            </p>
+          </div>
+          <div class="text-right">
+            <p class="text-xl font-semibold">{{ estimated.estimated_price | currency: 'EUR' }}</p>
+            <p i18n="@@panel.estimatedLabel" class="text-xs text-gray-500">estimated</p>
+          </div>
+        </div>
+
+        @if (pricedAsApplication()) {
+          <p i18n="@@book.maintenanceAsApplication" class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            Your last appointment here was more than 35 days before this date, so it is priced as a new application.
+          </p>
+        }
+
+        @if (estimated.possible_extras.length) {
+          <div class="mt-4 border-t border-gray-100 pt-4">
+            <p i18n="@@book.extras.possible" class="mb-1 text-sm font-medium">Possible extras, paid on the day</p>
+            <ul class="space-y-1 text-sm text-gray-600">
+              @for (extra of estimated.possible_extras; track extra.description) {
+                <li class="flex justify-between gap-3">
+                  <span>{{ extraLabel(extra.description) }}</span>
+                  <span class="whitespace-nowrap">
+                    + {{ extra.amount | currency: 'EUR' }}
+                    @if (extra.per_unit) { <ng-container i18n="@@book.extras.each">each</ng-container> }
+                  </span>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </section>
+
+      @if (policy(); as rules) {
+        <section class="mt-5 rounded-2xl border border-gray-200 bg-white p-5">
+          <div class="flex items-center justify-between gap-3">
+            <p class="font-semibold">
+              <ng-container i18n="@@book.policies">Booking policies</ng-container>
+              <span class="ml-1 text-sm font-normal text-gray-500">· {{ rules.version }}</span>
+            </p>
+            <button type="button" (click)="showPolicy.set(!showPolicy())" class="text-sm font-medium underline">
+              @if (showPolicy()) { <ng-container i18n="@@book.policies.hide">Hide</ng-container> }
+              @else { <ng-container i18n="@@book.policies.read">Read</ng-container> }
+            </button>
+          </div>
+          @if (showPolicy()) {
+            <div class="mt-3 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-3 text-sm leading-relaxed whitespace-pre-line text-gray-700">{{ rules.content }}</div>
+          }
+          <label class="mt-4 flex items-start gap-3">
+            <input type="checkbox" [checked]="accepted()" (change)="accepted.set(!accepted())" class="mt-1 h-4 w-4 accent-gray-900" />
+            <span i18n="@@book.policies.accept" class="text-sm">I have read and accept the booking policies, including the deposit and the cancellation rules.</span>
+          </label>
+        </section>
+      }
+    } @else if (busy()) {
+      <p i18n="@@dashboard.loading" class="mt-5 text-gray-500">Loading…</p>
+    }
+  }
+
+  <!-- ===================== 4. Done ===================== -->
+  @if (step() === 'done') {
+    @if (booking(); as done) {
+      <div class="mt-6 text-center">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl" aria-hidden="true">✓</div>
+        <h2 i18n="@@book.done.title" class="mt-4 text-2xl font-semibold">Appointment booked!</h2>
+        <p class="mt-1 text-gray-600 capitalize">
+          {{ done.appointment.scheduled_at | studioDate: 'dayLong' }} · {{ done.appointment.scheduled_at | studioDate: 'time' }}
+        </p>
+      </div>
+
+      <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 i18n="@@book.done.next" class="font-semibold">What happens now</h3>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm text-gray-700">
+          <li i18n="@@book.done.deposit">The studio will contact you on Instagram about the deposit, which secures your appointment.</li>
+          <li i18n="@@book.done.reminder">24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</li>
+          <li i18n="@@book.done.cancel">Need to cancel? Do it in "My appointments". More than 48 hours before, the deposit is refunded.</li>
+        </ol>
+      </section>
+
+      @if (auth.user() && !auth.user()!.is_active) {
+        <a routerLink="/activate" class="mt-4 block rounded-2xl border border-gray-200 p-4 hover:bg-gray-50">
+          <span i18n="@@book.done.activate" class="block font-medium">Create your password</span>
+          <span i18n="@@book.done.activateHint" class="block text-sm text-gray-500">To log in again later and follow your appointments.</span>
+        </a>
+      }
+
+      <a routerLink="/appointments" i18n="@@book.done.myAppointments"
+        class="mt-6 block rounded-full bg-gray-900 px-4 py-3 text-center font-medium text-white hover:bg-gray-700">
+        See my appointments
+      </a>
+    }
+  }
+</div>
+
+<!-- Bottom bar with the next action, always at hand on a phone -->
+@if (step() !== 'done') {
+  <div class="fixed right-0 bottom-0 left-0 z-20 border-t border-gray-200 bg-white px-4 py-3">
+    <div class="mx-auto flex max-w-xl gap-2">
+      @if (step() !== 'service') {
+        <button type="button" (click)="step.set(step() === 'summary' ? 'time' : 'service'); error.set(null)" i18n="@@dialog.back"
+          class="rounded-full border border-gray-300 px-5 py-3 font-medium hover:bg-gray-100">
+          Back
+        </button>
+      }
+      @switch (step()) {
+        @case ('service') {
+          <button type="button" (click)="goToTime()" [disabled]="!serviceReady()" i18n="@@book.next"
+            class="flex-1 rounded-full bg-gray-900 px-5 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-40">
+            Continue
+          </button>
+        }
+        @case ('time') {
+          <button type="button" (click)="goToSummary()" [disabled]="!selectedSlot()" i18n="@@book.next"
+            class="flex-1 rounded-full bg-gray-900 px-5 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-40">
+            Continue
+          </button>
+        }
+        @case ('summary') {
+          <button type="button" (click)="confirm()" [disabled]="busy() || !accepted() || !estimate()" i18n="@@book.confirm"
+            class="flex-1 rounded-full bg-gray-900 px-5 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-40">
+            Confirm booking
+          </button>
+        }
+      }
+    </div>
+  </div>
+}

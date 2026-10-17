@@ -64,7 +64,8 @@ export class CheckInPage {
     this.busy.set(true);
     this.error.set(null);
     this.auth.checkInVerify({ instagram: this.form.controls.instagram.value, code: this.code.value }).subscribe({
-      next: (user) => this.router.navigateByUrl(this.auth.homeFor(user)),
+      // She came to make her first booking: go straight to it.
+      next: () => this.router.navigateByUrl('/book'),
       error: (error: unknown) => {
         this.busy.set(false);
         this.error.set(

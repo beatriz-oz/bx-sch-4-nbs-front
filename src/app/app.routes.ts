@@ -25,6 +25,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/activate/activate.page').then((m) => m.ActivatePage),
   },
   {
+    path: 'book',
+    canActivate: [authGuard],
+    title: $localize`:@@title.book:Book an appointment · Nails by Scooby`,
+    loadComponent: () => import('./features/client/booking/booking.page').then((m) => m.BookingPage),
+  },
+  {
     path: 'appointments',
     canActivate: [authGuard],
     title: $localize`:@@title.appointments:My appointments · Nails by Scooby`,

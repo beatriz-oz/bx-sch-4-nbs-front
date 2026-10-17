@@ -5,11 +5,11 @@ import { STUDIO_TIME_ZONE } from '../core/dates';
 export type StudioDateStyle = 'time' | 'weekday' | 'day' | 'dayLong' | 'dateTime' | 'month';
 
 const OPTIONS: Record<StudioDateStyle, Intl.DateTimeFormatOptions> = {
-  time: { hour: '2-digit', minute: '2-digit' },
+  time: { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' },
   weekday: { weekday: 'long' },
   day: { day: 'numeric', month: 'short' },
   dayLong: { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' },
-  dateTime: { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' },
+  dateTime: { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' },
   month: { month: 'long', year: 'numeric' },
 };
 

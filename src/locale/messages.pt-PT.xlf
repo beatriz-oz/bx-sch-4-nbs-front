@@ -22,6 +22,10 @@
         <source>Create your password · Nails by Scooby</source>
         <target>Criar palavra-passe · Nails by Scooby</target>
       </trans-unit>
+      <trans-unit id="title.book" datatype="html">
+        <source>Book an appointment · Nails by Scooby</source>
+        <target>Marcar · Nails by Scooby</target>
+      </trans-unit>
       <trans-unit id="title.appointments" datatype="html">
         <source>My appointments · Nails by Scooby</source>
         <target>As minhas marcações · Nails by Scooby</target>
@@ -834,6 +838,154 @@
         <source>Phone or password incorrect.</source>
         <target>Telemóvel ou palavra-passe incorretos.</target>
       </trans-unit>
+      <trans-unit id="book.steps" datatype="html">
+        <source>Steps</source>
+        <target>Passos</target>
+      </trans-unit>
+      <trans-unit id="book.service.title" datatype="html">
+        <source>What would you like?</source>
+        <target>O que gostaria de fazer?</target>
+      </trans-unit>
+      <trans-unit id="book.service.application.hint" datatype="html">
+        <source>A new set of nails</source>
+        <target>Um conjunto novo de unhas</target>
+      </trans-unit>
+      <trans-unit id="book.service.maintenance.hint" datatype="html">
+        <source>For nails done here in the last 35 days</source>
+        <target>Para unhas feitas aqui nos últimos 35 dias</target>
+      </trans-unit>
+      <trans-unit id="book.service.removal.hint" datatype="html">
+        <source>Taking the nails off</source>
+        <target>Retirar as unhas</target>
+      </trans-unit>
+      <trans-unit id="book.from" datatype="html">
+        <source>from</source>
+        <target>desde</target>
+      </trans-unit>
+      <trans-unit id="book.size.long" datatype="html">
+        <source>Longer nails take more time, so they are only booked at 10:00 or 17:00.</source>
+        <target>Unhas mais compridas levam mais tempo, por isso só são marcadas às 10:00 ou às 17:00.</target>
+      </trans-unit>
+      <trans-unit id="book.extras.title" datatype="html">
+        <source>Anything else?</source>
+        <target>Mais alguma coisa?</target>
+      </trans-unit>
+      <trans-unit id="book.broken.hint" datatype="html">
+        <source>To repair during the appointment</source>
+        <target>Para reparar durante a marcação</target>
+      </trans-unit>
+      <trans-unit id="book.fewer" datatype="html">
+        <source>Fewer</source>
+        <target>Menos</target>
+      </trans-unit>
+      <trans-unit id="book.more" datatype="html">
+        <source>More</source>
+        <target>Mais</target>
+      </trans-unit>
+      <trans-unit id="book.otherProfessional" datatype="html">
+        <source>My nails were done by another professional</source>
+        <target>As minhas unhas foram feitas por outra profissional</target>
+      </trans-unit>
+      <trans-unit id="book.otherProfessional.hint" datatype="html">
+        <source>They need a complete removal first.</source>
+        <target>É preciso fazer uma remoção completa primeiro.</target>
+      </trans-unit>
+      <trans-unit id="book.time.title" datatype="html">
+        <source>Choose a day and time</source>
+        <target>Escolha o dia e a hora</target>
+      </trans-unit>
+      <trans-unit id="book.time.none" datatype="html">
+        <source> No free times this month. Try the next one, or follow @nailsbyscooby on Instagram to know when the agenda opens. </source>
+        <target> Não há horários livres este mês. Experimente o seguinte, ou siga @nailsbyscooby no Instagram para saber quando a agenda abre. </target>
+      </trans-unit>
+      <trans-unit id="book.time.zone" datatype="html">
+        <source>Times in Lisbon time.</source>
+        <target>Horas de Lisboa.</target>
+      </trans-unit>
+      <trans-unit id="book.summary.title" datatype="html">
+        <source>Review and confirm</source>
+        <target>Rever e confirmar</target>
+      </trans-unit>
+      <trans-unit id="book.maintenanceAsApplication" datatype="html">
+        <source> Your last appointment here was more than 35 days before this date, so it is priced as a new application. </source>
+        <target> A sua última marcação aqui foi há mais de 35 dias antes desta data, por isso o preço é o de uma aplicação nova. </target>
+      </trans-unit>
+      <trans-unit id="book.extras.possible" datatype="html">
+        <source>Possible extras, paid on the day</source>
+        <target>Extras possíveis, pagos no dia</target>
+      </trans-unit>
+      <trans-unit id="book.extras.each" datatype="html">
+        <source>each</source>
+        <target>cada</target>
+      </trans-unit>
+      <trans-unit id="book.policies" datatype="html">
+        <source>Booking policies</source>
+        <target>Políticas de marcação</target>
+      </trans-unit>
+      <trans-unit id="book.policies.hide" datatype="html">
+        <source>Hide</source>
+        <target>Esconder</target>
+      </trans-unit>
+      <trans-unit id="book.policies.read" datatype="html">
+        <source>Read</source>
+        <target>Ler</target>
+      </trans-unit>
+      <trans-unit id="book.policies.accept" datatype="html">
+        <source>I have read and accept the booking policies, including the deposit and the cancellation rules.</source>
+        <target>Li e aceito as políticas de marcação, incluindo as regras do sinal e do cancelamento.</target>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <target>A carregar…</target>
+      </trans-unit>
+      <trans-unit id="book.done.title" datatype="html">
+        <source>Appointment booked!</source>
+        <target>Marcação feita!</target>
+      </trans-unit>
+      <trans-unit id="book.done.next" datatype="html">
+        <source>What happens now</source>
+        <target>E agora?</target>
+      </trans-unit>
+      <trans-unit id="book.done.deposit" datatype="html">
+        <source>The studio will contact you on Instagram about the deposit, which secures your appointment.</source>
+        <target>O estúdio vai contactá-la no Instagram sobre o sinal, que garante a sua marcação.</target>
+      </trans-unit>
+      <trans-unit id="book.done.reminder" datatype="html">
+        <source>24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</source>
+        <target>24 horas antes, recebe um email para confirmar que vem. Confirme, ou a marcação é cancelada.</target>
+      </trans-unit>
+      <trans-unit id="book.done.cancel" datatype="html">
+        <source>Need to cancel? Do it in &quot;My appointments&quot;. More than 48 hours before, the deposit is refunded.</source>
+        <target>Precisa de cancelar? Faça-o em "As minhas marcações". Com mais de 48 horas de antecedência, o sinal é devolvido.</target>
+      </trans-unit>
+      <trans-unit id="book.done.activate" datatype="html">
+        <source>Create your password</source>
+        <target>Crie a sua palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="book.done.activateHint" datatype="html">
+        <source>To log in again later and follow your appointments.</source>
+        <target>Para voltar a entrar mais tarde e acompanhar as suas marcações.</target>
+      </trans-unit>
+      <trans-unit id="book.done.myAppointments" datatype="html">
+        <source> See my appointments </source>
+        <target> Ver as minhas marcações </target>
+      </trans-unit>
+      <trans-unit id="book.next" datatype="html">
+        <source> Continue </source>
+        <target> Continuar </target>
+      </trans-unit>
+      <trans-unit id="book.confirm" datatype="html">
+        <source> Confirm booking </source>
+        <target> Confirmar marcação </target>
+      </trans-unit>
+      <trans-unit id="book.error.policyChanged" datatype="html">
+        <source>The policies were just updated. Please read them again before confirming.</source>
+        <target>As políticas acabaram de ser atualizadas. Leia-as novamente antes de confirmar.</target>
+      </trans-unit>
+      <trans-unit id="book.error.slotTaken" datatype="html">
+        <source>This time was just booked by someone else. Please choose another one.</source>
+        <target>Este horário acabou de ser marcado por outra pessoa. Escolha outro, por favor.</target>
+      </trans-unit>
       <trans-unit id="client.home.greeting" datatype="html">
         <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
         <target>Olá, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</target>
@@ -841,6 +993,30 @@
       <trans-unit id="client.home.placeholder" datatype="html">
         <source>Your appointments will appear here.</source>
         <target>As suas marcações vão aparecer aqui.</target>
+      </trans-unit>
+      <trans-unit id="client.home.book" datatype="html">
+        <source> Book an appointment </source>
+        <target> Marcar </target>
+      </trans-unit>
+      <trans-unit id="art.level1.hint" datatype="html">
+        <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>
+        <target>Blooming gel, cat eye, design simples, fairy dust, francesinha, renda, charms pequenos</target>
+      </trans-unit>
+      <trans-unit id="art.level2.hint" datatype="html">
+        <source>Airbrush, chrome, simple 3D, bubbles, velvet, medium design, up to 4 big charms</source>
+        <target>Airbrush, cromado, 3D simples, bolhas, veludo, design médio, até 4 charms grandes</target>
+      </trans-unit>
+      <trans-unit id="art.level3.hint" datatype="html">
+        <source>3D chrome, elaborate 3D, 3D velvet, elaborate design, claws, up to 8 big charms</source>
+        <target>Cromado 3D, 3D elaborado, veludo 3D, design elaborado, garras, até 8 charms grandes</target>
+      </trans-unit>
+      <trans-unit id="extra.removal" datatype="html">
+        <source>Complete removal (nails from another professional)</source>
+        <target>Remoção completa (unhas de outra profissional)</target>
+      </trans-unit>
+      <trans-unit id="extra.charm" datatype="html">
+        <source>Extra charm</source>
+        <target>Charm extra</target>
       </trans-unit>
       <trans-unit id="addon.brokenNail" datatype="html">
         <source>Broken nail (each)</source>
