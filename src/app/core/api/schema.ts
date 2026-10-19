@@ -440,6 +440,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/reports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Year Report
+         * @description Month by month in a year (Lisbon time): completed appointments, hours worked and income
+         */
+        get: operations["get_year_report_v1_admin_reports_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -798,6 +818,8 @@ export interface components {
             cancellation_reason: components["schemas"]["CancellationReason"] | null;
             /** Deposit Refunded At */
             deposit_refunded_at: string | null;
+            /** Duration Minutes */
+            duration_minutes: number;
             client: components["schemas"]["ClientSummary"];
             /** Deposit Paid */
             deposit_paid: boolean;
@@ -854,6 +876,8 @@ export interface components {
         AppointmentCompletion: {
             /** Final Price */
             final_price: number | string;
+            /** Duration Minutes */
+            duration_minutes?: number | null;
         };
         /** AppointmentDetails */
         AppointmentDetails: {
@@ -1117,6 +1141,15 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["UserResult"];
+        };
+        /** BaseResponse[YearReport] */
+        BaseResponse_YearReport_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["YearReport"];
         };
         /** BaseResponse[list[AdminAppointmentResult]] */
         BaseResponse_list_AdminAppointmentResult__: {
@@ -1387,6 +1420,29 @@ export interface components {
             /** Notified Clients */
             notified_clients: number;
         };
+        /** MonthReportResult */
+        MonthReportResult: {
+            /** Month */
+            month: number;
+            /** Completed */
+            completed: number;
+            /** Worked Minutes */
+            worked_minutes: number;
+            /** Services Revenue */
+            services_revenue: string;
+            /** Kept Deposits */
+            kept_deposits: number;
+            /** Kept Deposits Revenue */
+            kept_deposits_revenue: string;
+            /** Total Revenue */
+            total_revenue: string;
+            /** No Shows */
+            no_shows: number;
+            /** Cancellations */
+            cancellations: number;
+            /** By Service */
+            by_service: components["schemas"]["ServiceReport"][];
+        };
         /**
          * NailArtLevel
          * @enum {string}
@@ -1581,6 +1637,16 @@ export interface components {
             /** Amount */
             amount: number | string;
         };
+        /** ServiceReport */
+        ServiceReport: {
+            service: components["schemas"]["Service"];
+            /** Completed */
+            completed: number;
+            /** Worked Minutes */
+            worked_minutes: number;
+            /** Revenue */
+            revenue: string;
+        };
         /** StudioAppointment */
         StudioAppointment: {
             /**
@@ -1663,6 +1729,15 @@ export interface components {
             input?: unknown;
             /** Context */
             ctx?: Record<string, never>;
+        };
+        /** YearReport */
+        YearReport: {
+            /** Year */
+            year: number;
+            /** Deposit Amount */
+            deposit_amount: string;
+            /** Months */
+            months: components["schemas"]["MonthReportResult"][];
         };
     };
     responses: never;
@@ -2568,6 +2643,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BaseResponse_list_ClientOverview__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_year_report_v1_admin_reports_get: {
+        parameters: {
+            query: {
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_YearReport_"];
                 };
             };
             /** @description Validation Error */

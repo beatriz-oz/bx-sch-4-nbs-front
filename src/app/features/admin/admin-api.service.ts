@@ -24,6 +24,7 @@ import {
   ScheduleExceptionSet,
   Service,
   StudioAppointment,
+  YearReport,
 } from '../../core/api/types';
 
 /** The admin endpoints for appointments. Each method returns just the "detail". */
@@ -54,8 +55,8 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
-  complete(id: number, finalPrice: string): Observable<AdminAppointment> {
-    return this.post(`${id}/complete`, { final_price: finalPrice });
+  complete(id: number, finalPrice: string, durationMinutes: number | null): Observable<AdminAppointment> {
+    return this.post(`${id}/complete`, { final_price: finalPrice, duration_minutes: durationMinutes });
   }
 
   noShow(id: number): Observable<AdminAppointment> {
@@ -164,6 +165,12 @@ export class AdminApiService {
   clientsOverview(group: 'registered' | 'pending'): Observable<ClientOverview[]> {
     return this.http
       .get<ApiResponse<ClientOverview[]>>(`${environment.apiUrl}/admin/clients/overview`, { params: { group } })
+      .pipe(map((r) => r.detail));
+  }
+
+  yearReport(year: number): Observable<YearReport> {
+    return this.http
+      .get<ApiResponse<YearReport>>(`${environment.apiUrl}/admin/reports`, { params: { year } })
       .pipe(map((r) => r.detail));
   }
 

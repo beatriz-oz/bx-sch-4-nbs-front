@@ -52,6 +52,7 @@ export type ScheduleExceptionSet = Schemas['ScheduleExceptionSet'];
 export type MonthPublished = Schemas['MonthPublished'];
 export type AdminPayments = Schemas['AdminPayments'];
 export type ClientOverview = Schemas['ClientOverview'];
+export type YearReport = Schemas['YearReport'];
 
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];

@@ -73,6 +73,25 @@
       </button>
     }
 
+    <div class="mt-4 text-sm">
+      <span i18n="@@complete.duration" class="mb-1 block font-medium">How long it took</span>
+      <div class="flex items-center gap-2">
+        <input type="number" min="0" max="10" [ngModel]="durationHours()" (ngModelChange)="durationHours.set($event ?? 0)"
+          aria-label="Hours" i18n-aria-label="@@complete.durationHours"
+          class="w-20 rounded-lg border border-gray-300 px-3 py-2 text-right" />
+        <span>h</span>
+        <select [ngModel]="durationMinutes()" (ngModelChange)="durationMinutes.set($event)"
+          aria-label="Minutes" i18n-aria-label="@@complete.durationMinutes"
+          class="rounded-lg border border-gray-300 px-3 py-2">
+          @for (step of minuteSteps; track step) {
+            <option [ngValue]="step">{{ step === 0 ? '00' : step }}</option>
+          }
+        </select>
+        <span>min</span>
+      </div>
+      <span i18n="@@complete.durationHint" class="mt-1 block text-xs text-gray-500">Used in the reports for the hours worked.</span>
+    </div>
+
     <label class="mt-4 block text-sm">
       <span i18n="@@complete.finalPrice" class="mb-1 block font-medium">Final price (€)</span>
       <input

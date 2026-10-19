@@ -1,0 +1,134 @@
+<div class="mx-auto max-w-5xl p-4 md:p-6">
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h2 i18n="@@reports.title" class="text-2xl font-semibold">Reports</h2>
+      <p i18n="@@reports.subtitle" class="text-sm text-gray-500">Hours worked and income, month by month. Tap a month to see it in detail.</p>
+    </div>
+    <div class="flex items-center">
+      <button type="button" (click)="moveYear(-1)" aria-label="Previous year" i18n-aria-label="@@reports.previousYear"
+        class="rounded-full px-3 py-1 text-xl hover:bg-gray-100">‹</button>
+      <span class="w-16 text-center text-lg font-semibold">{{ year() }}</span>
+      <button type="button" (click)="moveYear(1)" aria-label="Next year" i18n-aria-label="@@reports.nextYear"
+        class="rounded-full px-3 py-1 text-xl hover:bg-gray-100">›</button>
+    </div>
+  </div>
+
+  @if (error(); as message) {
+    <p role="alert" class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  @if (report(); as data) {
+    <!-- The selected month -->
+    @if (selected(); as month) {
+      <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 class="font-semibold capitalize">{{ monthNames[month.month - 1] }} {{ year() }}</h3>
+
+        <div class="mt-4 grid gap-4 sm:grid-cols-4">
+          <div class="sm:col-span-2">
+            <p i18n="@@reports.income" class="text-sm text-gray-500">Income</p>
+            <p class="text-5xl font-semibold tracking-tight">{{ month.total_revenue | currency: 'EUR' }}</p>
+            @if (month.kept_deposits) {
+              <p class="mt-1 text-xs text-gray-500">
+                {{ month.services_revenue | currency: 'EUR' }} <ng-container i18n="@@reports.fromServices">from services</ng-container> +
+                {{ month.kept_deposits_revenue | currency: 'EUR' }}
+                <ng-container i18n="@@reports.keptDeposits">{month.kept_deposits, plural, =1 {from 1 kept deposit} other {from {{ month.kept_deposits }} kept deposits}}</ng-container>
+              </p>
+            }
+          </div>
+          <div>
+            <p i18n="@@reports.hoursWorked" class="text-sm text-gray-500">Hours worked</p>
+            <p class="text-2xl font-semibold">{{ formatDuration(month.worked_minutes) }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.completedCount">{month.completed, plural, =0 {no appointments completed} =1 {1 appointment completed} other {{{ month.completed }} appointments completed}}</ng-container>
+            </p>
+          </div>
+          <div>
+            <p i18n="@@reports.perHour" class="text-sm text-gray-500">Per hour worked</p>
+            <p class="text-2xl font-semibold">{{ perHour() === null ? '—' : (perHour() | currency: 'EUR') }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.noShows">{month.no_shows, plural, =1 {1 no-show} other {{{ month.no_shows }} no-shows}}</ng-container> ·
+              <ng-container i18n="@@reports.cancellations">{month.cancellations, plural, =1 {1 cancellation} other {{{ month.cancellations }} cancellations}}</ng-container>
+            </p>
+          </div>
+        </div>
+
+        @if (month.by_service.length) {
+          <table class="mt-5 w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 text-left text-gray-500">
+                <th i18n="@@booking.service" class="py-2 font-medium">Service</th>
+                <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
+                <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
+                <th i18n="@@reports.income" class="py-2 text-right font-medium">Income</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of month.by_service; track row.service) {
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">{{ serviceLabels[row.service] }}</td>
+                  <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
+                  <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
+                  <td class="py-2 text-right tabular-nums">{{ row.revenue | currency: 'EUR' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </section>
+    }
+
+    <!-- Two charts: income and hours never share an axis -->
+    <div class="mt-6 grid gap-6 lg:grid-cols-2">
+      <section class="rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 i18n="@@reports.chart.income" class="mb-4 font-semibold">Income per month</h3>
+        <app-month-bars [values]="revenues()" [monthLabels]="monthLabels" [format]="euros" [selected]="month()" (select)="month.set($event)" />
+      </section>
+      <section class="rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 i18n="@@reports.chart.hours" class="mb-4 font-semibold">Hours worked per month</h3>
+        <app-month-bars [values]="hours()" [monthLabels]="monthLabels" [format]="hoursLabel" [selected]="month()" (select)="month.set($event)" />
+      </section>
+    </div>
+
+    <!-- The same numbers as a table (readable without the charts) -->
+    <section class="mt-6 overflow-x-auto rounded-2xl border border-gray-200 bg-white">
+      <table class="w-full min-w-[32rem] text-sm">
+        <caption i18n="@@reports.table.caption" class="px-5 pt-4 text-left font-semibold">The year in numbers</caption>
+        <thead>
+          <tr class="border-b border-gray-200 text-left text-gray-500">
+            <th i18n="@@reports.table.month" class="px-5 py-2 font-medium">Month</th>
+            <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
+            <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
+            <th i18n="@@reports.table.noShows" class="py-2 text-right font-medium">No-shows</th>
+            <th i18n="@@reports.income" class="px-5 py-2 text-right font-medium">Income</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of data.months; track row.month) {
+            <tr class="cursor-pointer border-b border-gray-100 hover:bg-gray-50" [class.bg-brand-50]="row.month === month()" (click)="month.set(row.month)">
+              <td class="px-5 py-2 capitalize">{{ monthNames[row.month - 1] }}</td>
+              <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
+              <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
+              <td class="py-2 text-right tabular-nums">{{ row.no_shows }}</td>
+              <td class="px-5 py-2 text-right tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
+            </tr>
+          }
+        </tbody>
+        <tfoot>
+          <tr class="font-semibold">
+            <td i18n="@@reports.table.total" class="px-5 py-3">Total</td>
+            <td class="py-3 text-right tabular-nums">{{ yearTotals().completed }}</td>
+            <td class="py-3 text-right tabular-nums">{{ formatDuration(yearTotals().minutes) }}</td>
+            <td></td>
+            <td class="px-5 py-3 text-right tabular-nums">{{ yearTotals().revenue | currency: 'EUR' }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <p class="mt-3 text-xs text-gray-500">
+      <ng-container i18n="@@reports.note">Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count {{ data.deposit_amount | currency: 'EUR' }} each.</ng-container>
+    </p>
+  } @else if (!error()) {
+    <p i18n="@@dashboard.loading" class="mt-6 text-gray-500">Loading…</p>
+  }
+</div>

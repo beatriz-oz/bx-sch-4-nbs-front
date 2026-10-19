@@ -5,7 +5,6 @@ import { AdminAppointment } from '../../../core/api/types';
 import { formatMinutes, studioMinutes } from '../../../core/dates';
 import { SERVICE_LABELS, STATUS_LABELS } from '../../../shared/labels';
 import { StudioDatePipe } from '../../../shared/studio-date.pipe';
-import { SERVICE_DURATION } from '../calendar/calendar-layout';
 
 /** Details of one appointment, in a panel on the right, with the actions that fit its moment. */
 @Component({
@@ -29,7 +28,7 @@ export class AppointmentPanel {
 
   readonly timeRange = computed(() => {
     const start = studioMinutes(this.appointment().scheduled_at);
-    return `${formatMinutes(start)} – ${formatMinutes(start + SERVICE_DURATION[this.appointment().service])}`;
+    return `${formatMinutes(start)} – ${formatMinutes(start + this.appointment().duration_minutes)}`;
   });
 
   readonly isActive = computed(() => ['Scheduled', 'Confirmed'].includes(this.appointment().status));

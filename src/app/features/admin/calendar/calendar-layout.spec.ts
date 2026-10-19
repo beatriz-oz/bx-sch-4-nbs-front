@@ -1,6 +1,8 @@
 import { AdminAppointment, Service } from '../../../core/api/types';
 import { HOUR_HEIGHT, layoutDay, minutesAtOffset } from './calendar-layout';
 
+const DURATION: Record<Service, number> = { Application: 180, Maintenance: 150, Removal: 60, Other: 60 };
+
 function appointment(id: number, time: string, service: Service = 'Removal'): AdminAppointment {
   return {
     id,
@@ -19,6 +21,7 @@ function appointment(id: number, time: string, service: Service = 'Removal'): Ad
     cancelled_at: null,
     cancellation_reason: null,
     deposit_refunded_at: null,
+    duration_minutes: DURATION[service],
     client: { id: 1, name: 'Ana', last_name: 'Silva', instagram: null },
     deposit_paid: false,
     attendance_confirmed: false,

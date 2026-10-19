@@ -1,4 +1,4 @@
-import { AdminAppointment, Service } from '../../../core/api/types';
+import { AdminAppointment } from '../../../core/api/types';
 import { studioMinutes } from '../../../core/dates';
 
 /*
@@ -11,17 +11,6 @@ export const DAY_END_HOUR = 21;
 
 /** Height of one hour, in pixels. */
 export const HOUR_HEIGHT = 64;
-
-/**
- * Expected duration of each service, in minutes. The API does not store
- * durations yet: these values only decide the height of each block.
- */
-export const SERVICE_DURATION: Record<Service, number> = {
-  Application: 180,
-  Maintenance: 150,
-  Removal: 60,
-  Other: 60,
-};
 
 export interface PlacedAppointment {
   appointment: AdminAppointment;
@@ -44,7 +33,8 @@ export function layoutDay(appointments: AdminAppointment[]): PlacedAppointment[]
   const items = appointments
     .map((appointment) => {
       const start = studioMinutes(appointment.scheduled_at);
-      const end = start + SERVICE_DURATION[appointment.service];
+      // The API sends the recorded duration, or the expected one for the service.
+      const end = start + appointment.duration_minutes;
       return { appointment, start, end };
     })
     .sort((a, b) => a.start - b.start || b.end - a.end);

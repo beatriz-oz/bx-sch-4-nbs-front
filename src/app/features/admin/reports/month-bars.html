@@ -1,0 +1,51 @@
+<div class="flex gap-2">
+  <!-- Y axis: clean ticks, recessive -->
+  <div class="relative w-12 shrink-0 text-right text-[11px] text-gray-400" [style.height.px]="chartHeight">
+    @for (tick of ticks(); track tick) {
+      <span class="absolute right-0 translate-y-1/2" [style.bottom.px]="tickBottom(tick)">{{ format()(tick) }}</span>
+    }
+  </div>
+
+  <div class="min-w-0 flex-1">
+    <div class="relative" [style.height.px]="chartHeight">
+      <!-- Hairline gridlines -->
+      @for (tick of ticks(); track tick) {
+        <div class="absolute right-0 left-0 border-t border-gray-100" [style.bottom.px]="tickBottom(tick)"></div>
+      }
+
+      <!-- One column per month; the whole slot is the hover / click target -->
+      <div class="absolute inset-0 flex items-end">
+        @for (value of values(); track $index; let index = $index) {
+          <button type="button" (click)="select.emit(index + 1)"
+            (mouseenter)="hovered.set(index)" (mouseleave)="hovered.set(null)" (focus)="hovered.set(index)" (blur)="hovered.set(null)"
+            [attr.aria-label]="monthLabels()[index] + ': ' + format()(value)"
+            [attr.aria-pressed]="index + 1 === selected()"
+            class="group relative flex h-full flex-1 items-end justify-center px-px">
+            <!-- The column: at most 24px wide, 4px rounded top, square on the baseline -->
+            <span class="w-full max-w-6 rounded-t"
+              [style.height.px]="heightOf(value)"
+              [class]="index + 1 === selected() ? 'bg-brand-500' : 'bg-brand-200 group-hover:bg-brand-300'"></span>
+
+            @if (index + 1 === selected() && value > 0) {
+              <span class="absolute text-[11px] font-semibold whitespace-nowrap text-gray-800"
+                [style.bottom.px]="heightOf(value) + 4">{{ format()(value) }}</span>
+            }
+            @if (hovered() === index && index + 1 !== selected()) {
+              <span role="tooltip" class="pointer-events-none absolute z-10 rounded-md bg-gray-900 px-2 py-1 text-xs whitespace-nowrap text-white shadow"
+                [style.bottom.px]="heightOf(value) + 6">
+                {{ monthLabels()[index] }} · {{ format()(value) }}
+              </span>
+            }
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Baseline and month names -->
+    <div class="flex border-t border-gray-300 pt-1">
+      @for (label of monthLabels(); track $index; let index = $index) {
+        <span class="flex-1 text-center text-[11px]" [class]="index + 1 === selected() ? 'font-semibold text-gray-900' : 'text-gray-500'">{{ label }}</span>
+      }
+    </div>
+  </div>
+</div>

@@ -34,6 +34,10 @@ export class CompleteDialog implements OnInit {
   readonly extraCharms = signal(0);
   readonly completeRemoval = signal(false);
   readonly finalPrice = signal('');
+  /** How long it really took, starting from the expected duration. */
+  readonly durationHours = signal(0);
+  readonly durationMinutes = signal(0);
+  protected readonly minuteSteps = [0, 15, 30, 45];
 
   readonly busy = signal(false);
   readonly error = signal<string | null>(null);
@@ -45,6 +49,8 @@ export class CompleteDialog implements OnInit {
     this.brokenNails.set(appointment.broken_nails);
     this.completeRemoval.set(appointment.has_other_professional_nails);
     this.finalPrice.set(appointment.estimated_price);
+    this.durationHours.set(Math.floor(appointment.duration_minutes / 60));
+    this.durationMinutes.set(appointment.duration_minutes % 60);
   }
 
   /** Removal and Other have no details to change: their price is just typed. */
@@ -71,7 +77,12 @@ export class CompleteDialog implements OnInit {
       this.error.set($localize`:@@complete.invalidPrice:Enter a valid price, e.g. 45 or 45.50.`);
       return;
     }
-    this.run(this.api.complete(this.appointment().id, price), (updated) => this.completed.emit(updated));
+    const duration = Number(this.durationHours()) * 60 + Number(this.durationMinutes());
+    if (duration < 15 || duration > 600) {
+      this.error.set($localize`:@@complete.invalidDuration:The duration must be between 15 minutes and 10 hours.`);
+      return;
+    }
+    this.run(this.api.complete(this.appointment().id, price, duration), (updated) => this.completed.emit(updated));
   }
 
   private run<T>(request: Observable<T>, onSuccess: (value: T) => void): void {

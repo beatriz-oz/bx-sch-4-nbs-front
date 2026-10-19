@@ -114,39 +114,46 @@
           <context context-type="linenumber">22,24</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="nav.reports" datatype="html">
+        <source>Reports</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="nav.clients" datatype="html">
         <source>Clients</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">32,34</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.openingHours" datatype="html">
         <source>Opening hours</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="linenumber">52,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.preApproved" datatype="html">
         <source>Pre-approved Instagram</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">52,54</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.prices" datatype="html">
         <source>Prices</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">62,64</context>
+          <context context-type="linenumber">72,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.policies" datatype="html">
         <source>Policies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin-shell/admin-shell.html</context>
-          <context context-type="linenumber">72,74</context>
+          <context context-type="linenumber">82,84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
@@ -163,39 +170,46 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title.reports" datatype="html">
+        <source>Reports · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.clients" datatype="html">
         <source>Clients · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.prices" datatype="html">
         <source>Prices · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.policies" datatype="html">
         <source>Policies · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
@@ -519,6 +533,10 @@
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
           <context context-type="linenumber">113,114</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="booking.size" datatype="html">
         <source>Nail size</source>
@@ -622,7 +640,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">100,102</context>
+          <context context-type="linenumber">119,120</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
@@ -928,6 +946,10 @@
           <context context-type="linenumber">127,130</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">132,135</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">235,239</context>
         </context-group>
@@ -961,35 +983,70 @@
         <source> Recalculate price </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">72,76</context>
+          <context context-type="linenumber">72,75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.duration" datatype="html">
+        <source>How long it took</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">77,78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.durationHours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.durationMinutes" datatype="html">
+        <source>Minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.durationHint" datatype="html">
+        <source>Used in the reports for the hours worked.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">92,95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.finalPrice" datatype="html">
         <source>Final price (€)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">77,79</context>
+          <context context-type="linenumber">96,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.estimated" datatype="html">
         <source>Estimated when booked: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">85,86</context>
+          <context context-type="linenumber">104,105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.confirm" datatype="html">
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">109,111</context>
+          <context context-type="linenumber">128,130</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.invalidPrice" datatype="html">
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.invalidDuration" datatype="html">
+        <source>The duration must be between 15 minutes and 10 hours.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dayEditor.subtitle" datatype="html">
@@ -1583,6 +1640,169 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/prices/prices.page.ts</context>
           <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.title" datatype="html">
+        <source>Reports</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.subtitle" datatype="html">
+        <source>Hours worked and income, month by month. Tap a month to see it in detail.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.previousYear" datatype="html">
+        <source>Previous year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.nextYear" datatype="html">
+        <source>Next year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.income" datatype="html">
+        <source>Income</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">62,64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">102,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.fromServices" datatype="html">
+        <source>from services</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.keptDeposits" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {from 1 kept deposit} other {from <x id="INTERPOLATION"/> kept deposits}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.hoursWorked" datatype="html">
+        <source>Hours worked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.completedCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no appointments completed} =1 {1 appointment completed} other {<x id="INTERPOLATION"/> appointments completed}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.perHour" datatype="html">
+        <source>Per hour worked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.noShows" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 no-show} other {<x id="INTERPOLATION"/> no-shows}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.cancellations" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.completed" datatype="html">
+        <source>Completed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">61,62</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">100,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.chart.income" datatype="html">
+        <source>Income per month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">83,84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.chart.hours" datatype="html">
+        <source>Hours worked per month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">87,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.caption" datatype="html">
+        <source>The year in numbers</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.month" datatype="html">
+        <source>Month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">98,99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.noShows" datatype="html">
+        <source>No-shows</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">118,119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.note" datatype="html">
+        <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">129,130</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.title" datatype="html">

@@ -66,6 +66,10 @@
         <source>Payments</source>
         <target>Pagamentos</target>
       </trans-unit>
+      <trans-unit id="nav.reports" datatype="html">
+        <source>Reports</source>
+        <target>Relatórios</target>
+      </trans-unit>
       <trans-unit id="nav.clients" datatype="html">
         <source>Clients</source>
         <target>Clientes</target>
@@ -93,6 +97,10 @@
       <trans-unit id="title.payments" datatype="html">
         <source>Payments · Nails by Scooby</source>
         <target>Pagamentos · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.reports" datatype="html">
+        <source>Reports · Nails by Scooby</source>
+        <target>Relatórios · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.clients" datatype="html">
         <source>Clients · Nails by Scooby</source>
@@ -474,6 +482,22 @@
         <source> Recalculate price </source>
         <target> Recalcular preço </target>
       </trans-unit>
+      <trans-unit id="complete.duration" datatype="html">
+        <source>How long it took</source>
+        <target>Quanto tempo demorou</target>
+      </trans-unit>
+      <trans-unit id="complete.durationHours" datatype="html">
+        <source>Hours</source>
+        <target>Horas</target>
+      </trans-unit>
+      <trans-unit id="complete.durationMinutes" datatype="html">
+        <source>Minutes</source>
+        <target>Minutos</target>
+      </trans-unit>
+      <trans-unit id="complete.durationHint" datatype="html">
+        <source>Used in the reports for the hours worked.</source>
+        <target>Usado nos relatórios para as horas trabalhadas.</target>
+      </trans-unit>
       <trans-unit id="complete.finalPrice" datatype="html">
         <source>Final price (€)</source>
         <target>Preço final (€)</target>
@@ -489,6 +513,10 @@
       <trans-unit id="complete.invalidPrice" datatype="html">
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <target>Indique um preço válido, por exemplo 45 ou 45,50.</target>
+      </trans-unit>
+      <trans-unit id="complete.invalidDuration" datatype="html">
+        <source>The duration must be between 15 minutes and 10 hours.</source>
+        <target>A duração tem de estar entre 15 minutos e 10 horas.</target>
       </trans-unit>
       <trans-unit id="dayEditor.subtitle" datatype="html">
         <source>Opening for clients</source>
@@ -805,6 +833,90 @@
       <trans-unit id="prices.saved" datatype="html">
         <source><x id="count" equiv-text="changed.length"/> price(s) updated. New estimates use them from now on.</source>
         <target><x id="count" equiv-text="changed.length"/> preço(s) atualizado(s). As novas estimativas já os usam.</target>
+      </trans-unit>
+      <trans-unit id="reports.title" datatype="html">
+        <source>Reports</source>
+        <target>Relatórios</target>
+      </trans-unit>
+      <trans-unit id="reports.subtitle" datatype="html">
+        <source>Hours worked and income, month by month. Tap a month to see it in detail.</source>
+        <target>Horas trabalhadas e receita, mês a mês. Toque num mês para ver o detalhe.</target>
+      </trans-unit>
+      <trans-unit id="reports.previousYear" datatype="html">
+        <source>Previous year</source>
+        <target>Ano anterior</target>
+      </trans-unit>
+      <trans-unit id="reports.nextYear" datatype="html">
+        <source>Next year</source>
+        <target>Ano seguinte</target>
+      </trans-unit>
+      <trans-unit id="reports.income" datatype="html">
+        <source>Income</source>
+        <target>Receita</target>
+      </trans-unit>
+      <trans-unit id="reports.fromServices" datatype="html">
+        <source>from services</source>
+        <target>dos serviços</target>
+      </trans-unit>
+      <trans-unit id="reports.keptDeposits" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {from 1 kept deposit} other {from <x id="INTERPOLATION"/> kept deposits}}</source>
+        <target>{VAR_PLURAL, plural, =1 {de 1 sinal retido} other {de <x id="INTERPOLATION"/> sinais retidos}}</target>
+      </trans-unit>
+      <trans-unit id="reports.hoursWorked" datatype="html">
+        <source>Hours worked</source>
+        <target>Horas trabalhadas</target>
+      </trans-unit>
+      <trans-unit id="reports.completedCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no appointments completed} =1 {1 appointment completed} other {<x id="INTERPOLATION"/> appointments completed}}</source>
+        <target>{VAR_PLURAL, plural, =0 {nenhuma marcação concluída} =1 {1 marcação concluída} other {<x id="INTERPOLATION"/> marcações concluídas}}</target>
+      </trans-unit>
+      <trans-unit id="reports.perHour" datatype="html">
+        <source>Per hour worked</source>
+        <target>Por hora trabalhada</target>
+      </trans-unit>
+      <trans-unit id="reports.noShows" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 no-show} other {<x id="INTERPOLATION"/> no-shows}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 falta} other {<x id="INTERPOLATION"/> faltas}}</target>
+      </trans-unit>
+      <trans-unit id="reports.cancellations" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 cancelamento} other {<x id="INTERPOLATION"/> cancelamentos}}</target>
+      </trans-unit>
+      <trans-unit id="reports.table.completed" datatype="html">
+        <source>Completed</source>
+        <target>Concluídas</target>
+      </trans-unit>
+      <trans-unit id="reports.table.hours" datatype="html">
+        <source>Hours</source>
+        <target>Horas</target>
+      </trans-unit>
+      <trans-unit id="reports.chart.income" datatype="html">
+        <source>Income per month</source>
+        <target>Receita por mês</target>
+      </trans-unit>
+      <trans-unit id="reports.chart.hours" datatype="html">
+        <source>Hours worked per month</source>
+        <target>Horas trabalhadas por mês</target>
+      </trans-unit>
+      <trans-unit id="reports.table.caption" datatype="html">
+        <source>The year in numbers</source>
+        <target>O ano em números</target>
+      </trans-unit>
+      <trans-unit id="reports.table.month" datatype="html">
+        <source>Month</source>
+        <target>Mês</target>
+      </trans-unit>
+      <trans-unit id="reports.table.noShows" datatype="html">
+        <source>No-shows</source>
+        <target>Faltas</target>
+      </trans-unit>
+      <trans-unit id="reports.table.total" datatype="html">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="reports.note" datatype="html">
+        <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
+        <target>As horas usam a duração registada ao concluir cada marcação, ou a duração prevista do serviço quando não foi registada. Cada sinal retido conta <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/>.</target>
       </trans-unit>
       <trans-unit id="activate.title" datatype="html">
         <source>Create your password</source>
