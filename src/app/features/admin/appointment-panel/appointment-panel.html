@@ -75,6 +75,13 @@
       }
     </section>
 
+    @if (appointment().completion_notes) {
+      <section>
+        <p i18n="@@panel.completionNotes" class="mb-1 text-sm font-medium">Notes from the appointment</p>
+        <p class="rounded-lg bg-brand-50 px-3 py-2 text-sm whitespace-pre-line text-gray-800">{{ appointment().completion_notes }}</p>
+      </section>
+    }
+
     @if (appointment().cancelled_at) {
       <p class="text-sm text-gray-500">
         <ng-container i18n="@@panel.cancelledAt">Cancelled on</ng-container> {{ appointment().cancelled_at | studioDate: 'dateTime' }}

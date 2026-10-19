@@ -235,7 +235,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">111</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -326,18 +326,25 @@
           <context context-type="linenumber">17,22</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="panel.completionNotes" datatype="html">
+        <source>Notes from the appointment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="panel.cancelledAt" datatype="html">
         <source>Cancelled on</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.bookedAt" datatype="html">
         <source>Booked on</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">92</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -348,21 +355,21 @@
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">96,98</context>
+          <context context-type="linenumber">103,104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.noShow" datatype="html">
         <source> No-show </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">100,102</context>
+          <context context-type="linenumber">107,108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.confirmDeposit" datatype="html">
         <source> Deposit paid </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">106,108</context>
+          <context context-type="linenumber">113,115</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -373,7 +380,7 @@
         <source> Cancel </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">111,113</context>
+          <context context-type="linenumber">118,119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.title" datatype="html">
@@ -640,7 +647,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">119,120</context>
+          <context context-type="linenumber">130,131</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
@@ -718,84 +725,189 @@
         <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">24,25</context>
+          <context context-type="linenumber">26,27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard.refundCount" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 refund to make} other {<x id="INTERPOLATION"/> refunds to make}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.showCancelled" datatype="html">
         <source>Show cancelled</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">35,38</context>
+          <context context-type="linenumber">37,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.day" datatype="html">
         <source> Day </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">41,43</context>
+          <context context-type="linenumber">43,45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.week" datatype="html">
         <source> Week </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calendar.month" datatype="html">
+        <source> Month </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">51,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.new" datatype="html">
         <source> + New appointment </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">51,53</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="legend.awaitingDeposit" datatype="html">
-        <source>Awaiting deposit</source>
+      <trans-unit id="weekday.mon" datatype="html">
+        <source>Mon</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">135,136</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">121,122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.tue" datatype="html">
+        <source>Tue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">136,137</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">122,123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.wed" datatype="html">
+        <source>Wed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">137,138</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">123,124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.thu" datatype="html">
+        <source>Thu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">138,139</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">124,125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.fri" datatype="html">
+        <source>Fri</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">139,140</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">125,126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.sat" datatype="html">
+        <source>Sat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">140,141</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">126,127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="weekday.sun" datatype="html">
+        <source>Sun</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">141,143</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
+          <context context-type="linenumber">55,58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">127,128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calendar.more" datatype="html">
+        <source>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">163,164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="legend.confirmed" datatype="html">
         <source>Deposit paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">126,127</context>
+          <context context-type="linenumber">177,178</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="legend.noDeposit" datatype="html">
-        <source>No deposit needed</source>
+      <trans-unit id="legend.awaitingDeposit" datatype="html">
+        <source>Awaiting deposit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">127,128</context>
+          <context context-type="linenumber">178,179</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="legend.completed" datatype="html">
-        <source>Completed</source>
+      <trans-unit id="legend.past" datatype="html">
+        <source>Already happened</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">128,129</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="legend.noShow" datatype="html">
-        <source>No-show</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">129,132</context>
+          <context context-type="linenumber">179,182</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
         <source>Confirm that the deposit was paid? The client will get an email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">208</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.ts</context>
@@ -806,7 +918,7 @@
         <source>Mark this appointment as a no-show? This cannot be undone.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">178</context>
+          <context context-type="linenumber">215</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel.title" datatype="html">
@@ -1007,32 +1119,53 @@
           <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="complete.durationHint" datatype="html">
-        <source>Used in the reports for the hours worked.</source>
+      <trans-unit id="complete.durationExpected" datatype="html">
+        <source>Expected: <x id="INTERPOLATION" equiv-text="{{ appointment().duration_minutes / 60 | number: &apos;1.0-1&apos; }}"/>h. Used in the reports for the hours worked.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">92,95</context>
+          <context context-type="linenumber">94,95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.notes" datatype="html">
+        <source>Notes (optional)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.notesPlaceholder" datatype="html">
+        <source>e.g. used chrome, sensitive skin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.notesHint" datatype="html">
+        <source>Only you see them, in the client&apos;s history.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">103,106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.finalPrice" datatype="html">
         <source>Final price (€)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">96,98</context>
+          <context context-type="linenumber">107,109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.estimated" datatype="html">
         <source>Estimated when booked: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">104,105</context>
+          <context context-type="linenumber">115,116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.confirm" datatype="html">
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">128,130</context>
+          <context context-type="linenumber">139,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.invalidPrice" datatype="html">
@@ -1042,11 +1175,18 @@
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="complete.durationRequired" datatype="html">
+        <source>Fill in how long it took (hours and minutes).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="complete.invalidDuration" datatype="html">
         <source>The duration must be between 15 minutes and 10 hours.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dayEditor.subtitle" datatype="html">
@@ -1160,83 +1300,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
           <context context-type="linenumber">31,32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.mon" datatype="html">
-        <source>Mon</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">49,50</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">121,122</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.tue" datatype="html">
-        <source>Tue</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">50,51</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">122,123</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.wed" datatype="html">
-        <source>Wed</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">51,52</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">123,124</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.thu" datatype="html">
-        <source>Thu</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">52,53</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">124,125</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.fri" datatype="html">
-        <source>Fri</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">53,54</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">125,126</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.sat" datatype="html">
-        <source>Sat</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">54,55</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">126,127</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="weekday.sun" datatype="html">
-        <source>Sun</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
-          <context context-type="linenumber">55,58</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">127,128</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hours.changed" datatype="html">

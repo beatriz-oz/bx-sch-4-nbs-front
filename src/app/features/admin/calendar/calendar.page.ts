@@ -25,10 +25,9 @@ import {
   layoutDay,
   minutesAtOffset,
   offsetOfMinutes,
-  PlacedAppointment,
 } from './calendar-layout';
 
-type View = 'day' | 'week';
+type View = 'day' | 'week' | 'month';
 
 /** The manicure's agenda, drawn like Google Calendar. */
 @Component({
@@ -51,6 +50,7 @@ export class CalendarPage {
   readonly showCancelled = signal(false);
   readonly today = signal(studioToday());
   readonly nowMinutes = signal(studioMinutes(new Date()));
+  readonly now = signal(Date.now());
 
   readonly appointments = signal<AdminAppointment[]>([]);
   readonly loading = signal(false);
@@ -67,12 +67,44 @@ export class CalendarPage {
     this.view() === 'week' ? weekDays(startOfWeek(this.selectedDay())) : [this.selectedDay()],
   );
 
+  /** The month view: whole weeks (Monday to Sunday) covering the month of the selected day. */
+  readonly monthWeeks = computed(() => {
+    const first = `${this.selectedDay().slice(0, 8)}01`;
+    const last = addDays(`${addDays(first, 32).slice(0, 8)}01`, -1);
+    const weeks: { day: string; inMonth: boolean; appointments: AdminAppointment[] }[][] = [];
+    for (let monday = startOfWeek(first); monday <= last; monday = addDays(monday, 7)) {
+      weeks.push(
+        weekDays(monday).map((day) => ({
+          day,
+          inMonth: day.slice(0, 7) === first.slice(0, 7),
+          appointments: this.visibleAppointments()
+            .filter((a) => studioDay(a.scheduled_at) === day)
+            .sort((a, b) => a.scheduled_at.localeCompare(b.scheduled_at)),
+        })),
+      );
+    }
+    return weeks;
+  });
+
+  /** The first and last day the current view shows (and loads). */
+  private readonly range = computed(() => {
+    if (this.view() === 'month') {
+      const weeks = this.monthWeeks();
+      return [weeks[0][0].day, weeks[weeks.length - 1][6].day];
+    }
+    const days = this.days();
+    return [days[0], days[days.length - 1]];
+  });
+
+  readonly visibleAppointments = computed(() =>
+    this.appointments().filter((a) => this.showCancelled() || a.status !== 'Cancelled'),
+  );
+
   /** Each visible day with its blocks already placed on the grid. */
   readonly columns = computed(() => {
-    const visible = this.appointments().filter((a) => this.showCancelled() || a.status !== 'Cancelled');
     return this.days().map((day) => ({
       day,
-      blocks: layoutDay(visible.filter((a) => studioDay(a.scheduled_at) === day)),
+      blocks: layoutDay(this.visibleAppointments().filter((a) => studioDay(a.scheduled_at) === day)),
     }));
   });
 
@@ -85,6 +117,7 @@ export class CalendarPage {
     // Moves the red "now" line every minute.
     const timer = setInterval(() => {
       this.nowMinutes.set(studioMinutes(new Date()));
+      this.now.set(Date.now());
       this.today.set(studioToday());
     }, 60_000);
     inject(DestroyRef).onDestroy(() => clearInterval(timer));
@@ -96,7 +129,13 @@ export class CalendarPage {
   }
 
   move(direction: -1 | 1): void {
-    this.selectedDay.update((day) => addDays(day, direction * (this.view() === 'week' ? 7 : 1)));
+    if (this.view() === 'month') {
+      // The 1st of the previous or next month.
+      const first = `${this.selectedDay().slice(0, 8)}01`;
+      this.selectedDay.set(direction > 0 ? `${addDays(first, 32).slice(0, 8)}01` : `${addDays(first, -1).slice(0, 8)}01`);
+    } else {
+      this.selectedDay.update((day) => addDays(day, direction * (this.view() === 'week' ? 7 : 1)));
+    }
     this.load();
   }
 
@@ -112,10 +151,10 @@ export class CalendarPage {
   }
 
   load(): void {
-    const days = this.days();
+    const [first, last] = this.range();
     this.loading.set(true);
     this.error.set(null);
-    this.api.list(days[0], days[days.length - 1]).subscribe({
+    this.api.list(first, last).subscribe({
       next: (appointments) => {
         this.appointments.set(appointments);
         this.loading.set(false);
@@ -146,23 +185,21 @@ export class CalendarPage {
     this.load();
   }
 
-  blockClasses(item: PlacedAppointment): string {
-    const appointment = item.appointment;
-    switch (appointment.status) {
-      case 'Confirmed':
-        return 'bg-brand-100 border-brand-500 text-brand-900';
-      case 'Completed':
-        return 'bg-emerald-50 border-emerald-500 text-emerald-900';
-      case 'No_show':
-        return 'bg-red-50 border-red-400 text-red-800';
-      case 'Cancelled':
-        return 'bg-gray-100 border-gray-300 text-gray-500 line-through';
-      default:
-        // Scheduled: waiting for the deposit, except OTHER, which needs none.
-        return appointment.service === 'Other'
-          ? 'bg-sky-50 border-sky-400 text-sky-900'
-          : 'bg-amber-50 border-amber-400 text-amber-900';
+  /**
+   * The colour of an appointment: green = deposit paid (or no deposit needed),
+   * yellow = waiting for the deposit, gray = already happened, faded = cancelled.
+   */
+  toneClasses(appointment: AdminAppointment): string {
+    if (appointment.status === 'Cancelled') {
+      return 'bg-gray-50 border-gray-300 text-gray-400 line-through';
     }
+    if (new Date(appointment.scheduled_at).getTime() < this.now()) {
+      return 'bg-gray-100 border-gray-400 text-gray-600';
+    }
+    if (appointment.deposit_paid || appointment.service === 'Other') {
+      return 'bg-emerald-50 border-emerald-500 text-emerald-900';
+    }
+    return 'bg-amber-50 border-amber-400 text-amber-900';
   }
 
   // --- actions (from the side panel) ---

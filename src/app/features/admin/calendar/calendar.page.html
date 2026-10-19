@@ -11,7 +11,9 @@
       class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">›</button>
   </div>
   <h2 class="text-lg font-semibold capitalize">
-    @if (view() === 'week') {
+    @if (view() === 'month') {
+      {{ selectedDay().slice(0, 8) + '01' | studioDate: 'month' }}
+    } @else if (view() === 'week') {
       {{ days()[0] | studioDate: 'day' }} – {{ days()[6] | studioDate: 'day' }}
     } @else {
       {{ selectedDay() | studioDate: 'dayLong' }}
@@ -44,6 +46,10 @@
         [class]="view() === 'week' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
         Week
       </button>
+      <button type="button" (click)="setView('month')" i18n="@@calendar.month"
+        [class]="view() === 'month' ? 'rounded-full bg-gray-900 px-3 py-1 text-white' : 'rounded-full px-3 py-1 hover:bg-gray-100'">
+        Month
+      </button>
     </div>
 
     <button type="button" (click)="newBookingNow()" i18n="@@calendar.new"
@@ -57,6 +63,7 @@
   <p role="alert" class="mx-4 mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
 }
 
+@if (view() !== 'month') {
 <!-- Time grid -->
 <div class="relative overflow-auto" style="max-height: calc(100vh - 9rem)" [class.opacity-60]="loading()">
   <div class="flex min-w-fit">
@@ -93,7 +100,7 @@
           @for (item of column.blocks; track item.appointment.id) {
             <button type="button" (click)="selected.set(item.appointment)"
               class="absolute flex flex-col justify-start overflow-hidden rounded-md border-l-4 px-1.5 py-1 text-left text-xs shadow-sm hover:z-10 hover:shadow-md"
-              [class]="blockClasses(item)"
+              [class]="toneClasses(item.appointment)"
               [style.top.px]="item.top + 1"
               [style.height.px]="item.height - 2"
               [style.left]="'calc(' + (item.lane / item.lanes) * 100 + '% + 2px)'"
@@ -120,13 +127,56 @@
   </div>
 </div>
 
+} @else {
+<!-- Month grid: each day lists its appointments; a click on a day opens it -->
+<div class="overflow-x-auto p-4" [class.opacity-60]="loading()">
+  <div class="min-w-[44rem] overflow-hidden rounded-2xl border border-gray-200">
+    <div class="grid grid-cols-7 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase">
+      <span i18n="@@weekday.mon" class="py-2">Mon</span>
+      <span i18n="@@weekday.tue" class="py-2">Tue</span>
+      <span i18n="@@weekday.wed" class="py-2">Wed</span>
+      <span i18n="@@weekday.thu" class="py-2">Thu</span>
+      <span i18n="@@weekday.fri" class="py-2">Fri</span>
+      <span i18n="@@weekday.sat" class="py-2">Sat</span>
+      <span i18n="@@weekday.sun" class="py-2">Sun</span>
+    </div>
+    @for (week of monthWeeks(); track week[0].day) {
+      <div class="grid grid-cols-7">
+        @for (cell of week; track cell.day) {
+          <div class="min-h-28 border-r border-b border-gray-100 p-1.5" [class.bg-gray-50]="!cell.inMonth">
+            <button type="button" (click)="openDay(cell.day)"
+              class="mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold"
+              [class]="cell.day === today() ? 'bg-brand-600 text-white hover:bg-brand-700' : cell.inMonth ? 'text-gray-800 hover:bg-gray-200' : 'text-gray-400 hover:bg-gray-200'">
+              {{ +cell.day.slice(8) }}
+            </button>
+            <div class="space-y-0.5">
+              @for (appointment of cell.appointments.slice(0, 3); track appointment.id) {
+                <button type="button" (click)="selected.set(appointment)"
+                  class="block w-full truncate rounded border-l-4 px-1 py-0.5 text-left text-[11px]"
+                  [class]="toneClasses(appointment)">
+                  <span class="font-semibold">{{ appointment.scheduled_at | studioDate: 'time' }}</span>
+                  {{ appointment.client.name }}
+                </button>
+              }
+              @if (cell.appointments.length > 3) {
+                <button type="button" (click)="openDay(cell.day)" class="px-1 text-[11px] font-medium text-gray-500 hover:underline">
+                  <ng-container i18n="@@calendar.more">+{{ cell.appointments.length - 3 }} more</ng-container>
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
+}
+
 <!-- Legend -->
 <div class="flex flex-wrap gap-3 border-t border-gray-200 px-4 py-2 text-xs text-gray-600">
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-emerald-500 bg-emerald-50"></span><span i18n="@@legend.confirmed">Deposit paid</span></span>
   <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-amber-400 bg-amber-50"></span><span i18n="@@legend.awaitingDeposit">Awaiting deposit</span></span>
-  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-brand-500 bg-brand-100"></span><span i18n="@@legend.confirmed">Deposit paid</span></span>
-  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-sky-400 bg-sky-50"></span><span i18n="@@legend.noDeposit">No deposit needed</span></span>
-  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-emerald-500 bg-emerald-50"></span><span i18n="@@legend.completed">Completed</span></span>
-  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-red-400 bg-red-50"></span><span i18n="@@legend.noShow">No-show</span></span>
+  <span class="flex items-center gap-1"><span class="h-3 w-3 rounded-sm border-l-4 border-gray-400 bg-gray-100"></span><span i18n="@@legend.past">Already happened</span></span>
 </div>
 
 <!-- Things that open on top -->

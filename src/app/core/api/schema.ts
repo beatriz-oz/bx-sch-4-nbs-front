@@ -811,6 +811,8 @@ export interface components {
             final_price: string | null;
             /** Notes */
             notes: string | null;
+            /** Completion Notes */
+            completion_notes: string | null;
             /** Created At */
             created_at: string | null;
             /** Cancelled At */
@@ -878,6 +880,8 @@ export interface components {
             final_price: number | string;
             /** Duration Minutes */
             duration_minutes?: number | null;
+            /** Notes */
+            notes?: string | null;
         };
         /** AppointmentDetails */
         AppointmentDetails: {

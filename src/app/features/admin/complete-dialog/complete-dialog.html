@@ -76,21 +76,32 @@
     <div class="mt-4 text-sm">
       <span i18n="@@complete.duration" class="mb-1 block font-medium">How long it took</span>
       <div class="flex items-center gap-2">
-        <input type="number" min="0" max="10" [ngModel]="durationHours()" (ngModelChange)="durationHours.set($event ?? 0)"
-          aria-label="Hours" i18n-aria-label="@@complete.durationHours"
+        <input type="number" min="0" max="10" [ngModel]="durationHours()" (ngModelChange)="durationHours.set($event)"
+          aria-label="Hours" i18n-aria-label="@@complete.durationHours" placeholder="0"
           class="w-20 rounded-lg border border-gray-300 px-3 py-2 text-right" />
         <span>h</span>
         <select [ngModel]="durationMinutes()" (ngModelChange)="durationMinutes.set($event)"
           aria-label="Minutes" i18n-aria-label="@@complete.durationMinutes"
           class="rounded-lg border border-gray-300 px-3 py-2">
+          <option [ngValue]="null" disabled>--</option>
           @for (step of minuteSteps; track step) {
             <option [ngValue]="step">{{ step === 0 ? '00' : step }}</option>
           }
         </select>
         <span>min</span>
       </div>
-      <span i18n="@@complete.durationHint" class="mt-1 block text-xs text-gray-500">Used in the reports for the hours worked.</span>
+      <span class="mt-1 block text-xs text-gray-500">
+        <ng-container i18n="@@complete.durationExpected">Expected: {{ appointment().duration_minutes / 60 | number: '1.0-1' }}h. Used in the reports for the hours worked.</ng-container>
+      </span>
     </div>
+
+    <label class="mt-4 block text-sm">
+      <span i18n="@@complete.notes" class="mb-1 block font-medium">Notes (optional)</span>
+      <textarea rows="2" maxlength="2000" [ngModel]="notes()" (ngModelChange)="notes.set($event)"
+        placeholder="e.g. used chrome, sensitive skin" i18n-placeholder="@@complete.notesPlaceholder"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2"></textarea>
+      <span i18n="@@complete.notesHint" class="mt-1 block text-xs text-gray-500">Only you see them, in the client's history.</span>
+    </label>
 
     <label class="mt-4 block text-sm">
       <span i18n="@@complete.finalPrice" class="mb-1 block font-medium">Final price (€)</span>

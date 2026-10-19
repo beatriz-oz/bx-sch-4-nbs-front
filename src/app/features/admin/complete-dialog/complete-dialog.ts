@@ -1,4 +1,5 @@
 import { Component, inject, input, OnInit, output, signal } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -15,7 +16,7 @@ import { AdminApiService } from '../admin-api.service';
  */
 @Component({
   selector: 'app-complete-dialog',
-  imports: [FormsModule, StudioDatePipe],
+  imports: [DecimalPipe, FormsModule, StudioDatePipe],
   templateUrl: './complete-dialog.html',
   host: { '(document:keydown.escape)': 'closed.emit()' },
 })
@@ -34,9 +35,10 @@ export class CompleteDialog implements OnInit {
   readonly extraCharms = signal(0);
   readonly completeRemoval = signal(false);
   readonly finalPrice = signal('');
-  /** How long it really took, starting from the expected duration. */
-  readonly durationHours = signal(0);
-  readonly durationMinutes = signal(0);
+  /** How long it really took: starts empty on purpose, so it is always the real time. */
+  readonly durationHours = signal<number | null>(null);
+  readonly durationMinutes = signal<number | null>(null);
+  readonly notes = signal('');
   protected readonly minuteSteps = [0, 15, 30, 45];
 
   readonly busy = signal(false);
@@ -49,8 +51,6 @@ export class CompleteDialog implements OnInit {
     this.brokenNails.set(appointment.broken_nails);
     this.completeRemoval.set(appointment.has_other_professional_nails);
     this.finalPrice.set(appointment.estimated_price);
-    this.durationHours.set(Math.floor(appointment.duration_minutes / 60));
-    this.durationMinutes.set(appointment.duration_minutes % 60);
   }
 
   /** Removal and Other have no details to change: their price is just typed. */
@@ -77,12 +77,18 @@ export class CompleteDialog implements OnInit {
       this.error.set($localize`:@@complete.invalidPrice:Enter a valid price, e.g. 45 or 45.50.`);
       return;
     }
-    const duration = Number(this.durationHours()) * 60 + Number(this.durationMinutes());
+    const hours = this.durationHours();
+    const minutes = this.durationMinutes();
+    if (hours === null || minutes === null) {
+      this.error.set($localize`:@@complete.durationRequired:Fill in how long it took (hours and minutes).`);
+      return;
+    }
+    const duration = Number(hours) * 60 + Number(minutes);
     if (duration < 15 || duration > 600) {
       this.error.set($localize`:@@complete.invalidDuration:The duration must be between 15 minutes and 10 hours.`);
       return;
     }
-    this.run(this.api.complete(this.appointment().id, price, duration), (updated) => this.completed.emit(updated));
+    this.run(this.api.complete(this.appointment().id, price, duration, this.notes().trim() || null), (updated) => this.completed.emit(updated));
   }
 
   private run<T>(request: Observable<T>, onSuccess: (value: T) => void): void {

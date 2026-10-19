@@ -55,8 +55,8 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
-  complete(id: number, finalPrice: string, durationMinutes: number | null): Observable<AdminAppointment> {
-    return this.post(`${id}/complete`, { final_price: finalPrice, duration_minutes: durationMinutes });
+  complete(id: number, finalPrice: string, durationMinutes: number, notes: string | null): Observable<AdminAppointment> {
+    return this.post(`${id}/complete`, { final_price: finalPrice, duration_minutes: durationMinutes, notes });
   }
 
   noShow(id: number): Observable<AdminAppointment> {

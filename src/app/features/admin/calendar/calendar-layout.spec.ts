@@ -17,6 +17,7 @@ function appointment(id: number, time: string, service: Service = 'Removal'): Ad
     estimated_price: '10.00',
     final_price: null,
     notes: null,
+    completion_notes: null,
     created_at: null,
     cancelled_at: null,
     cancellation_reason: null,

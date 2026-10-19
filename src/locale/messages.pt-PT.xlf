@@ -162,6 +162,10 @@
         <source>estimated</source>
         <target>estimado</target>
       </trans-unit>
+      <trans-unit id="panel.completionNotes" datatype="html">
+        <source>Notes from the appointment</source>
+        <target>Notas da marcação</target>
+      </trans-unit>
       <trans-unit id="panel.cancelledAt" datatype="html">
         <source>Cancelled on</source>
         <target>Cancelada em</target>
@@ -358,29 +362,57 @@
         <source> Week </source>
         <target> Semana </target>
       </trans-unit>
+      <trans-unit id="calendar.month" datatype="html">
+        <source> Month </source>
+        <target> Mês </target>
+      </trans-unit>
       <trans-unit id="calendar.new" datatype="html">
         <source> + New appointment </source>
         <target> + Nova marcação </target>
       </trans-unit>
-      <trans-unit id="legend.awaitingDeposit" datatype="html">
-        <source>Awaiting deposit</source>
-        <target>A aguardar sinal</target>
+      <trans-unit id="weekday.mon" datatype="html">
+        <source>Mon</source>
+        <target>Seg</target>
+      </trans-unit>
+      <trans-unit id="weekday.tue" datatype="html">
+        <source>Tue</source>
+        <target>Ter</target>
+      </trans-unit>
+      <trans-unit id="weekday.wed" datatype="html">
+        <source>Wed</source>
+        <target>Qua</target>
+      </trans-unit>
+      <trans-unit id="weekday.thu" datatype="html">
+        <source>Thu</source>
+        <target>Qui</target>
+      </trans-unit>
+      <trans-unit id="weekday.fri" datatype="html">
+        <source>Fri</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="weekday.sat" datatype="html">
+        <source>Sat</source>
+        <target>Sáb</target>
+      </trans-unit>
+      <trans-unit id="weekday.sun" datatype="html">
+        <source>Sun</source>
+        <target>Dom</target>
+      </trans-unit>
+      <trans-unit id="calendar.more" datatype="html">
+        <source>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> more</source>
+        <target>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> mais</target>
       </trans-unit>
       <trans-unit id="legend.confirmed" datatype="html">
         <source>Deposit paid</source>
         <target>Sinal pago</target>
       </trans-unit>
-      <trans-unit id="legend.noDeposit" datatype="html">
-        <source>No deposit needed</source>
-        <target>Sem sinal</target>
+      <trans-unit id="legend.awaitingDeposit" datatype="html">
+        <source>Awaiting deposit</source>
+        <target>A aguardar sinal</target>
       </trans-unit>
-      <trans-unit id="legend.completed" datatype="html">
-        <source>Completed</source>
-        <target>Concluída</target>
-      </trans-unit>
-      <trans-unit id="legend.noShow" datatype="html">
-        <source>No-show</source>
-        <target>Faltou</target>
+      <trans-unit id="legend.past" datatype="html">
+        <source>Already happened</source>
+        <target>Já passou</target>
       </trans-unit>
       <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
         <source>Confirm that the deposit was paid? The client will get an email.</source>
@@ -494,9 +526,21 @@
         <source>Minutes</source>
         <target>Minutos</target>
       </trans-unit>
-      <trans-unit id="complete.durationHint" datatype="html">
-        <source>Used in the reports for the hours worked.</source>
-        <target>Usado nos relatórios para as horas trabalhadas.</target>
+      <trans-unit id="complete.durationExpected" datatype="html">
+        <source>Expected: <x id="INTERPOLATION" equiv-text="{{ appointment().duration_minutes / 60 | number: &apos;1.0-1&apos; }}"/>h. Used in the reports for the hours worked.</source>
+        <target>Previsto: <x id="INTERPOLATION" equiv-text="{{ appointment().duration_minutes / 60 | number: &apos;1.0-1&apos; }}"/>h. Usado nos relatórios para as horas trabalhadas.</target>
+      </trans-unit>
+      <trans-unit id="complete.notes" datatype="html">
+        <source>Notes (optional)</source>
+        <target>Notas (opcional)</target>
+      </trans-unit>
+      <trans-unit id="complete.notesPlaceholder" datatype="html">
+        <source>e.g. used chrome, sensitive skin</source>
+        <target>ex.: usei cromado, pele sensível</target>
+      </trans-unit>
+      <trans-unit id="complete.notesHint" datatype="html">
+        <source>Only you see them, in the client&apos;s history.</source>
+        <target>Só a Scooby as vê, no histórico da cliente.</target>
       </trans-unit>
       <trans-unit id="complete.finalPrice" datatype="html">
         <source>Final price (€)</source>
@@ -513,6 +557,10 @@
       <trans-unit id="complete.invalidPrice" datatype="html">
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <target>Indique um preço válido, por exemplo 45 ou 45,50.</target>
+      </trans-unit>
+      <trans-unit id="complete.durationRequired" datatype="html">
+        <source>Fill in how long it took (hours and minutes).</source>
+        <target>Indique quanto tempo demorou (horas e minutos).</target>
       </trans-unit>
       <trans-unit id="complete.invalidDuration" datatype="html">
         <source>The duration must be between 15 minutes and 10 hours.</source>
@@ -577,34 +625,6 @@
       <trans-unit id="hours.publish" datatype="html">
         <source> Publish month </source>
         <target> Publicar mês </target>
-      </trans-unit>
-      <trans-unit id="weekday.mon" datatype="html">
-        <source>Mon</source>
-        <target>Seg</target>
-      </trans-unit>
-      <trans-unit id="weekday.tue" datatype="html">
-        <source>Tue</source>
-        <target>Ter</target>
-      </trans-unit>
-      <trans-unit id="weekday.wed" datatype="html">
-        <source>Wed</source>
-        <target>Qua</target>
-      </trans-unit>
-      <trans-unit id="weekday.thu" datatype="html">
-        <source>Thu</source>
-        <target>Qui</target>
-      </trans-unit>
-      <trans-unit id="weekday.fri" datatype="html">
-        <source>Fri</source>
-        <target>Sex</target>
-      </trans-unit>
-      <trans-unit id="weekday.sat" datatype="html">
-        <source>Sat</source>
-        <target>Sáb</target>
-      </trans-unit>
-      <trans-unit id="weekday.sun" datatype="html">
-        <source>Sun</source>
-        <target>Dom</target>
       </trans-unit>
       <trans-unit id="hours.changed" datatype="html">
         <source>Changed from the weekly default</source>
