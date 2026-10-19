@@ -12,6 +12,7 @@ import {
   AppointmentStatus,
   Client,
   ClientOverview,
+  ClientProfile,
   FinalPriceDetails,
   FinalPriceEstimate,
   MonthPublished,
@@ -55,8 +56,19 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
-  complete(id: number, finalPrice: string, durationMinutes: number, notes: string | null): Observable<AdminAppointment> {
-    return this.post(`${id}/complete`, { final_price: finalPrice, duration_minutes: durationMinutes, notes });
+  complete(
+    id: number,
+    finalPrice: string,
+    durationMinutes: number,
+    notes: string | null,
+    approveClient: boolean,
+  ): Observable<AdminAppointment> {
+    return this.post(`${id}/complete`, {
+      final_price: finalPrice,
+      duration_minutes: durationMinutes,
+      notes,
+      approve_client: approveClient,
+    });
   }
 
   noShow(id: number): Observable<AdminAppointment> {
@@ -165,6 +177,19 @@ export class AdminApiService {
   clientsOverview(group: 'registered' | 'pending'): Observable<ClientOverview[]> {
     return this.http
       .get<ApiResponse<ClientOverview[]>>(`${environment.apiUrl}/admin/clients/overview`, { params: { group } })
+      .pipe(map((r) => r.detail));
+  }
+
+  clientProfile(id: number): Observable<ClientProfile> {
+    return this.http
+      .get<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}`)
+      .pipe(map((r) => r.detail));
+  }
+
+  /** Allows (or no longer allows) a client to come back and create a password. */
+  setApproval(id: number, approved: boolean): Observable<ClientProfile> {
+    return this.http
+      .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/approval`, { approved })
       .pipe(map((r) => r.detail));
   }
 

@@ -116,6 +116,16 @@
       </span>
     </label>
 
+    @if (!appointment().client.is_active && !appointment().client.approved) {
+      <label class="mt-4 flex items-start gap-3 rounded-xl border border-gray-200 p-3 text-sm">
+        <input type="checkbox" [ngModel]="approveClient()" (ngModelChange)="approveClient.set($event)" class="mt-0.5 h-4 w-4 accent-gray-900" />
+        <span>
+          <span i18n="@@complete.approve" class="block font-medium">She can come back</span>
+          <span i18n="@@complete.approveHint" class="block text-xs text-gray-500">First-time client: allows her to create a password and book again. You can change it later in her profile.</span>
+        </span>
+      </label>
+    }
+
     @if (error(); as message) {
       <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
     }

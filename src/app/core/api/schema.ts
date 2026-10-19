@@ -460,6 +460,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/clients/{client_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Client Profile
+         * @description A client's profile: details, totals and the full history
+         */
+        get: operations["get_client_profile_v1_admin_clients__client_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/clients/{client_id}/approval": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Client Approval
+         * @description Allow (or stop allowing) a client to come back: only approved clients can create a password
+         */
+        put: operations["set_client_approval_v1_admin_clients__client_id__approval_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -880,6 +920,11 @@ export interface components {
             final_price: number | string;
             /** Duration Minutes */
             duration_minutes?: number | null;
+            /**
+             * Approve Client
+             * @default false
+             */
+            approve_client: boolean;
             /** Notes */
             notes?: string | null;
         };
@@ -1046,6 +1091,15 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["CancellationResult"];
+        };
+        /** BaseResponse[ClientProfile] */
+        BaseResponse_ClientProfile_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["ClientProfile"];
         };
         /** BaseResponse[CodeSent] */
         BaseResponse_CodeSent_: {
@@ -1295,6 +1349,11 @@ export interface components {
             /** Code */
             code: string;
         };
+        /** ClientApproval */
+        ClientApproval: {
+            /** Approved */
+            approved: boolean;
+        };
         /** ClientOverview */
         ClientOverview: {
             /** Id */
@@ -1313,6 +1372,8 @@ export interface components {
             is_active: boolean;
             /** Email Verified */
             email_verified: boolean;
+            /** Approved */
+            approved: boolean;
             /** Created At */
             created_at: string | null;
             /** Visits */
@@ -1321,6 +1382,18 @@ export interface components {
             last_visit: string | null;
             /** Next Appointment */
             next_appointment: string | null;
+        };
+        /** ClientProfile */
+        ClientProfile: {
+            client: components["schemas"]["ClientOverview"];
+            /** Total Spent */
+            total_spent: string;
+            /** No Shows */
+            no_shows: number;
+            /** Cancellations */
+            cancellations: number;
+            /** Appointments */
+            appointments: components["schemas"]["AdminAppointmentResult"][];
         };
         /** ClientResult */
         ClientResult: {
@@ -1349,6 +1422,10 @@ export interface components {
             last_name: string;
             /** Instagram */
             instagram: string | null;
+            /** Is Active */
+            is_active: boolean;
+            /** Approved */
+            approved: boolean;
         };
         /** CodeSent */
         CodeSent: {
@@ -1715,6 +1792,8 @@ export interface components {
             email_verified: boolean;
             /** Wants Agenda Emails */
             wants_agenda_emails: boolean;
+            /** Can Create Password */
+            can_create_password: boolean;
         };
         /**
          * UserRole
@@ -2691,6 +2770,86 @@ export interface operations {
             };
         };
     };
+    get_client_profile_v1_admin_clients__client_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                client_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ClientProfile_"];
+                };
+            };
+            /** @description Client does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_client_approval_v1_admin_clients__client_id__approval_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                client_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClientApproval"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ClientProfile_"];
+                };
+            };
+            /** @description Client does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     check_in_start_v1_auth_checkin_start_post: {
         parameters: {
             query?: never;
@@ -2806,6 +2965,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["BaseResponse_CodeSent_"];
                 };
+            };
+            /** @description The studio has not approved this client yet */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Phone not registered */
             404: {

@@ -21,6 +21,7 @@ const client: User = {
   is_active: true,
   email_verified: true,
   wants_agenda_emails: true,
+  can_create_password: false,
 };
 const admin: User = { ...client, id: 2, role: 'Super_admin' };
 

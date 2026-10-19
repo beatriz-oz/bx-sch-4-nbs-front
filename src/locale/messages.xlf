@@ -184,32 +184,39 @@
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title.clientProfile" datatype="html">
+        <source>Client · Nails by Scooby</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.prices" datatype="html">
         <source>Prices · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.policies" datatype="html">
         <source>Policies · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/admin.routes.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
@@ -647,7 +654,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">130,131</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/policies/policies.page.html</context>
@@ -959,8 +966,168 @@
       <trans-unit id="clients.title" datatype="html">
         <source>Clients</source>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
           <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.registered" datatype="html">
+        <source>Registered client</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.approved" datatype="html">
+        <source>Allowed back · no password yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.notApproved" datatype="html">
+        <source>First time · not allowed back yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.since" datatype="html">
+        <source>Since</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.revoke" datatype="html">
+        <source>Stop allowing back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.approve" datatype="html">
+        <source>Allow her back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">43,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.visits" datatype="html">
+        <source>Visits</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.spent" datatype="html">
+        <source>Spent</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports.table.noShows" datatype="html">
+        <source>No-shows</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.lastVisit" datatype="html">
+        <source>Last visit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">61,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.history" datatype="html">
+        <source>History</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">74,76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.noHistory" datatype="html">
+        <source>No appointments yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">104,107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">108,111</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">97,100</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
+          <context context-type="linenumber">127,130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">132,135</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">235,239</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
+          <context context-type="linenumber">48,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.approve.question" datatype="html">
+        <source>Allow <x id="name" equiv-text="profile.client.name"/> to create a password and book again?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profile.revoke.question" datatype="html">
+        <source>Stop allowing <x id="name" equiv-text="profile.client.name"/> to create a password? She will not be able to book again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.ts</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.subtitle" datatype="html">
@@ -991,83 +1158,46 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="clients.visits" datatype="html">
-        <source>Visits</source>
+      <trans-unit id="clients.allowedBack" datatype="html">
+        <source>Allowed back</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">53,54</context>
+          <context context-type="linenumber">69,71</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="clients.lastVisit" datatype="html">
-        <source>Last visit</source>
+      <trans-unit id="clients.notAllowedBack" datatype="html">
+        <source>Not allowed back</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">57,58</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="clients.next" datatype="html">
-        <source>Next</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">61,62</context>
+          <context context-type="linenumber">71,73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.emailVerified" datatype="html">
         <source>Email confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">69,71</context>
+          <context context-type="linenumber">74,76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.emailNotVerified" datatype="html">
         <source>Email not confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">71,73</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="clients.since" datatype="html">
-        <source>Since</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">76,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.noMatch" datatype="html">
         <source>No client matches this search.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">84,85</context>
+          <context context-type="linenumber">89,90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.empty" datatype="html">
         <source>No clients here yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">86,88</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="dashboard.loading" datatype="html">
-        <source>Loading…</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">92,95</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
-          <context context-type="linenumber">127,130</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">132,135</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">235,239</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
-          <context context-type="linenumber">48,52</context>
+          <context context-type="linenumber">91,92</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.title" datatype="html">
@@ -1161,32 +1291,46 @@
           <context context-type="linenumber">115,116</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="complete.approve" datatype="html">
+        <source>She can come back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">123,124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="complete.approveHint" datatype="html">
+        <source>First-time client: allows her to create a password and book again. You can change it later in her profile.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
+          <context context-type="linenumber">124,126</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="complete.confirm" datatype="html">
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
-          <context context-type="linenumber">139,141</context>
+          <context context-type="linenumber">149,151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.invalidPrice" datatype="html">
         <source>Enter a valid price, e.g. 45 or 45.50.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.durationRequired" datatype="html">
         <source>Fill in how long it took (hours and minutes).</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.invalidDuration" datatype="html">
         <source>The duration must be between 15 minutes and 10 hours.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.ts</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dayEditor.subtitle" datatype="html">
@@ -1847,13 +1991,6 @@
           <context context-type="linenumber">98,99</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="reports.table.noShows" datatype="html">
-        <source>No-shows</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">101,102</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="reports.table.total" datatype="html">
         <source>Total</source>
         <context-group purpose="location">
@@ -2071,25 +2208,32 @@
           <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="activate.error.notApproved" datatype="html">
+        <source>Creating a password needs the studio&apos;s approval. Send a message to @nailsbyscooby on Instagram.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="activate.error.notFound" datatype="html">
         <source>We don&apos;t know this phone number yet. Your first appointment is booked with your Instagram.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.error.active" datatype="html">
         <source>Your account already has a password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">123</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="code.wait" datatype="html">
         <source>A code was sent a moment ago. Wait a little before asking for a new one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.ts</context>
@@ -2132,7 +2276,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">50,53</context>
+          <context context-type="linenumber">51,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="checkin.haveAccount" datatype="html">
@@ -2349,7 +2493,7 @@
         <source> No free times this month. Try the next one, or follow @nailsbyscooby on Instagram to know when the agenda opens. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">144,148</context>
+          <context context-type="linenumber">144,147</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.time.zone" datatype="html">
@@ -2476,7 +2620,7 @@
         <source> See my appointments </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">268,274</context>
+          <context context-type="linenumber">268,272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.next" datatype="html">
@@ -2679,13 +2823,6 @@
           <context context-type="linenumber">34,37</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="myAppointments.history" datatype="html">
-        <source>History</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
-          <context context-type="linenumber">40,41</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="myAppointments.cancelled.refund" datatype="html">
         <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>
         <context-group purpose="location">
@@ -2704,14 +2841,14 @@
         <source>My profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">3,6</context>
+          <context context-type="linenumber">3,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.changeDetails" datatype="html">
         <source> To change your details, send a message to @nailsbyscooby on Instagram. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">29,33</context>
+          <context context-type="linenumber">29,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaEmails" datatype="html">
@@ -2743,7 +2880,7 @@
         <source> Emails about your own appointments (reminders, cancellations) are always sent. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">60,63</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaOn" datatype="html">

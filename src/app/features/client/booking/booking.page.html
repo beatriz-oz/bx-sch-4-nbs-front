@@ -256,7 +256,7 @@
         </ol>
       </section>
 
-      @if (auth.user() && !auth.user()!.is_active) {
+      @if (auth.user()?.can_create_password) {
         <a routerLink="/activate" class="mt-4 block rounded-2xl border border-gray-200 p-4 hover:bg-gray-50">
           <span i18n="@@book.done.activate" class="block font-medium">Create your password</span>
           <span i18n="@@book.done.activateHint" class="block text-sm text-gray-500">To log in again later and follow your appointments.</span>

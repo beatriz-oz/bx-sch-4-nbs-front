@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { AdminAppointment } from '../../../core/api/types';
 import { formatMinutes, studioMinutes } from '../../../core/dates';
@@ -9,7 +10,7 @@ import { StudioDatePipe } from '../../../shared/studio-date.pipe';
 /** Details of one appointment, in a panel on the right, with the actions that fit its moment. */
 @Component({
   selector: 'app-appointment-panel',
-  imports: [CurrencyPipe, StudioDatePipe],
+  imports: [CurrencyPipe, RouterLink, StudioDatePipe],
   templateUrl: './appointment-panel.html',
   host: { '(document:keydown.escape)': 'closed.emit()' },
 })

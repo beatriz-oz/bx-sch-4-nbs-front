@@ -39,6 +39,7 @@ export class CompleteDialog implements OnInit {
   readonly durationHours = signal<number | null>(null);
   readonly durationMinutes = signal<number | null>(null);
   readonly notes = signal('');
+  readonly approveClient = signal(false);
   protected readonly minuteSteps = [0, 15, 30, 45];
 
   readonly busy = signal(false);
@@ -88,7 +89,7 @@ export class CompleteDialog implements OnInit {
       this.error.set($localize`:@@complete.invalidDuration:The duration must be between 15 minutes and 10 hours.`);
       return;
     }
-    this.run(this.api.complete(this.appointment().id, price, duration, this.notes().trim() || null), (updated) => this.completed.emit(updated));
+    this.run(this.api.complete(this.appointment().id, price, duration, this.notes().trim() || null, this.approveClient()), (updated) => this.completed.emit(updated));
   }
 
   private run<T>(request: Observable<T>, onSuccess: (value: T) => void): void {

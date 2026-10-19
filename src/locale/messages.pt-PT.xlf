@@ -106,6 +106,10 @@
         <source>Clients · Nails by Scooby</source>
         <target>Clientes · Nails by Scooby</target>
       </trans-unit>
+      <trans-unit id="title.clientProfile" datatype="html">
+        <source>Client · Nails by Scooby</source>
+        <target>Cliente · Nails by Scooby</target>
+      </trans-unit>
       <trans-unit id="title.openingHours" datatype="html">
         <source>Opening hours · Nails by Scooby</source>
         <target>Horários · Nails by Scooby</target>
@@ -446,6 +450,70 @@
         <source>Clients</source>
         <target>Clientes</target>
       </trans-unit>
+      <trans-unit id="profile.registered" datatype="html">
+        <source>Registered client</source>
+        <target>Cliente registada</target>
+      </trans-unit>
+      <trans-unit id="profile.approved" datatype="html">
+        <source>Allowed back · no password yet</source>
+        <target>Pode voltar · ainda sem palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="profile.notApproved" datatype="html">
+        <source>First time · not allowed back yet</source>
+        <target>Primeira vez · ainda não pode voltar</target>
+      </trans-unit>
+      <trans-unit id="clients.since" datatype="html">
+        <source>Since</source>
+        <target>Desde</target>
+      </trans-unit>
+      <trans-unit id="profile.revoke" datatype="html">
+        <source>Stop allowing back</source>
+        <target>Deixar de permitir</target>
+      </trans-unit>
+      <trans-unit id="profile.approve" datatype="html">
+        <source>Allow her back</source>
+        <target>Deixar voltar</target>
+      </trans-unit>
+      <trans-unit id="clients.visits" datatype="html">
+        <source>Visits</source>
+        <target>Visitas</target>
+      </trans-unit>
+      <trans-unit id="profile.spent" datatype="html">
+        <source>Spent</source>
+        <target>Gasto</target>
+      </trans-unit>
+      <trans-unit id="reports.table.noShows" datatype="html">
+        <source>No-shows</source>
+        <target>Faltas</target>
+      </trans-unit>
+      <trans-unit id="clients.lastVisit" datatype="html">
+        <source>Last visit</source>
+        <target>Última visita</target>
+      </trans-unit>
+      <trans-unit id="clients.next" datatype="html">
+        <source>Next</source>
+        <target>Próxima</target>
+      </trans-unit>
+      <trans-unit id="myAppointments.history" datatype="html">
+        <source>History</source>
+        <target>Histórico</target>
+      </trans-unit>
+      <trans-unit id="profile.noHistory" datatype="html">
+        <source>No appointments yet.</source>
+        <target>Ainda sem marcações.</target>
+      </trans-unit>
+      <trans-unit id="dashboard.loading" datatype="html">
+        <source>Loading…</source>
+        <target>A carregar…</target>
+      </trans-unit>
+      <trans-unit id="profile.approve.question" datatype="html">
+        <source>Allow <x id="name" equiv-text="profile.client.name"/> to create a password and book again?</source>
+        <target>Permitir que <x id="name" equiv-text="profile.client.name"/> crie uma palavra-passe e volte a marcar?</target>
+      </trans-unit>
+      <trans-unit id="profile.revoke.question" datatype="html">
+        <source>Stop allowing <x id="name" equiv-text="profile.client.name"/> to create a password? She will not be able to book again.</source>
+        <target>Deixar de permitir que <x id="name" equiv-text="profile.client.name"/> crie uma palavra-passe? Ela não vai poder voltar a marcar.</target>
+      </trans-unit>
       <trans-unit id="clients.subtitle" datatype="html">
         <source> Registered clients have a password. Pending ones only booked once, or were added by you, and have not created a password yet. </source>
         <target> As clientes registadas têm palavra-passe. As pendentes só marcaram uma vez, ou foram adicionadas por si, e ainda não criaram palavra-passe. </target>
@@ -462,17 +530,13 @@
         <source>Search by name, @, email or phone</source>
         <target>Procurar por nome, @, email ou telemóvel</target>
       </trans-unit>
-      <trans-unit id="clients.visits" datatype="html">
-        <source>Visits</source>
-        <target>Visitas</target>
+      <trans-unit id="clients.allowedBack" datatype="html">
+        <source>Allowed back</source>
+        <target>Pode voltar</target>
       </trans-unit>
-      <trans-unit id="clients.lastVisit" datatype="html">
-        <source>Last visit</source>
-        <target>Última visita</target>
-      </trans-unit>
-      <trans-unit id="clients.next" datatype="html">
-        <source>Next</source>
-        <target>Próxima</target>
+      <trans-unit id="clients.notAllowedBack" datatype="html">
+        <source>Not allowed back</source>
+        <target>Não pode voltar</target>
       </trans-unit>
       <trans-unit id="clients.emailVerified" datatype="html">
         <source>Email confirmed</source>
@@ -482,10 +546,6 @@
         <source>Email not confirmed</source>
         <target>Email por confirmar</target>
       </trans-unit>
-      <trans-unit id="clients.since" datatype="html">
-        <source>Since</source>
-        <target>Desde</target>
-      </trans-unit>
       <trans-unit id="clients.noMatch" datatype="html">
         <source>No client matches this search.</source>
         <target>Nenhuma cliente corresponde a esta pesquisa.</target>
@@ -493,10 +553,6 @@
       <trans-unit id="clients.empty" datatype="html">
         <source>No clients here yet.</source>
         <target>Ainda não há clientes aqui.</target>
-      </trans-unit>
-      <trans-unit id="dashboard.loading" datatype="html">
-        <source>Loading…</source>
-        <target>A carregar…</target>
       </trans-unit>
       <trans-unit id="complete.title" datatype="html">
         <source>Complete appointment</source>
@@ -549,6 +605,14 @@
       <trans-unit id="complete.estimated" datatype="html">
         <source>Estimated when booked: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</source>
         <target>Estimado na marcação: <x id="INTERPOLATION" equiv-text="{{ appointment().estimated_price }}"/> €</target>
+      </trans-unit>
+      <trans-unit id="complete.approve" datatype="html">
+        <source>She can come back</source>
+        <target>Ela pode voltar</target>
+      </trans-unit>
+      <trans-unit id="complete.approveHint" datatype="html">
+        <source>First-time client: allows her to create a password and book again. You can change it later in her profile.</source>
+        <target>Cliente de primeira vez: permite que crie uma palavra-passe e volte a marcar. Pode mudar depois no perfil dela.</target>
       </trans-unit>
       <trans-unit id="complete.confirm" datatype="html">
         <source> Complete </source>
@@ -926,10 +990,6 @@
         <source>Month</source>
         <target>Mês</target>
       </trans-unit>
-      <trans-unit id="reports.table.noShows" datatype="html">
-        <source>No-shows</source>
-        <target>Faltas</target>
-      </trans-unit>
       <trans-unit id="reports.table.total" datatype="html">
         <source>Total</source>
         <target>Total</target>
@@ -1021,6 +1081,10 @@
       <trans-unit id="code.invalid" datatype="html">
         <source>This code is not valid or has expired. Check it, or ask for a new one.</source>
         <target>Este código não é válido ou expirou. Verifique-o ou peça um novo.</target>
+      </trans-unit>
+      <trans-unit id="activate.error.notApproved" datatype="html">
+        <source>Creating a password needs the studio&apos;s approval. Send a message to @nailsbyscooby on Instagram.</source>
+        <target>Criar uma palavra-passe precisa da aprovação do estúdio. Envie uma mensagem para @nailsbyscooby no Instagram.</target>
       </trans-unit>
       <trans-unit id="activate.error.notFound" datatype="html">
         <source>We don&apos;t know this phone number yet. Your first appointment is booked with your Instagram.</source>
@@ -1357,10 +1421,6 @@
       <trans-unit id="myAppointments.bookNow" datatype="html">
         <source>Book one now</source>
         <target>Marcar agora</target>
-      </trans-unit>
-      <trans-unit id="myAppointments.history" datatype="html">
-        <source>History</source>
-        <target>Histórico</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancelled.refund" datatype="html">
         <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>

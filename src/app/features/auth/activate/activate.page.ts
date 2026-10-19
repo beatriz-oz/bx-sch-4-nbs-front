@@ -115,6 +115,8 @@ export class ActivatePage {
   private messageFor(error: unknown): string {
     if (error instanceof HttpErrorResponse) {
       switch (error.status) {
+        case 403:
+          return $localize`:@@activate.error.notApproved:Creating a password needs the studio's approval. Send a message to @nailsbyscooby on Instagram.`;
         case 404:
           this.redirect.set('check-in');
           return $localize`:@@activate.error.notFound:We don't know this phone number yet. Your first appointment is booked with your Instagram.`;

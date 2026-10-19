@@ -47,7 +47,9 @@
       @if (!user.is_active) {
         <p class="mt-3 rounded-lg bg-gray-50 px-3 py-2 text-xs text-gray-600">
           <ng-container i18n="@@profile.agendaNeedsPassword">These emails go to regular clients, with a password.</ng-container>
-          <a routerLink="/activate" i18n="@@link.createPassword" class="ml-1 font-medium underline">Create your password</a>
+          @if (user.can_create_password) {
+            <a routerLink="/activate" i18n="@@link.createPassword" class="ml-1 font-medium underline">Create your password</a>
+          }
         </p>
       }
       @if (notice(); as message) {

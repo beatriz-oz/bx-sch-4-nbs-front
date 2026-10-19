@@ -19,7 +19,7 @@
         {{ appointment().client.name.charAt(0) }}{{ appointment().client.last_name.charAt(0) }}
       </span>
       <div>
-        <p class="font-semibold">{{ appointment().client.name }} {{ appointment().client.last_name }}</p>
+        <a [routerLink]="['/admin/clients', appointment().client.id]" class="font-semibold hover:underline">{{ appointment().client.name }} {{ appointment().client.last_name }}</a>
         @if (appointment().client.instagram) {
           <p class="text-sm text-gray-500">&#64;{{ appointment().client.instagram }}</p>
         }

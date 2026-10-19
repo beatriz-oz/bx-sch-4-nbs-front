@@ -29,6 +29,11 @@ export const adminRoutes: Routes = [
         loadComponent: () => import('./clients/clients.page').then((m) => m.ClientsPage),
       },
       {
+        path: 'clients/:id',
+        title: $localize`:@@title.clientProfile:Client · Nails by Scooby`,
+        loadComponent: () => import('./clients/client-profile.page').then((m) => m.ClientProfilePage),
+      },
+      {
         path: 'opening-hours',
         title: $localize`:@@title.openingHours:Opening hours · Nails by Scooby`,
         loadComponent: () => import('./opening-hours/opening-hours.page').then((m) => m.OpeningHoursPage),

@@ -53,6 +53,7 @@ export type MonthPublished = Schemas['MonthPublished'];
 export type AdminPayments = Schemas['AdminPayments'];
 export type ClientOverview = Schemas['ClientOverview'];
 export type YearReport = Schemas['YearReport'];
+export type ClientProfile = Schemas['ClientProfile'];
 
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];

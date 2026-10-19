@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 import { apiErrorMessage } from '../../../core/api/errors';
@@ -14,7 +15,7 @@ type Group = 'registered' | 'pending';
  */
 @Component({
   selector: 'app-clients-page',
-  imports: [StudioDatePipe],
+  imports: [RouterLink, StudioDatePipe],
   templateUrl: './clients.page.html',
 })
 export class ClientsPage {
