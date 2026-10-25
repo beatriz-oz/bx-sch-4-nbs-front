@@ -836,6 +836,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/prices/simulate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Simulate Price
+         * @description Public price simulator (no login): the estimated price of a service, with possible extras. The real estimate, made when booking, also checks the client's last appointment
+         */
+        get: operations["simulate_price_v1_prices_simulate_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health": {
         parameters: {
             query?: never;
@@ -1000,11 +1020,6 @@ export interface components {
         };
         /** AppointmentDetails */
         AppointmentDetails: {
-            /**
-             * Scheduled At
-             * Format: date-time
-             */
-            scheduled_at: string;
             service: components["schemas"]["Service"];
             nail_size?: components["schemas"]["NailSize"] | null;
             nail_art_level?: components["schemas"]["NailArtLevel"] | null;
@@ -1018,6 +1033,11 @@ export interface components {
              * @default false
              */
             has_other_professional_nails: boolean;
+            /**
+             * Scheduled At
+             * Format: date-time
+             */
+            scheduled_at: string;
         };
         /** AppointmentResult */
         AppointmentResult: {
@@ -1712,11 +1732,6 @@ export interface components {
         NailSize: "S" | "M" | "L" | "XL" | "XXL";
         /** NewAppointment */
         NewAppointment: {
-            /**
-             * Scheduled At
-             * Format: date-time
-             */
-            scheduled_at: string;
             service: components["schemas"]["Service"];
             nail_size?: components["schemas"]["NailSize"] | null;
             nail_art_level?: components["schemas"]["NailArtLevel"] | null;
@@ -1730,6 +1745,11 @@ export interface components {
              * @default false
              */
             has_other_professional_nails: boolean;
+            /**
+             * Scheduled At
+             * Format: date-time
+             */
+            scheduled_at: string;
             /** Policy Id */
             policy_id: number;
             /**
@@ -3726,6 +3746,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BaseResponse_PriceList_"];
+                };
+            };
+        };
+    };
+    simulate_price_v1_prices_simulate_get: {
+        parameters: {
+            query: {
+                service: components["schemas"]["Service"];
+                nail_size?: components["schemas"]["NailSize"] | null;
+                nail_art_level?: components["schemas"]["NailArtLevel"] | null;
+                broken_nails?: number;
+                has_other_professional_nails?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_EstimateResult_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

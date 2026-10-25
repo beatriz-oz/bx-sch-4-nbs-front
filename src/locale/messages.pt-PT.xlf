@@ -18,6 +18,10 @@
         <source>My appointments</source>
         <target>As minhas marcações</target>
       </trans-unit>
+      <trans-unit id="clientNav.prices" datatype="html">
+        <source>Prices</source>
+        <target>Preços</target>
+      </trans-unit>
       <trans-unit id="clientNav.profile" datatype="html">
         <source>Profile</source>
         <target>Perfil</target>
@@ -45,6 +49,10 @@
       <trans-unit id="title.profile" datatype="html">
         <source>My profile · Nails by Scooby</source>
         <target>O meu perfil · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.simulator" datatype="html">
+        <source>Prices · Nails by Scooby</source>
+        <target>Preços · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.attendance" datatype="html">
         <source>Confirm attendance · Nails by Scooby</source>
@@ -1310,6 +1318,14 @@
         <source>Create it with your phone number.</source>
         <target>Crie-a com o seu número de telemóvel.</target>
       </trans-unit>
+      <trans-unit id="login.prices" datatype="html">
+        <source>How much will it cost?</source>
+        <target>Quanto vai custar?</target>
+      </trans-unit>
+      <trans-unit id="login.pricesHint" datatype="html">
+        <source>Simulate the price, no login needed.</source>
+        <target>Simule o preço, sem precisar de entrar.</target>
+      </trans-unit>
       <trans-unit id="login.error.invalid" datatype="html">
         <source>Phone or password incorrect.</source>
         <target>Telemóvel ou palavra-passe incorretos.</target>
@@ -1593,6 +1609,46 @@
       <trans-unit id="profile.agendaOff" datatype="html">
         <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
         <target>Feito: deixa de receber os emails de "agenda aberta".</target>
+      </trans-unit>
+      <trans-unit id="simulator.title" datatype="html">
+        <source>How much will it cost?</source>
+        <target>Quanto vai custar?</target>
+      </trans-unit>
+      <trans-unit id="simulator.subtitle" datatype="html">
+        <source>Choose what you would like and see the estimated price. No login needed.</source>
+        <target>Escolha o que gostaria e veja o preço estimado. Não precisa de entrar.</target>
+      </trans-unit>
+      <trans-unit id="simulator.maintenance.hint" datatype="html">
+        <source>For nails done here recently</source>
+        <target>Para unhas feitas aqui recentemente</target>
+      </trans-unit>
+      <trans-unit id="simulator.choose" datatype="html">
+        <source>Choose the service, the size and the nail art to see the price.</source>
+        <target>Escolha o serviço, o tamanho e a nail art para ver o preço.</target>
+      </trans-unit>
+      <trans-unit id="simulator.calculating" datatype="html">
+        <source>Calculating…</source>
+        <target>A calcular…</target>
+      </trans-unit>
+      <trans-unit id="simulator.estimated" datatype="html">
+        <source>Estimated price</source>
+        <target>Preço estimado</target>
+      </trans-unit>
+      <trans-unit id="simulator.toBook" datatype="html">
+        <source>Book now</source>
+        <target>Marcar agora</target>
+      </trans-unit>
+      <trans-unit id="simulator.book" datatype="html">
+        <source>Book</source>
+        <target>Marcar</target>
+      </trans-unit>
+      <trans-unit id="simulator.maintenanceNote" datatype="html">
+        <source> Maintenance price is for nails done here recently. Otherwise, it is priced as a new application. </source>
+        <target>O preço de manutenção é para unhas feitas aqui recentemente. Caso contrário, conta como uma nova aplicação.</target>
+      </trans-unit>
+      <trans-unit id="simulator.disclaimer" datatype="html">
+        <source> An estimate: the final price is confirmed on the day, after seeing your nails. </source>
+        <target>Uma estimativa: o preço final é confirmado no dia, depois de ver as suas unhas.</target>
       </trans-unit>
       <trans-unit id="reason.clientEarly" datatype="html">
         <source>By the client, more than 48h before</source>

@@ -50,7 +50,7 @@
     </button>
   </form>
 
-  <!-- The two other ways in: first time, or no password yet -->
+  <!-- The other ways in: first time, no password yet, or just seeing the prices -->
   <div class="mt-6 space-y-3 border-t border-gray-200 pt-6">
     <a routerLink="/check-in" class="block rounded-xl border border-gray-200 p-4 hover:bg-gray-50">
       <span i18n="@@login.firstTime" class="block font-medium">First appointment?</span>
@@ -59,6 +59,10 @@
     <a routerLink="/activate" class="block rounded-xl border border-gray-200 p-4 hover:bg-gray-50">
       <span i18n="@@login.noPassword" class="block font-medium">Already a client, but no password?</span>
       <span i18n="@@login.noPasswordHint" class="block text-sm text-gray-500">Create it with your phone number.</span>
+    </a>
+    <a routerLink="/prices" class="block rounded-xl border border-gray-200 p-4 hover:bg-gray-50">
+      <span i18n="@@login.prices" class="block font-medium">How much will it cost?</span>
+      <span i18n="@@login.pricesHint" class="block text-sm text-gray-500">Simulate the price, no login needed.</span>
     </a>
   </div>
 </section>

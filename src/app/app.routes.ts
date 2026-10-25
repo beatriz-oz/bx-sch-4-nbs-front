@@ -44,6 +44,13 @@ export const routes: Routes = [
     loadComponent: () => import('./features/client/profile/profile.page').then((m) => m.ProfilePage),
   },
   {
+    // Public: anyone can see how much a service costs, without logging in.
+    path: 'prices',
+    title: $localize`:@@title.simulator:Prices · Nails by Scooby`,
+    loadComponent: () =>
+      import('./features/public/price-simulator/price-simulator.page').then((m) => m.PriceSimulatorPage),
+  },
+  {
     // The link in the reminder email. No login needed: the token in the link is the proof.
     path: 'confirm-attendance',
     title: $localize`:@@title.attendance:Confirm attendance · Nails by Scooby`,

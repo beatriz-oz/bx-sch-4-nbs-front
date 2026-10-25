@@ -15,6 +15,7 @@ import {
   NewAppointment,
   Policy,
   PriceList,
+  PriceSimulation,
 } from '../../core/api/types';
 
 /** The endpoints a client uses. Each method returns just the "detail". */
@@ -36,6 +37,19 @@ export class ClientApiService {
 
   estimate(details: AppointmentDetails): Observable<Estimate> {
     return this.http.post<ApiResponse<Estimate>>(`${this.api}/appointments/estimate`, details).pipe(map((r) => r.detail));
+  }
+
+  /** Public: the estimated price of a service, for anyone (no login). */
+  simulatePrice(choices: PriceSimulation): Observable<Estimate> {
+    const params: Record<string, string | number | boolean> = {};
+    for (const [key, value] of Object.entries(choices)) {
+      if (value !== null && value !== undefined) {
+        params[key] = value;
+      }
+    }
+    return this.http
+      .get<ApiResponse<Estimate>>(`${this.api}/prices/simulate`, { params })
+      .pipe(map((r) => r.detail));
   }
 
   prices(): Observable<PriceList> {
