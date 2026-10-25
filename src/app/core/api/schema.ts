@@ -500,6 +500,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/day-slots": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Day Slots
+         * @description Sets the slots of one day (e.g. 10:00, 14:00, 16:00 instead of the usual ones). An empty list goes back to the default slots. Bookings already made are kept
+         */
+        put: operations["set_day_slots_v1_admin_day_slots_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -890,6 +910,8 @@ export interface components {
             day: string;
             /** Slots */
             slots: components["schemas"]["AgendaSlotResult"][];
+            /** Custom Times */
+            custom_times: boolean;
         };
         /** AgendaMonth */
         AgendaMonth: {
@@ -1017,6 +1039,18 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["ScheduleExceptionResult"];
+            /** Warning */
+            warning?: string | null;
+        };
+        /** BaseResponseWithWarning[list[time]] */
+        BaseResponseWithWarning_list_time__: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            /** Detail */
+            detail: string[];
             /** Warning */
             warning?: string | null;
         };
@@ -1431,6 +1465,19 @@ export interface components {
         CodeSent: {
             /** Sent To */
             sent_to: string;
+        };
+        /**
+         * DaySlotsSet
+         * @description The slots of one day. An empty list goes back to the default slots.
+         */
+        DaySlotsSet: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Slot Times */
+            slot_times: string[];
         };
         /** EstimateResult */
         EstimateResult: {
@@ -2838,6 +2885,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_day_slots_v1_admin_day_slots_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DaySlotsSet"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponseWithWarning_list_time__"];
+                };
             };
             /** @description Validation Error */
             422: {

@@ -49,6 +49,7 @@ export type AgendaDay = Schemas['AgendaDay'];
 export type AgendaSlot = Schemas['AgendaSlotResult'];
 export type ScheduleException = Schemas['ScheduleExceptionResult'];
 export type ScheduleExceptionSet = Schemas['ScheduleExceptionSet'];
+export type DaySlotsSet = Schemas['DaySlotsSet'];
 export type MonthPublished = Schemas['MonthPublished'];
 export type AdminPayments = Schemas['AdminPayments'];
 export type ClientOverview = Schemas['ClientOverview'];

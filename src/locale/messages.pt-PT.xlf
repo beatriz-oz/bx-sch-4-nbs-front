@@ -658,6 +658,38 @@
         <source> Closing a booked slot does not cancel the appointment: cancel it in the calendar if needed. </source>
         <target> Fechar um horário marcado não cancela a marcação: cancele-a na agenda, se for preciso. </target>
       </trans-unit>
+      <trans-unit id="dayEditor.times" datatype="html">
+        <source>Times of this day</source>
+        <target>Horários deste dia</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.customTimes" datatype="html">
+        <source>Own times</source>
+        <target>Horários próprios</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.removeTime" datatype="html">
+        <source>Remove this time</source>
+        <target>Remover este horário</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.newTime" datatype="html">
+        <source>New time</source>
+        <target>Novo horário</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.addTime" datatype="html">
+        <source> Add </source>
+        <target>Adicionar</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.saveTimes" datatype="html">
+        <source> Save times </source>
+        <target>Guardar horários</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.defaultTimes" datatype="html">
+        <source> Use the usual times </source>
+        <target>Usar os horários habituais</target>
+      </trans-unit>
+      <trans-unit id="dayEditor.timesNote" datatype="html">
+        <source> Only this day changes. XL and XXL nails go in the first and the last time of the day. </source>
+        <target>Só este dia muda. Unhas XL e XXL ficam no primeiro e no último horário do dia.</target>
+      </trans-unit>
       <trans-unit id="dayEditor.reset" datatype="html">
         <source> Back to the weekly default </source>
         <target> Voltar ao padrão semanal </target>
@@ -690,6 +722,10 @@
         <source> Publish month </source>
         <target> Publicar mês </target>
       </trans-unit>
+      <trans-unit id="hours.customTimes" datatype="html">
+        <source>Own times on this day</source>
+        <target>Horários próprios neste dia</target>
+      </trans-unit>
       <trans-unit id="hours.changed" datatype="html">
         <source>Changed from the weekly default</source>
         <target>Alterado em relação ao padrão</target>
@@ -709,6 +745,10 @@
       <trans-unit id="hours.legend.changed" datatype="html">
         <source>Changed from the default</source>
         <target>Alterado em relação ao padrão</target>
+      </trans-unit>
+      <trans-unit id="hours.legend.customTimes" datatype="html">
+        <source>Own times on this day</source>
+        <target>Horários próprios neste dia</target>
       </trans-unit>
       <trans-unit id="hours.locked.monday" datatype="html">
         <source>Mondays are always closed to clients. You can still book a Monday yourself in the calendar.</source>

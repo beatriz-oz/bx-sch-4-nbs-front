@@ -23,6 +23,7 @@ import {
   PriceList,
   ScheduleException,
   ScheduleExceptionSet,
+  DaySlotsSet,
   Service,
   StudioAppointment,
   YearReport,
@@ -125,6 +126,13 @@ export class AdminApiService {
   setException(data: ScheduleExceptionSet): Observable<string | null> {
     return this.http
       .put<ApiResponse<ScheduleException> & { warning?: string | null }>(`${environment.apiUrl}/admin/schedule-exceptions`, data)
+      .pipe(map((r) => r.warning ?? null));
+  }
+
+  /** The times of one day. An empty list goes back to the default times. */
+  setDaySlots(data: DaySlotsSet): Observable<string | null> {
+    return this.http
+      .put<ApiResponse<string[]> & { warning?: string | null }>(`${environment.apiUrl}/admin/day-slots`, data)
       .pipe(map((r) => r.warning ?? null));
   }
 

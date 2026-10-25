@@ -66,6 +66,9 @@
             <span class="flex items-center gap-1">
               <span class="flex h-6 w-6 items-center justify-center rounded-full text-sm font-semibold"
                 [class]="day.day === today ? 'bg-brand-600 text-white' : ''">{{ +day.day.slice(8) }}</span>
+              @if (day.custom_times) {
+                <span class="text-[10px] leading-none text-gray-500" title="Own times on this day" i18n-title="@@hours.customTimes">◷</span>
+              }
               @if (hasException(day.day)) {
                 <span class="h-1.5 w-1.5 rounded-full bg-gray-900" title="Changed from the weekly default" i18n-title="@@hours.changed"></span>
               }
@@ -88,6 +91,7 @@
       <span class="flex items-center gap-1"><span class="rounded bg-brand-100 px-1 font-medium text-brand-800">10:00</span><span i18n="@@hours.legend.booked">Booked</span></span>
       <span class="flex items-center gap-1"><span class="px-1 text-gray-300 line-through">10:00</span><span i18n="@@hours.legend.closed">Closed</span></span>
       <span class="flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-gray-900"></span><span i18n="@@hours.legend.changed">Changed from the default</span></span>
+      <span class="flex items-center gap-1"><span class="text-gray-500">◷</span><span i18n="@@hours.legend.customTimes">Own times on this day</span></span>
     </div>
   }
 </div>

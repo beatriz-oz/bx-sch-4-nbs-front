@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { forkJoin, Observable, of, switchMap } from 'rxjs';
 
 import { apiErrorMessage } from '../../../core/api/errors';
@@ -9,6 +9,7 @@ import { AdminApiService } from '../admin-api.service';
 /**
  * Opens or closes one day, or single slots of it, for the clients.
  * Each change is an "exception" to the weekly rule; "Back to default" removes them.
+ * The times themselves can also change for one day (e.g. the last slot at 16:00).
  */
 @Component({
   selector: 'app-day-editor',
@@ -33,6 +34,33 @@ export class DayEditor {
 
   readonly dayOpen = computed(() => this.day().slots.some((slot) => slot.is_open));
   readonly hasExceptions = computed(() => this.exceptions().length > 0);
+
+  /** The times being edited, as HH:MM. Starts again from the day each time it reloads. */
+  readonly draftTimes = linkedSignal(() => this.day().slots.map((slot) => slot.time.slice(0, 5)));
+  readonly newTime = signal('');
+  readonly timesChanged = computed(
+    () => this.draftTimes().join() !== this.day().slots.map((slot) => slot.time.slice(0, 5)).join(),
+  );
+
+  addTime(): void {
+    const time = this.newTime();
+    if (time && !this.draftTimes().includes(time)) {
+      this.draftTimes.update((times) => [...times, time].sort());
+    }
+    this.newTime.set('');
+  }
+
+  removeTime(time: string): void {
+    this.draftTimes.update((times) => times.filter((t) => t !== time));
+  }
+
+  saveTimes(): void {
+    this.run(this.api.setDaySlots({ day: this.day().day, slot_times: this.draftTimes() }));
+  }
+
+  defaultTimes(): void {
+    this.run(this.api.setDaySlots({ day: this.day().day, slot_times: [] }));
+  }
 
   /** The whole day follows one rule: the slot exceptions are removed first. */
   toggleDay(): void {
