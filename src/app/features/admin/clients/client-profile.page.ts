@@ -9,7 +9,7 @@ import { StudioDatePipe } from '../../../shared/studio-date.pipe';
 import { AdminApiService } from '../admin-api.service';
 import { formatDuration } from '../reports/report-format';
 
-/** One client: her details, totals, whether she may come back, and every appointment. */
+/** One client: her details, the studio's notes, totals, whether she may come back, and every appointment. */
 @Component({
   selector: 'app-client-profile-page',
   imports: [CurrencyPipe, RouterLink, StudioDatePipe],
@@ -29,6 +29,10 @@ export class ClientProfilePage implements OnInit {
   readonly profile = signal<ClientProfile | null>(null);
   readonly saving = signal(false);
   readonly error = signal<string | null>(null);
+
+  /** The notes text while editing them, or null when only showing them. */
+  readonly notesDraft = signal<string | null>(null);
+  protected readonly notesMax = 2000;
 
   ngOnInit(): void {
     this.api.clientProfile(Number(this.id())).subscribe({
@@ -53,6 +57,31 @@ export class ClientProfilePage implements OnInit {
     this.api.setApproval(profile.client.id, approve).subscribe({
       next: (updated) => {
         this.profile.set(updated);
+        this.saving.set(false);
+      },
+      error: (error: unknown) => {
+        this.error.set(apiErrorMessage(error));
+        this.saving.set(false);
+      },
+    });
+  }
+
+  editNotes(): void {
+    this.notesDraft.set(this.profile()?.studio_notes ?? '');
+  }
+
+  saveNotes(): void {
+    const profile = this.profile();
+    const draft = this.notesDraft();
+    if (!profile || draft === null) {
+      return;
+    }
+    this.saving.set(true);
+    this.error.set(null);
+    this.api.setClientNotes(profile.client.id, draft).subscribe({
+      next: (updated) => {
+        this.profile.set(updated);
+        this.notesDraft.set(null);
         this.saving.set(false);
       },
       error: (error: unknown) => {

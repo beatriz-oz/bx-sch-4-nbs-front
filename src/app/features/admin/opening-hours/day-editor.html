@@ -94,7 +94,7 @@
         <div class="mt-3 flex flex-wrap gap-2">
           @if (timesChanged()) {
             <button type="button" (click)="saveTimes()" [disabled]="busy()" i18n="@@dayEditor.saveTimes"
-              class="rounded-full bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+              class="rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-white hover:bg-primary-hover disabled:opacity-60">
               Save times
             </button>
           }

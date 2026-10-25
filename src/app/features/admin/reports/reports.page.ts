@@ -30,6 +30,13 @@ export class ReportsPage {
   readonly report = signal<YearReport | null>(null);
   readonly error = signal<string | null>(null);
 
+  // --- export to a spreadsheet ---
+  readonly exportOpen = signal(false);
+  readonly exportStart = signal('');
+  readonly exportEnd = signal('');
+  readonly exporting = signal(false);
+  readonly exportError = signal<string | null>(null);
+
   /** "Jan", "Feb"… in the site's language. */
   readonly monthLabels = Array.from({ length: 12 }, (_, index) =>
     new Intl.DateTimeFormat(this.locale, { month: 'short', timeZone: 'UTC' }).format(new Date(Date.UTC(2026, index, 15))),
@@ -66,6 +73,46 @@ export class ReportsPage {
 
   constructor() {
     this.load();
+  }
+
+  /** Opens the export box with the month being looked at; the dates can then be changed. */
+  openExport(): void {
+    const month = String(this.month()).padStart(2, '0');
+    const lastDay = new Date(Date.UTC(this.year(), this.month(), 0)).getUTCDate();
+    this.exportStart.set(`${this.year()}-${month}-01`);
+    this.exportEnd.set(`${this.year()}-${month}-${String(lastDay).padStart(2, '0')}`);
+    this.exportError.set(null);
+    this.exportOpen.set(true);
+  }
+
+  downloadExport(): void {
+    const start = this.exportStart();
+    const end = this.exportEnd();
+    if (!start || !end || end < start) {
+      this.exportError.set($localize`:@@export.error.dates:Choose a start date and an end date after it.`);
+      return;
+    }
+    const language = this.locale.startsWith('pt') ? 'pt' : 'en';
+    this.exporting.set(true);
+    this.exportError.set(null);
+    this.api.exportAppointments(start, end, language).subscribe({
+      next: (file) => {
+        this.exporting.set(false);
+        // The file arrives through HttpClient (with the login token), so the browser
+        // is asked to save it from memory: a temporary link to the Blob, clicked once.
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file);
+        link.download = `${language === 'pt' ? 'marcacoes' : 'appointments'}_${start}_${end}.xlsx`;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        this.exportOpen.set(false);
+      },
+      error: () => {
+        this.exporting.set(false);
+        // The error body is a Blob too; the only expected one is a period over 2 years.
+        this.exportError.set($localize`:@@export.error.failed:The file could not be created. Choose a period of up to 2 years.`);
+      },
+    });
   }
 
   moveYear(direction: -1 | 1): void {

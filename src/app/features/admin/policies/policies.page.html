@@ -8,7 +8,7 @@
     </div>
     @if (loaded() && !editing()) {
       <button type="button" (click)="startNewVersion()" i18n="@@policies.newVersion"
-        class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700">
+        class="rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover">
         New version
       </button>
     }
@@ -45,7 +45,7 @@
           Back
         </button>
         <button type="submit" [disabled]="publishing() || !canPublish()" i18n="@@policies.publish"
-          class="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-50">
+          class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-white hover:bg-primary-hover disabled:opacity-50">
           Publish version
         </button>
       </div>

@@ -49,7 +49,7 @@
                 </p>
               </div>
               <button type="button" (click)="confirmDeposit(appointment)" [disabled]="busyId() === appointment.id" i18n="@@action.confirmDeposit"
-                class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+                class="rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover disabled:opacity-60">
                 Deposit paid
               </button>
             </li>
@@ -76,7 +76,7 @@
                 </p>
               </div>
               <button type="button" (click)="markRefunded(appointment)" [disabled]="busyId() === appointment.id" i18n="@@payments.refundDone"
-                class="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+                class="rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover disabled:opacity-60">
                 Refund done
               </button>
             </li>

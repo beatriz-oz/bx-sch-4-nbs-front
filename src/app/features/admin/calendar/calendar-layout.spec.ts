@@ -23,7 +23,7 @@ function appointment(id: number, time: string, service: Service = 'Removal'): Ad
     cancellation_reason: null,
     deposit_refunded_at: null,
     duration_minutes: DURATION[service],
-    client: { id: 1, name: 'Ana', last_name: 'Silva', instagram: null, is_active: true, approved: true },
+    client: { id: 1, name: 'Ana', last_name: 'Silva', instagram: null, is_active: true, approved: true, studio_notes: null },
     deposit_paid: false,
     attendance_confirmed: false,
     deposit_overdue: false,

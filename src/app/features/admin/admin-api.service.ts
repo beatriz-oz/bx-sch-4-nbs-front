@@ -203,6 +203,13 @@ export class AdminApiService {
   }
 
   /** Allows (or no longer allows) a client to come back and create a password. */
+  /** The studio's private notes about a client (she never sees them). Empty text clears them. */
+  setClientNotes(id: number, notes: string): Observable<ClientProfile> {
+    return this.http
+      .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/notes`, { notes })
+      .pipe(map((r) => r.detail));
+  }
+
   setApproval(id: number, approved: boolean): Observable<ClientProfile> {
     return this.http
       .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/approval`, { approved })
@@ -231,6 +238,14 @@ export class AdminApiService {
     return this.http
       .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/expenses/${id}`)
       .pipe(map(() => undefined));
+  }
+
+  /** The appointments of a period as an Excel file (.xlsx), to open in Google Sheets. */
+  exportAppointments(startDate: string, endDate: string, language: 'pt' | 'en'): Observable<Blob> {
+    return this.http.get(`${this.url}/export`, {
+      params: { start_date: startDate, end_date: endDate, language },
+      responseType: 'blob',
+    });
   }
 
   yearReport(year: number): Observable<YearReport> {

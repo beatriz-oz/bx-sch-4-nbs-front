@@ -52,7 +52,7 @@
       }
 
       <button type="submit" [disabled]="busy()" i18n="@@checkin.sendCode"
-        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        class="w-full rounded-full bg-primary px-4 py-3 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
         Send me the code
       </button>
     </form>
@@ -81,7 +81,7 @@
         <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
       }
       <button type="submit" [disabled]="busy()" i18n="@@code.confirm"
-        class="w-full rounded-full bg-gray-900 px-4 py-3 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        class="w-full rounded-full bg-primary px-4 py-3 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
         Confirm
       </button>
     </form>

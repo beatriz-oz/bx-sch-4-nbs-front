@@ -1,94 +1,97 @@
-<div class="mx-auto max-w-xl px-4 pt-6 pb-48">
-  <h2 i18n="@@simulator.title" class="text-2xl font-semibold">How much will it cost?</h2>
-  <p i18n="@@simulator.subtitle" class="mt-1 text-sm text-gray-500">Choose what you would like and see the estimated price. No login needed.</p>
+<!-- One white card over the texture (like the login); pb-48 leaves room for the price bar at the bottom -->
+<div class="px-4 pt-8 pb-48">
+  <div class="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <h2 i18n="@@simulator.title" class="text-2xl font-semibold">How much will it cost?</h2>
+    <p i18n="@@simulator.subtitle" class="mt-1 text-sm text-gray-500">Choose what you would like and see the estimated price. No login needed.</p>
 
-  <!-- Service -->
-  <div class="mt-5 space-y-3">
-    @for (option of services; track option) {
-      <button type="button" (click)="chooseService(option)" [attr.aria-pressed]="service() === option"
-        class="flex w-full items-center justify-between rounded-2xl border bg-white p-4 text-left"
-        [class]="service() === option ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
-        <span>
-          <span class="block font-semibold">{{ serviceLabels[option] }}</span>
-          <span class="block text-sm text-gray-500">
-            @switch (option) {
-              @case ('Application') { <ng-container i18n="@@book.service.application.hint">A new set of nails</ng-container> }
-              @case ('Maintenance') { <ng-container i18n="@@simulator.maintenance.hint">For nails done here recently</ng-container> }
-              @case ('Removal') { <ng-container i18n="@@book.service.removal.hint">Taking the nails off</ng-container> }
+    <!-- Service -->
+    <div class="mt-5 space-y-3">
+      @for (option of services; track option) {
+        <button type="button" (click)="chooseService(option)" [attr.aria-pressed]="service() === option"
+          class="flex w-full items-center justify-between rounded-2xl border bg-white p-4 text-left"
+          [class]="service() === option ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
+          <span>
+            <span class="block font-semibold">{{ serviceLabels[option] }}</span>
+            <span class="block text-sm text-gray-500">
+              @switch (option) {
+                @case ('Application') { <ng-container i18n="@@book.service.application.hint">A new set of nails</ng-container> }
+                @case ('Maintenance') { <ng-container i18n="@@simulator.maintenance.hint">For nails done here recently</ng-container> }
+                @case ('Removal') { <ng-container i18n="@@book.service.removal.hint">Taking the nails off</ng-container> }
+              }
+            </span>
+          </span>
+          @if (lowestPrice(option); as price) {
+            <span class="text-sm whitespace-nowrap text-gray-600">
+              <ng-container i18n="@@book.from">from</ng-container> {{ price | currency: 'EUR' }}
+            </span>
+          }
+        </button>
+      }
+    </div>
+
+    @if (needsDetails()) {
+      <!-- Size -->
+      <h3 i18n="@@booking.size" class="mt-8 mb-3 font-semibold">Nail size</h3>
+      <div class="grid grid-cols-5 gap-2">
+        @for (size of sizes; track size) {
+          <button type="button" (click)="nailSize.set(size)" [attr.aria-pressed]="nailSize() === size"
+            class="rounded-xl border py-2 text-center"
+            [class]="nailSize() === size ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white hover:border-gray-400'">
+            <span class="block font-semibold">{{ size }}</span>
+            @if (servicePrice(service()!, size); as price) {
+              <span class="block text-xs opacity-75">{{ price | currency: 'EUR' : 'symbol' : '1.0-0' }}</span>
             }
-          </span>
-        </span>
-        @if (lowestPrice(option); as price) {
-          <span class="text-sm whitespace-nowrap text-gray-600">
-            <ng-container i18n="@@book.from">from</ng-container> {{ price | currency: 'EUR' }}
-          </span>
+          </button>
         }
-      </button>
+      </div>
+
+      <!-- Nail art -->
+      <h3 i18n="@@complete.nailArt" class="mt-8 mb-3 font-semibold">Nail art</h3>
+      <div class="space-y-2">
+        @for (level of artLevels; track level) {
+          <button type="button" (click)="artLevel.set(level)" [attr.aria-pressed]="artLevel() === level"
+            class="flex w-full items-start justify-between gap-3 rounded-2xl border bg-white p-4 text-left"
+            [class]="artLevel() === level ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
+            <span>
+              <span class="block font-semibold">{{ level }}</span>
+              <span class="block text-sm text-gray-500">{{ artHints[level] }}</span>
+            </span>
+            @if (artPrice(level); as price) {
+              <span class="text-sm whitespace-nowrap text-gray-600">+ {{ price | currency: 'EUR' }}</span>
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Extras -->
+      <h3 i18n="@@book.extras.title" class="mt-8 mb-3 font-semibold">Anything else?</h3>
+      <div class="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
+        <div class="flex items-center justify-between gap-3">
+          <span>
+            <span i18n="@@complete.brokenNails" class="block font-medium">Broken nails</span>
+            <span i18n="@@book.broken.hint" class="block text-sm text-gray-500">To repair during the appointment</span>
+          </span>
+          <div class="flex items-center gap-3">
+            <button type="button" (click)="brokenNails.set(brokenNails() - 1)" [disabled]="brokenNails() === 0"
+              aria-label="Fewer" i18n-aria-label="@@book.fewer"
+              class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">−</button>
+            <span class="w-5 text-center font-semibold">{{ brokenNails() }}</span>
+            <button type="button" (click)="brokenNails.set(brokenNails() + 1)" [disabled]="brokenNails() === 10"
+              aria-label="More" i18n-aria-label="@@book.more"
+              class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">+</button>
+          </div>
+        </div>
+        <label class="flex items-start gap-3">
+          <input type="checkbox" [checked]="otherProfessional()" (change)="otherProfessional.set(!otherProfessional())"
+            class="mt-1 h-4 w-4 accent-gray-900" />
+          <span>
+            <span i18n="@@book.otherProfessional" class="block font-medium">My nails were done by another professional</span>
+            <span i18n="@@book.otherProfessional.hint" class="block text-sm text-gray-500">They need a complete removal first.</span>
+          </span>
+        </label>
+      </div>
     }
   </div>
-
-  @if (needsDetails()) {
-    <!-- Size -->
-    <h3 i18n="@@booking.size" class="mt-8 mb-3 font-semibold">Nail size</h3>
-    <div class="grid grid-cols-5 gap-2">
-      @for (size of sizes; track size) {
-        <button type="button" (click)="nailSize.set(size)" [attr.aria-pressed]="nailSize() === size"
-          class="rounded-xl border py-2 text-center"
-          [class]="nailSize() === size ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white hover:border-gray-400'">
-          <span class="block font-semibold">{{ size }}</span>
-          @if (servicePrice(service()!, size); as price) {
-            <span class="block text-xs opacity-75">{{ price | currency: 'EUR' : 'symbol' : '1.0-0' }}</span>
-          }
-        </button>
-      }
-    </div>
-
-    <!-- Nail art -->
-    <h3 i18n="@@complete.nailArt" class="mt-8 mb-3 font-semibold">Nail art</h3>
-    <div class="space-y-2">
-      @for (level of artLevels; track level) {
-        <button type="button" (click)="artLevel.set(level)" [attr.aria-pressed]="artLevel() === level"
-          class="flex w-full items-start justify-between gap-3 rounded-2xl border bg-white p-4 text-left"
-          [class]="artLevel() === level ? 'border-gray-900 ring-1 ring-gray-900' : 'border-gray-200 hover:border-gray-400'">
-          <span>
-            <span class="block font-semibold">{{ level }}</span>
-            <span class="block text-sm text-gray-500">{{ artHints[level] }}</span>
-          </span>
-          @if (artPrice(level); as price) {
-            <span class="text-sm whitespace-nowrap text-gray-600">+ {{ price | currency: 'EUR' }}</span>
-          }
-        </button>
-      }
-    </div>
-
-    <!-- Extras -->
-    <h3 i18n="@@book.extras.title" class="mt-8 mb-3 font-semibold">Anything else?</h3>
-    <div class="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
-      <div class="flex items-center justify-between gap-3">
-        <span>
-          <span i18n="@@complete.brokenNails" class="block font-medium">Broken nails</span>
-          <span i18n="@@book.broken.hint" class="block text-sm text-gray-500">To repair during the appointment</span>
-        </span>
-        <div class="flex items-center gap-3">
-          <button type="button" (click)="brokenNails.set(brokenNails() - 1)" [disabled]="brokenNails() === 0"
-            aria-label="Fewer" i18n-aria-label="@@book.fewer"
-            class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">−</button>
-          <span class="w-5 text-center font-semibold">{{ brokenNails() }}</span>
-          <button type="button" (click)="brokenNails.set(brokenNails() + 1)" [disabled]="brokenNails() === 10"
-            aria-label="More" i18n-aria-label="@@book.more"
-            class="h-9 w-9 rounded-full border border-gray-300 text-lg disabled:opacity-40">+</button>
-        </div>
-      </div>
-      <label class="flex items-start gap-3">
-        <input type="checkbox" [checked]="otherProfessional()" (change)="otherProfessional.set(!otherProfessional())"
-          class="mt-1 h-4 w-4 accent-gray-900" />
-        <span>
-          <span i18n="@@book.otherProfessional" class="block font-medium">My nails were done by another professional</span>
-          <span i18n="@@book.otherProfessional.hint" class="block text-sm text-gray-500">They need a complete removal first.</span>
-        </span>
-      </label>
-    </div>
-  }
 </div>
 
 <!-- The answer stays at the bottom of the screen while choosing -->
@@ -109,10 +112,10 @@
         </div>
         @if (!auth.user()) {
           <a routerLink="/login" i18n="@@simulator.toBook"
-            class="rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-700">Book now</a>
+            class="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-hover">Book now</a>
         } @else if (!auth.isAdmin()) {
           <a routerLink="/book" i18n="@@simulator.book"
-            class="rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-700">Book</a>
+            class="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-hover">Book</a>
         }
       </div>
       @if (state.estimate.possible_extras.length) {

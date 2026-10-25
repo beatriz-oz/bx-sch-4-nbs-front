@@ -44,7 +44,7 @@ export class ClientCancelDialog {
         }
         this.error.set(
           error instanceof HttpErrorResponse && error.status === 409
-            ? $localize`:@@myAppointments.cancel.notAllowed:This appointment can no longer be cancelled here. Please contact the studio on Instagram.`
+            ? $localize`:@@myAppointments.cancel.notAllowed:This appointment can no longer be cancelled here. Send a message to @nailsbyscooby on Instagram.`
             : apiErrorMessage(error),
         );
       },

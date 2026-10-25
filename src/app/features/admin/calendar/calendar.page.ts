@@ -30,6 +30,17 @@ import {
 type View = 'day' | 'week' | 'month';
 
 /** The manicure's agenda, drawn like Google Calendar. */
+/**
+ * The colours of the appointments. The legend uses the same ones, so they never drift apart.
+ * Full class names on purpose: Tailwind only generates classes it finds written out in the code.
+ */
+const TONES = {
+  paid: 'bg-emerald-50 border-emerald-500 text-emerald-900',
+  awaitingDeposit: 'bg-amber-50 border-amber-400 text-amber-900',
+  past: 'bg-gray-100 border-gray-400 text-gray-600',
+  cancelled: 'bg-gray-50 border-gray-300 text-gray-400 line-through',
+};
+
 @Component({
   selector: 'app-calendar-page',
   imports: [StudioDatePipe, AppointmentPanel, BookingDrawer, CancelDialog, CompleteDialog],
@@ -62,6 +73,7 @@ export class CalendarPage {
   readonly toCancel = signal<AdminAppointment | null>(null);
   readonly toComplete = signal<AdminAppointment | null>(null);
   readonly toEdit = signal<AdminAppointment | null>(null);
+  protected readonly tones = TONES;
   readonly newBooking = signal<{ day: string; time: string } | null>(null);
 
   readonly days = computed(() =>
@@ -200,15 +212,15 @@ export class CalendarPage {
    */
   toneClasses(appointment: AdminAppointment): string {
     if (appointment.status === 'Cancelled') {
-      return 'bg-gray-50 border-gray-300 text-gray-400 line-through';
+      return TONES.cancelled;
     }
     if (new Date(appointment.scheduled_at).getTime() < this.now()) {
-      return 'bg-gray-100 border-gray-400 text-gray-600';
+      return TONES.past;
     }
     if (appointment.deposit_paid || appointment.service === 'Other') {
-      return 'bg-emerald-50 border-emerald-500 text-emerald-900';
+      return TONES.paid;
     }
-    return 'bg-amber-50 border-amber-400 text-amber-900';
+    return TONES.awaitingDeposit;
   }
 
   // --- actions (from the side panel) ---

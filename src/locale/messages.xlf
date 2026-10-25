@@ -2,53 +2,67 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="header.instagram" datatype="html">
+        <source>@nailsbyscooby on Instagram</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="header.tagline" datatype="html">
         <source>Nail design studio in Porto</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">6,9</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.newTab" datatype="html">
+        <source>(opens Instagram in a new tab)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">14,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.language" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.logout" datatype="html">
         <source> Log out </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">27,28</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clientNav.book" datatype="html">
         <source>Book</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">41,43</context>
+          <context context-type="linenumber">49,51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clientNav.appointments" datatype="html">
         <source>My appointments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">53,55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clientNav.prices" datatype="html">
         <source>Prices</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">49,51</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clientNav.profile" datatype="html">
         <source>Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.html</context>
-          <context context-type="linenumber">53,55</context>
+          <context context-type="linenumber">61,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title.login" datatype="html">
@@ -269,15 +283,30 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="clientNotes.title" datatype="html">
+        <source>Notes about this client</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="badge.depositOverdue" datatype="html">
         <source>Deposit overdue</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">33,34</context>
+          <context context-type="linenumber">41,42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">122</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -288,14 +317,14 @@
         <source>Deposit pending</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">35,36</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="badge.depositPaid" datatype="html">
         <source>Deposit paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">37,39</context>
+          <context context-type="linenumber">45,47</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
@@ -306,7 +335,7 @@
         <source>Attendance confirmed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">48,50</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
@@ -317,7 +346,7 @@
         <source>Refund due</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">43,45</context>
+          <context context-type="linenumber">51,53</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -328,7 +357,7 @@
         <source>{VAR_PLURAL, plural, =1 {1 broken nail} other {<x id="INTERPOLATION"/> broken nails}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
@@ -339,7 +368,7 @@
         <source>Nails from another professional</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">60,63</context>
+          <context context-type="linenumber">68,71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
@@ -350,14 +379,14 @@
         <source>estimated</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.estimatedLabel" datatype="html">
         <source>estimated</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">69,72</context>
+          <context context-type="linenumber">77,80</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
@@ -372,21 +401,21 @@
         <source>Notes from the appointment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">80,81</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.cancelledAt" datatype="html">
         <source>Cancelled on</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.bookedAt" datatype="html">
         <source>Booked on</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">100</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -397,28 +426,28 @@
         <source> Change day, time or details </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">102,103</context>
+          <context context-type="linenumber">110,111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.complete" datatype="html">
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">107,108</context>
+          <context context-type="linenumber">115,116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.noShow" datatype="html">
         <source> No-show </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">111,112</context>
+          <context context-type="linenumber">119,120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.confirmDeposit" datatype="html">
         <source> Deposit paid </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">117,119</context>
+          <context context-type="linenumber">125,127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -429,7 +458,7 @@
         <source> Cancel </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">130,131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.editTitle" datatype="html">
@@ -566,7 +595,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">7,8</context>
+          <context context-type="linenumber">10,11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
@@ -609,7 +638,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">80,81</context>
+          <context context-type="linenumber">119,120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.size" datatype="html">
@@ -856,11 +885,53 @@
           <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="legend.label" datatype="html">
+        <source>Colour legend</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="legend.title" datatype="html">
+        <source>Colours:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="legend.paid" datatype="html">
+        <source>Deposit paid or none needed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="legend.awaitingDeposit" datatype="html">
+        <source>Awaiting deposit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="legend.past" datatype="html">
+        <source>Already happened</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="legend.cancelled" datatype="html">
+        <source>Cancelled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
+          <context context-type="linenumber">69,73</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="weekday.mon" datatype="html">
         <source>Mon</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">135,136</context>
+          <context context-type="linenumber">146,147</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -875,7 +946,7 @@
         <source>Tue</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">136,137</context>
+          <context context-type="linenumber">147,148</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -890,7 +961,7 @@
         <source>Wed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">137,138</context>
+          <context context-type="linenumber">148,149</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -905,7 +976,7 @@
         <source>Thu</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">138,139</context>
+          <context context-type="linenumber">149,150</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -920,7 +991,7 @@
         <source>Fri</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">139,140</context>
+          <context context-type="linenumber">150,151</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -935,7 +1006,7 @@
         <source>Sat</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">140,141</context>
+          <context context-type="linenumber">151,152</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -950,7 +1021,7 @@
         <source>Sun</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">141,143</context>
+          <context context-type="linenumber">152,154</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/opening-hours.page.html</context>
@@ -965,35 +1036,14 @@
         <source>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> more</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">163,164</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="legend.confirmed" datatype="html">
-        <source>Deposit paid</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">177,178</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="legend.awaitingDeposit" datatype="html">
-        <source>Awaiting deposit</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">178,179</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="legend.past" datatype="html">
-        <source>Already happened</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.html</context>
-          <context context-type="linenumber">179,182</context>
+          <context context-type="linenumber">174,175</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
         <source>Confirm that the deposit was paid? The client will get an email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">217</context>
+          <context context-type="linenumber">229</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.ts</context>
@@ -1004,7 +1054,7 @@
         <source>Mark this appointment as a no-show? This cannot be undone.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">224</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel.title" datatype="html">
@@ -1099,11 +1149,53 @@
           <context context-type="linenumber">43,45</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="clientNotes.private" datatype="html">
+        <source>Only you see these notes. They also show on each of this client&apos;s appointments.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNotes.edit" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNotes.add" datatype="html">
+        <source>Add notes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">61,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNotes.save" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNotes.cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">77,78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clientNotes.empty" datatype="html">
+        <source>No notes yet. E.g. sensitive skin, favourite shape, allergies.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
+          <context context-type="linenumber">83,86</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="clients.visits" datatype="html">
         <source>Visits</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">52,53</context>
+          <context context-type="linenumber">90,91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
@@ -1114,25 +1206,25 @@
         <source>Spent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">56,57</context>
+          <context context-type="linenumber">94,95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.table.noShows" datatype="html">
         <source>No-shows</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">60,61</context>
+          <context context-type="linenumber">98,99</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">161,162</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.lastVisit" datatype="html">
         <source>Last visit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">64,65</context>
+          <context context-type="linenumber">102,103</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
@@ -1143,7 +1235,7 @@
         <source>Next</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">106,107</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
@@ -1154,7 +1246,7 @@
         <source>History</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">74,76</context>
+          <context context-type="linenumber">112,114</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
@@ -1165,14 +1257,14 @@
         <source>No appointments yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">104,107</context>
+          <context context-type="linenumber">142,145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard.loading" datatype="html">
         <source>Loading…</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.html</context>
-          <context context-type="linenumber">108,111</context>
+          <context context-type="linenumber">146,149</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
@@ -1184,7 +1276,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">159,162</context>
+          <context context-type="linenumber">198,201</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
@@ -1199,14 +1291,14 @@
         <source>Allow <x id="name" equiv-text="profile.client.name"/> to create a password and book again?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.revoke.question" datatype="html">
         <source>Stop allowing <x id="name" equiv-text="profile.client.name"/> to create a password? She will not be able to book again.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/client-profile.page.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.subtitle" datatype="html">
@@ -1562,7 +1654,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">143,144</context>
+          <context context-type="linenumber">182,183</context>
         </context-group>
       </trans-unit>
       <trans-unit id="expenses.empty" datatype="html">
@@ -1881,7 +1973,7 @@
         <source>Deposit kept</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
-          <context context-type="linenumber">114,116</context>
+          <context context-type="linenumber">114,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="payments.noDeposit" datatype="html">
@@ -2014,7 +2106,7 @@
         <source> Add </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/pre-approved/pre-approved.page.html</context>
-          <context context-type="linenumber">12,15</context>
+          <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preApproved.added" datatype="html">
@@ -2119,7 +2211,7 @@
         <source> Discard </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/prices/prices.page.html</context>
-          <context context-type="linenumber">99,101</context>
+          <context context-type="linenumber">99,100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="prices.save" datatype="html">
@@ -2157,172 +2249,235 @@
           <context context-type="linenumber">5,7</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="export.open" datatype="html">
+        <source> Export appointments </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="reports.previousYear" datatype="html">
         <source>Previous year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.nextYear" datatype="html">
         <source>Next year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.title" datatype="html">
+        <source>Export appointments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.hint" datatype="html">
+        <source> An Excel file with every appointment of the period: prices, deposit and what was received. In Google Sheets: File → Import → Upload. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.from" datatype="html">
+        <source>From</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.to" datatype="html">
+        <source>To</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">36,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.download" datatype="html">
+        <source> Download (.xlsx) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.close" datatype="html">
+        <source> Close </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.income" datatype="html">
         <source>Income</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">67,68</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">58,59</context>
+          <context context-type="linenumber">97,98</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">83,85</context>
+          <context context-type="linenumber">122,124</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">123,124</context>
+          <context context-type="linenumber">162,163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.fromServices" datatype="html">
         <source>from services</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">71,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.keptDeposits" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {from 1 kept deposit} other {from <x id="INTERPOLATION"/> kept deposits}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.hoursWorked" datatype="html">
         <source>Hours worked</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">39,40</context>
+          <context context-type="linenumber">78,79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.completedCount" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {no appointments completed} =1 {1 appointment completed} other {<x id="INTERPOLATION"/> appointments completed}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">42,43</context>
+          <context context-type="linenumber">81,82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.perHour" datatype="html">
         <source>Per hour worked</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">46,47</context>
+          <context context-type="linenumber">85,86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.noShows" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 no-show} other {<x id="INTERPOLATION"/> no-shows}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">49,50</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.cancellations" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">50,51</context>
+          <context context-type="linenumber">89,90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.expenses" datatype="html">
         <source>Expenses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">62,63</context>
+          <context context-type="linenumber">101,102</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">124,125</context>
+          <context context-type="linenumber">163,164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.seeExpenses" datatype="html">
         <source>See or add expenses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">68,70</context>
+          <context context-type="linenumber">107,109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.profit" datatype="html">
         <source>Profit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">110,111</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">125,127</context>
+          <context context-type="linenumber">164,166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.table.completed" datatype="html">
         <source>Completed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">120,121</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">120,121</context>
+          <context context-type="linenumber">159,160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.table.hours" datatype="html">
         <source>Hours</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">82,83</context>
+          <context context-type="linenumber">121,122</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">160,161</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.chart.income" datatype="html">
         <source>Income per month</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">104,105</context>
+          <context context-type="linenumber">143,144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.chart.hours" datatype="html">
         <source>Hours worked per month</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">108,109</context>
+          <context context-type="linenumber">147,148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.table.caption" datatype="html">
         <source>The year in numbers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">116,118</context>
+          <context context-type="linenumber">155,157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.table.month" datatype="html">
         <source>Month</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">119,120</context>
+          <context context-type="linenumber">158,159</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports.note" datatype="html">
         <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
-          <context context-type="linenumber">156,157</context>
+          <context context-type="linenumber">195,196</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.error.dates" datatype="html">
+        <source>Choose a start date and an end date after it.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="export.error.failed" datatype="html">
+        <source>The file could not be created. Choose a period of up to 2 years.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/reports/reports.page.ts</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.title" datatype="html">
@@ -2347,7 +2502,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">10,14</context>
+          <context context-type="linenumber">13,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="link.login" datatype="html">
@@ -2366,7 +2521,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.html</context>
-          <context context-type="linenumber">24,26</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="link.checkIn" datatype="html">
@@ -2623,84 +2778,84 @@
         <source>Log in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.subtitle" datatype="html">
         <source>Use your phone number and password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">3,5</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.password" datatype="html">
         <source>Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">15,17</context>
+          <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.password.required" datatype="html">
         <source>Enter your password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">24,28</context>
+          <context context-type="linenumber">27,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.submitting" datatype="html">
         <source>Logging in…</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="linenumber">41,43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.submit" datatype="html">
         <source>Log in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">43,45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.firstTime" datatype="html">
         <source>First appointment?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.firstTimeHint" datatype="html">
         <source>Book with the Instagram the studio approved.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">49,51</context>
+          <context context-type="linenumber">52,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.noPassword" datatype="html">
         <source>Already a client, but no password?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">52,53</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.noPasswordHint" datatype="html">
         <source>Create it with your phone number.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">53,55</context>
+          <context context-type="linenumber">56,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.prices" datatype="html">
         <source>How much will it cost?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">56,57</context>
+          <context context-type="linenumber">59,60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.pricesHint" datatype="html">
         <source>Simulate the price, no login needed.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">57,60</context>
+          <context context-type="linenumber">60,62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.error.invalid" datatype="html">
@@ -2975,7 +3130,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.deposit" datatype="html">
-        <source>The studio will contact you on Instagram about the deposit, which secures your appointment.</source>
+        <source>@nailsbyscooby will contact you on Instagram about the deposit, which secures your appointment.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">285,286</context>
@@ -3211,7 +3366,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.notAllowed" datatype="html">
-        <source>This appointment can no longer be cancelled here. Please contact the studio on Instagram.</source>
+        <source>This appointment can no longer be cancelled here. Send a message to @nailsbyscooby on Instagram.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/client-cancel-dialog.ts</context>
           <context context-type="linenumber">47</context>
@@ -3253,7 +3408,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="myAppointments.cancelled.refund" datatype="html">
-        <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>
+        <source>Appointment cancelled. Your deposit will be refunded: @nailsbyscooby will contact you on Instagram.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.ts</context>
           <context context-type="linenumber">65</context>

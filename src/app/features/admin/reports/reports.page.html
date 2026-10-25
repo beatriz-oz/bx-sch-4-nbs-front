@@ -4,14 +4,53 @@
       <h2 i18n="@@reports.title" class="text-2xl font-semibold">Reports</h2>
       <p i18n="@@reports.subtitle" class="text-sm text-gray-500">Hours worked, income, expenses and profit, month by month. Tap a month to see it in detail.</p>
     </div>
-    <div class="flex items-center">
+    <div class="flex items-center gap-3">
+      <button type="button" (click)="openExport()" i18n="@@export.open"
+        class="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100">
+        Export appointments
+      </button>
+      <div class="flex items-center">
       <button type="button" (click)="moveYear(-1)" aria-label="Previous year" i18n-aria-label="@@reports.previousYear"
         class="rounded-full px-3 py-1 text-xl hover:bg-gray-100">‹</button>
       <span class="w-16 text-center text-lg font-semibold">{{ year() }}</span>
       <button type="button" (click)="moveYear(1)" aria-label="Next year" i18n-aria-label="@@reports.nextYear"
         class="rounded-full px-3 py-1 text-xl hover:bg-gray-100">›</button>
+      </div>
     </div>
   </div>
+
+  @if (exportOpen()) {
+    <!-- Export: every appointment of a period, with prices, as an Excel file -->
+    <section class="mt-4 rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 i18n="@@export.title" class="font-semibold">Export appointments</h3>
+      <p i18n="@@export.hint" class="mt-1 text-sm text-gray-500">
+        An Excel file with every appointment of the period: prices, deposit and what was received. In Google Sheets: File → Import → Upload.
+      </p>
+      <div class="mt-4 flex flex-wrap items-end gap-3">
+        <label class="text-sm">
+          <span i18n="@@export.from" class="mb-1 block font-medium">From</span>
+          <input type="date" [value]="exportStart()" (input)="exportStart.set($any($event.target).value)"
+            class="rounded-lg border border-gray-300 px-3 py-2" />
+        </label>
+        <label class="text-sm">
+          <span i18n="@@export.to" class="mb-1 block font-medium">To</span>
+          <input type="date" [value]="exportEnd()" (input)="exportEnd.set($any($event.target).value)"
+            class="rounded-lg border border-gray-300 px-3 py-2" />
+        </label>
+        <button type="button" (click)="downloadExport()" [disabled]="exporting()" i18n="@@export.download"
+          class="rounded-full bg-primary px-5 py-2 text-sm font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+          Download (.xlsx)
+        </button>
+        <button type="button" (click)="exportOpen.set(false)" i18n="@@export.close"
+          class="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-100">
+          Close
+        </button>
+      </div>
+      @if (exportError(); as message) {
+        <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+      }
+    </section>
+  }
 
   @if (error(); as message) {
     <p role="alert" class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>

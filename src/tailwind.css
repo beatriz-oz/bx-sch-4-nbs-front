@@ -1,17 +1,25 @@
 @import 'tailwindcss';
 
 /*
-  The studio's colors, in one place. Tailwind creates classes from them:
+  The studio's colors, in one place: a plum scale built around #751452 (hue 322°).
+  brand-700 is #751452 itself and brand-600 its hover, the same as the buttons.
+  Tailwind creates classes from them:
   bg-brand-500, text-brand-700, border-brand-200...
   Change a value here and the whole site follows.
 */
 @theme {
-  --color-brand-50: #fdf2f8;
-  --color-brand-100: #fce7f3;
-  --color-brand-200: #fbcfe8;
-  --color-brand-300: #f9a8d4;
-  --color-brand-500: #ec4899;
-  --color-brand-600: #db2777;
-  --color-brand-700: #be185d;
-  --color-brand-900: #831843;
+  --color-brand-50: #fcf3f9;
+  --color-brand-100: #f8e3f0;
+  --color-brand-200: #efc8e1;
+  --color-brand-300: #df9fc8;
+  --color-brand-500: #b23484;
+  --color-brand-600: #901864;
+  --color-brand-700: #751452;
+  --color-brand-800: #601043;
+  --color-brand-900: #4b0c34;
+
+  /* Main buttons: bg-primary hover:bg-primary-hover. The hover is the same hue, a little lighter
+     (hsl 322° 71% 27% → 33%). White text: 10.6:1 and 8.4:1 contrast. */
+  --color-primary: var(--color-brand-700);
+  --color-primary-hover: var(--color-brand-600);
 }

@@ -260,6 +260,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/appointments/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Export Appointments
+         * @description Every appointment of a period (Lisbon dates) as an Excel file, to open in Google Sheets: prices, deposit, what was received and a total. Up to 2 years at a time
+         */
+        get: operations["export_appointments_v1_admin_appointments_export_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/admin/appointments/{appointment_id}/deposit": {
         parameters: {
             query?: never;
@@ -493,6 +513,26 @@ export interface paths {
          * @description Allow (or stop allowing) a client to come back: only approved clients can create a password
          */
         put: operations["set_client_approval_v1_admin_clients__client_id__approval_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/clients/{client_id}/notes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Client Notes
+         * @description The studio's private notes about a client (never shown to her). Empty text clears them
+         */
+        put: operations["set_client_notes_v1_admin_clients__client_id__notes_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1526,6 +1566,11 @@ export interface components {
             /** Approved */
             approved: boolean;
         };
+        /** ClientNotes */
+        ClientNotes: {
+            /** Notes */
+            notes?: string | null;
+        };
         /** ClientOverview */
         ClientOverview: {
             /** Id */
@@ -1558,6 +1603,8 @@ export interface components {
         /** ClientProfile */
         ClientProfile: {
             client: components["schemas"]["ClientOverview"];
+            /** Studio Notes */
+            studio_notes: string | null;
             /** Total Spent */
             total_spent: string;
             /** No Shows */
@@ -1598,6 +1645,8 @@ export interface components {
             is_active: boolean;
             /** Approved */
             approved: boolean;
+            /** Studio Notes */
+            studio_notes: string | null;
         };
         /** CodeSent */
         CodeSent: {
@@ -2647,6 +2696,37 @@ export interface operations {
             };
         };
     };
+    export_appointments_v1_admin_appointments_export_get: {
+        parameters: {
+            query: {
+                start_date: string;
+                end_date: string;
+                language?: "pt" | "en";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description The .xlsx file */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": unknown;
+                };
+            };
+            /** @description Invalid period */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     confirm_deposit_v1_admin_appointments__appointment_id__deposit_post: {
         parameters: {
             query?: never;
@@ -3072,6 +3152,48 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["ClientApproval"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ClientProfile_"];
+                };
+            };
+            /** @description Client does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_client_notes_v1_admin_clients__client_id__notes_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                client_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClientNotes"];
             };
         };
         responses: {

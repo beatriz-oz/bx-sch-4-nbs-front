@@ -2,9 +2,17 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" target-language="pt-PT" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="header.instagram" datatype="html">
+        <source>@nailsbyscooby on Instagram</source>
+        <target>@nailsbyscooby no Instagram</target>
+      </trans-unit>
       <trans-unit id="header.tagline" datatype="html">
         <source>Nail design studio in Porto</source>
         <target>Estúdio de nail design no Porto</target>
+      </trans-unit>
+      <trans-unit id="header.newTab" datatype="html">
+        <source>(opens Instagram in a new tab)</source>
+        <target>(abre o Instagram num novo separador)</target>
       </trans-unit>
       <trans-unit id="header.language" datatype="html">
         <source>Language</source>
@@ -149,6 +157,10 @@
       <trans-unit id="dialog.close" datatype="html">
         <source>Close</source>
         <target>Fechar</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.title" datatype="html">
+        <source>Notes about this client</source>
+        <target>Notas sobre esta cliente</target>
       </trans-unit>
       <trans-unit id="badge.depositOverdue" datatype="html">
         <source>Deposit overdue</source>
@@ -410,6 +422,30 @@
         <source> + New appointment </source>
         <target> + Nova marcação </target>
       </trans-unit>
+      <trans-unit id="legend.label" datatype="html">
+        <source>Colour legend</source>
+        <target>Legenda das cores</target>
+      </trans-unit>
+      <trans-unit id="legend.title" datatype="html">
+        <source>Colours:</source>
+        <target>Cores:</target>
+      </trans-unit>
+      <trans-unit id="legend.paid" datatype="html">
+        <source>Deposit paid or none needed</source>
+        <target>Sinal pago ou sem sinal</target>
+      </trans-unit>
+      <trans-unit id="legend.awaitingDeposit" datatype="html">
+        <source>Awaiting deposit</source>
+        <target>A aguardar sinal</target>
+      </trans-unit>
+      <trans-unit id="legend.past" datatype="html">
+        <source>Already happened</source>
+        <target>Já passou</target>
+      </trans-unit>
+      <trans-unit id="legend.cancelled" datatype="html">
+        <source>Cancelled</source>
+        <target>Cancelada</target>
+      </trans-unit>
       <trans-unit id="weekday.mon" datatype="html">
         <source>Mon</source>
         <target>Seg</target>
@@ -441,18 +477,6 @@
       <trans-unit id="calendar.more" datatype="html">
         <source>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> more</source>
         <target>+<x id="INTERPOLATION" equiv-text="{{ cell.appointments.length - 3 }}"/> mais</target>
-      </trans-unit>
-      <trans-unit id="legend.confirmed" datatype="html">
-        <source>Deposit paid</source>
-        <target>Sinal pago</target>
-      </trans-unit>
-      <trans-unit id="legend.awaitingDeposit" datatype="html">
-        <source>Awaiting deposit</source>
-        <target>A aguardar sinal</target>
-      </trans-unit>
-      <trans-unit id="legend.past" datatype="html">
-        <source>Already happened</source>
-        <target>Já passou</target>
       </trans-unit>
       <trans-unit id="dashboard.confirmDeposit.question" datatype="html">
         <source>Confirm that the deposit was paid? The client will get an email.</source>
@@ -509,6 +533,30 @@
       <trans-unit id="profile.approve" datatype="html">
         <source>Allow her back</source>
         <target>Deixar voltar</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.private" datatype="html">
+        <source>Only you see these notes. They also show on each of this client&apos;s appointments.</source>
+        <target>Só o estúdio vê estas notas. Também aparecem em cada marcação desta cliente.</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.edit" datatype="html">
+        <source>Edit</source>
+        <target>Editar</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.add" datatype="html">
+        <source>Add notes</source>
+        <target>Adicionar notas</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.save" datatype="html">
+        <source>Save</source>
+        <target>Guardar</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Cancelar</target>
+      </trans-unit>
+      <trans-unit id="clientNotes.empty" datatype="html">
+        <source>No notes yet. E.g. sensitive skin, favourite shape, allergies.</source>
+        <target>Ainda sem notas. Ex.: pele sensível, formato preferido, alergias.</target>
       </trans-unit>
       <trans-unit id="clients.visits" datatype="html">
         <source>Visits</source>
@@ -1078,6 +1126,10 @@
         <source>Hours worked, income, expenses and profit, month by month. Tap a month to see it in detail.</source>
         <target>Horas trabalhadas, receita, despesas e lucro, mês a mês. Toque num mês para ver o detalhe.</target>
       </trans-unit>
+      <trans-unit id="export.open" datatype="html">
+        <source> Export appointments </source>
+        <target>Exportar marcações</target>
+      </trans-unit>
       <trans-unit id="reports.previousYear" datatype="html">
         <source>Previous year</source>
         <target>Ano anterior</target>
@@ -1085,6 +1137,30 @@
       <trans-unit id="reports.nextYear" datatype="html">
         <source>Next year</source>
         <target>Ano seguinte</target>
+      </trans-unit>
+      <trans-unit id="export.title" datatype="html">
+        <source>Export appointments</source>
+        <target>Exportar marcações</target>
+      </trans-unit>
+      <trans-unit id="export.hint" datatype="html">
+        <source> An Excel file with every appointment of the period: prices, deposit and what was received. In Google Sheets: File → Import → Upload. </source>
+        <target>Um ficheiro Excel com todas as marcações do período: preços, sinal e o que foi recebido. No Google Sheets: Ficheiro → Importar → Carregar.</target>
+      </trans-unit>
+      <trans-unit id="export.from" datatype="html">
+        <source>From</source>
+        <target>De</target>
+      </trans-unit>
+      <trans-unit id="export.to" datatype="html">
+        <source>To</source>
+        <target>Até</target>
+      </trans-unit>
+      <trans-unit id="export.download" datatype="html">
+        <source> Download (.xlsx) </source>
+        <target>Descarregar (.xlsx)</target>
+      </trans-unit>
+      <trans-unit id="export.close" datatype="html">
+        <source> Close </source>
+        <target>Fechar</target>
       </trans-unit>
       <trans-unit id="reports.income" datatype="html">
         <source>Income</source>
@@ -1157,6 +1233,14 @@
       <trans-unit id="reports.note" datatype="html">
         <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
         <target>As horas usam a duração registada ao concluir cada marcação, ou a duração prevista do serviço quando não foi registada. Cada sinal retido conta <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/>.</target>
+      </trans-unit>
+      <trans-unit id="export.error.dates" datatype="html">
+        <source>Choose a start date and an end date after it.</source>
+        <target>Escolha uma data de início e uma data de fim depois dela.</target>
+      </trans-unit>
+      <trans-unit id="export.error.failed" datatype="html">
+        <source>The file could not be created. Choose a period of up to 2 years.</source>
+        <target>Não foi possível criar o ficheiro. Escolha um período de até 2 anos.</target>
       </trans-unit>
       <trans-unit id="activate.title" datatype="html">
         <source>Create your password</source>
@@ -1475,8 +1559,8 @@
         <target>E agora?</target>
       </trans-unit>
       <trans-unit id="book.done.deposit" datatype="html">
-        <source>The studio will contact you on Instagram about the deposit, which secures your appointment.</source>
-        <target>O estúdio vai contactá-la no Instagram sobre o sinal, que garante a sua marcação.</target>
+        <source>@nailsbyscooby will contact you on Instagram about the deposit, which secures your appointment.</source>
+        <target>A @nailsbyscooby vai contactá-la no Instagram sobre o sinal, que garante a sua marcação.</target>
       </trans-unit>
       <trans-unit id="book.done.reminder" datatype="html">
         <source>24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</source>
@@ -1603,8 +1687,8 @@
         <target> Cancelar marcação </target>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.notAllowed" datatype="html">
-        <source>This appointment can no longer be cancelled here. Please contact the studio on Instagram.</source>
-        <target>Esta marcação já não pode ser cancelada aqui. Contacte o estúdio pelo Instagram, por favor.</target>
+        <source>This appointment can no longer be cancelled here. Send a message to @nailsbyscooby on Instagram.</source>
+        <target>Esta marcação já não pode ser cancelada aqui. Envie uma mensagem para @nailsbyscooby no Instagram.</target>
       </trans-unit>
       <trans-unit id="client.home.greeting" datatype="html">
         <source>Hello, <x id="INTERPOLATION" equiv-text="{{ auth.user()?.name }}"/>!</source>
@@ -1627,8 +1711,8 @@
         <target>Marcar agora</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancelled.refund" datatype="html">
-        <source>Appointment cancelled. Your deposit will be refunded: the studio will contact you.</source>
-        <target>Marcação cancelada. O seu sinal vai ser devolvido: o estúdio vai contactá-la.</target>
+        <source>Appointment cancelled. Your deposit will be refunded: @nailsbyscooby will contact you on Instagram.</source>
+        <target>Marcação cancelada. O seu sinal vai ser devolvido: a @nailsbyscooby vai contactá-la no Instagram.</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancelled" datatype="html">
         <source>Appointment cancelled. The studio was told.</source>

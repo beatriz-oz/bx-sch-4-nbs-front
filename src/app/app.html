@@ -1,28 +1,38 @@
 <div class="min-h-screen bg-gray-50 text-gray-900">
-  <header class="sticky top-0 z-20 border-b border-gray-200 bg-white">
-    <div class="flex h-[4.5rem] items-center justify-between px-4">
-      <a routerLink="/">
-        <h1 class="text-xl font-semibold text-brand-700">Nails by Scooby</h1>
-        <p i18n="@@header.tagline" class="text-sm text-gray-500">Nail design studio in Porto</p>
+  <header class="sticky top-0 z-20 overflow-hidden border-b border-gray-200 bg-white">
+    <!-- The studio's texture behind everything, at 65% (not on the textured pages: there the header stays white). Decorative only, so screen readers and clicks skip it.
+         A relative url (no leading "/") follows the <base href>, so it works under /pt-PT/ and /en/ too. -->
+    @if (!texturedPage()) {
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-65"
+        style="background-image: url('images/login-background.jpg')"></div>
+    }
+
+    <div class="relative flex h-[4.5rem] items-center justify-between px-4">
+      <!-- The name opens the studio's Instagram in a new tab -->
+      <a href="https://instagram.com/nailsbyscooby" target="_blank" rel="noopener noreferrer"
+        title="@nailsbyscooby on Instagram" i18n-title="@@header.instagram">
+        <h1 class="text-xl font-semibold text-primary">Nails by Scooby</h1>
+        <p i18n="@@header.tagline" class="text-sm text-gray-600">Nail design studio in Porto</p>
+        <span i18n="@@header.newTab" class="sr-only">(opens Instagram in a new tab)</span>
       </a>
 
       <div class="flex items-center gap-3 text-sm">
         <nav aria-label="Language" i18n-aria-label="@@header.language" class="flex items-center font-medium">
           <a [href]="languageHref('pt-PT')" hreflang="pt-PT" lang="pt-PT" [attr.aria-current]="isPortuguese ? 'true' : null"
-            class="rounded px-1.5 py-1 text-gray-400 hover:text-gray-900 aria-[current=true]:text-gray-900">PT</a>
-          <span aria-hidden="true" class="text-gray-300">|</span>
+            class="rounded px-1.5 py-1 text-gray-500 hover:text-gray-900 aria-[current=true]:text-gray-900">PT</a>
+          <span aria-hidden="true" class="text-gray-400">|</span>
           <a [href]="languageHref('en')" hreflang="en" lang="en" [attr.aria-current]="isPortuguese ? null : 'true'"
-            class="rounded px-1.5 py-1 text-gray-400 hover:text-gray-900 aria-[current=true]:text-gray-900">EN</a>
+            class="rounded px-1.5 py-1 text-gray-500 hover:text-gray-900 aria-[current=true]:text-gray-900">EN</a>
         </nav>
 
       @if (auth.user(); as user) {
         <div class="flex items-center gap-3">
-          <span class="hidden text-gray-600 sm:inline">{{ user.name }} {{ user.last_name }}</span>
+          <span class="hidden text-gray-700 sm:inline">{{ user.name }} {{ user.last_name }}</span>
           <button
             type="button"
             (click)="logout()"
             i18n="@@header.logout"
-            class="rounded-full border border-gray-300 px-4 py-1.5 font-medium text-gray-700 hover:bg-gray-100"
+            class="rounded-full border border-gray-300 bg-white/80 px-4 py-1.5 font-medium text-gray-700 hover:bg-white"
           >
             Log out
           </button>
@@ -56,8 +66,12 @@
       </nav>
   }
 
-  <!-- Each page sets its own width: the calendar uses the whole screen. -->
-  <main>
+  <!-- Each page sets its own width: the calendar uses the whole screen.
+       Textured pages get the studio's texture as background (relative url: follows the <base href>).
+       bg-fixed keeps the picture the size of the screen, even on a long page.
+       flow-root keeps a page's top margin (mt-8) inside <main>, so the texture starts right under the header. -->
+  <main [class]="texturedPage() ? 'flow-root min-h-[calc(100vh-4.5rem)] bg-cover bg-fixed bg-center' : ''"
+    [style.background-image]="texturedPage() ? 'url(images/login-background.jpg)' : null">
     <router-outlet />
   </main>
 </div>

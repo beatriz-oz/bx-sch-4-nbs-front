@@ -62,7 +62,7 @@ export class MyAppointmentsPage {
     this.appointments.update((list) => list.map((a) => (a.id === result.appointment.id ? result.appointment : a)));
     this.notice.set(
       result.deposit_refund_due
-        ? $localize`:@@myAppointments.cancelled.refund:Appointment cancelled. Your deposit will be refunded: the studio will contact you.`
+        ? $localize`:@@myAppointments.cancelled.refund:Appointment cancelled. Your deposit will be refunded: @nailsbyscooby will contact you on Instagram.`
         : $localize`:@@myAppointments.cancelled:Appointment cancelled. The studio was told.`,
     );
   }

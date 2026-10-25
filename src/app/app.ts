@@ -1,5 +1,7 @@
 import { Component, inject, LOCALE_ID } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { filter, map } from 'rxjs';
 
 import { AuthService } from './core/auth/auth.service';
 
@@ -18,6 +20,27 @@ export class App {
    * /pt-PT/ and /en/. Switching opens the same page in the other copy (a full page load).
    */
   protected readonly isPortuguese = inject(LOCALE_ID).startsWith('pt');
+
+  /**
+   * Pages marked with data.texture in the routes (login, first appointment, create password, prices):
+   * the texture fills the page background and the header stays plain white.
+   */
+  protected readonly texturedPage = toSignal(
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => this.currentRouteData()['texture'] === true),
+    ),
+    { initialValue: false },
+  );
+
+  /** The data of the page on screen: the deepest route (the outer ones are only wrappers). */
+  private currentRouteData(): Record<string, unknown> {
+    let route = this.router.routerState.snapshot.root;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    return route.data;
+  }
 
   languageHref(language: 'pt-PT' | 'en'): string {
     return `/${language}${this.router.url}`;

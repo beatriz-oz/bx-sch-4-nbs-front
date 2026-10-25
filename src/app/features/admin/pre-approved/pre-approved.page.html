@@ -8,7 +8,7 @@
     <input name="handle" [ngModel]="handle()" (ngModelChange)="handle.set($event)" placeholder="@instagram"
       class="flex-1 rounded-full border border-gray-300 px-4 py-2 focus:border-gray-900 focus:outline-none" />
     <button type="submit" [disabled]="saving() || !handle().trim()" i18n="@@preApproved.add"
-      class="rounded-full bg-gray-900 px-5 py-2 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+      class="rounded-full bg-primary px-5 py-2 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
       Add
     </button>
   </form>

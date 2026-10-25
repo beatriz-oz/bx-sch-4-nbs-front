@@ -26,6 +26,14 @@
       </div>
     </section>
 
+    @if (appointment().client.studio_notes; as notes) {
+      <!-- The studio's notes about this client (from her profile) -->
+      <section class="rounded-xl border border-amber-200 bg-amber-50 p-3">
+        <p i18n="@@clientNotes.title" class="text-xs font-semibold text-amber-900">Notes about this client</p>
+        <p class="mt-1 text-sm whitespace-pre-line text-gray-800">{{ notes }}</p>
+      </section>
+    }
+
     <!-- Status and alerts -->
     <section class="flex flex-wrap gap-1.5 text-xs">
       <span class="rounded-full bg-gray-100 px-2.5 py-1 font-medium text-gray-700">{{ statusLabels[appointment().status] }}</span>
@@ -103,7 +111,7 @@
       </button>
       @if (hasStarted()) {
         <button type="button" (click)="complete.emit()" [disabled]="busy()" i18n="@@action.complete"
-          class="flex-1 rounded-full bg-gray-900 px-4 py-2.5 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+          class="flex-1 rounded-full bg-primary px-4 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
           Complete
         </button>
         <button type="button" (click)="noShow.emit()" [disabled]="busy()" i18n="@@action.noShow"
@@ -113,7 +121,7 @@
       } @else {
         @if (needsDeposit()) {
           <button type="button" (click)="confirmDeposit.emit()" [disabled]="busy()" i18n="@@action.confirmDeposit"
-            class="flex-1 rounded-full bg-gray-900 px-4 py-2.5 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+            class="flex-1 rounded-full bg-primary px-4 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
             Deposit paid
           </button>
         }
