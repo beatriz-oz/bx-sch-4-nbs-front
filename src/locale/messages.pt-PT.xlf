@@ -194,6 +194,10 @@
         <source>Booked on</source>
         <target>Marcada em</target>
       </trans-unit>
+      <trans-unit id="action.edit" datatype="html">
+        <source> Change day, time or details </source>
+        <target>Alterar dia, hora ou detalhes</target>
+      </trans-unit>
       <trans-unit id="action.complete" datatype="html">
         <source> Complete </source>
         <target> Concluir </target>
@@ -210,6 +214,10 @@
         <source> Cancel </source>
         <target> Cancelar </target>
       </trans-unit>
+      <trans-unit id="booking.editTitle" datatype="html">
+        <source>Change appointment</source>
+        <target>Alterar marcação</target>
+      </trans-unit>
       <trans-unit id="booking.title" datatype="html">
         <source>New appointment</source>
         <target>Nova marcação</target>
@@ -217,6 +225,10 @@
       <trans-unit id="booking.client" datatype="html">
         <source>Client</source>
         <target>Cliente</target>
+      </trans-unit>
+      <trans-unit id="booking.editEmail" datatype="html">
+        <source> If the day or time changes, the client gets an email. </source>
+        <target>Se o dia ou a hora mudarem, a cliente recebe um email.</target>
       </trans-unit>
       <trans-unit id="booking.client.existing" datatype="html">
         <source> Existing </source>
@@ -326,8 +338,12 @@
         <source> Back </source>
         <target> Voltar </target>
       </trans-unit>
+      <trans-unit id="booking.saveChanges" datatype="html">
+        <source>Save changes</source>
+        <target>Guardar alterações</target>
+      </trans-unit>
       <trans-unit id="booking.save" datatype="html">
-        <source> Save appointment </source>
+        <source>Save appointment</source>
         <target> Guardar marcação </target>
       </trans-unit>
       <trans-unit id="booking.error.client" datatype="html">
@@ -1334,6 +1350,10 @@
         <source>Steps</source>
         <target>Passos</target>
       </trans-unit>
+      <trans-unit id="book.change.banner" datatype="html">
+        <source>Changing your appointment of</source>
+        <target>A alterar a sua marcação de</target>
+      </trans-unit>
       <trans-unit id="book.service.title" datatype="html">
         <source>What would you like?</source>
         <target>O que gostaria de fazer?</target>
@@ -1386,6 +1406,14 @@
         <source>Choose a day and time</source>
         <target>Escolha o dia e a hora</target>
       </trans-unit>
+      <trans-unit id="book.change.keepTime" datatype="html">
+        <source>Keep the current time</source>
+        <target>Manter a hora atual</target>
+      </trans-unit>
+      <trans-unit id="book.change.orPick" datatype="html">
+        <source>Or choose a new one:</source>
+        <target>Ou escolha uma nova:</target>
+      </trans-unit>
       <trans-unit id="book.time.none" datatype="html">
         <source> No free times this month. Try the next one, or follow @nailsbyscooby on Instagram to know when the agenda opens. </source>
         <target> Não há horários livres este mês. Experimente o seguinte, ou siga @nailsbyscooby no Instagram para saber quando a agenda abre. </target>
@@ -1410,6 +1438,10 @@
         <source>each</source>
         <target>cada</target>
       </trans-unit>
+      <trans-unit id="book.change.deposit" datatype="html">
+        <source> The booking policies you accepted still apply, and the deposit stays the same. </source>
+        <target>As políticas de marcação que aceitou continuam a valer, e o sinal mantém-se.</target>
+      </trans-unit>
       <trans-unit id="book.policies" datatype="html">
         <source>Booking policies</source>
         <target>Políticas de marcação</target>
@@ -1426,9 +1458,17 @@
         <source>I have read and accept the booking policies, including the deposit and the cancellation rules.</source>
         <target>Li e aceito as políticas de marcação, incluindo as regras do sinal e do cancelamento.</target>
       </trans-unit>
+      <trans-unit id="book.change.done" datatype="html">
+        <source>Appointment changed!</source>
+        <target>Marcação alterada!</target>
+      </trans-unit>
       <trans-unit id="book.done.title" datatype="html">
         <source>Appointment booked!</source>
         <target>Marcação feita!</target>
+      </trans-unit>
+      <trans-unit id="book.change.doneHint" datatype="html">
+        <source> The studio was told. Before the new date, you will get the email to confirm you are coming. </source>
+        <target>O estúdio foi avisado. Antes da nova data, vai receber o email para confirmar que vem.</target>
       </trans-unit>
       <trans-unit id="book.done.next" datatype="html">
         <source>What happens now</source>
@@ -1462,9 +1502,17 @@
         <source> Continue </source>
         <target> Continuar </target>
       </trans-unit>
+      <trans-unit id="book.change.save" datatype="html">
+        <source>Save changes</source>
+        <target>Guardar alterações</target>
+      </trans-unit>
       <trans-unit id="book.confirm" datatype="html">
-        <source> Confirm booking </source>
+        <source>Confirm booking</source>
         <target> Confirmar marcação </target>
+      </trans-unit>
+      <trans-unit id="book.change.notAllowed" datatype="html">
+        <source>This appointment can no longer be changed here. Send a message to @nailsbyscooby on Instagram.</source>
+        <target>Esta marcação já não pode ser alterada aqui. Envie uma mensagem para @nailsbyscooby no Instagram.</target>
       </trans-unit>
       <trans-unit id="book.error.policyChanged" datatype="html">
         <source>The policies were just updated. Please read them again before confirming.</source>
@@ -1514,9 +1562,17 @@
         <source>Waiting for the deposit</source>
         <target>À espera do sinal</target>
       </trans-unit>
+      <trans-unit id="myAppointments.change" datatype="html">
+        <source>Change day, time or service</source>
+        <target>Alterar dia, hora ou serviço</target>
+      </trans-unit>
       <trans-unit id="myAppointments.cancel" datatype="html">
         <source> Cancel appointment </source>
         <target> Cancelar marcação </target>
+      </trans-unit>
+      <trans-unit id="myAppointments.changeClosed" datatype="html">
+        <source> To change it now, send a message to @nailsbyscooby on Instagram. </source>
+        <target>Para a alterar agora, envie uma mensagem para @nailsbyscooby no Instagram.</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.title" datatype="html">
         <source>Cancel this appointment?</source>

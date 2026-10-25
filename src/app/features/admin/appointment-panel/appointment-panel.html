@@ -97,6 +97,10 @@
   <!-- Actions -->
   @if (isActive()) {
     <footer class="flex flex-wrap gap-2 border-t border-gray-200 p-5">
+      <button type="button" (click)="edit.emit()" [disabled]="busy()" i18n="@@action.edit"
+        class="w-full rounded-full border border-gray-300 px-4 py-2.5 font-medium hover:bg-gray-100 disabled:opacity-60">
+        Change day, time or details
+      </button>
       @if (hasStarted()) {
         <button type="button" (click)="complete.emit()" [disabled]="busy()" i18n="@@action.complete"
           class="flex-1 rounded-full bg-gray-900 px-4 py-2.5 font-medium text-white hover:bg-gray-700 disabled:opacity-60">

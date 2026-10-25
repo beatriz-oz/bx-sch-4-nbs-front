@@ -568,6 +568,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/appointments/{appointment_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Change Appointment
+         * @description Change an active appointment: day and time (any, past included), service, price or notes. When the time changes, the client gets an email and the reminder starts again
+         */
+        put: operations["change_appointment_v1_admin_appointments__appointment_id__put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -790,6 +810,26 @@ export interface paths {
          * @description Book an appointment
          */
         post: operations["create_new_appointment_v1_appointments_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/appointments/{appointment_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Change My Appointment
+         * @description Change your appointment (day and time, service details) more than 48 hours before it. The price is calculated again; the deposit stays the same
+         */
+        put: operations["change_my_appointment_v1_appointments__appointment_id__put"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1071,6 +1111,11 @@ export interface components {
             /** Cancelled By */
             cancelled_by: number | null;
             cancellation_reason: components["schemas"]["CancellationReason"] | null;
+            /**
+             * Can Change
+             * @description Whether the client can still change it herself (the rule stays here, not in the frontend).
+             */
+            readonly can_change: boolean;
         };
         /**
          * AppointmentStatus
@@ -1934,6 +1979,34 @@ export interface components {
             /** User Id */
             user_id?: number | null;
             new_client?: components["schemas"]["NewClient"] | null;
+        };
+        /**
+         * StudioAppointmentDetails
+         * @description What the studio books or changes. Used as is to change an appointment.
+         */
+        StudioAppointmentDetails: {
+            /**
+             * Scheduled At
+             * Format: date-time
+             */
+            scheduled_at: string;
+            service: components["schemas"]["Service"];
+            nail_size?: components["schemas"]["NailSize"] | null;
+            nail_art_level?: components["schemas"]["NailArtLevel"] | null;
+            /**
+             * Broken Nails
+             * @default 0
+             */
+            broken_nails: number;
+            /**
+             * Has Other Professional Nails
+             * @default false
+             */
+            has_other_professional_nails: boolean;
+            /** Estimated Price */
+            estimated_price: number | string;
+            /** Notes */
+            notes?: string | null;
         };
         /** StudioCancellation */
         StudioCancellation: {
@@ -3207,6 +3280,55 @@ export interface operations {
             };
         };
     };
+    change_appointment_v1_admin_appointments__appointment_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appointment_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StudioAppointmentDetails"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_AdminAppointmentResult_"];
+                };
+            };
+            /** @description Appointment does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not active anymore, or the new time is already booked */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     check_in_start_v1_auth_checkin_start_post: {
         parameters: {
             query?: never;
@@ -3686,6 +3808,55 @@ export interface operations {
                 };
             };
             /** @description Policies changed, or slot not available */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    change_my_appointment_v1_appointments__appointment_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appointment_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppointmentDetails"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_BookingResult_"];
+                };
+            };
+            /** @description Appointment does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Too late to change, not active, or the time is not available */
             409: {
                 headers: {
                     [name: string]: unknown;

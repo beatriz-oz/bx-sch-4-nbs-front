@@ -1,11 +1,12 @@
 import { CurrencyPipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import {
+  Appointment,
   AppointmentDetails,
   AvailableDay,
   Booking,
@@ -27,6 +28,7 @@ type Step = 'service' | 'time' | 'summary' | 'done';
 /**
  * The client books in four steps: service → day and time → summary with the
  * estimate and the policies → done. Each step only asks what it needs.
+ * With ?change=<id>, the same steps change an existing appointment (no policies to accept again).
  */
 @Component({
   selector: 'app-booking-page',
@@ -43,6 +45,9 @@ export class BookingPage {
   protected readonly serviceLabels = SERVICE_LABELS;
   protected readonly artHints = ART_LEVEL_HINTS;
   protected readonly today = studioToday();
+
+  /** The appointment being changed, or null when booking a new one. */
+  readonly changing = signal<Appointment | null>(null);
 
   readonly step = signal<Step>('service');
   readonly busy = signal(false);
@@ -103,6 +108,47 @@ export class BookingPage {
 
   constructor() {
     this.api.prices().subscribe((prices) => this.prices.set(prices));
+
+    const changeId = Number(inject(ActivatedRoute).snapshot.queryParamMap.get('change'));
+    if (changeId) {
+      this.loadAppointmentToChange(changeId);
+    }
+  }
+
+  /** Starts from what she booked; whether it can still change is the API's answer (can_change). */
+  private loadAppointmentToChange(id: number): void {
+    this.busy.set(true);
+    this.api.myAppointments().subscribe({
+      next: (appointments) => {
+        this.busy.set(false);
+        const appointment = appointments.find((a) => a.id === id);
+        if (!appointment?.can_change) {
+          this.error.set(
+            $localize`:@@book.change.notAllowed:This appointment can no longer be changed here. Send a message to @nailsbyscooby on Instagram.`,
+          );
+          return;
+        }
+        this.changing.set(appointment);
+        this.service.set(appointment.service);
+        this.nailSize.set(appointment.nail_size ?? null);
+        this.artLevel.set(appointment.nail_art_level ?? null);
+        this.brokenNails.set(appointment.broken_nails);
+        this.otherProfessional.set(appointment.has_other_professional_nails);
+      },
+      error: (error: unknown) => {
+        this.busy.set(false);
+        this.error.set(apiErrorMessage(error));
+      },
+    });
+  }
+
+  /** Changing: her own time is not in the free slots (it is booked by her), so it is offered apart. */
+  keepCurrentTime(): void {
+    const current = this.changing();
+    if (current) {
+      this.selectedDay.set(null);
+      this.selectedSlot.set(current.scheduled_at);
+    }
   }
 
   // Prices shown next to each option, so the client knows the cost while choosing.
@@ -199,6 +245,11 @@ export class BookingPage {
   }
 
   confirm(): void {
+    const changing = this.changing();
+    if (changing) {
+      this.saveChange(changing);
+      return;
+    }
     const policy = this.policy();
     if (!policy || !this.accepted()) {
       return;
@@ -214,6 +265,23 @@ export class BookingPage {
       error: (error: unknown) => {
         this.busy.set(false);
         this.handleBookingError(error);
+      },
+    });
+  }
+
+  private saveChange(appointment: Appointment): void {
+    this.busy.set(true);
+    this.error.set(null);
+    this.api.changeAppointment(appointment.id, this.details()).subscribe({
+      next: (booking) => {
+        this.busy.set(false);
+        this.booking.set(booking);
+        this.step.set('done');
+      },
+      error: (error: unknown) => {
+        this.busy.set(false);
+        // The API explains why (time taken, too late, XL in a middle slot...).
+        this.error.set(apiErrorMessage(error));
       },
     });
   }

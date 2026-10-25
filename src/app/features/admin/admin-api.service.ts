@@ -28,6 +28,7 @@ import {
   DaySlotsSet,
   Service,
   StudioAppointment,
+  StudioAppointmentDetails,
   YearReport,
 } from '../../core/api/types';
 
@@ -80,6 +81,11 @@ export class AdminApiService {
 
   book(data: StudioAppointment): Observable<AdminAppointment> {
     return this.http.post<ApiResponse<AdminAppointment>>(this.url, data).pipe(map((r) => r.detail));
+  }
+
+  /** Changes an active appointment (any day and time). The client is emailed when the time changes. */
+  change(id: number, data: StudioAppointmentDetails): Observable<AdminAppointment> {
+    return this.http.put<ApiResponse<AdminAppointment>>(`${this.url}/${id}`, data).pipe(map((r) => r.detail));
   }
 
   searchClients(search: string): Observable<Client[]> {

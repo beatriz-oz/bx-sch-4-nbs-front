@@ -4,7 +4,13 @@
   class="fixed top-0 right-0 z-40 flex h-full w-full max-w-lg flex-col bg-white shadow-xl">
 
   <header class="flex items-center justify-between border-b border-gray-200 p-5">
-    <h3 id="booking-title" i18n="@@booking.title" class="text-2xl font-semibold">New appointment</h3>
+    <h3 id="booking-title" class="text-2xl font-semibold">
+      @if (appointment()) {
+        <ng-container i18n="@@booking.editTitle">Change appointment</ng-container>
+      } @else {
+        <ng-container i18n="@@booking.title">New appointment</ng-container>
+      }
+    </h3>
     <button type="button" (click)="closed.emit()" aria-label="Close" i18n-aria-label="@@dialog.close"
       class="rounded-full px-2 text-2xl leading-none text-gray-500 hover:bg-gray-100">×</button>
   </header>
@@ -12,6 +18,21 @@
   <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-1 flex-col overflow-hidden" novalidate>
     <div class="flex-1 space-y-6 overflow-y-auto p-5">
 
+      @if (appointment(); as current) {
+        <!-- Client (fixed when changing an appointment) -->
+        <section>
+          <h4 i18n="@@booking.client" class="mb-3 font-semibold">Client</h4>
+          <div class="rounded-xl border border-gray-200 p-3">
+            <p class="font-medium">{{ current.client.name }} {{ current.client.last_name }}</p>
+            @if (current.client.instagram) {
+              <p class="text-sm text-gray-500">&#64;{{ current.client.instagram }}</p>
+            }
+          </div>
+          <p i18n="@@booking.editEmail" class="mt-2 text-xs text-gray-500">
+            If the day or time changes, the client gets an email.
+          </p>
+        </section>
+      } @else {
       <!-- Client -->
       <section>
         <div class="mb-3 flex items-center justify-between">
@@ -95,6 +116,7 @@
           </div>
         }
       </section>
+      }
 
       <!-- When -->
       <section>
@@ -198,9 +220,13 @@
         class="rounded-full border border-gray-300 px-5 py-2.5 font-medium hover:bg-gray-100">
         Back
       </button>
-      <button type="submit" [disabled]="submitting()" i18n="@@booking.save"
+      <button type="submit" [disabled]="submitting()"
         class="flex-1 rounded-full bg-gray-900 px-5 py-2.5 font-medium text-white hover:bg-gray-700 disabled:opacity-60">
-        Save appointment
+        @if (appointment()) {
+          <ng-container i18n="@@booking.saveChanges">Save changes</ng-container>
+        } @else {
+          <ng-container i18n="@@booking.save">Save appointment</ng-container>
+        }
       </button>
     </footer>
   </form>

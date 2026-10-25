@@ -12,8 +12,9 @@ import {
   PriceList,
   Service,
   StudioAppointment,
+  StudioAppointmentDetails,
 } from '../../../core/api/types';
-import { studioDateTime } from '../../../core/dates';
+import { formatMinutes, studioDateTime, studioDay, studioMinutes } from '../../../core/dates';
 import { SERVICE_LABELS } from '../../../shared/labels';
 import { AdminApiService } from '../admin-api.service';
 import { suggestPrice } from './price-suggestion';
@@ -23,6 +24,7 @@ type ClientMode = 'existing' | 'new';
 /**
  * New appointment booked by the studio: any day and time, an existing client
  * (searched as you type) or a new one, and a price suggested from the table.
+ * With `appointment`, the same form changes that appointment instead (the client stays).
  */
 @Component({
   selector: 'app-booking-drawer',
@@ -35,9 +37,12 @@ export class BookingDrawer implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly fb = inject(NonNullableFormBuilder);
 
-  readonly day = input.required<string>();
-  readonly time = input.required<string>();
+  readonly day = input('');
+  readonly time = input('');
+  /** The appointment to change; empty for a new one. */
+  readonly appointment = input<AdminAppointment | null>(null);
   readonly booked = output<AdminAppointment>();
+  readonly changed = output<AdminAppointment>();
   readonly closed = output<void>();
 
   protected readonly services: Service[] = ['Application', 'Maintenance', 'Removal', 'Other'];
@@ -86,7 +91,24 @@ export class BookingDrawer implements OnInit {
 
   ngOnInit(): void {
     // Inputs are only available from here on, not in the constructor.
-    this.form.patchValue({ day: this.day(), time: this.time() });
+    const current = this.appointment();
+    if (current) {
+      this.form.patchValue({
+        day: studioDay(current.scheduled_at),
+        time: formatMinutes(studioMinutes(current.scheduled_at)),
+        service: current.service,
+        nail_size: current.nail_size ?? null,
+        nail_art_level: current.nail_art_level ?? null,
+        broken_nails: current.broken_nails,
+        has_other_professional_nails: current.has_other_professional_nails,
+        notes: current.notes ?? '',
+        estimated_price: current.estimated_price,
+      });
+      // Keep the price already agreed; the table price stays one click away.
+      this.priceTyped = true;
+    } else {
+      this.form.patchValue({ day: this.day(), time: this.time() });
+    }
 
     this.api.prices().subscribe((prices) => {
       this.prices = prices;
@@ -157,10 +179,12 @@ export class BookingDrawer implements OnInit {
   /** The same rules as the API, checked here first to give a clear message. */
   private problem(): string | null {
     const value = this.form.getRawValue();
-    if (this.clientMode() === 'existing' && !this.selectedClient()) {
+    if (this.appointment()) {
+      // Changing: the client is already set.
+    } else if (this.clientMode() === 'existing' && !this.selectedClient()) {
       return $localize`:@@booking.error.client:Choose a client, or register a new one.`;
     }
-    if (this.clientMode() === 'new' && this.newClient.invalid) {
+    if (!this.appointment() && this.clientMode() === 'new' && this.newClient.invalid) {
       return $localize`:@@booking.error.newClient:Fill in the new client's name, last name, email and phone.`;
     }
     if (this.hasDetails() && (!value.nail_size || !value.nail_art_level)) {
@@ -187,8 +211,7 @@ export class BookingDrawer implements OnInit {
     }
 
     const value = this.form.getRawValue();
-    const client = this.newClient.getRawValue();
-    const data: StudioAppointment = {
+    const details: StudioAppointmentDetails = {
       scheduled_at: studioDateTime(value.day, value.time),
       service: value.service,
       nail_size: this.hasDetails() ? value.nail_size : null,
@@ -197,6 +220,25 @@ export class BookingDrawer implements OnInit {
       has_other_professional_nails: value.has_other_professional_nails,
       estimated_price: value.estimated_price.replace(',', '.'),
       notes: value.notes.trim() || null,
+    };
+
+    const current = this.appointment();
+    if (current) {
+      this.submitting.set(true);
+      this.error.set(null);
+      this.api.change(current.id, details).subscribe({
+        next: (appointment) => this.changed.emit(appointment),
+        error: (error: unknown) => {
+          this.submitting.set(false);
+          this.error.set(apiErrorMessage(error));
+        },
+      });
+      return;
+    }
+
+    const client = this.newClient.getRawValue();
+    const data: StudioAppointment = {
+      ...details,
       user_id: this.clientMode() === 'existing' ? this.selectedClient()?.id : null,
       new_client:
         this.clientMode() === 'new'

@@ -35,9 +35,20 @@
   </div>
 
   @if (upcoming()) {
-    <button type="button" (click)="cancel.emit()" i18n="@@myAppointments.cancel"
-      class="mt-4 text-sm font-medium text-red-700 underline">
-      Cancel appointment
-    </button>
+    <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+      @if (appointment().can_change) {
+        <a routerLink="/book" [queryParams]="{ change: appointment().id }" i18n="@@myAppointments.change"
+          class="text-sm font-medium text-gray-900 underline">Change day, time or service</a>
+      }
+      <button type="button" (click)="cancel.emit()" i18n="@@myAppointments.cancel"
+        class="text-sm font-medium text-red-700 underline">
+        Cancel appointment
+      </button>
+    </div>
+    @if (!appointment().can_change && appointment().service !== 'Other') {
+      <p i18n="@@myAppointments.changeClosed" class="mt-2 text-xs text-gray-500">
+        To change it now, send a message to @nailsbyscooby on Instagram.
+      </p>
+    }
   }
 </article>

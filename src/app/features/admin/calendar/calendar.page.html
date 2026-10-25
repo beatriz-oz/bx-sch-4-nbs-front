@@ -187,12 +187,16 @@
     (closed)="selected.set(null)"
     (confirmDeposit)="confirmDeposit(appointment)"
     (cancel)="toCancel.set(appointment)"
+    (edit)="toEdit.set(appointment)"
     (complete)="toComplete.set(appointment)"
     (noShow)="markNoShow(appointment)"
   />
 }
 @if (newBooking(); as start) {
   <app-booking-drawer [day]="start.day" [time]="start.time" (booked)="booked($event)" (closed)="newBooking.set(null)" />
+}
+@if (toEdit(); as appointment) {
+  <app-booking-drawer [appointment]="appointment" (changed)="changed($event)" (closed)="toEdit.set(null)" />
 }
 @if (toCancel(); as appointment) {
   <app-cancel-dialog [appointment]="appointment" (cancelled)="replace($event)" (closed)="toCancel.set(null)" />

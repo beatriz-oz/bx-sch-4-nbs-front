@@ -39,6 +39,7 @@ export type PriceList = Schemas['PriceList'];
 // Admin
 export type AdminAppointment = Schemas['AdminAppointmentResult'];
 export type StudioAppointment = Schemas['StudioAppointment'];
+export type StudioAppointmentDetails = Schemas['StudioAppointmentDetails'];
 export type NewClient = Schemas['NewClient'];
 export type Client = Schemas['ClientResult'];
 export type StudioCancellation = Schemas['StudioCancellation'];

@@ -255,7 +255,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/opening-hours/day-editor.html</context>
@@ -325,7 +325,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">179,180</context>
+          <context context-type="linenumber">198,199</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.otherProfessional" datatype="html">
@@ -336,7 +336,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">157,159</context>
+          <context context-type="linenumber">179,181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.estimated" datatype="html">
@@ -354,11 +354,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">185,187</context>
+          <context context-type="linenumber">204,206</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
-          <context context-type="linenumber">17,22</context>
+          <context context-type="linenumber">17,20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.completionNotes" datatype="html">
@@ -386,25 +386,32 @@
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="action.edit" datatype="html">
+        <source> Change day, time or details </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="action.complete" datatype="html">
         <source> Complete </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">107,108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.noShow" datatype="html">
         <source> No-show </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">107,108</context>
+          <context context-type="linenumber">111,112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action.confirmDeposit" datatype="html">
         <source> Deposit paid </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">113,115</context>
+          <context context-type="linenumber">117,119</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -415,77 +422,95 @@
         <source> Cancel </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/appointment-panel/appointment-panel.html</context>
-          <context context-type="linenumber">118,119</context>
+          <context context-type="linenumber">122,123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="booking.editTitle" datatype="html">
+        <source>Change appointment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.title" datatype="html">
         <source>New appointment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">7,8</context>
+          <context context-type="linenumber">11,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client" datatype="html">
         <source>Client</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">18,19</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="booking.editEmail" datatype="html">
+        <source> If the day or time changes, the client gets an email. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">32,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.existing" datatype="html">
         <source> Existing </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">22,24</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.new" datatype="html">
         <source> New </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">26,27</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.change" datatype="html">
         <source>Change</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">41,43</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.searchPlaceholder" datatype="html">
         <source>Name, @instagram, email or phone</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.searching" datatype="html">
         <source>Searching…</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">69,70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.notFound" datatype="html">
         <source>No client found.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">64,65</context>
+          <context context-type="linenumber">85,86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.registerNew" datatype="html">
         <source>Register a new client</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">66,68</context>
+          <context context-type="linenumber">87,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.name" datatype="html">
         <source>Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">73,74</context>
+          <context context-type="linenumber">94,95</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
@@ -496,7 +521,7 @@
         <source>Last name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">77,78</context>
+          <context context-type="linenumber">98,99</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
@@ -507,7 +532,7 @@
         <source>Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">102,103</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/check-in/check-in.page.html</context>
@@ -522,7 +547,7 @@
         <source>Phone</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">85,86</context>
+          <context context-type="linenumber">106,107</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/activate/activate.page.html</context>
@@ -545,35 +570,35 @@
         <source>Instagram (optional)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">89,90</context>
+          <context context-type="linenumber">110,111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.client.emailNote" datatype="html">
         <source> Check the email with the client: reminders and notices go there. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">93,95</context>
+          <context context-type="linenumber">114,116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.when" datatype="html">
         <source>When</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">101,102</context>
+          <context context-type="linenumber">123,124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.whenNote" datatype="html">
         <source> Any day and time, Lisbon time. Bookings in the next 24 hours count as confirmed and send no email. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">107,109</context>
+          <context context-type="linenumber">129,131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.service" datatype="html">
         <source>Service</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">113,114</context>
+          <context context-type="linenumber">135,136</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/reports/reports.page.html</context>
@@ -584,11 +609,11 @@
         <source>Nail size</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">128,129</context>
+          <context context-type="linenumber">150,151</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">45,46</context>
+          <context context-type="linenumber">54,55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -599,7 +624,7 @@
         <source>Nail art</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">142,143</context>
+          <context context-type="linenumber">164,165</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
@@ -607,7 +632,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">62,63</context>
+          <context context-type="linenumber">71,72</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -618,14 +643,14 @@
         <source>Choose…</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">144,145</context>
+          <context context-type="linenumber">166,167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.brokenNails" datatype="html">
         <source>Broken nails</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">151,152</context>
+          <context context-type="linenumber">173,174</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/complete-dialog/complete-dialog.html</context>
@@ -633,7 +658,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">83,84</context>
+          <context context-type="linenumber">92,93</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -644,49 +669,49 @@
         <source>What will be done</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">165,166</context>
+          <context context-type="linenumber">187,188</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.notes" datatype="html">
         <source>Notes (optional)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">167,168</context>
+          <context context-type="linenumber">189,190</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.notesPlaceholder" datatype="html">
         <source>e.g. Repair of 1 broken nail</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">193</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.price" datatype="html">
         <source>Estimated price (€)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">177,178</context>
+          <context context-type="linenumber">199,200</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.useSuggestion" datatype="html">
         <source>Use table price: <x id="INTERPOLATION" equiv-text="{{ suggested }}"/> €</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">183,184</context>
+          <context context-type="linenumber">205,206</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.fromTable" datatype="html">
         <source>from the price table</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">186,189</context>
+          <context context-type="linenumber">208,210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog.back" datatype="html">
         <source> Back </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">199,201</context>
+          <context context-type="linenumber">221,222</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
@@ -702,49 +727,56 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">281,282</context>
+          <context context-type="linenumber">314,315</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="booking.saveChanges" datatype="html">
+        <source>Save changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">226,227</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.save" datatype="html">
-        <source> Save appointment </source>
+        <source>Save appointment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">203,205</context>
+          <context context-type="linenumber">228,229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.client" datatype="html">
         <source>Choose a client, or register a new one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">161</context>
+          <context context-type="linenumber">185</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.newClient" datatype="html">
         <source>Fill in the new client&apos;s name, last name, email and phone.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">164</context>
+          <context context-type="linenumber">188</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.details" datatype="html">
         <source>Choose the nail size and the nail art level.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">167</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.notes" datatype="html">
         <source>Describe the service in the notes.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">170</context>
+          <context context-type="linenumber">194</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.form" datatype="html">
         <source>Check the date, time and price.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">173</context>
+          <context context-type="linenumber">197</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.today" datatype="html">
@@ -829,7 +861,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.tue" datatype="html">
@@ -844,7 +876,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">141,142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.wed" datatype="html">
@@ -859,7 +891,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">123,124</context>
+          <context context-type="linenumber">142,143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.thu" datatype="html">
@@ -874,7 +906,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">124,125</context>
+          <context context-type="linenumber">143,144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.fri" datatype="html">
@@ -889,7 +921,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">125,126</context>
+          <context context-type="linenumber">144,145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.sat" datatype="html">
@@ -904,7 +936,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">126,127</context>
+          <context context-type="linenumber">145,146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="weekday.sun" datatype="html">
@@ -919,7 +951,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">127,128</context>
+          <context context-type="linenumber">146,147</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.more" datatype="html">
@@ -954,7 +986,7 @@
         <source>Confirm that the deposit was paid? The client will get an email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">208</context>
+          <context context-type="linenumber">217</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.ts</context>
@@ -965,7 +997,7 @@
         <source>Mark this appointment as a no-show? This cannot be undone.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/calendar/calendar.page.ts</context>
-          <context context-type="linenumber">215</context>
+          <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel.title" datatype="html">
@@ -1149,7 +1181,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">235,239</context>
+          <context context-type="linenumber">258,262</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
@@ -1476,7 +1508,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="hours.nextMonth" datatype="html">
@@ -1491,7 +1523,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">116</context>
+          <context context-type="linenumber">135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="expenses.seeReports" datatype="html">
@@ -2693,18 +2725,25 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="book.change.banner" datatype="html">
+        <source>Changing your appointment of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="book.service.title" datatype="html">
         <source>What would you like?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">18,20</context>
+          <context context-type="linenumber">27,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.service.application.hint" datatype="html">
         <source>A new set of nails</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="linenumber">38,39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2715,14 +2754,14 @@
         <source>For nails done here in the last 35 days</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">30,31</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.service.removal.hint" datatype="html">
         <source>Taking the nails off</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">31,33</context>
+          <context context-type="linenumber">40,42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2733,7 +2772,7 @@
         <source>from</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2744,14 +2783,14 @@
         <source>Longer nails take more time, so they are only booked at 10:00 or 17:00.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">59,62</context>
+          <context context-type="linenumber">68,71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.extras.title" datatype="html">
         <source>Anything else?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">79,80</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2762,7 +2801,7 @@
         <source>To repair during the appointment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">84,86</context>
+          <context context-type="linenumber">93,95</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2773,7 +2812,7 @@
         <source>Fewer</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2784,7 +2823,7 @@
         <source>More</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">101</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2795,7 +2834,7 @@
         <source>My nails were done by another professional</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">100,101</context>
+          <context context-type="linenumber">109,110</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2806,7 +2845,7 @@
         <source>They need a complete removal first.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">101,103</context>
+          <context context-type="linenumber">110,112</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
@@ -2817,123 +2856,158 @@
         <source>Choose a day and time</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">110,112</context>
+          <context context-type="linenumber">119,121</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.keepTime" datatype="html">
+        <source>Keep the current time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">125,126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.orPick" datatype="html">
+        <source>Or choose a new one:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">128,131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.time.none" datatype="html">
         <source> No free times this month. Try the next one, or follow @nailsbyscooby on Instagram to know when the agenda opens. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">144,147</context>
+          <context context-type="linenumber">163,166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.time.zone" datatype="html">
         <source>Times in Lisbon time.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">159,163</context>
+          <context context-type="linenumber">178,182</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.summary.title" datatype="html">
         <source>Review and confirm</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">165,167</context>
+          <context context-type="linenumber">184,186</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.maintenanceAsApplication" datatype="html">
         <source> Your last appointment here was more than 35 days before this date, so it is priced as a new application. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">191,195</context>
+          <context context-type="linenumber">210,214</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.extras.possible" datatype="html">
         <source>Possible extras, paid on the day</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">197,198</context>
+          <context context-type="linenumber">216,217</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.extras.each" datatype="html">
         <source>each</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">204,205</context>
+          <context context-type="linenumber">223,224</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/public/price-simulator/price-simulator.page.html</context>
           <context context-type="linenumber">123,124</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="book.change.deposit" datatype="html">
+        <source> The booking policies you accepted still apply, and the deposit stays the same. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">234,236</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="book.policies" datatype="html">
         <source>Booking policies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">217,218</context>
+          <context context-type="linenumber">240,241</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.policies.hide" datatype="html">
         <source>Hide</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">221,222</context>
+          <context context-type="linenumber">244,245</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.policies.read" datatype="html">
         <source>Read</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">222,223</context>
+          <context context-type="linenumber">245,246</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.policies.accept" datatype="html">
         <source>I have read and accept the booking policies, including the deposit and the cancellation rules.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">230,232</context>
+          <context context-type="linenumber">253,255</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.done" datatype="html">
+        <source>Appointment changed!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">268,270</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.title" datatype="html">
         <source>Appointment booked!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">244,245</context>
+          <context context-type="linenumber">270,272</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.doneHint" datatype="html">
+        <source> The studio was told. Before the new date, you will get the email to confirm you are coming. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">279,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.next" datatype="html">
         <source>What happens now</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">251,252</context>
+          <context context-type="linenumber">283,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.deposit" datatype="html">
         <source>The studio will contact you on Instagram about the deposit, which secures your appointment.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">253,254</context>
+          <context context-type="linenumber">285,286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.reminder" datatype="html">
         <source>24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">254,255</context>
+          <context context-type="linenumber">286,287</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.cancel" datatype="html">
         <source>Need to cancel? Do it in &quot;My appointments&quot;. More than 48 hours before, the deposit is refunded.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">255,257</context>
+          <context context-type="linenumber">287,289</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.activate" datatype="html">
         <source>Create your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">261,262</context>
+          <context context-type="linenumber">294,295</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
@@ -2944,7 +3018,7 @@
         <source>To log in again later and follow your appointments.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">262,266</context>
+          <context context-type="linenumber">295,299</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/my-appointments.page.html</context>
@@ -2955,39 +3029,53 @@
         <source> See my appointments </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">268,272</context>
+          <context context-type="linenumber">301,305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.next" datatype="html">
         <source> Continue </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">288,289</context>
+          <context context-type="linenumber">321,322</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">294,295</context>
+          <context context-type="linenumber">327,328</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.save" datatype="html">
+        <source>Save changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
+          <context context-type="linenumber">334,335</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.confirm" datatype="html">
-        <source> Confirm booking </source>
+        <source>Confirm booking</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
-          <context context-type="linenumber">300,301</context>
+          <context context-type="linenumber">336,337</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="book.change.notAllowed" datatype="html">
+        <source>This appointment can no longer be changed here. Send a message to @nailsbyscooby on Instagram.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/booking/booking.page.ts</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.error.policyChanged" datatype="html">
         <source>The policies were just updated. Please read them again before confirming.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.ts</context>
-          <context context-type="linenumber">228</context>
+          <context context-type="linenumber">296</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.error.slotTaken" datatype="html">
         <source>This time was just booked by someone else. Please choose another one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.ts</context>
-          <context context-type="linenumber">235</context>
+          <context context-type="linenumber">303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="attendance.title" datatype="html">
@@ -3060,11 +3148,25 @@
           <context context-type="linenumber">27,29</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="myAppointments.change" datatype="html">
+        <source>Change day, time or service</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="myAppointments.cancel" datatype="html">
         <source> Cancel appointment </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
-          <context context-type="linenumber">40,44</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="myAppointments.changeClosed" datatype="html">
+        <source> To change it now, send a message to @nailsbyscooby on Instagram. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/my-appointments/appointment-card.html</context>
+          <context context-type="linenumber">50,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.title" datatype="html">

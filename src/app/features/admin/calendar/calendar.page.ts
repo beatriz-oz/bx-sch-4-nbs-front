@@ -61,6 +61,7 @@ export class CalendarPage {
   readonly selected = signal<AdminAppointment | null>(null);
   readonly toCancel = signal<AdminAppointment | null>(null);
   readonly toComplete = signal<AdminAppointment | null>(null);
+  readonly toEdit = signal<AdminAppointment | null>(null);
   readonly newBooking = signal<{ day: string; time: string } | null>(null);
 
   readonly days = computed(() =>
@@ -177,6 +178,14 @@ export class CalendarPage {
   newBookingNow(): void {
     const time = formatMinutes(Math.max(minutesAtOffset(0), Math.ceil(this.nowMinutes() / 15) * 15));
     this.newBooking.set({ day: this.selectedDay(), time });
+  }
+
+  /** After a change, show the day it is on now (it may have moved to another week). */
+  changed(appointment: AdminAppointment): void {
+    this.toEdit.set(null);
+    this.selected.set(appointment);
+    this.selectedDay.set(studioDay(appointment.scheduled_at));
+    this.load();
   }
 
   booked(appointment: AdminAppointment): void {

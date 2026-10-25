@@ -21,6 +21,7 @@ export class AppointmentPanel {
   readonly closed = output<void>();
   readonly confirmDeposit = output<void>();
   readonly cancel = output<void>();
+  readonly edit = output<void>();
   readonly complete = output<void>();
   readonly noShow = output<void>();
 

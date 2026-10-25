@@ -39,6 +39,13 @@ export class ClientApiService {
     return this.http.post<ApiResponse<Estimate>>(`${this.api}/appointments/estimate`, details).pipe(map((r) => r.detail));
   }
 
+  /** Changes her appointment (more than 48h before; the API decides). The price is calculated again. */
+  changeAppointment(id: number, details: AppointmentDetails): Observable<Booking> {
+    return this.http
+      .put<ApiResponse<Booking>>(`${this.api}/appointments/${id}`, details)
+      .pipe(map((r) => r.detail));
+  }
+
   /** Public: the estimated price of a service, for anyone (no login). */
   simulatePrice(choices: PriceSimulation): Observable<Estimate> {
     const params: Record<string, string | number | boolean> = {};
