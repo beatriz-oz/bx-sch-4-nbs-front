@@ -70,6 +70,10 @@
         <source>Reports</source>
         <target>Relatórios</target>
       </trans-unit>
+      <trans-unit id="nav.expenses" datatype="html">
+        <source>Expenses</source>
+        <target>Despesas</target>
+      </trans-unit>
       <trans-unit id="nav.clients" datatype="html">
         <source>Clients</source>
         <target>Clientes</target>
@@ -101,6 +105,10 @@
       <trans-unit id="title.reports" datatype="html">
         <source>Reports · Nails by Scooby</source>
         <target>Relatórios · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.expenses" datatype="html">
+        <source>Expenses · Nails by Scooby</source>
+        <target>Despesas · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.clients" datatype="html">
         <source>Clients · Nails by Scooby</source>
@@ -630,6 +638,90 @@
         <source>The duration must be between 15 minutes and 10 hours.</source>
         <target>A duração tem de estar entre 15 minutos e 10 horas.</target>
       </trans-unit>
+      <trans-unit id="expenses.title" datatype="html">
+        <source>Expenses</source>
+        <target>Despesas</target>
+      </trans-unit>
+      <trans-unit id="expenses.subtitle" datatype="html">
+        <source>What the studio spent. The reports subtract it from the income to show the profit.</source>
+        <target>O que o estúdio gastou. Os relatórios descontam-no da receita para mostrar o lucro.</target>
+      </trans-unit>
+      <trans-unit id="expenses.editTitle" datatype="html">
+        <source>Correct expense</source>
+        <target>Corrigir despesa</target>
+      </trans-unit>
+      <trans-unit id="expenses.addTitle" datatype="html">
+        <source>New expense</source>
+        <target>Nova despesa</target>
+      </trans-unit>
+      <trans-unit id="expenses.description" datatype="html">
+        <source>Description</source>
+        <target>Descrição</target>
+      </trans-unit>
+      <trans-unit id="expenses.descriptionExample" datatype="html">
+        <source>e.g. Gels and polish</source>
+        <target>ex.: Géis e verniz</target>
+      </trans-unit>
+      <trans-unit id="expenses.category" datatype="html">
+        <source>Category</source>
+        <target>Categoria</target>
+      </trans-unit>
+      <trans-unit id="expenses.amount" datatype="html">
+        <source>Amount (€)</source>
+        <target>Valor (€)</target>
+      </trans-unit>
+      <trans-unit id="expenses.day" datatype="html">
+        <source>Day</source>
+        <target>Dia</target>
+      </trans-unit>
+      <trans-unit id="expenses.invalid" datatype="html">
+        <source>Fill in the description, the amount and the day.</source>
+        <target>Preencha a descrição, o valor e o dia.</target>
+      </trans-unit>
+      <trans-unit id="expenses.saveChanges" datatype="html">
+        <source>Save changes</source>
+        <target>Guardar alterações</target>
+      </trans-unit>
+      <trans-unit id="expenses.add" datatype="html">
+        <source>Add expense</source>
+        <target>Adicionar despesa</target>
+      </trans-unit>
+      <trans-unit id="expenses.cancelEdit" datatype="html">
+        <source>Cancel</source>
+        <target>Cancelar</target>
+      </trans-unit>
+      <trans-unit id="hours.previousMonth" datatype="html">
+        <source>Previous month</source>
+        <target>Mês anterior</target>
+      </trans-unit>
+      <trans-unit id="hours.nextMonth" datatype="html">
+        <source>Next month</source>
+        <target>Mês seguinte</target>
+      </trans-unit>
+      <trans-unit id="expenses.seeReports" datatype="html">
+        <source>See the profit in the reports</source>
+        <target>Ver o lucro nos relatórios</target>
+      </trans-unit>
+      <trans-unit id="expenses.edit" datatype="html">
+        <source>Edit</source>
+        <target>Editar</target>
+      </trans-unit>
+      <trans-unit id="expenses.remove" datatype="html">
+        <source>Remove</source>
+        <target>Remover</target>
+      </trans-unit>
+      <trans-unit id="reports.table.total" datatype="html">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="expenses.empty" datatype="html">
+        <source>No expenses in this month.</source>
+        <target>Sem despesas neste mês.</target>
+      </trans-unit>
+      <trans-unit id="expenses.removeQuestion" datatype="html">
+        <source>Remove &quot;<x id="description" equiv-text="expense.description"/>&quot;?</source>
+        <target>Remover &quot;<x id="description" equiv-text="expense.description"/>&quot;?</target>
+      </trans-unit>
       <trans-unit id="dayEditor.subtitle" datatype="html">
         <source>Opening for clients</source>
         <target>Abertura para clientes</target>
@@ -701,14 +793,6 @@
       <trans-unit id="hours.subtitle" datatype="html">
         <source> The slots clients can book. By default Tuesday to Friday are open, weekends closed, and Mondays always closed to clients. </source>
         <target> Os horários que as clientes podem marcar. Por padrão, de terça a sexta estão abertos, o fim de semana fechado e as segundas sempre fechadas para clientes. </target>
-      </trans-unit>
-      <trans-unit id="hours.previousMonth" datatype="html">
-        <source>Previous month</source>
-        <target>Mês anterior</target>
-      </trans-unit>
-      <trans-unit id="hours.nextMonth" datatype="html">
-        <source>Next month</source>
-        <target>Mês seguinte</target>
       </trans-unit>
       <trans-unit id="hours.publishedOn" datatype="html">
         <source>Published on</source>
@@ -963,8 +1047,8 @@
         <target>Relatórios</target>
       </trans-unit>
       <trans-unit id="reports.subtitle" datatype="html">
-        <source>Hours worked and income, month by month. Tap a month to see it in detail.</source>
-        <target>Horas trabalhadas e receita, mês a mês. Toque num mês para ver o detalhe.</target>
+        <source>Hours worked, income, expenses and profit, month by month. Tap a month to see it in detail.</source>
+        <target>Horas trabalhadas, receita, despesas e lucro, mês a mês. Toque num mês para ver o detalhe.</target>
       </trans-unit>
       <trans-unit id="reports.previousYear" datatype="html">
         <source>Previous year</source>
@@ -1006,6 +1090,18 @@
         <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
         <target>{VAR_PLURAL, plural, =1 {1 cancelamento} other {<x id="INTERPOLATION"/> cancelamentos}}</target>
       </trans-unit>
+      <trans-unit id="reports.expenses" datatype="html">
+        <source>Expenses</source>
+        <target>Despesas</target>
+      </trans-unit>
+      <trans-unit id="reports.seeExpenses" datatype="html">
+        <source>See or add expenses</source>
+        <target>Ver ou adicionar despesas</target>
+      </trans-unit>
+      <trans-unit id="reports.profit" datatype="html">
+        <source>Profit</source>
+        <target>Lucro</target>
+      </trans-unit>
       <trans-unit id="reports.table.completed" datatype="html">
         <source>Completed</source>
         <target>Concluídas</target>
@@ -1029,10 +1125,6 @@
       <trans-unit id="reports.table.month" datatype="html">
         <source>Month</source>
         <target>Mês</target>
-      </trans-unit>
-      <trans-unit id="reports.table.total" datatype="html">
-        <source>Total</source>
-        <target>Total</target>
       </trans-unit>
       <trans-unit id="reports.note" datatype="html">
         <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
@@ -1565,6 +1657,22 @@
       <trans-unit id="status.noShow" datatype="html">
         <source>No-show</source>
         <target>Faltou</target>
+      </trans-unit>
+      <trans-unit id="expenseCategory.products" datatype="html">
+        <source>Products</source>
+        <target>Produtos</target>
+      </trans-unit>
+      <trans-unit id="expenseCategory.material" datatype="html">
+        <source>Material</source>
+        <target>Material</target>
+      </trans-unit>
+      <trans-unit id="expenseCategory.bills" datatype="html">
+        <source>Bills</source>
+        <target>Contas</target>
+      </trans-unit>
+      <trans-unit id="expenseCategory.other" datatype="html">
+        <source>Other</source>
+        <target>Outros</target>
       </trans-unit>
       <trans-unit id="service.application" datatype="html">
         <source>Application</source>

@@ -1,0 +1,99 @@
+<div class="mx-auto max-w-3xl p-4 md:p-6">
+  <div>
+    <h2 i18n="@@expenses.title" class="text-2xl font-semibold">Expenses</h2>
+    <p i18n="@@expenses.subtitle" class="text-sm text-gray-500">What the studio spent. The reports subtract it from the income to show the profit.</p>
+  </div>
+
+  <!-- Add or correct an expense -->
+  <form [formGroup]="form" (ngSubmit)="save()" class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+    <h3 class="font-semibold">
+      @if (editing()) {
+        <ng-container i18n="@@expenses.editTitle">Correct expense</ng-container>
+      } @else {
+        <ng-container i18n="@@expenses.addTitle">New expense</ng-container>
+      }
+    </h3>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+      <label class="text-sm sm:col-span-2">
+        <span i18n="@@expenses.description" class="mb-1 block font-medium">Description</span>
+        <input formControlName="description" maxlength="200" placeholder="e.g. Gels and polish" i18n-placeholder="@@expenses.descriptionExample"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+      </label>
+      <label class="text-sm">
+        <span i18n="@@expenses.category" class="mb-1 block font-medium">Category</span>
+        <select formControlName="category" class="w-full rounded-lg border border-gray-300 px-3 py-2">
+          @for (category of categories; track category) {
+            <option [value]="category">{{ categoryLabels[category] }}</option>
+          }
+        </select>
+      </label>
+      <label class="text-sm">
+        <span i18n="@@expenses.amount" class="mb-1 block font-medium">Amount (€)</span>
+        <input formControlName="amount" type="number" min="0.01" step="0.01" inputmode="decimal"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+      </label>
+      <label class="text-sm">
+        <span i18n="@@expenses.day" class="mb-1 block font-medium">Day</span>
+        <input formControlName="day" type="date" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+      </label>
+    </div>
+    @if (form.touched && form.invalid) {
+      <p i18n="@@expenses.invalid" class="mt-3 text-sm text-red-700">Fill in the description, the amount and the day.</p>
+    }
+    @if (error(); as message) {
+      <p role="alert" class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+    <div class="mt-4 flex gap-2">
+      <button type="submit" [disabled]="saving()"
+        class="rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white hover:bg-gray-700 disabled:opacity-60">
+        @if (editing()) {
+          <ng-container i18n="@@expenses.saveChanges">Save changes</ng-container>
+        } @else {
+          <ng-container i18n="@@expenses.add">Add expense</ng-container>
+        }
+      </button>
+      @if (editing()) {
+        <button type="button" (click)="cancelEdit()" i18n="@@expenses.cancelEdit"
+          class="rounded-full border border-gray-300 px-5 py-2 text-sm font-medium hover:bg-gray-100">Cancel</button>
+      }
+    </div>
+  </form>
+
+  <!-- The month -->
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center">
+      <button type="button" (click)="move(-1)" aria-label="Previous month" i18n-aria-label="@@hours.previousMonth"
+        class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">‹</button>
+      <h3 class="w-48 text-center text-lg font-semibold capitalize">{{ firstDay() | studioDate: 'month' }}</h3>
+      <button type="button" (click)="move(1)" aria-label="Next month" i18n-aria-label="@@hours.nextMonth"
+        class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">›</button>
+    </div>
+    <a routerLink="/admin/reports" i18n="@@expenses.seeReports" class="text-sm font-medium text-brand-700 hover:underline">See the profit in the reports</a>
+  </div>
+
+  <section class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white" [class.opacity-60]="loading()">
+    @if (expenses().length) {
+      <ul class="divide-y divide-gray-100">
+        @for (expense of expenses(); track expense.id) {
+          <li class="flex items-center gap-3 px-5 py-3" [class.bg-brand-50]="editing()?.id === expense.id">
+            <div class="min-w-0 flex-1">
+              <p class="truncate font-medium">{{ expense.description }}</p>
+              <p class="text-xs text-gray-500">{{ expense.day | studioDate: 'day' }} · {{ categoryLabels[expense.category] }}</p>
+            </div>
+            <p class="font-semibold tabular-nums">{{ expense.amount | currency: 'EUR' }}</p>
+            <button type="button" (click)="edit(expense)" i18n="@@expenses.edit"
+              class="rounded-full px-3 py-1 text-sm text-gray-700 hover:bg-gray-100">Edit</button>
+            <button type="button" (click)="remove(expense)" i18n="@@expenses.remove"
+              class="rounded-full px-3 py-1 text-sm text-red-700 hover:bg-red-50">Remove</button>
+          </li>
+        }
+      </ul>
+      <p class="flex justify-between border-t border-gray-200 bg-gray-50 px-5 py-3 font-semibold">
+        <span i18n="@@reports.table.total">Total</span>
+        <span class="tabular-nums">{{ total() | currency: 'EUR' }}</span>
+      </p>
+    } @else if (!loading()) {
+      <p i18n="@@expenses.empty" class="px-5 py-8 text-center text-sm text-gray-500">No expenses in this month.</p>
+    }
+  </section>
+</div>

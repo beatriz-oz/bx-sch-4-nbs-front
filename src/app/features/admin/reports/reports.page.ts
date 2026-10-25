@@ -1,18 +1,19 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, computed, inject, LOCALE_ID, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { YearReport } from '../../../core/api/types';
 import { studioToday } from '../../../core/dates';
-import { SERVICE_LABELS } from '../../../shared/labels';
+import { EXPENSE_CATEGORY_LABELS, SERVICE_LABELS } from '../../../shared/labels';
 import { AdminApiService } from '../admin-api.service';
 import { MonthBars } from './month-bars';
 import { formatDuration } from './report-format';
 
-/** How much the studio worked and earned, month by month. */
+/** How much the studio worked, earned and spent, month by month. */
 @Component({
   selector: 'app-reports-page',
-  imports: [CurrencyPipe, MonthBars],
+  imports: [CurrencyPipe, MonthBars, RouterLink],
   templateUrl: './reports.page.html',
 })
 export class ReportsPage {
@@ -20,6 +21,7 @@ export class ReportsPage {
   private readonly locale = inject(LOCALE_ID);
 
   protected readonly serviceLabels = SERVICE_LABELS;
+  protected readonly categoryLabels = EXPENSE_CATEGORY_LABELS;
   protected readonly formatDuration = formatDuration;
   private readonly currentYear = Number(studioToday().slice(0, 4));
 
@@ -52,6 +54,8 @@ export class ReportsPage {
       completed: months.reduce((sum, m) => sum + m.completed, 0),
       minutes: months.reduce((sum, m) => sum + m.worked_minutes, 0),
       revenue: months.reduce((sum, m) => sum + Number(m.total_revenue), 0),
+      expenses: months.reduce((sum, m) => sum + Number(m.expenses), 0),
+      profit: months.reduce((sum, m) => sum + Number(m.profit), 0),
     };
   });
 

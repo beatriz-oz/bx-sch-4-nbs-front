@@ -2,7 +2,7 @@
   <div class="flex flex-wrap items-center justify-between gap-3">
     <div>
       <h2 i18n="@@reports.title" class="text-2xl font-semibold">Reports</h2>
-      <p i18n="@@reports.subtitle" class="text-sm text-gray-500">Hours worked and income, month by month. Tap a month to see it in detail.</p>
+      <p i18n="@@reports.subtitle" class="text-sm text-gray-500">Hours worked, income, expenses and profit, month by month. Tap a month to see it in detail.</p>
     </div>
     <div class="flex items-center">
       <button type="button" (click)="moveYear(-1)" aria-label="Previous year" i18n-aria-label="@@reports.previousYear"
@@ -52,6 +52,27 @@
           </div>
         </div>
 
+        <!-- What is left after the expenses -->
+        <div class="mt-5 grid gap-4 rounded-xl bg-gray-50 p-4 sm:grid-cols-3">
+          <div>
+            <p i18n="@@reports.income" class="text-sm text-gray-500">Income</p>
+            <p class="text-xl font-semibold tabular-nums">{{ month.total_revenue | currency: 'EUR' }}</p>
+          </div>
+          <div>
+            <p i18n="@@reports.expenses" class="text-sm text-gray-500">Expenses</p>
+            <p class="text-xl font-semibold tabular-nums">− {{ month.expenses | currency: 'EUR' }}</p>
+            @for (row of month.expenses_by_category; track row.category) {
+              <p class="text-xs text-gray-500">{{ categoryLabels[row.category] }}: {{ row.amount | currency: 'EUR' }}</p>
+            }
+            <a routerLink="/admin/expenses" [queryParams]="{ year: year(), month: month.month }" i18n="@@reports.seeExpenses"
+              class="mt-1 inline-block text-xs font-medium text-brand-700 hover:underline">See or add expenses</a>
+          </div>
+          <div>
+            <p i18n="@@reports.profit" class="text-sm text-gray-500">Profit</p>
+            <p class="text-xl font-semibold tabular-nums" [class.text-red-700]="month.profit.startsWith('-')">{{ month.profit | currency: 'EUR' }}</p>
+          </div>
+        </div>
+
         @if (month.by_service.length) {
           <table class="mt-5 w-full text-sm">
             <thead>
@@ -91,7 +112,7 @@
 
     <!-- The same numbers as a table (readable without the charts) -->
     <section class="mt-6 overflow-x-auto rounded-2xl border border-gray-200 bg-white">
-      <table class="w-full min-w-[32rem] text-sm">
+      <table class="w-full min-w-[44rem] text-sm">
         <caption i18n="@@reports.table.caption" class="px-5 pt-4 text-left font-semibold">The year in numbers</caption>
         <thead>
           <tr class="border-b border-gray-200 text-left text-gray-500">
@@ -99,7 +120,9 @@
             <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
             <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
             <th i18n="@@reports.table.noShows" class="py-2 text-right font-medium">No-shows</th>
-            <th i18n="@@reports.income" class="px-5 py-2 text-right font-medium">Income</th>
+            <th i18n="@@reports.income" class="py-2 text-right font-medium">Income</th>
+            <th i18n="@@reports.expenses" class="py-2 text-right font-medium">Expenses</th>
+            <th i18n="@@reports.profit" class="px-5 py-2 text-right font-medium">Profit</th>
           </tr>
         </thead>
         <tbody>
@@ -109,7 +132,9 @@
               <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
               <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
               <td class="py-2 text-right tabular-nums">{{ row.no_shows }}</td>
-              <td class="px-5 py-2 text-right tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
+              <td class="py-2 text-right tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
+              <td class="py-2 text-right tabular-nums">{{ row.expenses | currency: 'EUR' }}</td>
+              <td class="px-5 py-2 text-right tabular-nums" [class.text-red-700]="row.profit.startsWith('-')">{{ row.profit | currency: 'EUR' }}</td>
             </tr>
           }
         </tbody>
@@ -119,7 +144,9 @@
             <td class="py-3 text-right tabular-nums">{{ yearTotals().completed }}</td>
             <td class="py-3 text-right tabular-nums">{{ formatDuration(yearTotals().minutes) }}</td>
             <td></td>
-            <td class="px-5 py-3 text-right tabular-nums">{{ yearTotals().revenue | currency: 'EUR' }}</td>
+            <td class="py-3 text-right tabular-nums">{{ yearTotals().revenue | currency: 'EUR' }}</td>
+            <td class="py-3 text-right tabular-nums">{{ yearTotals().expenses | currency: 'EUR' }}</td>
+            <td class="px-5 py-3 text-right tabular-nums" [class.text-red-700]="yearTotals().profit < 0">{{ yearTotals().profit | currency: 'EUR' }}</td>
           </tr>
         </tfoot>
       </table>

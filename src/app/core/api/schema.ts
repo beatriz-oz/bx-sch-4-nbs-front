@@ -520,6 +520,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/expenses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Expenses
+         * @description The expenses of a month (Lisbon dates)
+         */
+        get: operations["get_expenses_v1_admin_expenses_get"];
+        put?: never;
+        /**
+         * Add Expense
+         * @description Record an expense
+         */
+        post: operations["add_expense_v1_admin_expenses_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/expenses/{expense_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Change Expense
+         * @description Correct an expense
+         */
+        put: operations["change_expense_v1_admin_expenses__expense_id__put"];
+        post?: never;
+        /**
+         * Remove Expense
+         * @description Remove an expense
+         */
+        delete: operations["remove_expense_v1_admin_expenses__expense_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/checkin/start": {
         parameters: {
             query?: never;
@@ -1153,6 +1201,15 @@ export interface components {
             status: "OK" | "KO";
             detail: components["schemas"]["EstimateResult"];
         };
+        /** BaseResponse[ExpenseResult] */
+        BaseResponse_ExpenseResult_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["ExpenseResult"];
+        };
         /** BaseResponse[FinalPriceEstimate] */
         BaseResponse_FinalPriceEstimate_: {
             /**
@@ -1293,6 +1350,16 @@ export interface components {
             /** Detail */
             detail: components["schemas"]["ClientResult"][];
         };
+        /** BaseResponse[list[ExpenseResult]] */
+        BaseResponse_list_ExpenseResult__: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            /** Detail */
+            detail: components["schemas"]["ExpenseResult"][];
+        };
         /** BaseResponse[list[PreApprovedInstagramResult]] */
         BaseResponse_list_PreApprovedInstagramResult__: {
             /**
@@ -1359,6 +1426,12 @@ export interface components {
             appointment: components["schemas"]["AppointmentResult"];
             /** Deposit Refund Due */
             deposit_refund_due: boolean;
+        };
+        /** CategoryExpenses */
+        CategoryExpenses: {
+            category: components["schemas"]["ExpenseCategory"];
+            /** Amount */
+            amount: string;
         };
         /** CheckInStart */
         CheckInStart: {
@@ -1489,6 +1562,39 @@ export interface components {
             /** Note */
             note: string | null;
         };
+        /**
+         * ExpenseCategory
+         * @enum {string}
+         */
+        ExpenseCategory: "Products" | "Material" | "Bills" | "Other";
+        /** ExpenseResult */
+        ExpenseResult: {
+            /** Id */
+            id: number;
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Description */
+            description: string;
+            category: components["schemas"]["ExpenseCategory"];
+            /** Amount */
+            amount: string;
+        };
+        /** ExpenseSet */
+        ExpenseSet: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Description */
+            description: string;
+            category: components["schemas"]["ExpenseCategory"];
+            /** Amount */
+            amount: number | string;
+        };
         /** FinalPriceDetails */
         FinalPriceDetails: {
             nail_size?: components["schemas"]["NailSize"] | null;
@@ -1570,6 +1676,12 @@ export interface components {
             cancellations: number;
             /** By Service */
             by_service: components["schemas"]["ServiceReport"][];
+            /** Expenses */
+            expenses: string;
+            /** Expenses By Category */
+            expenses_by_category: components["schemas"]["CategoryExpenses"][];
+            /** Profit */
+            profit: string;
         };
         /**
          * NailArtLevel
@@ -2918,6 +3030,151 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["BaseResponseWithWarning_list_time__"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_expenses_v1_admin_expenses_get: {
+        parameters: {
+            query: {
+                year: number;
+                month: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_list_ExpenseResult__"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_expense_v1_admin_expenses_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExpenseSet"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ExpenseResult_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    change_expense_v1_admin_expenses__expense_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                expense_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExpenseSet"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ExpenseResult_"];
+                };
+            };
+            /** @description Expense does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    remove_expense_v1_admin_expenses__expense_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                expense_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_str_"];
+                };
+            };
+            /** @description Expense does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

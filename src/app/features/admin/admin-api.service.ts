@@ -13,6 +13,8 @@ import {
   Client,
   ClientOverview,
   ClientProfile,
+  Expense,
+  ExpenseSet,
   FinalPriceDetails,
   FinalPriceEstimate,
   MonthPublished,
@@ -199,6 +201,30 @@ export class AdminApiService {
     return this.http
       .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/approval`, { approved })
       .pipe(map((r) => r.detail));
+  }
+
+  // --- expenses (subtracted from the income in the reports) ---
+
+  expenses(year: number, month: number): Observable<Expense[]> {
+    return this.http
+      .get<ApiResponse<Expense[]>>(`${environment.apiUrl}/admin/expenses`, { params: { year, month } })
+      .pipe(map((r) => r.detail));
+  }
+
+  addExpense(data: ExpenseSet): Observable<Expense> {
+    return this.http.post<ApiResponse<Expense>>(`${environment.apiUrl}/admin/expenses`, data).pipe(map((r) => r.detail));
+  }
+
+  updateExpense(id: number, data: ExpenseSet): Observable<Expense> {
+    return this.http
+      .put<ApiResponse<Expense>>(`${environment.apiUrl}/admin/expenses/${id}`, data)
+      .pipe(map((r) => r.detail));
+  }
+
+  removeExpense(id: number): Observable<void> {
+    return this.http
+      .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/expenses/${id}`)
+      .pipe(map(() => undefined));
   }
 
   yearReport(year: number): Observable<YearReport> {

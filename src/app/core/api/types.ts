@@ -54,6 +54,9 @@ export type MonthPublished = Schemas['MonthPublished'];
 export type AdminPayments = Schemas['AdminPayments'];
 export type ClientOverview = Schemas['ClientOverview'];
 export type YearReport = Schemas['YearReport'];
+export type Expense = Schemas['ExpenseResult'];
+export type ExpenseSet = Schemas['ExpenseSet'];
+export type ExpenseCategory = Schemas['ExpenseCategory'];
 export type ClientProfile = Schemas['ClientProfile'];
 
 // Enums

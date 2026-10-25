@@ -1,5 +1,5 @@
 // Translated names for the values that come from the API.
-import { Addon, AppointmentStatus, CancellationReason, NailArtLevel, Service } from '../core/api/types';
+import { Addon, AppointmentStatus, CancellationReason, ExpenseCategory, NailArtLevel, Service } from '../core/api/types';
 
 /** Short names for why an appointment was cancelled. */
 export const CANCELLATION_LABELS: Record<CancellationReason, string> = {
@@ -33,6 +33,13 @@ export const STATUS_LABELS: Record<AppointmentStatus, string> = {
   Completed: $localize`:@@status.completed:Completed`,
   Cancelled: $localize`:@@status.cancelled:Cancelled`,
   No_show: $localize`:@@status.noShow:No-show`,
+};
+
+export const EXPENSE_CATEGORY_LABELS: Record<ExpenseCategory, string> = {
+  Products: $localize`:@@expenseCategory.products:Products`,
+  Material: $localize`:@@expenseCategory.material:Material`,
+  Bills: $localize`:@@expenseCategory.bills:Bills`,
+  Other: $localize`:@@expenseCategory.other:Other`,
 };
 
 export const SERVICE_LABELS: Record<Service, string> = {
