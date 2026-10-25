@@ -5,15 +5,7 @@
   <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4" novalidate>
     <div>
       <label for="phone" i18n="@@login.phone" class="mb-1 block text-sm font-medium">Phone</label>
-      <input
-        id="phone"
-        type="tel"
-        autocomplete="tel"
-        formControlName="phone"
-        placeholder="+351 912 345 678"
-        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none"
-      />
-      <p i18n="@@login.phone.hint" class="mt-1 text-xs text-gray-500">With the country code, e.g. +351 or +55.</p>
+      <app-phone-input inputId="phone" formControlName="phone" />
       @if (form.controls.phone.touched && form.controls.phone.invalid) {
         <p i18n="@@login.phone.required" class="mt-1 text-sm text-red-600">Enter your phone number.</p>
       }

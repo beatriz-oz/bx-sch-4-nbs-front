@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { PhoneInput } from '../../../shared/phone-input';
 
 type Step = 'phone' | 'password';
 
@@ -14,7 +15,7 @@ type Step = 'phone' | 'password';
  */
 @Component({
   selector: 'app-activate-page',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, PhoneInput],
   templateUrl: './activate.page.html',
 })
 export class ActivatePage {

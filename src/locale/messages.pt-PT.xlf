@@ -6,6 +6,10 @@
         <source>Nail design studio in Porto</source>
         <target>Estúdio de nail design no Porto</target>
       </trans-unit>
+      <trans-unit id="header.language" datatype="html">
+        <source>Language</source>
+        <target>Língua</target>
+      </trans-unit>
       <trans-unit id="header.logout" datatype="html">
         <source> Log out </source>
         <target> Sair </target>
@@ -1162,10 +1166,6 @@
         <source> Already had your first appointment? Create a password to book whenever you want. We will send a code to the email you gave us. </source>
         <target> Já fez a sua primeira marcação? Crie uma palavra-passe para marcar quando quiser. Vamos enviar um código para o email que nos deu. </target>
       </trans-unit>
-      <trans-unit id="login.phone.hint" datatype="html">
-        <source>With the country code, e.g. +351 or +55.</source>
-        <target>Com o indicativo do país, por exemplo +351 ou +55.</target>
-      </trans-unit>
       <trans-unit id="login.phone.required" datatype="html">
         <source>Enter your phone number.</source>
         <target>Indique o seu número de telemóvel.</target>
@@ -1801,6 +1801,14 @@
       <trans-unit id="service.other" datatype="html">
         <source>Other</source>
         <target>Outro</target>
+      </trans-unit>
+      <trans-unit id="phone.country" datatype="html">
+        <source>Country</source>
+        <target>País</target>
+      </trans-unit>
+      <trans-unit id="phone.otherCountry" datatype="html">
+        <source>Other country</source>
+        <target>Outro país</target>
       </trans-unit>
     </body>
   </file>

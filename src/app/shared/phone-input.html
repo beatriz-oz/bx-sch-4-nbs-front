@@ -1,0 +1,14 @@
+<div class="flex gap-2">
+  <select [value]="country()" (change)="chooseCountry($any($event.target).value)" (blur)="onTouched()" [disabled]="disabled()"
+    aria-label="Country" i18n-aria-label="@@phone.country"
+    class="w-24 shrink-0 rounded-lg border border-gray-300 bg-white px-2 py-2.5 focus:border-gray-900 focus:outline-none">
+    @for (option of countries; track option.code) {
+      <option [value]="option.code" [selected]="option.code === country()" [title]="option.name">{{ option.label }}</option>
+    }
+    <option [value]="other" [selected]="isOther()" i18n="@@phone.otherCountry">Other country</option>
+  </select>
+  <input type="tel" autocomplete="tel-national" [attr.id]="inputId()" [value]="number()" [disabled]="disabled()"
+    (input)="typeNumber($any($event.target).value)" (blur)="onTouched()"
+    [placeholder]="isOther() ? '+1 555 123 4567' : '912 345 678'"
+    class="min-w-0 flex-1 rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+</div>

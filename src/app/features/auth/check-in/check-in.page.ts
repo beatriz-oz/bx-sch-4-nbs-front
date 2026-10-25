@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { PhoneInput } from '../../../shared/phone-input';
 
 type Step = 'details' | 'code';
 
@@ -14,7 +15,7 @@ type Step = 'details' | 'code';
  */
 @Component({
   selector: 'app-check-in-page',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, PhoneInput],
   templateUrl: './check-in.page.html',
 })
 export class CheckInPage {

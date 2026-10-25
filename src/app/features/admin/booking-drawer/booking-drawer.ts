@@ -18,6 +18,7 @@ import { formatMinutes, studioDateTime, studioDay, studioMinutes } from '../../.
 import { SERVICE_LABELS } from '../../../shared/labels';
 import { AdminApiService } from '../admin-api.service';
 import { suggestPrice } from './price-suggestion';
+import { PhoneInput } from '../../../shared/phone-input';
 
 type ClientMode = 'existing' | 'new';
 
@@ -28,7 +29,7 @@ type ClientMode = 'existing' | 'new';
  */
 @Component({
   selector: 'app-booking-drawer',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, PhoneInput],
   templateUrl: './booking-drawer.html',
   host: { '(document:keydown.escape)': 'closed.emit()' },
 })

@@ -6,8 +6,17 @@
         <p i18n="@@header.tagline" class="text-sm text-gray-500">Nail design studio in Porto</p>
       </a>
 
+      <div class="flex items-center gap-3 text-sm">
+        <nav aria-label="Language" i18n-aria-label="@@header.language" class="flex items-center font-medium">
+          <a [href]="languageHref('pt-PT')" hreflang="pt-PT" lang="pt-PT" [attr.aria-current]="isPortuguese ? 'true' : null"
+            class="rounded px-1.5 py-1 text-gray-400 hover:text-gray-900 aria-[current=true]:text-gray-900">PT</a>
+          <span aria-hidden="true" class="text-gray-300">|</span>
+          <a [href]="languageHref('en')" hreflang="en" lang="en" [attr.aria-current]="isPortuguese ? null : 'true'"
+            class="rounded px-1.5 py-1 text-gray-400 hover:text-gray-900 aria-[current=true]:text-gray-900">EN</a>
+        </nav>
+
       @if (auth.user(); as user) {
-        <div class="flex items-center gap-3 text-sm">
+        <div class="flex items-center gap-3">
           <span class="hidden text-gray-600 sm:inline">{{ user.name }} {{ user.last_name }}</span>
           <button
             type="button"
@@ -19,6 +28,7 @@
           </button>
         </div>
       }
+      </div>
     </div>
   </header>
 
