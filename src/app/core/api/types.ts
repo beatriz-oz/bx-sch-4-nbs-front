@@ -65,6 +65,7 @@ export type ClientProfile = Schemas['ClientProfile'];
 // Enums
 export type AppointmentStatus = Schemas['AppointmentStatus'];
 export type Service = Schemas['Service'];
+export type TradeItem = Schemas['TradeItem'];
 export type NailSize = Schemas['NailSize'];
 export type NailArtLevel = Schemas['NailArtLevel'];
 export type Addon = Schemas['Addon'];

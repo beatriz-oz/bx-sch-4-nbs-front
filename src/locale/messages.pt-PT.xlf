@@ -2,13 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" target-language="pt-PT" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="header.tagline" datatype="html">
+        <source>Nail Artist in Porto</source>
+        <target>Nail Artist no Porto</target>
+      </trans-unit>
       <trans-unit id="header.instagram" datatype="html">
         <source>@nailsbyscooby on Instagram</source>
         <target>@nailsbyscooby no Instagram</target>
-      </trans-unit>
-      <trans-unit id="header.tagline" datatype="html">
-        <source>Nail design studio in Porto</source>
-        <target>Estúdio de nail design no Porto</target>
       </trans-unit>
       <trans-unit id="header.newTab" datatype="html">
         <source>(opens Instagram in a new tab)</source>
@@ -37,6 +37,10 @@
       <trans-unit id="clientNav.profile" datatype="html">
         <source>Profile</source>
         <target>Perfil</target>
+      </trans-unit>
+      <trans-unit id="footer.iconCredit" datatype="html">
+        <source>Nail icon:</source>
+        <target>Ícone de unha:</target>
       </trans-unit>
       <trans-unit id="title.login" datatype="html">
         <source>Log in · Nails by Scooby</source>
@@ -310,6 +314,22 @@
         <source>Service</source>
         <target>Serviço</target>
       </trans-unit>
+      <trans-unit id="booking.tradeItem" datatype="html">
+        <source>What is traded</source>
+        <target>O que é trocado</target>
+      </trans-unit>
+      <trans-unit id="booking.tradeDuration" datatype="html">
+        <source>How long it takes</source>
+        <target>Quanto tempo leva</target>
+      </trans-unit>
+      <trans-unit id="booking.choose" datatype="html">
+        <source>Choose…</source>
+        <target>Escolher…</target>
+      </trans-unit>
+      <trans-unit id="booking.tradeDetailsOptional" datatype="html">
+        <source>Optional: only for the history.</source>
+        <target>Opcional: só para o histórico.</target>
+      </trans-unit>
       <trans-unit id="booking.size" datatype="html">
         <source>Nail size</source>
         <target>Tamanho das unhas</target>
@@ -317,10 +337,6 @@
       <trans-unit id="complete.nailArt" datatype="html">
         <source>Nail art</source>
         <target>Nail art</target>
-      </trans-unit>
-      <trans-unit id="booking.choose" datatype="html">
-        <source>Choose…</source>
-        <target>Escolher…</target>
       </trans-unit>
       <trans-unit id="complete.brokenNails" datatype="html">
         <source>Broken nails</source>
@@ -330,6 +346,10 @@
         <source>What will be done</source>
         <target>O que vai ser feito</target>
       </trans-unit>
+      <trans-unit id="booking.notesTrade" datatype="html">
+        <source>What is received in exchange</source>
+        <target>O que recebe em troca</target>
+      </trans-unit>
       <trans-unit id="booking.notes" datatype="html">
         <source>Notes (optional)</source>
         <target>Notas (opcional)</target>
@@ -337,6 +357,10 @@
       <trans-unit id="booking.notesPlaceholder" datatype="html">
         <source>e.g. Repair of 1 broken nail</source>
         <target>ex.: Reparação de 1 unha partida</target>
+      </trans-unit>
+      <trans-unit id="booking.tradeNoPrice" datatype="html">
+        <source>A trade has no price: it counts apart in the reports.</source>
+        <target>Uma troca não tem preço: conta à parte nos relatórios.</target>
       </trans-unit>
       <trans-unit id="booking.price" datatype="html">
         <source>Estimated price (€)</source>
@@ -373,6 +397,10 @@
       <trans-unit id="booking.error.details" datatype="html">
         <source>Choose the nail size and the nail art level.</source>
         <target>Escolha o tamanho das unhas e o nível de nail art.</target>
+      </trans-unit>
+      <trans-unit id="booking.error.trade" datatype="html">
+        <source>Choose what is traded (nails or press-ons) and how long it takes.</source>
+        <target>Escolha o que é trocado (unhas ou press-ons) e quanto tempo leva.</target>
       </trans-unit>
       <trans-unit id="booking.error.notes" datatype="html">
         <source>Describe the service in the notes.</source>
@@ -681,6 +709,10 @@
       <trans-unit id="complete.notesHint" datatype="html">
         <source>Only you see them, in the client&apos;s history.</source>
         <target>Só a Scooby as vê, no histórico da cliente.</target>
+      </trans-unit>
+      <trans-unit id="complete.tradeNoPrice" datatype="html">
+        <source>A trade has no price.</source>
+        <target>Uma troca não tem preço.</target>
       </trans-unit>
       <trans-unit id="complete.finalPrice" datatype="html">
         <source>Final price (€)</source>
@@ -1098,6 +1130,10 @@
         <source>Removal and extras</source>
         <target>Remoção e extras</target>
       </trans-unit>
+      <trans-unit id="prices.pressOnVariable" datatype="html">
+        <source>Variable price, set on each booking</source>
+        <target>Preço variável, definido em cada marcação</target>
+      </trans-unit>
       <trans-unit id="prices.unsaved" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 unsaved change} other {<x id="INTERPOLATION"/> unsaved changes}}</source>
         <target>{VAR_PLURAL, plural, =1 {1 alteração por guardar} other {<x id="INTERPOLATION"/> alterações por guardar}}</target>
@@ -1206,6 +1242,14 @@
         <source>Profit</source>
         <target>Lucro</target>
       </trans-unit>
+      <trans-unit id="reports.trades" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 trade} other {<x id="INTERPOLATION"/> trades}}</source>
+        <target>{VAR_PLURAL, plural, =1 {1 troca} other {<x id="INTERPOLATION"/> trocas}}</target>
+      </trans-unit>
+      <trans-unit id="reports.tradesNote" datatype="html">
+        <source>Not in the income, the hours worked or the per-hour value.</source>
+        <target>Não entra na receita, nas horas trabalhadas nem no valor por hora.</target>
+      </trans-unit>
       <trans-unit id="reports.table.completed" datatype="html">
         <source>Completed</source>
         <target>Concluídas</target>
@@ -1229,6 +1273,10 @@
       <trans-unit id="reports.table.month" datatype="html">
         <source>Month</source>
         <target>Mês</target>
+      </trans-unit>
+      <trans-unit id="reports.table.trades" datatype="html">
+        <source>Trades</source>
+        <target>Trocas</target>
       </trans-unit>
       <trans-unit id="reports.note" datatype="html">
         <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
@@ -1343,7 +1391,7 @@
         <target>A sua primeira marcação</target>
       </trans-unit>
       <trans-unit id="checkin.subtitle" datatype="html">
-        <source> Use the Instagram the studio approved. We will send a code to your email to confirm it is you. </source>
+        <source> Use the approved instagram account. We will send a code to your email to confirm it is you. </source>
         <target> Use o Instagram que o estúdio aprovou. Vamos enviar um código para o seu email para confirmar que é você. </target>
       </trans-unit>
       <trans-unit id="booking.client.instagram.required" datatype="html">
@@ -1866,6 +1914,10 @@
         <source>Bills</source>
         <target>Contas</target>
       </trans-unit>
+      <trans-unit id="expenseCategory.pressOns" datatype="html">
+        <source>Press-ons</source>
+        <target>Press-ons</target>
+      </trans-unit>
       <trans-unit id="expenseCategory.other" datatype="html">
         <source>Other</source>
         <target>Outros</target>
@@ -1885,6 +1937,22 @@
       <trans-unit id="service.other" datatype="html">
         <source>Other</source>
         <target>Outro</target>
+      </trans-unit>
+      <trans-unit id="service.pressOn" datatype="html">
+        <source>Press-on</source>
+        <target>Press-on</target>
+      </trans-unit>
+      <trans-unit id="service.trading" datatype="html">
+        <source>Trading</source>
+        <target>Troca</target>
+      </trans-unit>
+      <trans-unit id="tradeItem.nails" datatype="html">
+        <source>Nails</source>
+        <target>Unhas</target>
+      </trans-unit>
+      <trans-unit id="tradeItem.pressOns" datatype="html">
+        <source>Press-ons</source>
+        <target>Press-ons</target>
       </trans-unit>
       <trans-unit id="phone.country" datatype="html">
         <source>Country</source>

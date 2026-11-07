@@ -10,12 +10,12 @@ export interface PriceInput {
 /**
  * A starting price for a booking made by the studio, from the price table:
  * the same sum as the client's estimate (service + nail art + broken nails).
- * The manicure can always change it. OTHER has no table price (null).
+ * The manicure can always change it. OTHER, press-ons and trades have no table price (null).
  */
 export function suggestPrice(prices: PriceList, input: PriceInput): string | null {
   const amount = (value: string | undefined) => (value === undefined ? null : Number(value));
 
-  if (input.service === 'Other') {
+  if (input.service === 'Other' || input.service === 'Press-on' || input.service === 'Trading') {
     return null;
   }
   if (input.service === 'Removal') {

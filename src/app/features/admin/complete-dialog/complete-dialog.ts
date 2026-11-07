@@ -52,6 +52,15 @@ export class CompleteDialog implements OnInit {
     this.brokenNails.set(appointment.broken_nails);
     this.completeRemoval.set(appointment.has_other_professional_nails);
     this.finalPrice.set(appointment.estimated_price);
+    // A trade already has the duration she planned: start from it.
+    if (appointment.service === 'Trading' && appointment.duration_minutes) {
+      this.durationHours.set(Math.floor(appointment.duration_minutes / 60));
+      this.durationMinutes.set(appointment.duration_minutes % 60);
+    }
+  }
+
+  isTrading(): boolean {
+    return this.appointment().service === 'Trading';
   }
 
   /** Removal and Other have no details to change: their price is just typed. */
@@ -73,7 +82,8 @@ export class CompleteDialog implements OnInit {
   }
 
   complete(): void {
-    const price = this.finalPrice().trim().replace(',', '.');
+    // A trade has no price.
+    const price = this.isTrading() ? '0' : this.finalPrice().trim().replace(',', '.');
     if (!/^\d+(\.\d{1,2})?$/.test(price)) {
       this.error.set($localize`:@@complete.invalidPrice:Enter a valid price, e.g. 45 or 45.50.`);
       return;

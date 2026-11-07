@@ -1,7 +1,7 @@
 import { AdminAppointment, Service } from '../../../core/api/types';
 import { HOUR_HEIGHT, layoutDay, minutesAtOffset } from './calendar-layout';
 
-const DURATION: Record<Service, number> = { Application: 180, Maintenance: 150, Removal: 60, Other: 60 };
+const DURATION: Record<Service, number> = { Application: 180, Maintenance: 150, Removal: 60, Other: 60, 'Press-on': 180, Trading: 180 };
 
 function appointment(id: number, time: string, service: Service = 'Removal'): AdminAppointment {
   return {
@@ -25,6 +25,8 @@ function appointment(id: number, time: string, service: Service = 'Removal'): Ad
     duration_minutes: DURATION[service],
     client: { id: 1, name: 'Ana', last_name: 'Silva', instagram: null, is_active: true, approved: true, studio_notes: null },
     deposit_paid: false,
+    deposit_required: true,
+    trade_item: null,
     attendance_confirmed: false,
     deposit_overdue: false,
     refund_due: false,

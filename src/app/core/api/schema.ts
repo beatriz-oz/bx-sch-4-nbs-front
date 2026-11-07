@@ -1009,6 +1009,7 @@ export interface components {
             service: components["schemas"]["Service"];
             nail_size: components["schemas"]["NailSize"] | null;
             nail_art_level: components["schemas"]["NailArtLevel"] | null;
+            trade_item: components["schemas"]["TradeItem"] | null;
             /** Broken Nails */
             broken_nails: number;
             /** Has Other Professional Nails */
@@ -1033,6 +1034,8 @@ export interface components {
             client: components["schemas"]["ClientSummary"];
             /** Deposit Paid */
             deposit_paid: boolean;
+            /** Deposit Required */
+            deposit_required: boolean;
             /** Attendance Confirmed */
             attendance_confirmed: boolean;
             /** Deposit Overdue */
@@ -1132,6 +1135,7 @@ export interface components {
             service: components["schemas"]["Service"];
             nail_size: components["schemas"]["NailSize"] | null;
             nail_art_level: components["schemas"]["NailArtLevel"] | null;
+            trade_item: components["schemas"]["TradeItem"] | null;
             /** Broken Nails */
             broken_nails: number;
             /** Has Other Professional Nails */
@@ -1151,6 +1155,11 @@ export interface components {
             /** Cancelled By */
             cancelled_by: number | null;
             cancellation_reason: components["schemas"]["CancellationReason"] | null;
+            /**
+             * Deposit Required
+             * @description Whether this service needs the deposit at all (the rule stays here, not in the frontend).
+             */
+            readonly deposit_required: boolean;
             /**
              * Can Change
              * @description Whether the client can still change it herself (the rule stays here, not in the frontend).
@@ -1680,7 +1689,7 @@ export interface components {
          * ExpenseCategory
          * @enum {string}
          */
-        ExpenseCategory: "Products" | "Material" | "Bills" | "Other";
+        ExpenseCategory: "Products" | "Material" | "Bills" | "Press-ons" | "Other";
         /** ExpenseResult */
         ExpenseResult: {
             /** Id */
@@ -1796,6 +1805,12 @@ export interface components {
             expenses_by_category: components["schemas"]["CategoryExpenses"][];
             /** Profit */
             profit: string;
+            /** Trades */
+            trades: number;
+            /** Trade Minutes */
+            trade_minutes: number;
+            /** Trades By Item */
+            trades_by_item: components["schemas"]["TradeReport"][];
         };
         /**
          * NailArtLevel
@@ -1971,7 +1986,7 @@ export interface components {
          * Service
          * @enum {string}
          */
-        Service: "Application" | "Maintenance" | "Removal" | "Other";
+        Service: "Application" | "Maintenance" | "Removal" | "Other" | "Press-on" | "Trading";
         /** ServicePriceResult */
         ServicePriceResult: {
             service: components["schemas"]["Service"];
@@ -2025,6 +2040,9 @@ export interface components {
             estimated_price: number | string;
             /** Notes */
             notes?: string | null;
+            trade_item?: components["schemas"]["TradeItem"] | null;
+            /** Duration Minutes */
+            duration_minutes?: number | null;
             /** User Id */
             user_id?: number | null;
             new_client?: components["schemas"]["NewClient"] | null;
@@ -2056,6 +2074,9 @@ export interface components {
             estimated_price: number | string;
             /** Notes */
             notes?: string | null;
+            trade_item?: components["schemas"]["TradeItem"] | null;
+            /** Duration Minutes */
+            duration_minutes?: number | null;
         };
         /** StudioCancellation */
         StudioCancellation: {
@@ -2071,6 +2092,20 @@ export interface components {
              * @default bearer
              */
             token_type: string;
+        };
+        /**
+         * TradeItem
+         * @description What the studio gives in a trade (a service in exchange for something else, not money).
+         * @enum {string}
+         */
+        TradeItem: "Nails" | "Press-ons";
+        /** TradeReport */
+        TradeReport: {
+            trade_item: components["schemas"]["TradeItem"];
+            /** Completed */
+            completed: number;
+            /** Worked Minutes */
+            worked_minutes: number;
         };
         /** UserResult */
         UserResult: {

@@ -144,8 +144,39 @@
           }
         </div>
 
-        @if (hasDetails()) {
+        @if (isTrading()) {
+          <!-- A trade: what is given, and how long it takes -->
+          <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+            <div>
+              <span i18n="@@booking.tradeItem" class="mb-1 block font-medium">What is traded</span>
+              <div class="flex flex-wrap gap-2">
+                @for (item of tradeItems; track item) {
+                  <label class="cursor-pointer">
+                    <input type="radio" formControlName="trade_item" [value]="item" class="peer sr-only" />
+                    <span class="block rounded-full border border-gray-300 px-3 py-1 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-white">
+                      {{ tradeItemLabels[item] }}
+                    </span>
+                  </label>
+                }
+              </div>
+            </div>
+            <label>
+              <span i18n="@@booking.tradeDuration" class="mb-1 block font-medium">How long it takes</span>
+              <select formControlName="trade_duration" class="w-full rounded-lg border border-gray-300 px-3 py-2">
+                <option [ngValue]="null" disabled i18n="@@booking.choose">Choose…</option>
+                @for (minutes of tradeDurations; track minutes) {
+                  <option [ngValue]="minutes">{{ formatDuration(minutes) }}</option>
+                }
+              </select>
+            </label>
+          </div>
+        }
+
+        @if (showSizeAndArt()) {
           <div class="mt-4 space-y-3 text-sm">
+            @if (isTrading()) {
+              <p i18n="@@booking.tradeDetailsOptional" class="text-xs text-gray-500">Optional: only for the history.</p>
+            }
             <div>
               <span i18n="@@booking.size" class="mb-1 block font-medium">Nail size</span>
               <div class="flex flex-wrap gap-2">
@@ -163,21 +194,25 @@
               <label>
                 <span i18n="@@complete.nailArt" class="mb-1 block font-medium">Nail art</span>
                 <select formControlName="nail_art_level" class="w-full rounded-lg border border-gray-300 px-3 py-2">
-                  <option [ngValue]="null" disabled i18n="@@booking.choose">Choose…</option>
+                  <option [ngValue]="null" [disabled]="!isTrading()" i18n="@@booking.choose">Choose…</option>
                   @for (level of artLevels; track level) {
                     <option [ngValue]="level">{{ level }}</option>
                   }
                 </select>
               </label>
-              <label>
-                <span i18n="@@complete.brokenNails" class="mb-1 block font-medium">Broken nails</span>
-                <input type="number" min="0" max="10" formControlName="broken_nails" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
-              </label>
+              @if (hasDetails()) {
+                <label>
+                  <span i18n="@@complete.brokenNails" class="mb-1 block font-medium">Broken nails</span>
+                  <input type="number" min="0" max="10" formControlName="broken_nails" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+                </label>
+              }
             </div>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" formControlName="has_other_professional_nails" class="h-4 w-4 accent-gray-900" />
-              <span i18n="@@panel.otherProfessional">Nails from another professional</span>
-            </label>
+            @if (hasDetails()) {
+              <label class="flex items-center gap-2">
+                <input type="checkbox" formControlName="has_other_professional_nails" class="h-4 w-4 accent-gray-900" />
+                <span i18n="@@panel.otherProfessional">Nails from another professional</span>
+              </label>
+            }
           </div>
         }
 
@@ -185,6 +220,8 @@
           <span class="mb-1 block font-medium">
             @if (service() === 'Other') {
               <ng-container i18n="@@booking.notesRequired">What will be done</ng-container>
+            } @else if (isTrading()) {
+              <ng-container i18n="@@booking.notesTrade">What is received in exchange</ng-container>
             } @else {
               <ng-container i18n="@@booking.notes">Notes (optional)</ng-container>
             }
@@ -194,7 +231,10 @@
         </label>
       </section>
 
-      <!-- Price -->
+      <!-- Price (a trade has none) -->
+      @if (isTrading()) {
+        <p i18n="@@booking.tradeNoPrice" class="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-600">A trade has no price: it counts apart in the reports.</p>
+      } @else {
       <section>
         <h4 i18n="@@booking.price" class="mb-3 font-semibold">Estimated price (€)</h4>
         <input inputmode="decimal" formControlName="estimated_price" (input)="onPriceTyped()"
@@ -209,6 +249,7 @@
           }
         }
       </section>
+      }
 
       @if (error(); as message) {
         <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>

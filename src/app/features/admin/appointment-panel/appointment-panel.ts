@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { AdminAppointment } from '../../../core/api/types';
 import { formatMinutes, studioMinutes } from '../../../core/dates';
-import { SERVICE_LABELS, STATUS_LABELS } from '../../../shared/labels';
+import { SERVICE_LABELS, STATUS_LABELS, TRADE_ITEM_LABELS } from '../../../shared/labels';
 import { StudioDatePipe } from '../../../shared/studio-date.pipe';
 
 /** Details of one appointment, in a panel on the right, with the actions that fit its moment. */
@@ -27,6 +27,7 @@ export class AppointmentPanel {
 
   protected readonly statusLabels = STATUS_LABELS;
   protected readonly serviceLabels = SERVICE_LABELS;
+  protected readonly tradeItemLabels = TRADE_ITEM_LABELS;
 
   readonly timeRange = computed(() => {
     const start = studioMinutes(this.appointment().scheduled_at);
@@ -35,6 +36,6 @@ export class AppointmentPanel {
 
   readonly isActive = computed(() => ['Scheduled', 'Confirmed'].includes(this.appointment().status));
   readonly hasStarted = computed(() => new Date(this.appointment().scheduled_at).getTime() <= Date.now());
-  /** OTHER never needs a deposit. */
-  readonly needsDeposit = computed(() => this.appointment().service !== 'Other' && !this.appointment().deposit_paid);
+  /** Whether it needs a deposit comes from the API (OTHER and press-ons never do). */
+  readonly needsDeposit = computed(() => this.appointment().deposit_required && !this.appointment().deposit_paid);
 }

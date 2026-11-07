@@ -2,7 +2,7 @@
   @if (step() === 'details') {
     <h2 i18n="@@checkin.title" class="text-2xl font-semibold">Your first appointment</h2>
     <p i18n="@@checkin.subtitle" class="mt-1 mb-6 text-sm text-gray-500">
-      Use the Instagram the studio approved. We will send a code to your email to confirm it is you.
+      Use the approved instagram account. We will send a code to your email to confirm it is you.
     </p>
 
     <form [formGroup]="form" (ngSubmit)="sendCode()" class="space-y-4" novalidate>

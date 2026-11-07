@@ -1,5 +1,5 @@
 // Translated names for the values that come from the API.
-import { Addon, AppointmentStatus, CancellationReason, ExpenseCategory, NailArtLevel, Service } from '../core/api/types';
+import { Addon, AppointmentStatus, CancellationReason, ExpenseCategory, NailArtLevel, Service, TradeItem } from '../core/api/types';
 
 /** Short names for why an appointment was cancelled. */
 export const CANCELLATION_LABELS: Record<CancellationReason, string> = {
@@ -39,6 +39,7 @@ export const EXPENSE_CATEGORY_LABELS: Record<ExpenseCategory, string> = {
   Products: $localize`:@@expenseCategory.products:Products`,
   Material: $localize`:@@expenseCategory.material:Material`,
   Bills: $localize`:@@expenseCategory.bills:Bills`,
+  'Press-ons': $localize`:@@expenseCategory.pressOns:Press-ons`,
   Other: $localize`:@@expenseCategory.other:Other`,
 };
 
@@ -47,4 +48,12 @@ export const SERVICE_LABELS: Record<Service, string> = {
   Maintenance: $localize`:@@service.maintenance:Maintenance`,
   Removal: $localize`:@@service.removal:Removal`,
   Other: $localize`:@@service.other:Other`,
+  'Press-on': $localize`:@@service.pressOn:Press-on`,
+  Trading: $localize`:@@service.trading:Trading`,
+};
+
+/** What is given in a trade (a service in exchange for something else, not money). */
+export const TRADE_ITEM_LABELS: Record<TradeItem, string> = {
+  Nails: $localize`:@@tradeItem.nails:Nails`,
+  'Press-ons': $localize`:@@tradeItem.pressOns:Press-ons`,
 };

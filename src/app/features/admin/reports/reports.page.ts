@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { apiErrorMessage } from '../../../core/api/errors';
 import { YearReport } from '../../../core/api/types';
 import { studioToday } from '../../../core/dates';
-import { EXPENSE_CATEGORY_LABELS, SERVICE_LABELS } from '../../../shared/labels';
+import { EXPENSE_CATEGORY_LABELS, SERVICE_LABELS, TRADE_ITEM_LABELS } from '../../../shared/labels';
 import { AdminApiService } from '../admin-api.service';
 import { MonthBars } from './month-bars';
 import { formatDuration } from './report-format';
@@ -22,6 +22,7 @@ export class ReportsPage {
 
   protected readonly serviceLabels = SERVICE_LABELS;
   protected readonly categoryLabels = EXPENSE_CATEGORY_LABELS;
+  protected readonly tradeItemLabels = TRADE_ITEM_LABELS;
   protected readonly formatDuration = formatDuration;
   private readonly currentYear = Number(studioToday().slice(0, 4));
 
@@ -63,6 +64,7 @@ export class ReportsPage {
       revenue: months.reduce((sum, m) => sum + Number(m.total_revenue), 0),
       expenses: months.reduce((sum, m) => sum + Number(m.expenses), 0),
       profit: months.reduce((sum, m) => sum + Number(m.profit), 0),
+      trades: months.reduce((sum, m) => sum + m.trades, 0),
     };
   });
 

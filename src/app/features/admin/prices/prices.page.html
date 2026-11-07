@@ -81,6 +81,10 @@
             <div class="w-28"><ng-container *ngTemplateOutlet="priceInput; context: { $implicit: addonKey(addon) }" /></div>
           </li>
         }
+        <li class="flex items-center justify-between gap-3 border-t border-gray-100 pt-2">
+          <span class="font-medium">{{ serviceLabels['Press-on'] }}</span>
+          <span i18n="@@prices.pressOnVariable" class="text-right text-gray-500">Variable price, set on each booking</span>
+        </li>
       </ul>
     </section>
   </div>

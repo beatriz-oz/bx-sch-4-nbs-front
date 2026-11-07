@@ -103,6 +103,9 @@
       <span i18n="@@complete.notesHint" class="mt-1 block text-xs text-gray-500">Only you see them, in the client's history.</span>
     </label>
 
+    @if (isTrading()) {
+      <p i18n="@@complete.tradeNoPrice" class="mt-4 rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-600">A trade has no price.</p>
+    } @else {
     <label class="mt-4 block text-sm">
       <span i18n="@@complete.finalPrice" class="mb-1 block font-medium">Final price (€)</span>
       <input
@@ -115,6 +118,7 @@
         <ng-container i18n="@@complete.estimated">Estimated when booked: {{ appointment().estimated_price }} €</ng-container>
       </span>
     </label>
+    }
 
     @if (!appointment().client.is_active && !appointment().client.approved) {
       <label class="mt-4 flex items-start gap-3 rounded-xl border border-gray-200 p-3 text-sm">

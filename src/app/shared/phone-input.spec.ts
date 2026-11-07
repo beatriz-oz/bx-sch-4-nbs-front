@@ -50,4 +50,30 @@ describe('PhoneInput', () => {
     phone.typeNumber('+81 3 1234 5678');
     expect(value).toBe('+81312345678');
   });
+
+  it('shows a drawn flag for each country, Portugal first, and "other country" last', () => {
+    const options = (phone as unknown as { options: { code: string; flag: string | null }[] }).options;
+    expect(options[0]).toMatchObject({ code: 'PT', flag: 'flags/pt.svg' });
+    expect(options.at(-1)).toMatchObject({ code: 'other', flag: null });
+  });
+
+  it('opens with the arrow keys, moves, and chooses with Enter', () => {
+    const key = (name: string) => phone.onKeydown(new KeyboardEvent('keydown', { key: name }));
+    key('ArrowDown');
+    expect(phone.open()).toBe(true);
+    expect(phone.activeIndex()).toBe(0);
+    key('ArrowDown');
+    key('Enter');
+    expect(phone.open()).toBe(false);
+    expect(phone.country()).not.toBe('PT');
+  });
+
+  it('closes with Escape without changing the country', () => {
+    const key = (name: string) => phone.onKeydown(new KeyboardEvent('keydown', { key: name }));
+    key('ArrowDown');
+    key('ArrowDown');
+    key('Escape');
+    expect(phone.open()).toBe(false);
+    expect(phone.country()).toBe('PT');
+  });
 });

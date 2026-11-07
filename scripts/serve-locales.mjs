@@ -6,7 +6,8 @@
 // Here, like the nginx of the deploy:
 //   /pt-PT/...  and  /en/...   each language's copy (unknown paths get its index.html: Angular routes them)
 //   /v1/...                    forwarded to the API on localhost:8000 (same origin: no CORS needed)
-//   /                          sent to the browser's language (Portuguese unless it prefers English)
+//   /                          the language the visitor chose (cookie nbs_lang), otherwise the browser's
+//                              (Portuguese unless it prefers English)
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer, request } from 'node:http';
 import { extname, join, normalize, resolve } from 'node:path';
@@ -31,8 +32,13 @@ const TYPES = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
-function preferredLocale(acceptLanguage = '') {
-  const first = acceptLanguage.split(',')[0].trim().toLowerCase();
+function preferredLocale(req) {
+  // A choice made on the site (language window or PT | EN) wins over the browser's language.
+  const chosen = /(?:^|;\s*)nbs_lang=(pt-PT|en)(?:;|$)/.exec(req.headers.cookie ?? '');
+  if (chosen) {
+    return chosen[1];
+  }
+  const first = (req.headers['accept-language'] ?? '').split(',')[0].trim().toLowerCase();
   return first.startsWith('en') ? 'en' : 'pt-PT';
 }
 
@@ -67,7 +73,7 @@ const server = createServer((req, response) => {
   const locale = LOCALES.find((code) => path === `/${code}` || path.startsWith(`/${code}/`));
   if (!locale) {
     // "/" or an old link without a language: keep the path, add the language.
-    response.writeHead(302, { Location: `/${preferredLocale(req.headers['accept-language'])}${path === '/' ? '/' : path}` });
+    response.writeHead(302, { Location: `/${preferredLocale(req)}${path === '/' ? '/' : path}` });
     response.end();
     return;
   }

@@ -217,7 +217,7 @@ export class CalendarPage {
     if (new Date(appointment.scheduled_at).getTime() < this.now()) {
       return TONES.past;
     }
-    if (appointment.deposit_paid || appointment.service === 'Other') {
+    if (appointment.deposit_paid || !appointment.deposit_required) {
       return TONES.paid;
     }
     return TONES.awaitingDeposit;

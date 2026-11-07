@@ -4,9 +4,11 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } fro
 import { filter, map } from 'rxjs';
 
 import { AuthService } from './core/auth/auth.service';
+import { rememberLanguage, SiteLanguage } from './core/language';
+import { LanguageChooser } from './shared/language-chooser';
 
 @Component({
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LanguageChooser],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
@@ -42,9 +44,12 @@ export class App {
     return route.data;
   }
 
-  languageHref(language: 'pt-PT' | 'en'): string {
+  languageHref(language: SiteLanguage): string {
     return `/${language}${this.router.url}`;
   }
+
+  /** Switching in the header also counts as a choice: "/" opens this language next time. */
+  protected readonly rememberLanguage = rememberLanguage;
 
   logout(): void {
     this.auth.logout();

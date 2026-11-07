@@ -1,12 +1,42 @@
 <div class="flex gap-2">
-  <select [value]="country()" (change)="chooseCountry($any($event.target).value)" (blur)="onTouched()" [disabled]="disabled()"
-    aria-label="Country" i18n-aria-label="@@phone.country"
-    class="w-24 shrink-0 rounded-lg border border-gray-300 bg-white px-2 py-2.5 focus:border-gray-900 focus:outline-none">
-    @for (option of countries; track option.code) {
-      <option [value]="option.code" [selected]="option.code === country()" [title]="option.name">{{ option.label }}</option>
+  <!-- The country: a button that opens the list of flags (a "select-only combobox") -->
+  <div class="relative shrink-0">
+    <button #trigger type="button" role="combobox" aria-haspopup="listbox"
+      [attr.aria-expanded]="open()" [attr.aria-controls]="listId"
+      [attr.aria-activedescendant]="open() ? optionId(activeIndex()) : null"
+      aria-label="Country" i18n-aria-label="@@phone.country" [title]="selected().name"
+      [disabled]="disabled()" (click)="toggle()" (keydown)="onKeydown($event)"
+      class="flex h-full w-28 items-center gap-2 rounded-lg border border-gray-300 bg-white px-2 py-2.5 text-left focus:border-gray-900 focus:outline-none disabled:opacity-60">
+      @if (selected().flag; as flag) {
+        <img [src]="flag" alt="" width="24" height="18" class="h-[18px] w-6 shrink-0 rounded-sm ring-1 ring-black/10" />
+      }
+      <span class="truncate text-sm">{{ selected().label }}</span>
+      <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="ml-auto h-4 w-4 shrink-0 text-gray-500">
+        <path fill-rule="evenodd" d="M5.2 7.7a.75.75 0 0 1 1.06.04L10 11.7l3.74-3.96a.75.75 0 1 1 1.1 1.02l-4.3 4.55a.75.75 0 0 1-1.1 0l-4.3-4.55a.75.75 0 0 1 .06-1.06Z" />
+      </svg>
+    </button>
+
+    @if (open()) {
+      <ul [id]="listId" role="listbox" aria-label="Country" i18n-aria-label="@@phone.country"
+        class="absolute left-0 z-30 mt-1 max-h-64 w-44 overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+        @for (option of options; track option.code; let index = $index) {
+          <!-- mousedown is cancelled so the button keeps the focus while choosing -->
+          <li [id]="optionId(index)" role="option" [attr.aria-selected]="option.code === country()" [title]="option.name"
+            (mousedown)="$event.preventDefault()" (click)="choose(option.code, trigger)" (mouseenter)="activeIndex.set(index)"
+            class="flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm"
+            [class.bg-brand-50]="index === activeIndex()" [class.font-semibold]="option.code === country()">
+            @if (option.flag; as flag) {
+              <img [src]="flag" alt="" width="24" height="18" loading="lazy" class="h-[18px] w-6 shrink-0 rounded-sm ring-1 ring-black/10" />
+            } @else {
+              <span class="w-6 shrink-0"></span>
+            }
+            <span>{{ option.label }}</span>
+          </li>
+        }
+      </ul>
     }
-    <option [value]="other" [selected]="isOther()" i18n="@@phone.otherCountry">Other country</option>
-  </select>
+  </div>
+
   <input type="tel" autocomplete="tel-national" [attr.id]="inputId()" [value]="number()" [disabled]="disabled()"
     (input)="typeNumber($any($event.target).value)" (blur)="onTouched()"
     [placeholder]="isOther() ? '+1 555 123 4567' : '912 345 678'"

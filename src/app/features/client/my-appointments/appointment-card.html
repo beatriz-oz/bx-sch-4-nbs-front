@@ -23,7 +23,7 @@
     @if (upcoming()) {
       @if (appointment().deposit_paid_at) {
         <span i18n="@@badge.depositPaid" class="rounded-full bg-green-100 px-2.5 py-1 text-green-700">Deposit paid</span>
-      } @else if (appointment().service !== 'Other') {
+      } @else if (appointment().deposit_required) {
         <span i18n="@@myAppointments.awaitingDeposit" class="rounded-full bg-amber-100 px-2.5 py-1 text-amber-800">Waiting for the deposit</span>
       }
       @if (appointment().attendance_confirmed_at) {
@@ -45,7 +45,7 @@
         Cancel appointment
       </button>
     </div>
-    @if (!appointment().can_change && appointment().service !== 'Other') {
+    @if (!appointment().can_change) {
       <p i18n="@@myAppointments.changeClosed" class="mt-2 text-xs text-gray-500">
         To change it now, send a message to @nailsbyscooby on Instagram.
       </p>

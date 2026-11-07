@@ -1,4 +1,4 @@
-import { Component, computed, forwardRef, inject, input, LOCALE_ID, signal } from '@angular/core';
+import { Component, computed, ElementRef, forwardRef, inject, input, LOCALE_ID, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 interface Country {
@@ -34,47 +34,72 @@ const COUNTRIES: Country[] = [
 /** Any other country: the whole number, with its +code, goes in the text box. */
 const OTHER = 'other';
 
-/** 'PT' → 🇵🇹 (two "regional indicator" letters that phones draw as a flag). */
-function flag(code: string): string {
-  return String.fromCodePoint(...[...code].map((letter) => 0x1f1e6 + letter.charCodeAt(0) - 65));
+interface Option {
+  code: string;
+  /** "+351", or "Other country". */
+  label: string;
+  /** The country's name, shown as a tooltip. */
+  name: string;
+  /** A drawn flag (public/flags, from flag-icons): emoji flags show as two letters on Windows. */
+  flag: string | null;
 }
+
+/** Each phone input gets its own ids, so two on the same page never clash. */
+let nextId = 0;
 
 /**
  * A phone number as a country (with its flag and code) plus the number itself.
  * For the form it is a single value in the format the API expects: "+351912345678".
  * Works with formControlName / [formControl] like a normal input (ControlValueAccessor).
+ *
+ * The country picker is a small listbox of its own (not a <select>): the options of a native
+ * <select> can only hold text, and the flags are images. It follows the "select-only combobox"
+ * pattern: arrows move, Enter chooses, Escape closes, and screen readers hear each option.
  */
 @Component({
   selector: 'app-phone-input',
   templateUrl: './phone-input.html',
-  host: { class: 'block' },
+  host: { class: 'block', '(document:click)': 'onDocumentClick($event)' },
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PhoneInput), multi: true }],
 })
 export class PhoneInput implements ControlValueAccessor {
+  private readonly host = inject(ElementRef<HTMLElement>);
+
   /** The id of the number box, for a <label for="..."> outside the component. */
   readonly inputId = input<string | null>(null);
 
+  protected readonly listId = `phone-countries-${nextId++}`;
   private readonly names = new Intl.DisplayNames([inject(LOCALE_ID)], { type: 'region' });
-  /**
-   * Only the flag and the code are shown, so the list goes by code (+1, +31, +32…), with Portugal first.
-   * The country's name stays as a tooltip (on Windows the flag shows as two letters).
-   */
-  protected readonly countries = [...COUNTRIES]
-    .sort((a, b) => (a.code === 'PT' ? -1 : b.code === 'PT' ? 1 : Number(a.dial) - Number(b.dial)))
-    .map((country) => ({
-      ...country,
-      label: `${flag(country.code)} +${country.dial}`,
-      name: this.names.of(country.code) ?? country.code,
-    }));
-  protected readonly other = OTHER;
+
+  /** Portugal first, then by code (+1, +31, +32…), and "Other country" at the end. */
+  protected readonly options: Option[] = [
+    ...[...COUNTRIES]
+      .sort((a, b) => (a.code === 'PT' ? -1 : b.code === 'PT' ? 1 : Number(a.dial) - Number(b.dial)))
+      .map((country) => ({
+        code: country.code,
+        label: `+${country.dial}`,
+        name: this.names.of(country.code) ?? country.code,
+        flag: `flags/${country.code.toLowerCase()}.svg`,
+      })),
+    { code: OTHER, label: $localize`:@@phone.otherCountry:Other country`, name: '', flag: null },
+  ];
 
   readonly country = signal('PT');
   readonly number = signal('');
   readonly disabled = signal(false);
   readonly isOther = computed(() => this.country() === OTHER);
+  readonly selected = computed(() => this.options.find((option) => option.code === this.country()) ?? this.options[0]);
+
+  /** The list of countries: open or not, and which option the arrows are on. */
+  readonly open = signal(false);
+  readonly activeIndex = signal(0);
 
   private onChange: (value: string) => void = () => undefined;
   protected onTouched: () => void = () => undefined;
+
+  optionId(index: number): string {
+    return `${this.listId}-${index}`;
+  }
 
   /** From the form to the screen: "+351912345678" → Portugal + "912345678". */
   writeValue(value: string | null): void {
@@ -106,6 +131,9 @@ export class PhoneInput implements ControlValueAccessor {
 
   setDisabledState(disabled: boolean): void {
     this.disabled.set(disabled);
+    if (disabled) {
+      this.open.set(false);
+    }
   }
 
   chooseCountry(code: string): void {
@@ -116,6 +144,95 @@ export class PhoneInput implements ControlValueAccessor {
   typeNumber(number: string): void {
     this.number.set(number);
     this.emit();
+  }
+
+  // --- the country list ---
+
+  toggle(): void {
+    if (this.open()) {
+      this.close();
+    } else {
+      this.openList();
+    }
+  }
+
+  /** A click on an option: choose it and give the focus back to the button. */
+  choose(code: string, button: HTMLElement): void {
+    this.chooseCountry(code);
+    this.close();
+    button.focus();
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    const last = this.options.length - 1;
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowUp': {
+        event.preventDefault();
+        if (!this.open()) {
+          this.openList();
+          return;
+        }
+        const step = event.key === 'ArrowDown' ? 1 : -1;
+        this.moveTo(Math.min(last, Math.max(0, this.activeIndex() + step)));
+        return;
+      }
+      case 'Home':
+      case 'End':
+        if (this.open()) {
+          event.preventDefault();
+          this.moveTo(event.key === 'Home' ? 0 : last);
+        }
+        return;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        if (this.open()) {
+          this.chooseCountry(this.options[this.activeIndex()].code);
+          this.close();
+        } else {
+          this.openList();
+        }
+        return;
+      case 'Escape':
+        if (this.open()) {
+          event.preventDefault();
+          this.close();
+        }
+        return;
+      case 'Tab':
+        this.close();
+        return;
+    }
+  }
+
+  /** A click anywhere outside this component closes the list. */
+  onDocumentClick(event: MouseEvent): void {
+    if (this.open() && !this.host.nativeElement.contains(event.target as Node)) {
+      this.close();
+    }
+  }
+
+  private openList(): void {
+    if (this.disabled()) {
+      return;
+    }
+    this.open.set(true);
+    this.moveTo(Math.max(0, this.options.findIndex((option) => option.code === this.country())));
+  }
+
+  private close(): void {
+    if (this.open()) {
+      this.open.set(false);
+      this.onTouched();
+    }
+  }
+
+  /** Moves the highlight and keeps that option in view (the list scrolls). */
+  private moveTo(index: number): void {
+    this.activeIndex.set(index);
+    // After Angular has drawn the list.
+    setTimeout(() => document.getElementById(this.optionId(index))?.scrollIntoView({ block: 'nearest' }));
   }
 
   /** From the screen to the form. Empty while there is no number, so Validators.required still works. */

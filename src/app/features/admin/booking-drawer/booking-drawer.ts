@@ -13,9 +13,11 @@ import {
   Service,
   StudioAppointment,
   StudioAppointmentDetails,
+  TradeItem,
 } from '../../../core/api/types';
 import { formatMinutes, studioDateTime, studioDay, studioMinutes } from '../../../core/dates';
-import { SERVICE_LABELS } from '../../../shared/labels';
+import { formatDuration } from '../reports/report-format';
+import { SERVICE_LABELS, TRADE_ITEM_LABELS } from '../../../shared/labels';
 import { AdminApiService } from '../admin-api.service';
 import { suggestPrice } from './price-suggestion';
 import { PhoneInput } from '../../../shared/phone-input';
@@ -46,10 +48,15 @@ export class BookingDrawer implements OnInit {
   readonly changed = output<AdminAppointment>();
   readonly closed = output<void>();
 
-  protected readonly services: Service[] = ['Application', 'Maintenance', 'Removal', 'Other'];
+  protected readonly services: Service[] = ['Application', 'Maintenance', 'Removal', 'Press-on', 'Trading', 'Other'];
   protected readonly sizes: NailSize[] = ['S', 'M', 'L', 'XL', 'XXL'];
   protected readonly artLevels: NailArtLevel[] = ['Level 1', 'Level 2', 'Level 3'];
   protected readonly serviceLabels = SERVICE_LABELS;
+  protected readonly tradeItems: TradeItem[] = ['Nails', 'Press-ons'];
+  protected readonly tradeItemLabels = TRADE_ITEM_LABELS;
+  protected readonly formatDuration = formatDuration;
+  /** A trade's duration, chosen by the manicure: 30 minutes to 6 hours, in steps of 15. */
+  protected readonly tradeDurations = Array.from({ length: 23 }, (_, index) => 30 + index * 15);
 
   readonly form = this.fb.group({
     day: ['', Validators.required],
@@ -60,6 +67,8 @@ export class BookingDrawer implements OnInit {
     broken_nails: [0, [Validators.min(0), Validators.max(10)]],
     has_other_professional_nails: [false],
     notes: ['', Validators.maxLength(1000)],
+    trade_item: this.fb.control<TradeItem | null>(null),
+    trade_duration: this.fb.control<number | null>(null),
     estimated_price: ['', [Validators.required, Validators.pattern(/^\d+([.,]\d{1,2})?$/)]],
   });
 
@@ -85,6 +94,10 @@ export class BookingDrawer implements OnInit {
 
   readonly service = toSignal(this.form.controls.service.valueChanges, { initialValue: 'Application' as Service });
   readonly hasDetails = computed(() => this.service() === 'Application' || this.service() === 'Maintenance');
+  readonly isTrading = computed(() => this.service() === 'Trading');
+  readonly tradeItem = toSignal(this.form.controls.trade_item.valueChanges, { initialValue: null as TradeItem | null });
+  /** A trade of nails may keep the size and nail art, only for the history (optional). */
+  readonly showSizeAndArt = computed(() => this.hasDetails() || (this.isTrading() && this.tradeItem() === 'Nails'));
 
   readonly submitting = signal(false);
   readonly error = signal<string | null>(null);
@@ -104,6 +117,8 @@ export class BookingDrawer implements OnInit {
         has_other_professional_nails: current.has_other_professional_nails,
         notes: current.notes ?? '',
         estimated_price: current.estimated_price,
+        trade_item: current.trade_item ?? null,
+        trade_duration: current.service === 'Trading' ? current.duration_minutes : null,
       });
       // Keep the price already agreed; the table price stays one click away.
       this.priceTyped = true;
@@ -129,8 +144,21 @@ export class BookingDrawer implements OnInit {
       });
 
     this.form.controls.service.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((service) => {
-      if (service === 'Removal' || service === 'Other') {
+      // These take no nail size, nail art or broken nails.
+      if (service === 'Removal' || service === 'Other' || service === 'Press-on') {
         this.form.patchValue({ nail_size: null, nail_art_level: null, broken_nails: 0 }, { emitEvent: false });
+      }
+      // A trade has no price and no broken nails; leaving a trade clears what only a trade has.
+      if (service === 'Trading') {
+        this.form.patchValue({ estimated_price: '0', broken_nails: 0, has_other_professional_nails: false }, { emitEvent: false });
+      } else {
+        this.form.patchValue({ trade_item: null, trade_duration: null }, { emitEvent: false });
+      }
+    });
+    // Press-ons take no nail size or nail art.
+    this.form.controls.trade_item.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((item) => {
+      if (item === 'Press-ons') {
+        this.form.patchValue({ nail_size: null, nail_art_level: null }, { emitEvent: false });
       }
     });
     this.form.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.updateSuggestion());
@@ -191,7 +219,10 @@ export class BookingDrawer implements OnInit {
     if (this.hasDetails() && (!value.nail_size || !value.nail_art_level)) {
       return $localize`:@@booking.error.details:Choose the nail size and the nail art level.`;
     }
-    if (value.service === 'Other' && !value.notes.trim()) {
+    if (value.service === 'Trading' && (!value.trade_item || !value.trade_duration)) {
+      return $localize`:@@booking.error.trade:Choose what is traded (nails or press-ons) and how long it takes.`;
+    }
+    if ((value.service === 'Other' || value.service === 'Trading') && !value.notes.trim()) {
       return $localize`:@@booking.error.notes:Describe the service in the notes.`;
     }
     if (this.form.invalid) {
@@ -215,12 +246,14 @@ export class BookingDrawer implements OnInit {
     const details: StudioAppointmentDetails = {
       scheduled_at: studioDateTime(value.day, value.time),
       service: value.service,
-      nail_size: this.hasDetails() ? value.nail_size : null,
-      nail_art_level: this.hasDetails() ? value.nail_art_level : null,
+      nail_size: this.showSizeAndArt() ? value.nail_size : null,
+      nail_art_level: this.showSizeAndArt() ? value.nail_art_level : null,
       broken_nails: this.hasDetails() ? value.broken_nails : 0,
       has_other_professional_nails: value.has_other_professional_nails,
-      estimated_price: value.estimated_price.replace(',', '.'),
+      estimated_price: this.isTrading() ? '0' : value.estimated_price.replace(',', '.'),
       notes: value.notes.trim() || null,
+      trade_item: this.isTrading() ? value.trade_item : null,
+      duration_minutes: this.isTrading() ? value.trade_duration : null,
     };
 
     const current = this.appointment();

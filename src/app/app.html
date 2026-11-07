@@ -8,20 +8,38 @@
     }
 
     <div class="relative flex h-[4.5rem] items-center justify-between px-4">
-      <!-- The name opens the studio's Instagram in a new tab -->
-      <a href="https://instagram.com/nailsbyscooby" target="_blank" rel="noopener noreferrer"
-        title="@nailsbyscooby on Instagram" i18n-title="@@header.instagram">
-        <h1 class="text-xl font-semibold text-primary">Nails by Scooby</h1>
-        <p i18n="@@header.tagline" class="text-sm text-gray-600">Nail design studio in Porto</p>
-        <span i18n="@@header.newTab" class="sr-only">(opens Instagram in a new tab)</span>
+      <!-- The nail icon and the name go home. The icon is decorative (alt=""): the name says it all. -->
+      <a routerLink="/" class="flex items-center gap-2">
+        <img src="images/logo-mark.png" alt="" width="40" height="40" class="h-10 w-10 shrink-0" />
+        <div>
+          <h1 class="text-xl font-semibold text-primary">Nails by Scooby</h1>
+          <p class="text-sm text-gray-600">
+            <ng-container i18n="@@header.tagline">Nail Artist in Porto</ng-container> |
+            <!-- A drawn flag: the emoji shows as "PT" on Windows -->
+            <img src="flags/pt.svg" alt="" width="20" height="15" class="inline h-[15px] w-5 rounded-[2px] align-[-2px] ring-1 ring-black/10" />
+          </p>
+        </div>
       </a>
 
       <div class="flex items-center gap-3 text-sm">
+        <!-- The studio's Instagram, in a new tab -->
+        <a href="https://instagram.com/nailsbyscooby" target="_blank" rel="noopener noreferrer"
+          title="@nailsbyscooby on Instagram" i18n-title="@@header.instagram"
+          class="rounded-full p-1.5 text-primary hover:bg-white/70">
+          <!-- The Instagram camera: rounded square, lens and flash -->
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+          </svg>
+          <span i18n="@@header.newTab" class="sr-only">(opens Instagram in a new tab)</span>
+        </a>
+
         <nav aria-label="Language" i18n-aria-label="@@header.language" class="flex items-center font-medium">
-          <a [href]="languageHref('pt-PT')" hreflang="pt-PT" lang="pt-PT" [attr.aria-current]="isPortuguese ? 'true' : null"
+          <a [href]="languageHref('pt-PT')" (click)="rememberLanguage('pt-PT')" hreflang="pt-PT" lang="pt-PT" [attr.aria-current]="isPortuguese ? 'true' : null"
             class="rounded px-1.5 py-1 text-gray-500 hover:text-gray-900 aria-[current=true]:text-gray-900">PT</a>
           <span aria-hidden="true" class="text-gray-400">|</span>
-          <a [href]="languageHref('en')" hreflang="en" lang="en" [attr.aria-current]="isPortuguese ? null : 'true'"
+          <a [href]="languageHref('en')" (click)="rememberLanguage('en')" hreflang="en" lang="en" [attr.aria-current]="isPortuguese ? null : 'true'"
             class="rounded px-1.5 py-1 text-gray-500 hover:text-gray-900 aria-[current=true]:text-gray-900">EN</a>
         </nav>
 
@@ -74,4 +92,13 @@
     [style.background-image]="texturedPage() ? 'url(images/login-background.jpg)' : null">
     <router-outlet />
   </main>
+
+  <!-- First visit: Português or English (remembered, never asked again) -->
+  <app-language-chooser />
+
+  <!-- The nail icon comes from Vecteezy's free license, which asks for this credit with a link. -->
+  <footer class="py-3 text-center text-xs text-gray-400">
+    <ng-container i18n="@@footer.iconCredit">Nail icon:</ng-container>
+    <a href="https://www.vecteezy.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">Vecteezy.com</a>
+  </footer>
 </div>

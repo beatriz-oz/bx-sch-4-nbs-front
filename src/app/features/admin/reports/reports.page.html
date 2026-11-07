@@ -112,6 +112,22 @@
           </div>
         </div>
 
+        @if (month.trades) {
+          <!-- Trades: no money, so apart from the income and from "per hour worked" -->
+          <div class="mt-5 rounded-xl border border-gray-200 p-4">
+            <p class="font-medium">
+              <ng-container i18n="@@reports.trades">{month.trades, plural, =1 {1 trade} other {{{ month.trades }} trades}}</ng-container>
+              · {{ formatDuration(month.trade_minutes) }}
+            </p>
+            <p class="text-sm text-gray-500">
+              @for (row of month.trades_by_item; track row.trade_item; let last = $last) {
+                {{ tradeItemLabels[row.trade_item] }}: {{ row.completed }} ({{ formatDuration(row.worked_minutes) }}){{ last ? '' : ' · ' }}
+              }
+            </p>
+            <p i18n="@@reports.tradesNote" class="mt-1 text-xs text-gray-500">Not in the income, the hours worked or the per-hour value.</p>
+          </div>
+        }
+
         @if (month.by_service.length) {
           <table class="mt-5 w-full text-sm">
             <thead>
@@ -151,7 +167,7 @@
 
     <!-- The same numbers as a table (readable without the charts) -->
     <section class="mt-6 overflow-x-auto rounded-2xl border border-gray-200 bg-white">
-      <table class="w-full min-w-[44rem] text-sm">
+      <table class="w-full min-w-[48rem] text-sm">
         <caption i18n="@@reports.table.caption" class="px-5 pt-4 text-left font-semibold">The year in numbers</caption>
         <thead>
           <tr class="border-b border-gray-200 text-left text-gray-500">
@@ -159,6 +175,7 @@
             <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
             <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
             <th i18n="@@reports.table.noShows" class="py-2 text-right font-medium">No-shows</th>
+            <th i18n="@@reports.table.trades" class="py-2 text-right font-medium">Trades</th>
             <th i18n="@@reports.income" class="py-2 text-right font-medium">Income</th>
             <th i18n="@@reports.expenses" class="py-2 text-right font-medium">Expenses</th>
             <th i18n="@@reports.profit" class="px-5 py-2 text-right font-medium">Profit</th>
@@ -171,6 +188,7 @@
               <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
               <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
               <td class="py-2 text-right tabular-nums">{{ row.no_shows }}</td>
+              <td class="py-2 text-right tabular-nums">{{ row.trades }}</td>
               <td class="py-2 text-right tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
               <td class="py-2 text-right tabular-nums">{{ row.expenses | currency: 'EUR' }}</td>
               <td class="px-5 py-2 text-right tabular-nums" [class.text-red-700]="row.profit.startsWith('-')">{{ row.profit | currency: 'EUR' }}</td>
@@ -183,6 +201,7 @@
             <td class="py-3 text-right tabular-nums">{{ yearTotals().completed }}</td>
             <td class="py-3 text-right tabular-nums">{{ formatDuration(yearTotals().minutes) }}</td>
             <td></td>
+            <td class="py-3 text-right tabular-nums">{{ yearTotals().trades }}</td>
             <td class="py-3 text-right tabular-nums">{{ yearTotals().revenue | currency: 'EUR' }}</td>
             <td class="py-3 text-right tabular-nums">{{ yearTotals().expenses | currency: 'EUR' }}</td>
             <td class="px-5 py-3 text-right tabular-nums" [class.text-red-700]="yearTotals().profit < 0">{{ yearTotals().profit | currency: 'EUR' }}</td>
