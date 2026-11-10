@@ -83,11 +83,40 @@
           </div>
           <div>
             <p i18n="@@reports.perHour" class="text-sm text-gray-500">Per hour worked</p>
-            <p class="text-2xl font-semibold">{{ perHour() === null ? '—' : (perHour() | currency: 'EUR') }}</p>
+            <p class="text-2xl font-semibold">{{ month.revenue_per_hour === null ? '—' : (month.revenue_per_hour | currency: 'EUR') }}</p>
             <p class="text-xs text-gray-500">
               <ng-container i18n="@@reports.noShows">{month.no_shows, plural, =1 {1 no-show} other {{{ month.no_shows }} no-shows}}</ng-container> ·
               <ng-container i18n="@@reports.cancellations">{month.cancellations, plural, =1 {1 cancellation} other {{{ month.cancellations }} cancellations}}</ng-container>
             </p>
+          </div>
+        </div>
+
+        <!-- Clients, days and the averages -->
+        <div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div>
+            <p i18n="@@reports.clients" class="text-sm text-gray-500">Clients</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.clients }}</p>
+          </div>
+          <div>
+            <p i18n="@@reports.daysWorked" class="text-sm text-gray-500">Days worked</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.days_worked }}</p>
+            @if (month.average_per_day !== null) {
+              <p class="text-xs text-gray-500">{{ month.average_per_day | currency: 'EUR' }} <ng-container i18n="@@reports.perDay">per day</ng-container></p>
+            }
+          </div>
+          <div>
+            <p i18n="@@reports.averagePerClient" class="text-sm text-gray-500">Average per client</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.average_per_client === null ? '—' : (month.average_per_client | currency: 'EUR') }}</p>
+          </div>
+          <div>
+            <p i18n="@@reports.costPerClient" class="text-sm text-gray-500">Cost per client</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.cost_per_client === null ? '—' : (month.cost_per_client | currency: 'EUR') }}</p>
+            <p i18n="@@reports.costPerClientHint" class="text-xs text-gray-500">Expenses ÷ clients</p>
+            @if (month.profit_per_client !== null) {
+              <p class="text-xs font-medium" [class.text-red-700]="month.profit_per_client.startsWith('-')">
+                <ng-container i18n="@@reports.profitPerClient">Profit per client</ng-container>: {{ month.profit_per_client | currency: 'EUR' }}
+              </p>
+            }
           </div>
         </div>
 
@@ -133,18 +162,18 @@
             <thead>
               <tr class="border-b border-gray-200 text-left text-gray-500">
                 <th i18n="@@booking.service" class="py-2 font-medium">Service</th>
-                <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
-                <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
-                <th i18n="@@reports.income" class="py-2 text-right font-medium">Income</th>
+                <th i18n="@@reports.table.completed" class="py-2 text-center font-medium">Completed</th>
+                <th i18n="@@reports.table.hours" class="py-2 text-center font-medium">Hours</th>
+                <th i18n="@@reports.income" class="py-2 text-center font-medium">Income</th>
               </tr>
             </thead>
             <tbody>
               @for (row of month.by_service; track row.service) {
                 <tr class="border-b border-gray-100">
                   <td class="py-2">{{ serviceLabels[row.service] }}</td>
-                  <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
-                  <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
-                  <td class="py-2 text-right tabular-nums">{{ row.revenue | currency: 'EUR' }}</td>
+                  <td class="py-2 text-center tabular-nums">{{ row.completed }}</td>
+                  <td class="py-2 text-center tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
+                  <td class="py-2 text-center tabular-nums">{{ row.revenue | currency: 'EUR' }}</td>
                 </tr>
               }
             </tbody>
@@ -165,53 +194,103 @@
       </section>
     </div>
 
+    <!-- The whole year at a glance -->
+    <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="font-semibold"><ng-container i18n="@@reports.yearTitle">The year</ng-container> {{ year() }}</h3>
+      <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-5">
+        <div>
+          <p i18n="@@reports.perHour" class="text-sm text-gray-500">Per hour worked</p>
+          <p class="text-xl font-semibold tabular-nums">{{ data.totals.revenue_per_hour === null ? '—' : (data.totals.revenue_per_hour | currency: 'EUR') }}</p>
+        </div>
+        <div>
+          <p i18n="@@reports.clients" class="text-sm text-gray-500">Clients</p>
+          <p class="text-xl font-semibold tabular-nums">{{ data.totals.clients }}</p>
+        </div>
+        <div>
+          <p i18n="@@reports.daysWorked" class="text-sm text-gray-500">Days worked</p>
+          <p class="text-xl font-semibold tabular-nums">{{ data.totals.days_worked }}</p>
+          @if (data.totals.average_per_day !== null) {
+            <p class="text-xs text-gray-500">{{ data.totals.average_per_day | currency: 'EUR' }} <ng-container i18n="@@reports.perDay">per day</ng-container></p>
+          }
+        </div>
+        <div>
+          <p i18n="@@reports.averagePerClient" class="text-sm text-gray-500">Average per client</p>
+          <p class="text-xl font-semibold tabular-nums">{{ data.totals.average_per_client === null ? '—' : (data.totals.average_per_client | currency: 'EUR') }}</p>
+        </div>
+        <div>
+          <p i18n="@@reports.costPerClient" class="text-sm text-gray-500">Cost per client</p>
+          <p class="text-xl font-semibold tabular-nums">{{ data.totals.cost_per_client === null ? '—' : (data.totals.cost_per_client | currency: 'EUR') }}</p>
+          @if (data.totals.profit_per_client !== null) {
+            <p class="text-xs font-medium" [class.text-red-700]="data.totals.profit_per_client.startsWith('-')">
+              <ng-container i18n="@@reports.profitPerClient">Profit per client</ng-container>: {{ data.totals.profit_per_client | currency: 'EUR' }}
+            </p>
+          }
+        </div>
+      </div>
+    </section>
+
     <!-- The same numbers as a table (readable without the charts) -->
     <section class="mt-6 overflow-x-auto rounded-2xl border border-gray-200 bg-white">
-      <table class="w-full min-w-[48rem] text-sm">
+      <table class="w-full min-w-[72rem] text-sm">
         <caption i18n="@@reports.table.caption" class="px-5 pt-4 text-left font-semibold">The year in numbers</caption>
         <thead>
           <tr class="border-b border-gray-200 text-left text-gray-500">
             <th i18n="@@reports.table.month" class="px-5 py-2 font-medium">Month</th>
-            <th i18n="@@reports.table.completed" class="py-2 text-right font-medium">Completed</th>
-            <th i18n="@@reports.table.hours" class="py-2 text-right font-medium">Hours</th>
-            <th i18n="@@reports.table.noShows" class="py-2 text-right font-medium">No-shows</th>
-            <th i18n="@@reports.table.trades" class="py-2 text-right font-medium">Trades</th>
-            <th i18n="@@reports.income" class="py-2 text-right font-medium">Income</th>
-            <th i18n="@@reports.expenses" class="py-2 text-right font-medium">Expenses</th>
-            <th i18n="@@reports.profit" class="px-5 py-2 text-right font-medium">Profit</th>
+            <th i18n="@@reports.table.completed" class="py-2 text-center font-medium">Completed</th>
+            <th i18n="@@reports.table.hours" class="py-2 text-center font-medium">Hours</th>
+            <th i18n="@@reports.clients" class="py-2 text-center font-medium">Clients</th>
+            <th i18n="@@reports.table.days" class="py-2 text-center font-medium">Days</th>
+            <th i18n="@@reports.table.perClient" class="py-2 text-center font-medium">Per client</th>
+            <th i18n="@@reports.table.costPerClient" class="py-2 text-center font-medium">Cost / client</th>
+            <th i18n="@@reports.table.profitPerClient" class="py-2 text-center font-medium">Profit / client</th>
+            <th i18n="@@reports.table.noShows" class="py-2 text-center font-medium">No-shows</th>
+            <th i18n="@@reports.table.trades" class="py-2 text-center font-medium">Trades</th>
+            <th i18n="@@reports.income" class="py-2 text-center font-medium">Income</th>
+            <th i18n="@@reports.expenses" class="py-2 text-center font-medium">Expenses</th>
+            <th i18n="@@reports.profit" class="px-5 py-2 text-center font-medium">Profit</th>
           </tr>
         </thead>
         <tbody>
           @for (row of data.months; track row.month) {
             <tr class="cursor-pointer border-b border-gray-100 hover:bg-gray-50" [class.bg-brand-50]="row.month === month()" (click)="month.set(row.month)">
               <td class="px-5 py-2 capitalize">{{ monthNames[row.month - 1] }}</td>
-              <td class="py-2 text-right tabular-nums">{{ row.completed }}</td>
-              <td class="py-2 text-right tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
-              <td class="py-2 text-right tabular-nums">{{ row.no_shows }}</td>
-              <td class="py-2 text-right tabular-nums">{{ row.trades }}</td>
-              <td class="py-2 text-right tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
-              <td class="py-2 text-right tabular-nums">{{ row.expenses | currency: 'EUR' }}</td>
-              <td class="px-5 py-2 text-right tabular-nums" [class.text-red-700]="row.profit.startsWith('-')">{{ row.profit | currency: 'EUR' }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.completed }}</td>
+              <td class="py-2 text-center tabular-nums">{{ formatDuration(row.worked_minutes) }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.clients }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.days_worked }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.average_per_client === null ? '—' : (row.average_per_client | currency: 'EUR') }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.cost_per_client === null ? '—' : (row.cost_per_client | currency: 'EUR') }}</td>
+              <td class="py-2 text-center tabular-nums" [class.text-red-700]="row.profit_per_client?.startsWith('-')">{{ row.profit_per_client === null ? '—' : (row.profit_per_client | currency: 'EUR') }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.no_shows }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.trades }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.total_revenue | currency: 'EUR' }}</td>
+              <td class="py-2 text-center tabular-nums">{{ row.expenses | currency: 'EUR' }}</td>
+              <td class="px-5 py-2 text-center tabular-nums" [class.text-red-700]="row.profit.startsWith('-')">{{ row.profit | currency: 'EUR' }}</td>
             </tr>
           }
         </tbody>
         <tfoot>
           <tr class="font-semibold">
             <td i18n="@@reports.table.total" class="px-5 py-3">Total</td>
-            <td class="py-3 text-right tabular-nums">{{ yearTotals().completed }}</td>
-            <td class="py-3 text-right tabular-nums">{{ formatDuration(yearTotals().minutes) }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.completed }}</td>
+            <td class="py-3 text-center tabular-nums">{{ formatDuration(data.totals.worked_minutes) }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.clients }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.days_worked }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.average_per_client === null ? '—' : (data.totals.average_per_client | currency: 'EUR') }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.cost_per_client === null ? '—' : (data.totals.cost_per_client | currency: 'EUR') }}</td>
+            <td class="py-3 text-center tabular-nums" [class.text-red-700]="data.totals.profit_per_client?.startsWith('-')">{{ data.totals.profit_per_client === null ? '—' : (data.totals.profit_per_client | currency: 'EUR') }}</td>
             <td></td>
-            <td class="py-3 text-right tabular-nums">{{ yearTotals().trades }}</td>
-            <td class="py-3 text-right tabular-nums">{{ yearTotals().revenue | currency: 'EUR' }}</td>
-            <td class="py-3 text-right tabular-nums">{{ yearTotals().expenses | currency: 'EUR' }}</td>
-            <td class="px-5 py-3 text-right tabular-nums" [class.text-red-700]="yearTotals().profit < 0">{{ yearTotals().profit | currency: 'EUR' }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.trades }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.total_revenue | currency: 'EUR' }}</td>
+            <td class="py-3 text-center tabular-nums">{{ data.totals.expenses | currency: 'EUR' }}</td>
+            <td class="px-5 py-3 text-center tabular-nums" [class.text-red-700]="data.totals.profit.startsWith('-')">{{ data.totals.profit | currency: 'EUR' }}</td>
           </tr>
         </tfoot>
       </table>
     </section>
 
     <p class="mt-3 text-xs text-gray-500">
-      <ng-container i18n="@@reports.note">Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count {{ data.deposit_amount | currency: 'EUR' }} each.</ng-container>
+      <ng-container i18n="@@reports.note">Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count {{ data.deposit_amount | currency: 'EUR' }} each. Clients, days and the averages count the completed paid appointments (a client who came twice is one client); trades stay out.</ng-container>
     </p>
   } @else if (!error()) {
     <p i18n="@@dashboard.loading" class="mt-6 text-gray-500">Loading…</p>

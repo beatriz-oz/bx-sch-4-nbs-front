@@ -50,23 +50,8 @@ export class ReportsPage {
   readonly revenues = computed(() => (this.report()?.months ?? []).map((m) => Number(m.total_revenue)));
   readonly hours = computed(() => (this.report()?.months ?? []).map((m) => m.worked_minutes / 60));
 
-  /** Income from services per hour actually worked (the kept deposits need no work). */
-  readonly perHour = computed(() => {
-    const month = this.selected();
-    return month && month.worked_minutes ? Number(month.services_revenue) / (month.worked_minutes / 60) : null;
-  });
-
-  readonly yearTotals = computed(() => {
-    const months = this.report()?.months ?? [];
-    return {
-      completed: months.reduce((sum, m) => sum + m.completed, 0),
-      minutes: months.reduce((sum, m) => sum + m.worked_minutes, 0),
-      revenue: months.reduce((sum, m) => sum + Number(m.total_revenue), 0),
-      expenses: months.reduce((sum, m) => sum + Number(m.expenses), 0),
-      profit: months.reduce((sum, m) => sum + Number(m.profit), 0),
-      trades: months.reduce((sum, m) => sum + m.trades, 0),
-    };
-  });
+  // Per hour, clients, days and the averages all come computed from the API (the year's totals too):
+  // a client who came in two months is still one client in the year, so the months cannot just be added up here.
 
   // Axis and tooltip formats for the two charts.
   readonly euros = (value: number): string =>

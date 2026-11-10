@@ -1254,6 +1254,34 @@
         <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
         <target>{VAR_PLURAL, plural, =1 {1 cancelamento} other {<x id="INTERPOLATION"/> cancelamentos}}</target>
       </trans-unit>
+      <trans-unit id="reports.clients" datatype="html">
+        <source>Clients</source>
+        <target>Clientes</target>
+      </trans-unit>
+      <trans-unit id="reports.daysWorked" datatype="html">
+        <source>Days worked</source>
+        <target>Dias trabalhados</target>
+      </trans-unit>
+      <trans-unit id="reports.perDay" datatype="html">
+        <source>per day</source>
+        <target>por dia</target>
+      </trans-unit>
+      <trans-unit id="reports.averagePerClient" datatype="html">
+        <source>Average per client</source>
+        <target>Ganho médio por cliente</target>
+      </trans-unit>
+      <trans-unit id="reports.costPerClient" datatype="html">
+        <source>Cost per client</source>
+        <target>Custo por cliente</target>
+      </trans-unit>
+      <trans-unit id="reports.costPerClientHint" datatype="html">
+        <source>Expenses ÷ clients</source>
+        <target>Despesas ÷ clientes</target>
+      </trans-unit>
+      <trans-unit id="reports.profitPerClient" datatype="html">
+        <source>Profit per client</source>
+        <target>Lucro por cliente</target>
+      </trans-unit>
       <trans-unit id="reports.expenses" datatype="html">
         <source>Expenses</source>
         <target>Despesas</target>
@@ -1290,6 +1318,10 @@
         <source>Hours worked per month</source>
         <target>Horas trabalhadas por mês</target>
       </trans-unit>
+      <trans-unit id="reports.yearTitle" datatype="html">
+        <source>The year</source>
+        <target>O ano</target>
+      </trans-unit>
       <trans-unit id="reports.table.caption" datatype="html">
         <source>The year in numbers</source>
         <target>O ano em números</target>
@@ -1298,13 +1330,29 @@
         <source>Month</source>
         <target>Mês</target>
       </trans-unit>
+      <trans-unit id="reports.table.days" datatype="html">
+        <source>Days</source>
+        <target>Dias</target>
+      </trans-unit>
+      <trans-unit id="reports.table.perClient" datatype="html">
+        <source>Per client</source>
+        <target>Por cliente</target>
+      </trans-unit>
+      <trans-unit id="reports.table.costPerClient" datatype="html">
+        <source>Cost / client</source>
+        <target>Custo / cliente</target>
+      </trans-unit>
+      <trans-unit id="reports.table.profitPerClient" datatype="html">
+        <source>Profit / client</source>
+        <target>Lucro / cliente</target>
+      </trans-unit>
       <trans-unit id="reports.table.trades" datatype="html">
         <source>Trades</source>
         <target>Trocas</target>
       </trans-unit>
       <trans-unit id="reports.note" datatype="html">
-        <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each.</source>
-        <target>As horas usam a duração registada ao concluir cada marcação, ou a duração prevista do serviço quando não foi registada. Cada sinal retido conta <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/>.</target>
+        <source>Hours use the duration recorded when completing each appointment, or the expected duration of the service when none was recorded. Kept deposits count <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/> each. Clients, days and the averages count the completed paid appointments (a client who came twice is one client); trades stay out.</source>
+        <target>As horas usam a duração registada ao concluir cada marcação, ou a duração prevista do serviço quando não foi registada. Cada sinal retido conta <x id="INTERPOLATION" equiv-text="{{ data.deposit_amount | currency: &apos;EUR&apos; }}"/>. Os clientes, os dias e as médias contam as marcações pagas concluídas (uma cliente que veio duas vezes conta uma vez); as trocas ficam de fora.</target>
       </trans-unit>
       <trans-unit id="export.error.dates" datatype="html">
         <source>Choose a start date and an end date after it.</source>

@@ -1839,6 +1839,20 @@ export interface components {
         };
         /** MonthReportResult */
         MonthReportResult: {
+            /** Clients */
+            clients: number;
+            /** Days Worked */
+            days_worked: number;
+            /** Revenue Per Hour */
+            revenue_per_hour: string | null;
+            /** Average Per Client */
+            average_per_client: string | null;
+            /** Average Per Day */
+            average_per_day: string | null;
+            /** Cost Per Client */
+            cost_per_client: string | null;
+            /** Profit Per Client */
+            profit_per_client: string | null;
             /** Month */
             month: number;
             /** Completed */
@@ -2247,6 +2261,36 @@ export interface components {
             deposit_amount: string;
             /** Months */
             months: components["schemas"]["MonthReportResult"][];
+            totals: components["schemas"]["YearTotals"];
+        };
+        /** YearTotals */
+        YearTotals: {
+            /** Clients */
+            clients: number;
+            /** Days Worked */
+            days_worked: number;
+            /** Revenue Per Hour */
+            revenue_per_hour: string | null;
+            /** Average Per Client */
+            average_per_client: string | null;
+            /** Average Per Day */
+            average_per_day: string | null;
+            /** Cost Per Client */
+            cost_per_client: string | null;
+            /** Profit Per Client */
+            profit_per_client: string | null;
+            /** Completed */
+            completed: number;
+            /** Worked Minutes */
+            worked_minutes: number;
+            /** Total Revenue */
+            total_revenue: string;
+            /** Expenses */
+            expenses: string;
+            /** Profit */
+            profit: string;
+            /** Trades */
+            trades: number;
         };
     };
     responses: never;
