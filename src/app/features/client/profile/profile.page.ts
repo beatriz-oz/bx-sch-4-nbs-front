@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { ChangePasswordForm } from '../../../shared/change-password-form';
 
-/** Her details and the one preference she controls: the "agenda is open" emails. */
+/** Her details, her password and the one preference she controls: the "agenda is open" emails. */
 @Component({
   selector: 'app-profile-page',
-  imports: [RouterLink],
+  imports: [RouterLink, ChangePasswordForm],
   templateUrl: './profile.page.html',
 })
 export class ProfilePage {

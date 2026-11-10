@@ -23,6 +23,14 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/check-in/check-in.page').then((m) => m.CheckInPage),
   },
   {
+    path: 'forgot-password',
+    canActivate: [guestGuard],
+    data: TEXTURE,
+    title: $localize`:@@title.forgot:Forgot your password · Nails by Scooby`,
+    loadComponent: () =>
+      import('./features/auth/forgot-password/forgot-password.page').then((m) => m.ForgotPasswordPage),
+  },
+  {
     path: 'activate',
     data: TEXTURE,
     // Open to a logged-in one-off client too: she creates her password after booking.

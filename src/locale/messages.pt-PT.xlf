@@ -50,6 +50,10 @@
         <source>First appointment · Nails by Scooby</source>
         <target>Primeira marcação · Nails by Scooby</target>
       </trans-unit>
+      <trans-unit id="title.forgot" datatype="html">
+        <source>Forgot your password · Nails by Scooby</source>
+        <target>Esqueceu a palavra-passe · Nails by Scooby</target>
+      </trans-unit>
       <trans-unit id="title.activate" datatype="html">
         <source>Create your password · Nails by Scooby</source>
         <target>Criar palavra-passe · Nails by Scooby</target>
@@ -81,6 +85,26 @@
       <trans-unit id="error.unexpected" datatype="html">
         <source>Something went wrong. Please try again.</source>
         <target>Algo correu mal. Por favor, tente novamente.</target>
+      </trans-unit>
+      <trans-unit id="account.title" datatype="html">
+        <source>My account</source>
+        <target>A minha conta</target>
+      </trans-unit>
+      <trans-unit id="booking.client.email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="login.phone" datatype="html">
+        <source>Phone</source>
+        <target>Telemóvel</target>
+      </trans-unit>
+      <trans-unit id="account.loginHint" datatype="html">
+        <source> You log in with this phone. The code to reset your password goes to this email. </source>
+        <target>Entra com este telemóvel. O código para repor a palavra-passe vai para este email.</target>
+      </trans-unit>
+      <trans-unit id="password.title" datatype="html">
+        <source>Change password</source>
+        <target>Alterar palavra-passe</target>
       </trans-unit>
       <trans-unit id="nav.calendar" datatype="html">
         <source>Calendar</source>
@@ -117,6 +141,10 @@
       <trans-unit id="nav.policies" datatype="html">
         <source>Policies</source>
         <target>Políticas</target>
+      </trans-unit>
+      <trans-unit id="nav.account" datatype="html">
+        <source>My account</source>
+        <target>A minha conta</target>
       </trans-unit>
       <trans-unit id="title.calendar" datatype="html">
         <source>Calendar · Nails by Scooby</source>
@@ -157,6 +185,10 @@
       <trans-unit id="title.preApproved" datatype="html">
         <source>Pre-approved Instagram · Nails by Scooby</source>
         <target>Instagram pré-aprovados · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.account" datatype="html">
+        <source>My account · Nails by Scooby</source>
+        <target>A minha conta · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="dialog.close" datatype="html">
         <source>Close</source>
@@ -285,14 +317,6 @@
       <trans-unit id="booking.client.lastName" datatype="html">
         <source>Last name</source>
         <target>Apelido</target>
-      </trans-unit>
-      <trans-unit id="booking.client.email" datatype="html">
-        <source>Email</source>
-        <target>Email</target>
-      </trans-unit>
-      <trans-unit id="login.phone" datatype="html">
-        <source>Phone</source>
-        <target>Telemóvel</target>
       </trans-unit>
       <trans-unit id="booking.client.instagram" datatype="html">
         <source>Instagram (optional)</source>
@@ -1426,6 +1450,30 @@
         <source>You already have an account, or this phone or email is already in use.</source>
         <target>Já tem uma conta, ou este telemóvel ou email já está a ser usado.</target>
       </trans-unit>
+      <trans-unit id="forgot.title" datatype="html">
+        <source>Forgot your password?</source>
+        <target>Esqueceu a palavra-passe?</target>
+      </trans-unit>
+      <trans-unit id="forgot.subtitle" datatype="html">
+        <source> Enter your phone number. We will send a code to the email of your account, to choose a new password. </source>
+        <target>Indique o seu número de telemóvel. Enviamos um código para o email da sua conta, para escolher uma nova palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="forgot.backToLogin" datatype="html">
+        <source>Back to log in</source>
+        <target>Voltar ao login</target>
+      </trans-unit>
+      <trans-unit id="login.noPassword" datatype="html">
+        <source>Already a client, but no password?</source>
+        <target>Já é cliente, mas sem palavra-passe?</target>
+      </trans-unit>
+      <trans-unit id="forgot.sent" datatype="html">
+        <source> If this phone has an account with a password, we sent a 6-digit code to its email. Check also the spam folder. </source>
+        <target>Se este telemóvel tiver uma conta com palavra-passe, enviámos um código de 6 dígitos para o email dela. Veja também a pasta de spam.</target>
+      </trans-unit>
+      <trans-unit id="forgot.submit" datatype="html">
+        <source> Save new password and log in </source>
+        <target>Guardar nova palavra-passe e entrar</target>
+      </trans-unit>
       <trans-unit id="login.title" datatype="html">
         <source>Log in</source>
         <target>Entrar</target>
@@ -1442,6 +1490,10 @@
         <source>Enter your password.</source>
         <target>Indique a sua palavra-passe.</target>
       </trans-unit>
+      <trans-unit id="login.forgot" datatype="html">
+        <source> Forgot your password? </source>
+        <target>Esqueceu a palavra-passe?</target>
+      </trans-unit>
       <trans-unit id="login.submitting" datatype="html">
         <source>Logging in…</source>
         <target>A entrar…</target>
@@ -1457,10 +1509,6 @@
       <trans-unit id="login.firstTimeHint" datatype="html">
         <source>Book with the Instagram the studio approved.</source>
         <target>Marque com o Instagram que o estúdio aprovou.</target>
-      </trans-unit>
-      <trans-unit id="login.noPassword" datatype="html">
-        <source>Already a client, but no password?</source>
-        <target>Já é cliente, mas sem palavra-passe?</target>
       </trans-unit>
       <trans-unit id="login.noPasswordHint" datatype="html">
         <source>Create it with your phone number.</source>
@@ -1837,6 +1885,26 @@
       <trans-unit id="simulator.disclaimer" datatype="html">
         <source> An estimate: the final price is confirmed on the day, after seeing your nails. </source>
         <target>Uma estimativa: o preço final é confirmado no dia, depois de ver as suas unhas.</target>
+      </trans-unit>
+      <trans-unit id="password.current" datatype="html">
+        <source>Current password</source>
+        <target>Palavra-passe atual</target>
+      </trans-unit>
+      <trans-unit id="password.changed" datatype="html">
+        <source> Password changed. Other devices were logged out, and we sent you an email about it. </source>
+        <target>Palavra-passe alterada. Os outros dispositivos foram desligados da conta e enviámos-lhe um email a avisar.</target>
+      </trans-unit>
+      <trans-unit id="password.submit" datatype="html">
+        <source> Change password </source>
+        <target>Alterar palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="password.error.same" datatype="html">
+        <source>The new password must be different from the current one.</source>
+        <target>A nova palavra-passe tem de ser diferente da atual.</target>
+      </trans-unit>
+      <trans-unit id="password.error.current" datatype="html">
+        <source>Your current password is not correct.</source>
+        <target>A palavra-passe atual não está correta.</target>
       </trans-unit>
       <trans-unit id="reason.clientEarly" datatype="html">
         <source>By the client, more than 48h before</source>

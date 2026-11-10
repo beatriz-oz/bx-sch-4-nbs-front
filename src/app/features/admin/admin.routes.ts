@@ -58,6 +58,11 @@ export const adminRoutes: Routes = [
         title: $localize`:@@title.preApproved:Pre-approved Instagram · Nails by Scooby`,
         loadComponent: () => import('./pre-approved/pre-approved.page').then((m) => m.PreApprovedPage),
       },
+      {
+        path: 'account',
+        title: $localize`:@@title.account:My account · Nails by Scooby`,
+        loadComponent: () => import('./account/account.page').then((m) => m.AccountPage),
+      },
     ],
   },
 ];

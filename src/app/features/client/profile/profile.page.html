@@ -30,6 +30,14 @@
       </p>
     </section>
 
+    <!-- Password: only regular clients have one (one-off clients create it in the activation) -->
+    @if (user.is_active) {
+      <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+        <h3 i18n="@@password.title" class="mb-4 font-semibold">Change password</h3>
+        <app-change-password-form />
+      </section>
+    }
+
     <!-- Agenda emails -->
     <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
       <div class="flex items-center justify-between gap-4">

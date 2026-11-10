@@ -10,6 +10,8 @@ import {
   CheckInVerify,
   CodeSent,
   Login,
+  PasswordChange,
+  PasswordResetConfirm,
   ProfileUpdate,
   TokenResult,
   User,
@@ -95,6 +97,34 @@ export class AuthService {
     return this.http.patch<ApiResponse<User>>(`${this.api}/auth/me`, data).pipe(
       map((response) => response.detail),
       tap((user) => this.user.set(user)),
+    );
+  }
+
+  // --- passwords (clients and the studio alike) ---
+
+  /**
+   * The API logs out every other device and answers with a new token for this one:
+   * keeping the old token would log her out here too.
+   */
+  changePassword(data: PasswordChange): Observable<void> {
+    return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/me/password`, data).pipe(
+      tap((response) => this.setToken(response.detail.access_token)),
+      map(() => undefined),
+    );
+  }
+
+  /** Always "OK", whether the phone exists or not: the API does not tell who is a client. */
+  forgotPassword(phone: string): Observable<void> {
+    return this.http
+      .post<ApiResponse<string>>(`${this.api}/auth/password/forgot`, { phone })
+      .pipe(map(() => undefined));
+  }
+
+  /** The new password also logs her in. */
+  resetPassword(data: PasswordResetConfirm): Observable<User> {
+    return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/password/reset`, data).pipe(
+      tap((response) => this.setToken(response.detail.access_token)),
+      switchMap(() => this.loadMe()),
     );
   }
 

@@ -21,6 +21,8 @@ export type ActivationStart = Schemas['ActivationStart'];
 export type ActivationConfirm = Schemas['ActivationConfirm'];
 export type CodeSent = Schemas['CodeSent'];
 export type ProfileUpdate = Schemas['ProfileUpdate'];
+export type PasswordChange = Schemas['PasswordChange'];
+export type PasswordResetConfirm = Schemas['PasswordResetConfirm'];
 
 // Client appointments
 export type AvailableDay = Schemas['AvailableDay'];

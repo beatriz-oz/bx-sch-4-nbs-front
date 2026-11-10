@@ -25,6 +25,9 @@
         @if (form.controls.password.touched && form.controls.password.invalid) {
           <p i18n="@@login.password.required" class="mt-1 text-sm text-red-600">Enter your password.</p>
         }
+        <a routerLink="/forgot-password" i18n="@@login.forgot" class="mt-2 inline-block text-sm font-medium text-gray-600 underline hover:text-gray-900">
+          Forgot your password?
+        </a>
       </div>
 
       @if (error(); as message) {
