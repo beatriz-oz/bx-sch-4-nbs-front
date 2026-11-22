@@ -406,6 +406,14 @@
         <source>from the price table</source>
         <target>da tabela de preços</target>
       </trans-unit>
+      <trans-unit id="booking.depositPaid" datatype="html">
+        <source>Deposit paid</source>
+        <target>Sinal pago</target>
+      </trans-unit>
+      <trans-unit id="booking.depositPaidHint" datatype="html">
+        <source> The appointment is saved as confirmed, and the client&apos;s email says the deposit was received. </source>
+        <target>A marcação fica confirmada, e o email da cliente diz que o sinal foi recebido.</target>
+      </trans-unit>
       <trans-unit id="dialog.back" datatype="html">
         <source> Back </source>
         <target> Voltar </target>

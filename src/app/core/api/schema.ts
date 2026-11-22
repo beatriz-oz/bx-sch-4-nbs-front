@@ -2238,6 +2238,11 @@ export interface components {
             /** User Id */
             user_id?: number | null;
             new_client?: components["schemas"]["NewClient"] | null;
+            /**
+             * Deposit Paid
+             * @default false
+             */
+            deposit_paid: boolean;
         };
         /**
          * StudioAppointmentDetails

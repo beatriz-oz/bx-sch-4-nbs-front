@@ -70,6 +70,7 @@ export class BookingDrawer implements OnInit {
     trade_item: this.fb.control<TradeItem | null>(null),
     trade_duration: this.fb.control<number | null>(null),
     estimated_price: ['', [Validators.required, Validators.pattern(/^\d+([.,]\d{1,2})?$/)]],
+    deposit_paid: [false],
   });
 
   readonly newClient = this.fb.group({
@@ -95,6 +96,8 @@ export class BookingDrawer implements OnInit {
   readonly service = toSignal(this.form.controls.service.valueChanges, { initialValue: 'Application' as Service });
   readonly hasDetails = computed(() => this.service() === 'Application' || this.service() === 'Maintenance');
   readonly isTrading = computed(() => this.service() === 'Trading');
+  /** The services the studio books at her own price have no deposit (the API's STUDIO_ONLY_SERVICES). */
+  readonly depositRequired = computed(() => !(['Press-on', 'Trading', 'Other'] as Service[]).includes(this.service()));
   readonly tradeItem = toSignal(this.form.controls.trade_item.valueChanges, { initialValue: null as TradeItem | null });
   /** A trade of nails may keep the size and nail art, only for the history (optional). */
   readonly showSizeAndArt = computed(() => this.hasDetails() || (this.isTrading() && this.tradeItem() === 'Nails'));
@@ -273,6 +276,7 @@ export class BookingDrawer implements OnInit {
     const client = this.newClient.getRawValue();
     const data: StudioAppointment = {
       ...details,
+      deposit_paid: this.depositRequired() && value.deposit_paid,
       user_id: this.clientMode() === 'existing' ? this.selectedClient()?.id : null,
       new_client:
         this.clientMode() === 'new'

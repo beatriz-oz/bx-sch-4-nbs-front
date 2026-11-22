@@ -251,6 +251,21 @@
       </section>
       }
 
+      <!-- Deposit: only when booking (later it is confirmed in the appointment panel or in Payments) -->
+      @if (!appointment() && depositRequired()) {
+        <section>
+          <label class="flex items-start gap-2 text-sm">
+            <input type="checkbox" formControlName="deposit_paid" class="mt-0.5 h-4 w-4 accent-gray-900" />
+            <span>
+              <span i18n="@@booking.depositPaid" class="font-medium">Deposit paid</span>
+              <span i18n="@@booking.depositPaidHint" class="block text-xs text-gray-500">
+                The appointment is saved as confirmed, and the client's email says the deposit was received.
+              </span>
+            </span>
+          </label>
+        </section>
+      }
+
       @if (error(); as message) {
         <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
       }

@@ -869,11 +869,25 @@
           <context context-type="linenumber">248,250</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="booking.depositPaid" datatype="html">
+        <source>Deposit paid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">260,261</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="booking.depositPaidHint" datatype="html">
+        <source> The appointment is saved as confirmed, and the client&apos;s email says the deposit was received. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
+          <context context-type="linenumber">262,263</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="dialog.back" datatype="html">
         <source> Back </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">262,263</context>
+          <context context-type="linenumber">277,278</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/cancel-dialog/cancel-dialog.html</context>
@@ -896,56 +910,56 @@
         <source>Save changes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">267,268</context>
+          <context context-type="linenumber">282,283</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.save" datatype="html">
         <source>Save appointment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.html</context>
-          <context context-type="linenumber">269,270</context>
+          <context context-type="linenumber">284,285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.client" datatype="html">
         <source>Choose a client, or register a new one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">214</context>
+          <context context-type="linenumber">217</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.newClient" datatype="html">
         <source>Fill in the new client&apos;s name, last name, email and phone.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">217</context>
+          <context context-type="linenumber">220</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.details" datatype="html">
         <source>Choose the nail size and the nail art level.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">220</context>
+          <context context-type="linenumber">223</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.trade" datatype="html">
         <source>Choose what is traded (nails or press-ons) and how long it takes.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">223</context>
+          <context context-type="linenumber">226</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.notes" datatype="html">
         <source>Describe the service in the notes.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">226</context>
+          <context context-type="linenumber">229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="booking.error.form" datatype="html">
         <source>Check the date, time and price.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/booking-drawer/booking-drawer.ts</context>
-          <context context-type="linenumber">229</context>
+          <context context-type="linenumber">232</context>
         </context-group>
       </trans-unit>
       <trans-unit id="calendar.today" datatype="html">
