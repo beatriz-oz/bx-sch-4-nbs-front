@@ -9,7 +9,7 @@ import { StudioDatePipe } from '../../../shared/studio-date.pipe';
 import { ClientApiService } from '../client-api.service';
 
 /**
- * Opened from the reminder email (24 hours before). It confirms on its own:
+ * Opened from the reminder email (24 hours before); confirming is optional. It confirms on its own:
  * the token in the link proves who she is, so no login is needed.
  * Opening the link twice is fine: the API keeps the first confirmation.
  */
@@ -52,6 +52,6 @@ export class ConfirmAttendancePage {
   }
 
   private invalidLink(): string {
-    return $localize`:@@attendance.error.invalid:This link is not valid or has expired: the deadline written in the email may have passed.`;
+    return $localize`:@@attendance.error.invalid:This link is not valid or has expired: it only works until the appointment starts.`;
   }
 }

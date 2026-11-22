@@ -3529,7 +3529,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="book.done.reminder" datatype="html">
-        <source>24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</source>
+        <source>24 hours before, you will get a reminder email. You can let us know you are coming with the link in it.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/booking/booking.page.html</context>
           <context context-type="linenumber">286,287</context>
@@ -3674,7 +3674,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="attendance.error.invalid" datatype="html">
-        <source>This link is not valid or has expired: the deadline written in the email may have passed.</source>
+        <source>This link is not valid or has expired: it only works until the appointment starts.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/confirm-attendance/confirm-attendance.page.ts</context>
           <context context-type="linenumber">55</context>

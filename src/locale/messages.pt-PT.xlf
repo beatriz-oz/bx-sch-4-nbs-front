@@ -1707,8 +1707,8 @@
         <target>A @nailsbyscooby vai contactá-la no Instagram sobre o sinal, que garante a sua marcação.</target>
       </trans-unit>
       <trans-unit id="book.done.reminder" datatype="html">
-        <source>24 hours before, you will get an email to confirm you are coming. Confirm it, or the appointment is cancelled.</source>
-        <target>24 horas antes, recebe um email para confirmar que vem. Confirme, ou a marcação é cancelada.</target>
+        <source>24 hours before, you will get a reminder email. You can let us know you are coming with the link in it.</source>
+        <target>24 horas antes, recebe um email de lembrete. Pode avisar-nos de que vem pelo link que está nele.</target>
       </trans-unit>
       <trans-unit id="book.done.cancel" datatype="html">
         <source>Need to cancel? Do it in &quot;My appointments&quot;. More than 48 hours before, the deposit is refunded.</source>
@@ -1783,8 +1783,8 @@
         <target>Não encontrámos esta marcação.</target>
       </trans-unit>
       <trans-unit id="attendance.error.invalid" datatype="html">
-        <source>This link is not valid or has expired: the deadline written in the email may have passed.</source>
-        <target>Este link não é válido ou expirou: o prazo indicado no email pode já ter passado.</target>
+        <source>This link is not valid or has expired: it only works until the appointment starts.</source>
+        <target>Este link não é válido ou expirou: só funciona até à hora da marcação.</target>
       </trans-unit>
       <trans-unit id="myAppointments.awaitingDeposit" datatype="html">
         <source>Waiting for the deposit</source>
