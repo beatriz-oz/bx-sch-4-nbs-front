@@ -9,9 +9,11 @@ import {
   CheckInStart,
   CheckInVerify,
   CodeSent,
+  EmailChangeStart,
   Login,
   PasswordChange,
   PasswordResetConfirm,
+  PhoneChange,
   ProfileUpdate,
   TokenResult,
   User,
@@ -110,6 +112,31 @@ export class AuthService {
     return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/me/password`, data).pipe(
       tap((response) => this.setToken(response.detail.access_token)),
       map(() => undefined),
+    );
+  }
+
+  // --- email and phone (clients and the studio alike) ---
+
+  /** Step 1: a code goes to the NEW email; nothing changes until it is confirmed. */
+  startEmailChange(data: EmailChangeStart): Observable<CodeSent> {
+    return this.http
+      .post<ApiResponse<CodeSent>>(`${this.api}/auth/me/email`, data)
+      .pipe(map((response) => response.detail));
+  }
+
+  /** Step 2: the code from the new email. The answer is her updated account. */
+  confirmEmailChange(code: string): Observable<User> {
+    return this.http.post<ApiResponse<User>>(`${this.api}/auth/me/email/confirm`, { code }).pipe(
+      map((response) => response.detail),
+      tap((user) => this.user.set(user)),
+    );
+  }
+
+  /** The phone she logs in with. */
+  changePhone(data: PhoneChange): Observable<User> {
+    return this.http.post<ApiResponse<User>>(`${this.api}/auth/me/phone`, data).pipe(
+      map((response) => response.detail),
+      tap((user) => this.user.set(user)),
     );
   }
 

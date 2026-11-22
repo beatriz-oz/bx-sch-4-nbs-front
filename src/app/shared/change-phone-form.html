@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4" novalidate>
+  <div class="text-sm">
+    <label for="new-phone" i18n="@@phoneChange.new" class="mb-1 block font-medium">New phone number</label>
+    <app-phone-input inputId="new-phone" formControlName="phone" />
+    @if (form.controls.phone.touched && form.controls.phone.invalid) {
+      <p i18n="@@login.phone.required" class="mt-1 text-sm text-red-600">Enter your phone number.</p>
+    }
+  </div>
+  <div class="text-sm">
+    <label for="phone-current-password" i18n="@@password.current" class="mb-1 block font-medium">Current password</label>
+    <app-password-input inputId="phone-current-password" formControlName="current" />
+    @if (form.controls.current.touched && form.controls.current.invalid) {
+      <p i18n="@@login.password.required" class="mt-1 text-sm text-red-600">Enter your password.</p>
+    }
+  </div>
+
+  <p i18n="@@phoneChange.hint" class="text-xs text-gray-500">You will log in with the new number from now on.</p>
+
+  @if (done()) {
+    <p role="status" i18n="@@phoneChange.done" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+      Phone number changed. Log in with the new number from now on; we sent you an email about it.
+    </p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <button type="submit" [disabled]="busy()" i18n="@@phoneChange.submit"
+    class="rounded-full bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+    Change phone number
+  </button>
+</form>

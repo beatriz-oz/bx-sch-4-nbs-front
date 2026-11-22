@@ -3,12 +3,14 @@ import { RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { ChangeEmailForm } from '../../../shared/change-email-form';
 import { ChangePasswordForm } from '../../../shared/change-password-form';
+import { ChangePhoneForm } from '../../../shared/change-phone-form';
 
-/** Her details, her password and the one preference she controls: the "agenda is open" emails. */
+/** Her details (password, email, phone) and the one preference she controls: the "agenda is open" emails. */
 @Component({
   selector: 'app-profile-page',
-  imports: [RouterLink, ChangePasswordForm],
+  imports: [RouterLink, ChangePasswordForm, ChangeEmailForm, ChangePhoneForm],
   templateUrl: './profile.page.html',
 })
 export class ProfilePage {

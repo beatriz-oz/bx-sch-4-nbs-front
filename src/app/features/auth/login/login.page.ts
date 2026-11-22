@@ -5,11 +5,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { PasswordInput } from '../../../shared/password-input';
 import { PhoneInput } from '../../../shared/phone-input';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ReactiveFormsModule, RouterLink, PhoneInput],
+  imports: [ReactiveFormsModule, RouterLink, PhoneInput, PasswordInput],
   templateUrl: './login.page.html',
 })
 export class LoginPage {

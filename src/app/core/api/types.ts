@@ -23,6 +23,8 @@ export type CodeSent = Schemas['CodeSent'];
 export type ProfileUpdate = Schemas['ProfileUpdate'];
 export type PasswordChange = Schemas['PasswordChange'];
 export type PasswordResetConfirm = Schemas['PasswordResetConfirm'];
+export type EmailChangeStart = Schemas['EmailChangeStart'];
+export type PhoneChange = Schemas['PhoneChange'];
 
 // Client appointments
 export type AvailableDay = Schemas['AvailableDay'];

@@ -15,13 +15,7 @@
 
       <div>
         <label for="password" i18n="@@login.password" class="mb-1 block text-sm font-medium">Password</label>
-        <input
-          id="password"
-          type="password"
-          autocomplete="current-password"
-          formControlName="password"
-          class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none"
-        />
+        <app-password-input inputId="password" autocomplete="current-password" formControlName="password" />
         @if (form.controls.password.touched && form.controls.password.invalid) {
           <p i18n="@@login.password.required" class="mt-1 text-sm text-red-600">Enter your password.</p>
         }
@@ -51,7 +45,7 @@
     <div class="mt-6 space-y-3 border-t border-gray-200 pt-6">
       <a routerLink="/check-in" class="block rounded-xl border border-gray-200 p-4 hover:bg-gray-50">
         <span i18n="@@login.firstTime" class="block font-medium">First appointment?</span>
-        <span i18n="@@login.firstTimeHint" class="block text-sm text-gray-500">Book with the Instagram the studio approved.</span>
+        <span i18n="@@login.firstTimeHint" class="block text-sm text-gray-500">Book with your Instagram pre-approved by Scooby.</span>
       </a>
       <a routerLink="/activate" class="block rounded-xl border border-gray-200 p-4 hover:bg-gray-50">
         <span i18n="@@login.noPassword" class="block font-medium">Already a client, but no password?</span>

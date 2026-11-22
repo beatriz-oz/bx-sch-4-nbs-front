@@ -221,7 +221,29 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">36,37</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.title" datatype="html">
+        <source>Change email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/account/account.page.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.title" datatype="html">
+        <source>Change phone number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/account/account.page.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.calendar" datatype="html">
@@ -2770,6 +2792,10 @@
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
           <context context-type="linenumber">12,16</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">6,9</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="link.login" datatype="html">
         <source>Log in</source>
@@ -2880,7 +2906,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.passwordHint" datatype="html">
@@ -2895,7 +2921,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">15,17</context>
+          <context context-type="linenumber">13,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.confirmation" datatype="html">
@@ -2910,7 +2936,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">18,19</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.error.short" datatype="html">
@@ -2925,7 +2951,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">23,27</context>
+          <context context-type="linenumber">20,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="activate.submit" datatype="html">
@@ -2988,7 +3014,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="code.invalid" datatype="html">
@@ -3078,7 +3104,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">59,62</context>
+          <context context-type="linenumber">70,73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="checkin.haveAccount" datatype="html">
@@ -3145,7 +3171,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="forgot.sent" datatype="html">
@@ -3180,81 +3206,89 @@
         <source>Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">17,19</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.password.required" datatype="html">
         <source>Enter your password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">26,28</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">48,52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">8,11</context>
+          <context context-type="linenumber">7,11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">13,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.forgot" datatype="html">
         <source> Forgot your password? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">29,31</context>
+          <context context-type="linenumber">23,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.submitting" datatype="html">
         <source>Logging in…</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">43,45</context>
+          <context context-type="linenumber">37,39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.submit" datatype="html">
         <source>Log in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">39,41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.firstTime" datatype="html">
         <source>First appointment?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">53,54</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.firstTimeHint" datatype="html">
-        <source>Book with the Instagram the studio approved.</source>
+        <source>Book with your Instagram pre-approved by Scooby.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">54,56</context>
+          <context context-type="linenumber">48,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.noPasswordHint" datatype="html">
         <source>Create it with your phone number.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">58,60</context>
+          <context context-type="linenumber">52,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.prices" datatype="html">
         <source>How much will it cost?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">61,62</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.pricesHint" datatype="html">
         <source>Simulate the price, no login needed.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.html</context>
-          <context context-type="linenumber">62,64</context>
+          <context context-type="linenumber">56,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login.error.invalid" datatype="html">
         <source>Phone or password incorrect.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/auth/login/login.page.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="book.steps" datatype="html">
@@ -3824,53 +3858,53 @@
         <source> To change your details, send a message to @nailsbyscooby on Instagram. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">29,31</context>
+          <context context-type="linenumber">30,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaEmails" datatype="html">
         <source>Emails when the agenda opens</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">45,46</context>
+          <context context-type="linenumber">56,57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaEmailsHint" datatype="html">
         <source>Be the first to know when a new month is open for booking.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">46,48</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaNeedsPassword" datatype="html">
         <source>These emails go to regular clients, with a password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.otherEmails" datatype="html">
         <source> Emails about your own appointments (reminders, cancellations) are always sent. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.html</context>
-          <context context-type="linenumber">70,72</context>
+          <context context-type="linenumber">81,83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaOn" datatype="html">
         <source>Done: we will email you when a new month opens.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile.agendaOff" datatype="html">
         <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/client/profile/profile.page.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="simulator.title" datatype="html">
@@ -3943,39 +3977,202 @@
           <context context-type="linenumber">137,140</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="emailChange.codeSent" datatype="html">
+        <source>We sent a 6-digit code to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.codeSentHint" datatype="html">
+        <source>It expires in 10 minutes (check the spam folder too).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.code" datatype="html">
+        <source>Code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.code.invalid" datatype="html">
+        <source>Enter the 6 digits of the code.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">14,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.confirm" datatype="html">
+        <source> Confirm new email </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.back" datatype="html">
+        <source> Change the email or send a new code </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.new" datatype="html">
+        <source>New email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.new.invalid" datatype="html">
+        <source>Enter a valid email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">41,44</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="password.current" datatype="html">
         <source>Current password</source>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
           <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.done" datatype="html">
+        <source> Email changed. From now on, our emails go to the new address. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">54,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.send" datatype="html">
+        <source> Send code to the new email </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.html</context>
+          <context context-type="linenumber">63,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.error.code" datatype="html">
+        <source>The code is wrong or has expired. Check it, or ask for a new one.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.error.same" datatype="html">
+        <source>This is already your email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password.error.current" datatype="html">
+        <source>Your current password is not correct.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.ts</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-password-form.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.error.taken" datatype="html">
+        <source>This email is already used by another account.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailChange.error.wait" datatype="html">
+        <source>Please wait a minute before asking for a new code.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-email-form.ts</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="password.changed" datatype="html">
         <source> Password changed. Other devices were logged out, and we sent you an email about it. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">28,31</context>
+          <context context-type="linenumber">25,28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="password.submit" datatype="html">
         <source> Change password </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.html</context>
-          <context context-type="linenumber">37,40</context>
+          <context context-type="linenumber">34,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="password.error.same" datatype="html">
         <source>The new password must be different from the current one.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/change-password-form.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="password.error.current" datatype="html">
-        <source>Your current password is not correct.</source>
+      <trans-unit id="phoneChange.new" datatype="html">
+        <source>New phone number</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/change-password-form.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.hint" datatype="html">
+        <source>You will log in with the new number from now on.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.done" datatype="html">
+        <source> Phone number changed. Log in with the new number from now on; we sent you an email about it. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.submit" datatype="html">
+        <source> Change phone number </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.html</context>
+          <context context-type="linenumber">30,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.same" datatype="html">
+        <source>This is already your phone number.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.taken" datatype="html">
+        <source>This phone number is already used by another account.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.invalid" datatype="html">
+        <source>This phone number is not valid.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/change-phone-form.ts</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reason.clientEarly" datatype="html">
@@ -4179,6 +4376,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/labels.ts</context>
           <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password.show" datatype="html">
+        <source>Show password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/password-input.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password.hide" datatype="html">
+        <source>Hide password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/password-input.ts</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="phone.country" datatype="html">

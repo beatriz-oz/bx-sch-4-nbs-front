@@ -4,6 +4,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 
 import { apiErrorMessage } from '../core/api/errors';
 import { AuthService } from '../core/auth/auth.service';
+import { PasswordInput } from './password-input';
 
 /**
  * Change the password while logged in. The same box for clients (profile) and the studio (My account):
@@ -11,7 +12,7 @@ import { AuthService } from '../core/auth/auth.service';
  */
 @Component({
   selector: 'app-change-password-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, PasswordInput],
   templateUrl: './change-password-form.html',
 })
 export class ChangePasswordForm {

@@ -812,6 +812,66 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/auth/me/email": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Email Change Start
+         * @description Change your email, step 1: sends a code to the NEW email. Nothing changes until it is confirmed.
+         */
+        post: operations["email_change_start_v1_auth_me_email_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/auth/me/email/confirm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Email Change Confirm
+         * @description Change your email, step 2: the code sent to the new email. The old email gets a notice.
+         */
+        post: operations["email_change_confirm_v1_auth_me_email_confirm_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/auth/me/phone": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Change Phone
+         * @description Change your phone number (the one you log in with). A notice goes to your email.
+         */
+        post: operations["change_phone_v1_auth_me_phone_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/appointments/availability": {
         parameters: {
             query?: never;
@@ -1735,6 +1795,24 @@ export interface components {
             /** Slot Times */
             slot_times: string[];
         };
+        /** EmailChangeConfirm */
+        EmailChangeConfirm: {
+            /** Code */
+            code: string;
+        };
+        /** EmailChangeStart */
+        EmailChangeStart: {
+            /**
+             * Current Password
+             * Format: password
+             */
+            current_password: string;
+            /**
+             * New Email
+             * Format: email
+             */
+            new_email: string;
+        };
         /** EstimateResult */
         EstimateResult: {
             service: components["schemas"]["Service"];
@@ -1998,6 +2076,16 @@ export interface components {
         PasswordResetStart: {
             /** Phone */
             phone: string;
+        };
+        /** PhoneChange */
+        PhoneChange: {
+            /**
+             * Current Password
+             * Format: password
+             */
+            current_password: string;
+            /** New Phone */
+            new_phone: string;
         };
         /** PolicyResult */
         PolicyResult: {
@@ -4018,6 +4106,154 @@ export interface operations {
                 content?: never;
             };
             /** @description No password yet (create it in the activation) */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    email_change_start_v1_auth_me_email_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EmailChangeStart"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_CodeSent_"];
+                };
+            };
+            /** @description Current password wrong, or the email is the same */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Email used by another account, or no password yet */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description Code requested too recently */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    email_change_confirm_v1_auth_me_email_confirm_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EmailChangeConfirm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_UserResult_"];
+                };
+            };
+            /** @description Invalid or expired code */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Email registered by another account in the meantime */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    change_phone_v1_auth_me_phone_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PhoneChange"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_UserResult_"];
+                };
+            };
+            /** @description Current password wrong, or the phone is the same */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Phone used by another account, or no password yet */
             409: {
                 headers: {
                     [name: string]: unknown;

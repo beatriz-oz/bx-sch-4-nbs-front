@@ -1,0 +1,66 @@
+@if (sentTo(); as masked) {
+  <!-- Step 2: the code sent to the new email -->
+  <form [formGroup]="codeForm" (ngSubmit)="confirm()" class="space-y-4" novalidate>
+    <p class="text-sm text-gray-600">
+      <ng-container i18n="@@emailChange.codeSent">We sent a 6-digit code to</ng-container>
+      <strong class="break-all">{{ masked }}</strong>.
+      <ng-container i18n="@@emailChange.codeSentHint">It expires in 10 minutes (check the spam folder too).</ng-container>
+    </p>
+    <div class="text-sm">
+      <label for="email-code" i18n="@@emailChange.code" class="mb-1 block font-medium">Code</label>
+      <input id="email-code" formControlName="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+        class="w-40 rounded-lg border border-gray-300 px-3 py-2.5 tracking-widest focus:border-gray-900 focus:outline-none" />
+      @if (codeForm.controls.code.touched && codeForm.controls.code.invalid) {
+        <p i18n="@@emailChange.code.invalid" class="mt-1 text-sm text-red-600">Enter the 6 digits of the code.</p>
+      }
+    </div>
+
+    @if (error(); as message) {
+      <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button type="submit" [disabled]="busy()" i18n="@@emailChange.confirm"
+        class="rounded-full bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+        Confirm new email
+      </button>
+      <button type="button" (click)="restart()" i18n="@@emailChange.back"
+        class="text-sm font-medium text-gray-600 underline hover:text-gray-900">
+        Change the email or send a new code
+      </button>
+    </div>
+  </form>
+} @else {
+  <!-- Step 1: the new email and the current password -->
+  <form [formGroup]="form" (ngSubmit)="start()" class="space-y-4" novalidate>
+    <div class="text-sm">
+      <label for="new-email" i18n="@@emailChange.new" class="mb-1 block font-medium">New email</label>
+      <input id="new-email" type="email" formControlName="email" autocomplete="email"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+        <p i18n="@@emailChange.new.invalid" class="mt-1 text-sm text-red-600">Enter a valid email.</p>
+      }
+    </div>
+    <div class="text-sm">
+      <label for="email-current-password" i18n="@@password.current" class="mb-1 block font-medium">Current password</label>
+      <app-password-input inputId="email-current-password" formControlName="current" />
+      @if (form.controls.current.touched && form.controls.current.invalid) {
+        <p i18n="@@login.password.required" class="mt-1 text-sm text-red-600">Enter your password.</p>
+      }
+    </div>
+
+    @if (done()) {
+      <p role="status" i18n="@@emailChange.done" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+        Email changed. From now on, our emails go to the new address.
+      </p>
+    }
+    @if (error(); as message) {
+      <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+    }
+
+    <button type="submit" [disabled]="busy()" i18n="@@emailChange.send"
+      class="rounded-full bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+      Send code to the new email
+    </button>
+  </form>
+}

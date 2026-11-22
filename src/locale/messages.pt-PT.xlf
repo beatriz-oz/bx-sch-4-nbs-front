@@ -106,6 +106,14 @@
         <source>Change password</source>
         <target>Alterar palavra-passe</target>
       </trans-unit>
+      <trans-unit id="emailChange.title" datatype="html">
+        <source>Change email</source>
+        <target>Alterar email</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.title" datatype="html">
+        <source>Change phone number</source>
+        <target>Alterar telemóvel</target>
+      </trans-unit>
       <trans-unit id="nav.calendar" datatype="html">
         <source>Calendar</source>
         <target>Agenda</target>
@@ -1555,8 +1563,8 @@
         <target>Primeira marcação?</target>
       </trans-unit>
       <trans-unit id="login.firstTimeHint" datatype="html">
-        <source>Book with the Instagram the studio approved.</source>
-        <target>Marque com o Instagram que o estúdio aprovou.</target>
+        <source>Book with your Instagram pre-approved by Scooby.</source>
+        <target>Marque com o seu Instagram pré-aprovado pela Scooby.</target>
       </trans-unit>
       <trans-unit id="login.noPasswordHint" datatype="html">
         <source>Create it with your phone number.</source>
@@ -1934,9 +1942,69 @@
         <source> An estimate: the final price is confirmed on the day, after seeing your nails. </source>
         <target>Uma estimativa: o preço final é confirmado no dia, depois de ver as suas unhas.</target>
       </trans-unit>
+      <trans-unit id="emailChange.codeSent" datatype="html">
+        <source>We sent a 6-digit code to</source>
+        <target>Enviámos um código de 6 dígitos para</target>
+      </trans-unit>
+      <trans-unit id="emailChange.codeSentHint" datatype="html">
+        <source>It expires in 10 minutes (check the spam folder too).</source>
+        <target>Expira em 10 minutos (veja também a pasta de spam).</target>
+      </trans-unit>
+      <trans-unit id="emailChange.code" datatype="html">
+        <source>Code</source>
+        <target>Código</target>
+      </trans-unit>
+      <trans-unit id="emailChange.code.invalid" datatype="html">
+        <source>Enter the 6 digits of the code.</source>
+        <target>Escreva os 6 dígitos do código.</target>
+      </trans-unit>
+      <trans-unit id="emailChange.confirm" datatype="html">
+        <source> Confirm new email </source>
+        <target>Confirmar novo email</target>
+      </trans-unit>
+      <trans-unit id="emailChange.back" datatype="html">
+        <source> Change the email or send a new code </source>
+        <target>Mudar o email ou enviar um novo código</target>
+      </trans-unit>
+      <trans-unit id="emailChange.new" datatype="html">
+        <source>New email</source>
+        <target>Novo email</target>
+      </trans-unit>
+      <trans-unit id="emailChange.new.invalid" datatype="html">
+        <source>Enter a valid email.</source>
+        <target>Escreva um email válido.</target>
+      </trans-unit>
       <trans-unit id="password.current" datatype="html">
         <source>Current password</source>
         <target>Palavra-passe atual</target>
+      </trans-unit>
+      <trans-unit id="emailChange.done" datatype="html">
+        <source> Email changed. From now on, our emails go to the new address. </source>
+        <target>Email alterado. A partir de agora, os nossos emails vão para o novo endereço.</target>
+      </trans-unit>
+      <trans-unit id="emailChange.send" datatype="html">
+        <source> Send code to the new email </source>
+        <target>Enviar código para o novo email</target>
+      </trans-unit>
+      <trans-unit id="emailChange.error.code" datatype="html">
+        <source>The code is wrong or has expired. Check it, or ask for a new one.</source>
+        <target>O código está errado ou expirou. Confirme-o, ou peça um novo.</target>
+      </trans-unit>
+      <trans-unit id="emailChange.error.same" datatype="html">
+        <source>This is already your email.</source>
+        <target>Este já é o seu email.</target>
+      </trans-unit>
+      <trans-unit id="password.error.current" datatype="html">
+        <source>Your current password is not correct.</source>
+        <target>A palavra-passe atual não está correta.</target>
+      </trans-unit>
+      <trans-unit id="emailChange.error.taken" datatype="html">
+        <source>This email is already used by another account.</source>
+        <target>Este email já é usado por outra conta.</target>
+      </trans-unit>
+      <trans-unit id="emailChange.error.wait" datatype="html">
+        <source>Please wait a minute before asking for a new code.</source>
+        <target>Aguarde um minuto antes de pedir um novo código.</target>
       </trans-unit>
       <trans-unit id="password.changed" datatype="html">
         <source> Password changed. Other devices were logged out, and we sent you an email about it. </source>
@@ -1950,9 +2018,33 @@
         <source>The new password must be different from the current one.</source>
         <target>A nova palavra-passe tem de ser diferente da atual.</target>
       </trans-unit>
-      <trans-unit id="password.error.current" datatype="html">
-        <source>Your current password is not correct.</source>
-        <target>A palavra-passe atual não está correta.</target>
+      <trans-unit id="phoneChange.new" datatype="html">
+        <source>New phone number</source>
+        <target>Novo número de telemóvel</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.hint" datatype="html">
+        <source>You will log in with the new number from now on.</source>
+        <target>A partir de agora, entra com o novo número.</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.done" datatype="html">
+        <source> Phone number changed. Log in with the new number from now on; we sent you an email about it. </source>
+        <target>Número alterado. Entre com o novo número a partir de agora; enviámos-lhe um email sobre isso.</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.submit" datatype="html">
+        <source> Change phone number </source>
+        <target>Alterar número</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.same" datatype="html">
+        <source>This is already your phone number.</source>
+        <target>Este já é o seu número.</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.taken" datatype="html">
+        <source>This phone number is already used by another account.</source>
+        <target>Este número já é usado por outra conta.</target>
+      </trans-unit>
+      <trans-unit id="phoneChange.error.invalid" datatype="html">
+        <source>This phone number is not valid.</source>
+        <target>Este número não é válido.</target>
       </trans-unit>
       <trans-unit id="reason.clientEarly" datatype="html">
         <source>By the client, more than 48h before</source>
@@ -2069,6 +2161,14 @@
       <trans-unit id="tradeItem.pressOns" datatype="html">
         <source>Press-ons</source>
         <target>Press-ons</target>
+      </trans-unit>
+      <trans-unit id="password.show" datatype="html">
+        <source>Show password</source>
+        <target>Mostrar palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="password.hide" datatype="html">
+        <source>Hide password</source>
+        <target>Esconder palavra-passe</target>
       </trans-unit>
       <trans-unit id="phone.country" datatype="html">
         <source>Country</source>
