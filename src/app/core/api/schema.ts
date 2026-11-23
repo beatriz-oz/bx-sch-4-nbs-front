@@ -36,7 +36,11 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put?: never;
+        /**
+         * Change Pre Approved Instagram
+         * @description Fix a pre-approved handle (e.g. a typo). A client account created with it is fixed too
+         */
+        put: operations["change_pre_approved_instagram_v1_admin_pre_approved_instagrams__entry_id__put"];
         post?: never;
         /**
          * Remove Pre Approved Instagram
@@ -537,6 +541,26 @@ export interface paths {
          * @description Allow (or stop allowing) a client to come back: only approved clients can create a password
          */
         put: operations["set_client_approval_v1_admin_clients__client_id__approval_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/clients/{client_id}/instagram": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Client Instagram
+         * @description Fix a client's Instagram (e.g. a typo). Her pre-approved entry is fixed too, so she can still check in
+         */
+        put: operations["set_client_instagram_v1_admin_clients__client_id__instagram_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1966,6 +1990,11 @@ export interface components {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
         };
+        /** InstagramChange */
+        InstagramChange: {
+            /** Instagram */
+            instagram: string;
+        };
         /** Login */
         Login: {
             /** Phone */
@@ -2579,6 +2608,55 @@ export interface operations {
                 };
             };
             /** @description Handle already pre-approved, or the client already exists */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    change_pre_approved_instagram_v1_admin_pre_approved_instagrams__entry_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                entry_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InstagramChange"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_PreApprovedInstagramResult_"];
+                };
+            };
+            /** @description Entry does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The new handle is already pre-approved or used by an account */
             409: {
                 headers: {
                     [name: string]: unknown;
@@ -3654,6 +3732,55 @@ export interface operations {
             };
             /** @description Client does not exist */
             404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_client_instagram_v1_admin_clients__client_id__instagram_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                client_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InstagramChange"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_ClientProfile_"];
+                };
+            };
+            /** @description Client does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description The handle is used by another account */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };

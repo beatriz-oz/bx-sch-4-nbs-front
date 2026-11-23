@@ -113,6 +113,13 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
+  /** Fixes a handle; a client account created with it follows. */
+  renamePreApproved(id: number, instagram: string): Observable<PreApprovedInstagram> {
+    return this.http
+      .put<ApiResponse<PreApprovedInstagram>>(`${environment.apiUrl}/admin/pre-approved-instagrams/${id}`, { instagram })
+      .pipe(map((r) => r.detail));
+  }
+
   removePreApproved(id: number): Observable<void> {
     return this.http
       .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/pre-approved-instagrams/${id}`)
@@ -225,6 +232,13 @@ export class AdminApiService {
   setClientNotes(id: number, notes: string): Observable<ClientProfile> {
     return this.http
       .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/notes`, { notes })
+      .pipe(map((r) => r.detail));
+  }
+
+  /** Fixes a client's Instagram; her pre-approved entry follows. */
+  setClientInstagram(id: number, instagram: string): Observable<ClientProfile> {
+    return this.http
+      .put<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}/instagram`, { instagram })
       .pipe(map((r) => r.detail));
   }
 

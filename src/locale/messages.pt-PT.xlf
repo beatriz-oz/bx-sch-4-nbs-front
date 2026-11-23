@@ -586,6 +586,18 @@
         <source>Clients</source>
         <target>Clientes</target>
       </trans-unit>
+      <trans-unit id="preApproved.save" datatype="html">
+        <source> Save </source>
+        <target>Guardar</target>
+      </trans-unit>
+      <trans-unit id="profile.editInstagram" datatype="html">
+        <source>Edit Instagram</source>
+        <target>Editar Instagram</target>
+      </trans-unit>
+      <trans-unit id="profile.addInstagram" datatype="html">
+        <source>Add Instagram</source>
+        <target>Adicionar Instagram</target>
+      </trans-unit>
       <trans-unit id="clients.noContact" datatype="html">
         <source>No email or phone yet: she gives them at her check-in with her Instagram.</source>
         <target>Ainda sem email nem telemóvel: ela dá-os no check-in com o Instagram.</target>
@@ -1246,9 +1258,17 @@
         <source>Filter</source>
         <target>Filtrar</target>
       </trans-unit>
+      <trans-unit id="preApproved.editLabel" datatype="html">
+        <source>New Instagram</source>
+        <target>Novo Instagram</target>
+      </trans-unit>
       <trans-unit id="preApproved.addedOn" datatype="html">
         <source>Added on</source>
         <target>Adicionado em</target>
+      </trans-unit>
+      <trans-unit id="preApproved.edit" datatype="html">
+        <source> Edit </source>
+        <target>Editar</target>
       </trans-unit>
       <trans-unit id="preApproved.remove" datatype="html">
         <source> Remove </source>
@@ -1607,8 +1627,8 @@
         <target>Este código não é válido ou expirou. Verifique-o ou peça um novo.</target>
       </trans-unit>
       <trans-unit id="activate.error.notApproved" datatype="html">
-        <source>Creating a password needs the studio&apos;s approval. Send a message to @nailsbyscooby on Instagram.</source>
-        <target>Criar uma palavra-passe precisa da aprovação do estúdio. Envie uma mensagem para @nailsbyscooby no Instagram.</target>
+        <source>Creating a password needs Scooby&apos;s approval. Send a message to @nailsbyscooby on Instagram.</source>
+        <target>Criar uma palavra-passe precisa da aprovação da Scooby. Envie uma mensagem para @nailsbyscooby no Instagram.</target>
       </trans-unit>
       <trans-unit id="activate.error.notFound" datatype="html">
         <source>We don&apos;t know this phone number yet. Your first appointment is booked with your Instagram.</source>
@@ -1627,8 +1647,8 @@
         <target>A sua primeira marcação</target>
       </trans-unit>
       <trans-unit id="checkin.subtitle" datatype="html">
-        <source> Use the approved instagram account. We will send a code to your email to confirm it is you. </source>
-        <target> Use o Instagram que o estúdio aprovou. Vamos enviar um código para o seu email para confirmar que é você. </target>
+        <source> Use your Instagram approved by Scooby. We will send a code to your email to confirm it is you. </source>
+        <target> Use o seu Instagram aprovado pela Scooby. Vamos enviar um código para o seu email para confirmar que é você. </target>
       </trans-unit>
       <trans-unit id="booking.client.instagram.required" datatype="html">
         <source>Instagram</source>
@@ -1915,8 +1935,8 @@
         <target>Marcação feita!</target>
       </trans-unit>
       <trans-unit id="book.change.doneHint" datatype="html">
-        <source> The studio was told. Before the new date, you will get the email to confirm you are coming. </source>
-        <target>O estúdio foi avisado. Antes da nova data, vai receber o email para confirmar que vem.</target>
+        <source> Scooby was told. Before the new date, you will get a reminder email. </source>
+        <target>A Scooby foi avisada. Antes da nova data, vai receber um email de lembrete.</target>
       </trans-unit>
       <trans-unit id="book.done.next" datatype="html">
         <source>What happens now</source>
@@ -2039,8 +2059,8 @@
         <target>Compreendo e quero cancelar.</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.info" datatype="html">
-        <source> The studio is told right away. If you paid the deposit and cancel more than 48 hours before, it is refunded. </source>
-        <target> O estúdio é avisado de imediato. Se pagou o sinal e cancelar com mais de 48 horas de antecedência, ele é devolvido. </target>
+        <source> Scooby is told right away. If you paid the deposit and cancel more than 48 hours before, it is refunded. </source>
+        <target> A Scooby é avisada de imediato. Se pagou o sinal e cancelar com mais de 48 horas de antecedência, ele é devolvido. </target>
       </trans-unit>
       <trans-unit id="myAppointments.cancel.keep" datatype="html">
         <source> Keep it </source>
@@ -2079,8 +2099,8 @@
         <target>Marcação cancelada. O seu sinal vai ser devolvido: a @nailsbyscooby vai contactá-la no Instagram.</target>
       </trans-unit>
       <trans-unit id="myAppointments.cancelled" datatype="html">
-        <source>Appointment cancelled. The studio was told.</source>
-        <target>Marcação cancelada. O estúdio foi avisado.</target>
+        <source>Appointment cancelled. Scooby was told.</source>
+        <target>Marcação cancelada. A Scooby foi avisada.</target>
       </trans-unit>
       <trans-unit id="profile.title" datatype="html">
         <source>My profile</source>
@@ -2243,8 +2263,8 @@
         <target>Aguarde um minuto antes de pedir um novo código.</target>
       </trans-unit>
       <trans-unit id="nameChange.instagramHint" datatype="html">
-        <source>The studio knows you by your Instagram: keep it up to date if you change it.</source>
-        <target>O estúdio conhece-a pelo Instagram: atualize-o se o mudar.</target>
+        <source>Scooby knows you by your Instagram: keep it up to date if you change it.</source>
+        <target>A Scooby conhece-a pelo Instagram: atualize-o se o mudar.</target>
       </trans-unit>
       <trans-unit id="nameChange.done" datatype="html">
         <source>Name saved.</source>
@@ -2319,8 +2339,8 @@
         <target>Presença não confirmada a tempo</target>
       </trans-unit>
       <trans-unit id="reason.studio" datatype="html">
-        <source>By the studio</source>
-        <target>Pelo estúdio</target>
+        <source>By Scooby</source>
+        <target>Pela Scooby</target>
       </trans-unit>
       <trans-unit id="art.level1.hint" datatype="html">
         <source>Blooming gel, cat eye, simple design, fairy dust, french, lace, small charms</source>

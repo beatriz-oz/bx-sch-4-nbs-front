@@ -76,6 +76,30 @@ export class ClientProfilePage implements OnInit {
     this.historyPage.update((page) => Math.min(Math.max(page + step, 0), this.historyPageCount() - 1));
   }
 
+  /** Her Instagram while fixing it, or null when only showing it. */
+  readonly instagramDraft = signal<string | null>(null);
+
+  saveInstagram(): void {
+    const profile = this.profile();
+    const instagram = (this.instagramDraft() ?? '').trim();
+    if (!profile || !instagram) {
+      return;
+    }
+    this.saving.set(true);
+    this.error.set(null);
+    this.api.setClientInstagram(profile.client.id, instagram).subscribe({
+      next: (updated) => {
+        this.profile.set(updated);
+        this.instagramDraft.set(null);
+        this.saving.set(false);
+      },
+      error: (error: unknown) => {
+        this.error.set(apiErrorMessage(error));
+        this.saving.set(false);
+      },
+    });
+  }
+
   /** The notes text while editing them, or null when only showing them. */
   readonly notesDraft = signal<string | null>(null);
   protected readonly notesMax = 2000;

@@ -92,6 +92,36 @@ export class PreApprovedPage {
     });
   }
 
+  /** The row being fixed, and its new handle while typing. */
+  readonly editingId = signal<number | null>(null);
+  readonly editHandle = signal('');
+
+  startEdit(entry: PreApprovedInstagram): void {
+    this.editingId.set(entry.id);
+    this.editHandle.set(entry.instagram);
+    this.error.set(null);
+  }
+
+  saveEdit(entry: PreApprovedInstagram): void {
+    const instagram = this.editHandle().trim();
+    if (!instagram) {
+      return;
+    }
+    this.saving.set(true);
+    this.error.set(null);
+    this.api.renamePreApproved(entry.id, instagram).subscribe({
+      next: (updated) => {
+        this.entries.update((list) => list.map((item) => (item.id === updated.id ? updated : item)));
+        this.editingId.set(null);
+        this.saving.set(false);
+      },
+      error: (error: unknown) => {
+        this.error.set(apiErrorMessage(error));
+        this.saving.set(false);
+      },
+    });
+  }
+
   remove(entry: PreApprovedInstagram): void {
     const question = $localize`:@@preApproved.remove.question:Remove @${entry.instagram}:handle:? She will no longer be able to check in.`;
     if (!confirm(question)) {

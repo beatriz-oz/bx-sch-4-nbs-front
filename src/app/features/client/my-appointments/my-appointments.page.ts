@@ -103,7 +103,7 @@ export class MyAppointmentsPage {
     this.notice.set(
       result.deposit_refund_due
         ? $localize`:@@myAppointments.cancelled.refund:Appointment cancelled. Your deposit will be refunded: @nailsbyscooby will contact you on Instagram.`
-        : $localize`:@@myAppointments.cancelled:Appointment cancelled. The studio was told.`,
+        : $localize`:@@myAppointments.cancelled:Appointment cancelled. Scooby was told.`,
     );
   }
 }

@@ -6,7 +6,7 @@ export const CANCELLATION_LABELS: Record<CancellationReason, string> = {
   'Cancelled by the client, more than 48h before': $localize`:@@reason.clientEarly:By the client, more than 48h before`,
   'Cancelled by the client, less than 48h before': $localize`:@@reason.clientLate:By the client, less than 48h before`,
   'Attendance not confirmed in time': $localize`:@@reason.notConfirmed:Attendance not confirmed in time`,
-  'Cancelled by the studio': $localize`:@@reason.studio:By the studio`,
+  'Cancelled by the studio': $localize`:@@reason.studio:By Scooby`,
 };
 
 /** What each nail art level includes (each level includes the ones below). */
