@@ -75,6 +75,13 @@ export class AuthService {
       .pipe(map((response) => response.detail.sent_to));
   }
 
+  /** An approved client who checked in but has no password yet: a new code to the email she gave. */
+  checkInResume(instagram: string): Observable<string> {
+    return this.http
+      .post<ApiResponse<CodeSent>>(`${this.api}/auth/checkin/resume`, { instagram })
+      .pipe(map((response) => response.detail.sent_to));
+  }
+
   checkInVerify(data: CheckInVerify): Observable<User> {
     return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/checkin/verify`, data).pipe(
       tap((response) => this.setToken(response.detail.access_token)),

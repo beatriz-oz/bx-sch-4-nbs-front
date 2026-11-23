@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4" novalidate>
+  <div class="grid gap-3 sm:grid-cols-2">
+    <div class="text-sm">
+      <label for="profile-name" i18n="@@booking.client.name" class="mb-1 block font-medium">Name</label>
+      <input id="profile-name" formControlName="name" autocomplete="given-name"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+    </div>
+    <div class="text-sm">
+      <label for="profile-last-name" i18n="@@booking.client.lastName" class="mb-1 block font-medium">Last name</label>
+      <input id="profile-last-name" formControlName="lastName" autocomplete="family-name"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+    </div>
+  </div>
+
+  @if (done()) {
+    <p role="status" i18n="@@nameChange.done" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">Name saved.</p>
+  }
+  @if (error(); as message) {
+    <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+  }
+
+  <button type="submit" [disabled]="busy()" i18n="@@nameChange.submit"
+    class="rounded-full bg-primary px-5 py-2.5 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+    Save name
+  </button>
+</form>

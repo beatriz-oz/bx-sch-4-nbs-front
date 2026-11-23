@@ -8,7 +8,7 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { PasswordInput } from '../../../shared/password-input';
 import { PhoneInput } from '../../../shared/phone-input';
 
-type Step = 'details' | 'code';
+type Step = 'details' | 'resume' | 'code';
 
 /**
  * First booking: a client whose Instagram was pre-approved by the studio
@@ -34,6 +34,9 @@ export class CheckInPage {
     phone: ['', Validators.required],
   });
   readonly code = this.fb.control('', [Validators.required, Validators.pattern(/^\d{6}$/)]);
+  /** "Continue the activation": only her Instagram, the code goes to the email she already gave. */
+  readonly resumeInstagram = this.fb.control('', Validators.required);
+  readonly resuming = signal(false);
 
   readonly step = signal<Step>('details');
   readonly sentTo = signal('');
@@ -63,9 +66,32 @@ export class CheckInPage {
   }
 
   resend(): void {
-    this.start(() =>
-      this.notice.set($localize`:@@checkin.resent:A new code was sent. Check also the spam folder.`),
-    );
+    const sent = () => this.notice.set($localize`:@@checkin.resent:A new code was sent. Check also the spam folder.`);
+    if (this.resuming()) {
+      this.resume(sent);
+    } else {
+      this.start(sent);
+    }
+  }
+
+  /** She already checked in but closed the window before creating her password. */
+  goResume(): void {
+    this.resumeInstagram.setValue(this.form.controls.instagram.value);
+    this.error.set(null);
+    this.notice.set(null);
+    this.hasAccount.set(false);
+    this.step.set('resume');
+  }
+
+  sendResumeCode(): void {
+    if (this.resumeInstagram.invalid) {
+      this.resumeInstagram.markAsTouched();
+      return;
+    }
+    this.resume(() => {
+      this.step.set('code');
+      this.code.reset();
+    });
   }
 
   verify(): void {
@@ -75,7 +101,8 @@ export class CheckInPage {
     }
     this.busy.set(true);
     this.error.set(null);
-    this.auth.checkInVerify({ instagram: this.form.controls.instagram.value, code: this.code.value }).subscribe({
+    const instagram = this.resuming() ? this.resumeInstagram.value : this.form.controls.instagram.value;
+    this.auth.checkInVerify({ instagram, code: this.code.value }).subscribe({
       next: (user) => {
         this.busy.set(false);
         // A regular client the studio approved: ask. Anyone else came to book: go straight to it.
@@ -123,12 +150,35 @@ export class CheckInPage {
   }
 
   changeDetails(): void {
-    this.step.set('details');
+    this.step.set(this.resuming() ? 'resume' : 'details');
     this.error.set(null);
     this.notice.set(null);
   }
 
+  private resume(onSent: () => void): void {
+    this.busy.set(true);
+    this.error.set(null);
+    this.notice.set(null);
+    this.auth.checkInResume(this.resumeInstagram.value).subscribe({
+      next: (sentTo) => {
+        this.busy.set(false);
+        this.resuming.set(true);
+        this.sentTo.set(sentTo);
+        onSent();
+      },
+      error: (error: unknown) => {
+        this.busy.set(false);
+        this.error.set(
+          error instanceof HttpErrorResponse && error.status === 409
+            ? $localize`:@@checkin.resume.nothing:There is no activation to continue for this Instagram. If it is your first appointment, fill in the form instead.`
+            : this.messageFor(error),
+        );
+      },
+    });
+  }
+
   private start(onSent: () => void): void {
+    this.resuming.set(false);
     this.busy.set(true);
     this.error.set(null);
     this.notice.set(null);

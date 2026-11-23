@@ -180,6 +180,30 @@
           </table>
         }
       </section>
+
+      <!-- The month's agenda, done or not: who is booked and the deposits already in hand -->
+      <section class="mt-6 rounded-2xl border border-brand-100 bg-brand-100/40 p-5">
+        <p i18n="@@reports.agenda.title" class="text-sm font-semibold text-brand-700">The month's agenda</p>
+        <div class="mt-2 grid grid-cols-2 gap-4 text-center">
+          <div>
+            <p i18n="@@reports.agenda.clients" class="text-sm text-gray-600">Clients booked</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.booked_clients }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.agenda.appointments">{month.booked_appointments, plural, =0 {no appointments} =1 {1 appointment, done or not} other {{{ month.booked_appointments }} appointments, done or not}}</ng-container>
+            </p>
+          </div>
+          <div>
+            <p i18n="@@reports.agenda.deposits" class="text-sm text-gray-600">Deposits received</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.deposits_received_amount | currency: 'EUR' }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.agenda.depositsCount">{month.deposits_received, plural, =0 {no deposits yet} =1 {1 deposit paid} other {{{ month.deposits_received }} deposits paid}}</ng-container>
+            </p>
+          </div>
+        </div>
+        <p i18n="@@reports.agenda.hint" class="mt-5 text-center text-xs text-gray-500">
+          Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count.
+        </p>
+      </section>
     }
 
     <!-- Two charts: income and hours never share an axis -->

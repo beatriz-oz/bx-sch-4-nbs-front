@@ -19,7 +19,7 @@
         <target>Língua</target>
       </trans-unit>
       <trans-unit id="header.logout" datatype="html">
-        <source> Log out </source>
+        <source>Log out</source>
         <target> Sair </target>
       </trans-unit>
       <trans-unit id="clientNav.book" datatype="html">
@@ -101,6 +101,10 @@
       <trans-unit id="account.loginHint" datatype="html">
         <source> You log in with this phone. The code to reset your password goes to this email. </source>
         <target>Entra com este telemóvel. O código para repor a palavra-passe vai para este email.</target>
+      </trans-unit>
+      <trans-unit id="nameChange.title" datatype="html">
+        <source>Your name</source>
+        <target>O seu nome</target>
       </trans-unit>
       <trans-unit id="password.title" datatype="html">
         <source>Change password</source>
@@ -1398,6 +1402,30 @@
         <source>Hours</source>
         <target>Horas</target>
       </trans-unit>
+      <trans-unit id="reports.agenda.title" datatype="html">
+        <source>The month&apos;s agenda</source>
+        <target>A agenda do mês</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.clients" datatype="html">
+        <source>Clients booked</source>
+        <target>Clientes marcadas</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.appointments" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no appointments} =1 {1 appointment, done or not} other {<x id="INTERPOLATION"/> appointments, done or not}}</source>
+        <target>{VAR_PLURAL, plural, =0 {nenhuma marcação} =1 {1 marcação, feita ou por fazer} other {<x id="INTERPOLATION"/> marcações, feitas ou por fazer}}</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.deposits" datatype="html">
+        <source>Deposits received</source>
+        <target>Sinais recebidos</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.depositsCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no deposits yet} =1 {1 deposit paid} other {<x id="INTERPOLATION"/> deposits paid}}</source>
+        <target>{VAR_PLURAL, plural, =0 {ainda nenhum sinal} =1 {1 sinal pago} other {<x id="INTERPOLATION"/> sinais pagos}}</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.hint" datatype="html">
+        <source> Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count. </source>
+        <target>As canceladas e as faltas não contam como marcadas. Os sinais devolvidos, ou ainda por devolver, não contam.</target>
+      </trans-unit>
       <trans-unit id="reports.chart.income" datatype="html">
         <source>Income per month</source>
         <target>Receita por mês</target>
@@ -1562,6 +1590,10 @@
         <source>Fill in all the fields, with a valid email.</source>
         <target>Preencha todos os campos, com um email válido.</target>
       </trans-unit>
+      <trans-unit id="checkin.resume.link" datatype="html">
+        <source>Continue the activation</source>
+        <target>Continuar a ativação</target>
+      </trans-unit>
       <trans-unit id="link.createPassword" datatype="html">
         <source>Create your password</source>
         <target>Criar a sua palavra-passe</target>
@@ -1569,6 +1601,26 @@
       <trans-unit id="checkin.haveAccount" datatype="html">
         <source>Already a client?</source>
         <target>Já é cliente?</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.question" datatype="html">
+        <source>Started activating your account and stopped?</source>
+        <target>Começou a ativar a conta e parou?</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.title" datatype="html">
+        <source>Continue your activation</source>
+        <target>Continuar a ativação</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.subtitle" datatype="html">
+        <source> Write your Instagram: we send a code to the email you gave in your check-in, and then you create your password. </source>
+        <target>Escreva o seu Instagram: enviamos um código para o email que deu no check-in, e depois cria a sua palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.required" datatype="html">
+        <source>Write your Instagram.</source>
+        <target>Escreva o seu Instagram.</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.back" datatype="html">
+        <source> Back to the first appointment </source>
+        <target>Voltar à primeira marcação</target>
       </trans-unit>
       <trans-unit id="code.confirm" datatype="html">
         <source> Confirm </source>
@@ -1605,6 +1657,10 @@
       <trans-unit id="checkin.popup.save" datatype="html">
         <source> Create password </source>
         <target>Criar palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="checkin.resume.nothing" datatype="html">
+        <source>There is no activation to continue for this Instagram. If it is your first appointment, fill in the form instead.</source>
+        <target>Não há nenhuma ativação para continuar com este Instagram. Se é a sua primeira marcação, preencha o formulário.</target>
       </trans-unit>
       <trans-unit id="checkin.error.notApproved" datatype="html">
         <source>This Instagram is not on the list yet. Send a message to @nailsbyscooby on Instagram to book your first appointment.</source>
@@ -2113,6 +2169,18 @@
       <trans-unit id="emailChange.error.wait" datatype="html">
         <source>Please wait a minute before asking for a new code.</source>
         <target>Aguarde um minuto antes de pedir um novo código.</target>
+      </trans-unit>
+      <trans-unit id="nameChange.done" datatype="html">
+        <source>Name saved.</source>
+        <target>Nome guardado.</target>
+      </trans-unit>
+      <trans-unit id="nameChange.submit" datatype="html">
+        <source> Save name </source>
+        <target>Guardar nome</target>
+      </trans-unit>
+      <trans-unit id="nameChange.required" datatype="html">
+        <source>Fill in your name and last name.</source>
+        <target>Preencha o nome e o apelido.</target>
       </trans-unit>
       <trans-unit id="password.changed" datatype="html">
         <source> Password changed. Other devices were logged out, and we sent you an email about it. </source>

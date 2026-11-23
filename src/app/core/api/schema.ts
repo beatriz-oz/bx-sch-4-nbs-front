@@ -811,7 +811,7 @@ export interface paths {
         head?: never;
         /**
          * Update Me
-         * @description Update your preferences (e.g. stop the 'agenda is open' emails)
+         * @description Update your name or your preferences (e.g. stop the 'agenda is open' emails). Clients and the studio
          */
         patch: operations["update_me_v1_auth_me_patch"];
         trace?: never;
@@ -1988,6 +1988,14 @@ export interface components {
             cost_per_client: string | null;
             /** Profit Per Client */
             profit_per_client: string | null;
+            /** Booked Clients */
+            booked_clients: number;
+            /** Booked Appointments */
+            booked_appointments: number;
+            /** Deposits Received */
+            deposits_received: number;
+            /** Deposits Received Amount */
+            deposits_received_amount: string;
             /** Month */
             month: number;
             /** Completed */
@@ -2217,10 +2225,17 @@ export interface components {
             /** Addons */
             addons: components["schemas"]["AddonPriceResult"][];
         };
-        /** ProfileUpdate */
+        /**
+         * ProfileUpdate
+         * @description Only what is sent changes: her name, or the "agenda is open" emails.
+         */
         ProfileUpdate: {
             /** Wants Agenda Emails */
-            wants_agenda_emails: boolean;
+            wants_agenda_emails?: boolean | null;
+            /** Name */
+            name?: string | null;
+            /** Last Name */
+            last_name?: string | null;
         };
         /** PublishedMonthResult */
         PublishedMonthResult: {
@@ -2460,6 +2475,14 @@ export interface components {
             cost_per_client: string | null;
             /** Profit Per Client */
             profit_per_client: string | null;
+            /** Booked Clients */
+            booked_clients: number;
+            /** Booked Appointments */
+            booked_appointments: number;
+            /** Deposits Received */
+            deposits_received: number;
+            /** Deposits Received Amount */
+            deposits_received_amount: string;
             /** Completed */
             completed: number;
             /** Worked Minutes */
