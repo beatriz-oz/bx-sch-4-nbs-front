@@ -6,6 +6,8 @@ import { adminGuard, authGuard, guestGuard, homeGuard } from './core/auth/auth.g
 // so a client never downloads the admin pages.
 // data.texture: the studio's texture as the page background, with a plain white header (see app.html).
 const TEXTURE = { texture: true };
+// The pages of the client's menu (prices, policies): the texture behind the page and in the header too.
+const TEXTURE_WITH_HEADER = { texture: true, headerTexture: true };
 export const routes: Routes = [
   { path: '', pathMatch: 'full', canActivate: [homeGuard], children: [] },
   {
@@ -59,10 +61,17 @@ export const routes: Routes = [
   {
     // Public: anyone can see how much a service costs, without logging in.
     path: 'prices',
-    data: TEXTURE,
+    data: TEXTURE_WITH_HEADER,
     title: $localize`:@@title.simulator:Prices · Nails by Scooby`,
     loadComponent: () =>
       import('./features/public/price-simulator/price-simulator.page').then((m) => m.PriceSimulatorPage),
+  },
+  {
+    // Public too: the booking policies to read at any time (the client accepts them when she books).
+    path: 'policies',
+    data: TEXTURE_WITH_HEADER,
+    title: $localize`:@@title.clientPolicies:Booking policies · Nails by Scooby`,
+    loadComponent: () => import('./features/public/policies/policies.page').then((m) => m.PoliciesPage),
   },
   {
     // The link in the reminder email. No login needed: the token in the link is the proof.

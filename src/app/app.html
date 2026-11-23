@@ -1,8 +1,8 @@
 <div class="min-h-screen bg-gray-50 text-gray-900">
   <header class="sticky top-0 z-20 overflow-hidden border-b border-gray-200 bg-white">
-    <!-- The studio's texture behind everything, at 65% (not on the textured pages: there the header stays white). Decorative only, so screen readers and clicks skip it.
+    <!-- The studio's texture behind everything, at 65% (not on the textured pages, there the header stays white, unless they ask for it with data.headerTexture). Decorative only, so screen readers and clicks skip it.
          A relative url (no leading "/") follows the <base href>, so it works under /pt-PT/ and /en/ too. -->
-    @if (!texturedPage()) {
+    @if (headerTexture()) {
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-65"
         style="background-image: url('images/login-background.jpg')"></div>
     }
@@ -72,22 +72,26 @@
   <!-- The client's menu (the manicure has her own side menu in the admin) -->
   @if (auth.user() && !auth.isAdmin()) {
       <nav class="border-b border-gray-200 bg-white">
-        <ul class="mx-auto flex max-w-xl justify-around text-sm">
+        <ul class="mx-auto flex max-w-xl justify-around overflow-x-auto text-[13px] sm:text-sm">
           <li>
             <a routerLink="/book" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.book"
-              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Book</a>
+              class="block border-b-2 border-transparent px-2 py-3 font-medium whitespace-nowrap sm:px-3 text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Book</a>
           </li>
           <li>
             <a routerLink="/appointments" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.appointments"
-              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">My appointments</a>
+              class="block border-b-2 border-transparent px-2 py-3 font-medium whitespace-nowrap sm:px-3 text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">My appointments</a>
           </li>
           <li>
             <a routerLink="/prices" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.prices"
-              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Prices</a>
+              class="block border-b-2 border-transparent px-2 py-3 font-medium whitespace-nowrap sm:px-3 text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Prices</a>
+          </li>
+          <li>
+            <a routerLink="/policies" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.policies"
+              class="block border-b-2 border-transparent px-2 py-3 font-medium whitespace-nowrap sm:px-3 text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Policies</a>
           </li>
           <li>
             <a routerLink="/profile" routerLinkActive ariaCurrentWhenActive="page" i18n="@@clientNav.profile"
-              class="block border-b-2 border-transparent px-3 py-3 font-medium text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Profile</a>
+              class="block border-b-2 border-transparent px-2 py-3 font-medium whitespace-nowrap sm:px-3 text-gray-500 hover:text-gray-900 aria-[current=page]:border-gray-900 aria-[current=page]:text-gray-900">Profile</a>
           </li>
         </ul>
       </nav>
@@ -105,9 +109,4 @@
   <!-- First visit: Português or English (remembered, never asked again) -->
   <app-language-chooser />
 
-  <!-- The nail icon comes from Vecteezy's free license, which asks for this credit with a link. -->
-  <footer class="py-3 text-center text-xs text-gray-400">
-    <ng-container i18n="@@footer.iconCredit">Nail icon:</ng-container>
-    <a href="https://www.vecteezy.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">Vecteezy.com</a>
-  </footer>
 </div>

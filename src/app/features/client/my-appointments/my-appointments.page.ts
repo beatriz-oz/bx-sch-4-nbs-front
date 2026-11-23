@@ -1,14 +1,18 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
-import { Appointment, Cancellation } from '../../../core/api/types';
+import { Appointment, AppointmentStatus, Cancellation, Service } from '../../../core/api/types';
 import { AuthService } from '../../../core/auth/auth.service';
+import { SERVICE_LABELS, STATUS_LABELS } from '../../../shared/labels';
 import { ClientApiService } from '../client-api.service';
 import { AppointmentCard } from './appointment-card';
 import { ClientCancelDialog } from './client-cancel-dialog';
 
-/** The client's appointments: the next ones first, then the history. */
+/** Appointments shown at a time in the history; the arrows move through the rest. */
+const HISTORY_PAGE_SIZE = 4;
+
+/** The client's appointments: the next ones first, then the history (filtered, 4 at a time). */
 @Component({
   selector: 'app-my-appointments-page',
   imports: [RouterLink, AppointmentCard, ClientCancelDialog],
@@ -36,8 +40,44 @@ export class MyAppointmentsPage {
   /** Everything else (done, cancelled, missed), the most recent first, as the API sends it. */
   readonly history = computed(() => this.appointments().filter((a) => !this.upcoming().includes(a)));
 
+  protected readonly serviceLabels = SERVICE_LABELS;
+  protected readonly statusLabels = STATUS_LABELS;
+
+  /** The history: filtered by what happened and by service, 4 at a time. */
+  readonly historyStatus = signal<AppointmentStatus | 'all'>('all');
+  readonly historyService = signal<Service | 'all'>('all');
+  readonly historyPage = signal(0);
+  /** Only the statuses and services she actually has in her history, for the filters. */
+  readonly historyStatuses = computed(() => [...new Set(this.history().map((a) => a.status))]);
+  readonly historyServices = computed(() => [...new Set(this.history().map((a) => a.service))]);
+  readonly filteredHistory = computed(() =>
+    this.history().filter(
+      (appointment) =>
+        (this.historyStatus() === 'all' || appointment.status === this.historyStatus()) &&
+        (this.historyService() === 'all' || appointment.service === this.historyService()),
+    ),
+  );
+  readonly historyPageCount = computed(() => Math.max(1, Math.ceil(this.filteredHistory().length / HISTORY_PAGE_SIZE)));
+  readonly shownHistory = computed(() =>
+    this.filteredHistory().slice(this.historyPage() * HISTORY_PAGE_SIZE, (this.historyPage() + 1) * HISTORY_PAGE_SIZE),
+  );
+  readonly historyFirst = computed(() => (this.filteredHistory().length ? this.historyPage() * HISTORY_PAGE_SIZE + 1 : 0));
+  readonly historyLast = computed(() =>
+    Math.min((this.historyPage() + 1) * HISTORY_PAGE_SIZE, this.filteredHistory().length),
+  );
+
   constructor() {
     this.load();
+    // A new filter starts again from the first page.
+    effect(() => {
+      this.historyStatus();
+      this.historyService();
+      this.historyPage.set(0);
+    });
+  }
+
+  moveHistory(step: number): void {
+    this.historyPage.update((page) => Math.min(Math.max(page + step, 0), this.historyPageCount() - 1));
   }
 
   load(): void {

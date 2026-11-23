@@ -12,6 +12,15 @@
     </div>
   </div>
 
+  @if (isClient()) {
+    <div class="text-sm">
+      <label for="profile-instagram" i18n="@@booking.client.instagram.required" class="mb-1 block font-medium">Instagram</label>
+      <input id="profile-instagram" formControlName="instagram" placeholder="@" autocapitalize="none" autocomplete="off"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2.5 focus:border-gray-900 focus:outline-none" />
+      <span i18n="@@nameChange.instagramHint" class="mt-1 block text-xs text-gray-500">The studio knows you by your Instagram: keep it up to date if you change it.</span>
+    </div>
+  }
+
   @if (done()) {
     <p role="status" i18n="@@nameChange.done" class="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">Name saved.</p>
   }

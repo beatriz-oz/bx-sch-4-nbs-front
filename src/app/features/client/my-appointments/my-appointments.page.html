@@ -37,12 +37,54 @@
     </div>
 
     @if (history().length) {
-      <h3 i18n="@@myAppointments.history" class="mt-10 mb-3 font-semibold">History</h3>
+      <!-- History: filtered by status and service, 4 at a time -->
+      <div class="mt-10 mb-3 flex flex-wrap items-center justify-between gap-2">
+        <h3 i18n="@@myAppointments.history" class="font-semibold">History</h3>
+        <div class="flex flex-wrap gap-2 text-sm">
+          @if (historyStatuses().length > 1) {
+            <select [value]="historyStatus()" (change)="historyStatus.set($any($event.target).value)"
+              aria-label="Filter by status" i18n-aria-label="@@history.filterStatus"
+              class="rounded-full border border-gray-300 bg-white px-3 py-1.5">
+              <option value="all" i18n="@@history.all">All</option>
+              @for (status of historyStatuses(); track status) {
+                <option [value]="status">{{ statusLabels[status] }}</option>
+              }
+            </select>
+          }
+          @if (historyServices().length > 1) {
+            <select [value]="historyService()" (change)="historyService.set($any($event.target).value)"
+              aria-label="Filter by service" i18n-aria-label="@@history.filterService"
+              class="rounded-full border border-gray-300 bg-white px-3 py-1.5">
+              <option value="all" i18n="@@history.allServices">All services</option>
+              @for (service of historyServices(); track service) {
+                <option [value]="service">{{ serviceLabels[service] }}</option>
+              }
+            </select>
+          }
+        </div>
+      </div>
       <div class="space-y-3">
-        @for (appointment of history(); track appointment.id) {
+        @for (appointment of shownHistory(); track appointment.id) {
           <app-appointment-card [appointment]="appointment" />
+        } @empty {
+          <p i18n="@@history.noMatch" class="rounded-2xl border border-dashed border-gray-300 p-6 text-center text-gray-500">No appointment matches this filter.</p>
         }
       </div>
+
+      <!-- Carousel: 4 at a time -->
+      @if (historyPageCount() > 1) {
+        <div class="mt-4 flex items-center justify-center gap-3 text-sm">
+          <button type="button" (click)="moveHistory(-1)" [disabled]="historyPage() === 0" aria-label="Previous appointments"
+            i18n-aria-label="@@history.previous"
+            class="rounded-full border border-gray-300 bg-white px-3 py-1 text-lg leading-none hover:bg-gray-100 disabled:opacity-40">‹</button>
+          <span class="text-gray-600 tabular-nums">
+            <ng-container i18n="@@history.range">{{ historyFirst() }}–{{ historyLast() }} of {{ filteredHistory().length }}</ng-container>
+          </span>
+          <button type="button" (click)="moveHistory(1)" [disabled]="historyPage() >= historyPageCount() - 1" aria-label="Next appointments"
+            i18n-aria-label="@@history.next"
+            class="rounded-full border border-gray-300 bg-white px-3 py-1 text-lg leading-none hover:bg-gray-100 disabled:opacity-40">›</button>
+        </div>
+      }
     }
   } @else {
     <p i18n="@@dashboard.loading" class="mt-8 text-gray-500">Loading…</p>

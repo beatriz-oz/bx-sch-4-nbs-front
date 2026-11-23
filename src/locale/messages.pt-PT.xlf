@@ -34,13 +34,13 @@
         <source>Prices</source>
         <target>Preços</target>
       </trans-unit>
+      <trans-unit id="clientNav.policies" datatype="html">
+        <source>Policies</source>
+        <target>Políticas</target>
+      </trans-unit>
       <trans-unit id="clientNav.profile" datatype="html">
         <source>Profile</source>
         <target>Perfil</target>
-      </trans-unit>
-      <trans-unit id="footer.iconCredit" datatype="html">
-        <source>Nail icon:</source>
-        <target>Ícone de unha:</target>
       </trans-unit>
       <trans-unit id="title.login" datatype="html">
         <source>Log in · Nails by Scooby</source>
@@ -73,6 +73,10 @@
       <trans-unit id="title.simulator" datatype="html">
         <source>Prices · Nails by Scooby</source>
         <target>Preços · Nails by Scooby</target>
+      </trans-unit>
+      <trans-unit id="title.clientPolicies" datatype="html">
+        <source>Booking policies · Nails by Scooby</source>
+        <target>Políticas de marcação · Nails by Scooby</target>
       </trans-unit>
       <trans-unit id="title.attendance" datatype="html">
         <source>Confirm attendance · Nails by Scooby</source>
@@ -658,9 +662,45 @@
         <source>History</source>
         <target>Histórico</target>
       </trans-unit>
+      <trans-unit id="history.filterStatus" datatype="html">
+        <source>Filter by status</source>
+        <target>Filtrar por estado</target>
+      </trans-unit>
+      <trans-unit id="history.all" datatype="html">
+        <source>All</source>
+        <target>Todas</target>
+      </trans-unit>
+      <trans-unit id="history.upcoming" datatype="html">
+        <source>Upcoming</source>
+        <target>Por fazer</target>
+      </trans-unit>
+      <trans-unit id="history.filterService" datatype="html">
+        <source>Filter by service</source>
+        <target>Filtrar por serviço</target>
+      </trans-unit>
+      <trans-unit id="history.allServices" datatype="html">
+        <source>All services</source>
+        <target>Todos os serviços</target>
+      </trans-unit>
+      <trans-unit id="history.noMatch" datatype="html">
+        <source>No appointment matches this filter.</source>
+        <target>Nenhuma marcação corresponde a este filtro.</target>
+      </trans-unit>
       <trans-unit id="profile.noHistory" datatype="html">
         <source>No appointments yet.</source>
         <target>Ainda sem marcações.</target>
+      </trans-unit>
+      <trans-unit id="history.previous" datatype="html">
+        <source>Previous appointments</source>
+        <target>Marcações anteriores</target>
+      </trans-unit>
+      <trans-unit id="history.range" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ historyFirst() }}"/>–<x id="INTERPOLATION_1" equiv-text="{{ historyLast() }}"/> of <x id="INTERPOLATION_2" equiv-text="{{ filteredHistory().length }}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{ historyFirst() }}"/>–<x id="INTERPOLATION_1" equiv-text="{{ historyLast() }}"/> de <x id="INTERPOLATION_2" equiv-text="{{ filteredHistory().length }}"/></target>
+      </trans-unit>
+      <trans-unit id="history.next" datatype="html">
+        <source>Next appointments</source>
+        <target>Marcações seguintes</target>
       </trans-unit>
       <trans-unit id="dashboard.loading" datatype="html">
         <source>Loading…</source>
@@ -1314,6 +1354,38 @@
         <source> Close </source>
         <target>Fechar</target>
       </trans-unit>
+      <trans-unit id="reports.agenda.title" datatype="html">
+        <source>The month&apos;s agenda</source>
+        <target>A agenda do mês</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.clients" datatype="html">
+        <source>Clients booked</source>
+        <target>Clientes marcadas</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.appointments" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no appointments} =1 {1 appointment, done or not} other {<x id="INTERPOLATION"/> appointments, done or not}}</source>
+        <target>{VAR_PLURAL, plural, =0 {nenhuma marcação} =1 {1 marcação, feita ou por fazer} other {<x id="INTERPOLATION"/> marcações, feitas ou por fazer}}</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.deposits" datatype="html">
+        <source>Deposits received</source>
+        <target>Sinais recebidos</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.depositsCount" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no deposits yet} =1 {1 deposit paid} other {<x id="INTERPOLATION"/> deposits paid}}</source>
+        <target>{VAR_PLURAL, plural, =0 {ainda nenhum sinal} =1 {1 sinal pago} other {<x id="INTERPOLATION"/> sinais pagos}}</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.total" datatype="html">
+        <source>Total of the appointments</source>
+        <target>Total das marcações</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.totalHint" datatype="html">
+        <source>Prices added up, deposit included</source>
+        <target>Soma dos preços, com o sinal incluído</target>
+      </trans-unit>
+      <trans-unit id="reports.agenda.hint" datatype="html">
+        <source> Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count. </source>
+        <target>As canceladas e as faltas não contam como marcadas. Os sinais devolvidos, ou ainda por devolver, não contam.</target>
+      </trans-unit>
       <trans-unit id="reports.income" datatype="html">
         <source>Income</source>
         <target>Receita</target>
@@ -1325,6 +1397,10 @@
       <trans-unit id="reports.keptDeposits" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {from 1 kept deposit} other {from <x id="INTERPOLATION"/> kept deposits}}</source>
         <target>{VAR_PLURAL, plural, =1 {de 1 sinal retido} other {de <x id="INTERPOLATION"/> sinais retidos}}</target>
+      </trans-unit>
+      <trans-unit id="reports.clients" datatype="html">
+        <source>Clients</source>
+        <target>Clientes</target>
       </trans-unit>
       <trans-unit id="reports.hoursWorked" datatype="html">
         <source>Hours worked</source>
@@ -1345,10 +1421,6 @@
       <trans-unit id="reports.cancellations" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 cancellation} other {<x id="INTERPOLATION"/> cancellations}}</source>
         <target>{VAR_PLURAL, plural, =1 {1 cancelamento} other {<x id="INTERPOLATION"/> cancelamentos}}</target>
-      </trans-unit>
-      <trans-unit id="reports.clients" datatype="html">
-        <source>Clients</source>
-        <target>Clientes</target>
       </trans-unit>
       <trans-unit id="reports.daysWorked" datatype="html">
         <source>Days worked</source>
@@ -1401,30 +1473,6 @@
       <trans-unit id="reports.table.hours" datatype="html">
         <source>Hours</source>
         <target>Horas</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.title" datatype="html">
-        <source>The month&apos;s agenda</source>
-        <target>A agenda do mês</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.clients" datatype="html">
-        <source>Clients booked</source>
-        <target>Clientes marcadas</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.appointments" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {no appointments} =1 {1 appointment, done or not} other {<x id="INTERPOLATION"/> appointments, done or not}}</source>
-        <target>{VAR_PLURAL, plural, =0 {nenhuma marcação} =1 {1 marcação, feita ou por fazer} other {<x id="INTERPOLATION"/> marcações, feitas ou por fazer}}</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.deposits" datatype="html">
-        <source>Deposits received</source>
-        <target>Sinais recebidos</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.depositsCount" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {no deposits yet} =1 {1 deposit paid} other {<x id="INTERPOLATION"/> deposits paid}}</source>
-        <target>{VAR_PLURAL, plural, =0 {ainda nenhum sinal} =1 {1 sinal pago} other {<x id="INTERPOLATION"/> sinais pagos}}</target>
-      </trans-unit>
-      <trans-unit id="reports.agenda.hint" datatype="html">
-        <source> Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count. </source>
-        <target>As canceladas e as faltas não contam como marcadas. Os sinais devolvidos, ou ainda por devolver, não contam.</target>
       </trans-unit>
       <trans-unit id="reports.chart.income" datatype="html">
         <source>Income per month</source>
@@ -2042,6 +2090,10 @@
         <source> To change your details, send a message to @nailsbyscooby on Instagram. </source>
         <target> Para alterar os seus dados, envie uma mensagem para @nailsbyscooby no Instagram. </target>
       </trans-unit>
+      <trans-unit id="nameChange.titleClient" datatype="html">
+        <source>Your name and Instagram</source>
+        <target>O seu nome e Instagram</target>
+      </trans-unit>
       <trans-unit id="profile.agendaEmails" datatype="html">
         <source>Emails when the agenda opens</source>
         <target>Emails quando a agenda abre</target>
@@ -2065,6 +2117,26 @@
       <trans-unit id="profile.agendaOff" datatype="html">
         <source>Done: you will no longer get the &quot;agenda is open&quot; emails.</source>
         <target>Feito: deixa de receber os emails de "agenda aberta".</target>
+      </trans-unit>
+      <trans-unit id="clientPolicies.title" datatype="html">
+        <source>Booking policies</source>
+        <target>Políticas de marcação</target>
+      </trans-unit>
+      <trans-unit id="clientPolicies.version" datatype="html">
+        <source>Version</source>
+        <target>Versão</target>
+      </trans-unit>
+      <trans-unit id="clientPolicies.publishedOn" datatype="html">
+        <source>published on</source>
+        <target>publicada a</target>
+      </trans-unit>
+      <trans-unit id="clientPolicies.contact" datatype="html">
+        <source> Any questions? Send a message to @nailsbyscooby on Instagram. </source>
+        <target>Alguma dúvida? Envie uma mensagem para @nailsbyscooby no Instagram.</target>
+      </trans-unit>
+      <trans-unit id="clientPolicies.none" datatype="html">
+        <source>The booking policies have not been published yet.</source>
+        <target>As políticas de marcação ainda não foram publicadas.</target>
       </trans-unit>
       <trans-unit id="simulator.title" datatype="html">
         <source>How much will it cost?</source>
@@ -2170,6 +2242,10 @@
         <source>Please wait a minute before asking for a new code.</source>
         <target>Aguarde um minuto antes de pedir um novo código.</target>
       </trans-unit>
+      <trans-unit id="nameChange.instagramHint" datatype="html">
+        <source>The studio knows you by your Instagram: keep it up to date if you change it.</source>
+        <target>O estúdio conhece-a pelo Instagram: atualize-o se o mudar.</target>
+      </trans-unit>
       <trans-unit id="nameChange.done" datatype="html">
         <source>Name saved.</source>
         <target>Nome guardado.</target>
@@ -2181,6 +2257,14 @@
       <trans-unit id="nameChange.required" datatype="html">
         <source>Fill in your name and last name.</source>
         <target>Preencha o nome e o apelido.</target>
+      </trans-unit>
+      <trans-unit id="nameChange.instagramTaken" datatype="html">
+        <source>This Instagram is already used by another account.</source>
+        <target>Este Instagram já é usado por outra conta.</target>
+      </trans-unit>
+      <trans-unit id="nameChange.instagramInvalid" datatype="html">
+        <source>This Instagram is not valid.</source>
+        <target>Este Instagram não é válido.</target>
       </trans-unit>
       <trans-unit id="password.changed" datatype="html">
         <source> Password changed. Other devices were logged out, and we sent you an email about it. </source>

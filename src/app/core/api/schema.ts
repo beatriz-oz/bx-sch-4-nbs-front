@@ -692,6 +692,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/auth/checkin/resume": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Check In Resume
+         * @description Continue the activation of an approved client who already checked in but did not create her password: a new code goes to the email she gave. Then /checkin/verify and /me/activate, as after a first check-in.
+         */
+        post: operations["check_in_resume_v1_auth_checkin_resume_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/activation/start": {
         parameters: {
             query?: never;
@@ -1722,6 +1742,11 @@ export interface components {
             /** Amount */
             amount: string;
         };
+        /** CheckInResume */
+        CheckInResume: {
+            /** Instagram */
+            instagram: string;
+        };
         /** CheckInStart */
         CheckInStart: {
             /** Instagram */
@@ -1996,6 +2021,8 @@ export interface components {
             deposits_received: number;
             /** Deposits Received Amount */
             deposits_received_amount: string;
+            /** Booked Value */
+            booked_value: string;
             /** Month */
             month: number;
             /** Completed */
@@ -2227,7 +2254,7 @@ export interface components {
         };
         /**
          * ProfileUpdate
-         * @description Only what is sent changes: her name, or the "agenda is open" emails.
+         * @description Only what is sent changes: her name, her Instagram (clients), or the "agenda is open" emails.
          */
         ProfileUpdate: {
             /** Wants Agenda Emails */
@@ -2236,6 +2263,8 @@ export interface components {
             name?: string | null;
             /** Last Name */
             last_name?: string | null;
+            /** Instagram */
+            instagram?: string | null;
         };
         /** PublishedMonthResult */
         PublishedMonthResult: {
@@ -2483,6 +2512,8 @@ export interface components {
             deposits_received: number;
             /** Deposits Received Amount */
             deposits_received_amount: string;
+            /** Booked Value */
+            booked_value: string;
             /** Completed */
             completed: number;
             /** Worked Minutes */
@@ -3999,6 +4030,53 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    check_in_resume_v1_auth_checkin_resume_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CheckInResume"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_CodeSent_"];
+                };
+            };
+            /** @description Nothing to continue for this handle */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description Code requested too recently */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

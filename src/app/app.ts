@@ -24,8 +24,8 @@ export class App {
   protected readonly isPortuguese = inject(LOCALE_ID).startsWith('pt');
 
   /**
-   * Pages marked with data.texture in the routes (login, first appointment, create password, prices):
-   * the texture fills the page background and the header stays plain white.
+   * Pages marked with data.texture in the routes (login, first appointment, create password, prices, policies):
+   * the texture fills the page background and the header stays plain white...
    */
   protected readonly texturedPage = toSignal(
     this.router.events.pipe(
@@ -33,6 +33,15 @@ export class App {
       map(() => this.currentRouteData()['texture'] === true),
     ),
     { initialValue: false },
+  );
+
+  /** ...unless data.headerTexture asks for it in the header too (prices, policies: the client's menu). */
+  protected readonly headerTexture = toSignal(
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => this.currentRouteData()['texture'] !== true || this.currentRouteData()['headerTexture'] === true),
+    ),
+    { initialValue: true },
   );
 
   /** The data of the page on screen: the deepest route (the outer ones are only wrappers). */

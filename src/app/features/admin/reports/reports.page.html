@@ -59,11 +59,40 @@
   @if (report(); as data) {
     <!-- The selected month -->
     @if (selected(); as month) {
+      <!-- The month's agenda, done or not: who is booked and the deposits already in hand -->
+      <section class="mt-6 rounded-2xl border border-brand-100 bg-brand-100/40 p-5">
+        <p i18n="@@reports.agenda.title" class="text-sm font-semibold text-brand-700">The month's agenda</p>
+        <div class="mt-2 grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+          <div>
+            <p i18n="@@reports.agenda.clients" class="text-sm text-gray-600">Clients booked</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.booked_clients }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.agenda.appointments">{month.booked_appointments, plural, =0 {no appointments} =1 {1 appointment, done or not} other {{{ month.booked_appointments }} appointments, done or not}}</ng-container>
+            </p>
+          </div>
+          <div>
+            <p i18n="@@reports.agenda.deposits" class="text-sm text-gray-600">Deposits received</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.deposits_received_amount | currency: 'EUR' }}</p>
+            <p class="text-xs text-gray-500">
+              <ng-container i18n="@@reports.agenda.depositsCount">{month.deposits_received, plural, =0 {no deposits yet} =1 {1 deposit paid} other {{{ month.deposits_received }} deposits paid}}</ng-container>
+            </p>
+          </div>
+          <div>
+            <p i18n="@@reports.agenda.total" class="text-sm text-gray-600">Total of the appointments</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.booked_value | currency: 'EUR' }}</p>
+            <p i18n="@@reports.agenda.totalHint" class="text-xs text-gray-500">Prices added up, deposit included</p>
+          </div>
+        </div>
+        <p i18n="@@reports.agenda.hint" class="mt-5 text-center text-xs text-gray-500">
+          Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count.
+        </p>
+      </section>
+
       <section class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
         <h3 class="font-semibold capitalize">{{ monthNames[month.month - 1] }} {{ year() }}</h3>
 
         <div class="mt-4 grid gap-4 sm:grid-cols-4">
-          <div class="sm:col-span-2">
+          <div>
             <p i18n="@@reports.income" class="text-sm text-gray-500">Income</p>
             <p class="text-5xl font-semibold tracking-tight">{{ month.total_revenue | currency: 'EUR' }}</p>
             @if (month.kept_deposits) {
@@ -73,6 +102,10 @@
                 <ng-container i18n="@@reports.keptDeposits">{month.kept_deposits, plural, =1 {from 1 kept deposit} other {from {{ month.kept_deposits }} kept deposits}}</ng-container>
               </p>
             }
+          </div>
+          <div>
+            <p i18n="@@reports.clients" class="text-sm text-gray-500">Clients</p>
+            <p class="text-2xl font-semibold tabular-nums">{{ month.clients }}</p>
           </div>
           <div>
             <p i18n="@@reports.hoursWorked" class="text-sm text-gray-500">Hours worked</p>
@@ -93,11 +126,7 @@
 
         <!-- Clients, days and the averages -->
         <div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div>
-            <p i18n="@@reports.clients" class="text-sm text-gray-500">Clients</p>
-            <p class="text-2xl font-semibold tabular-nums">{{ month.clients }}</p>
-          </div>
-          <div>
+          <div class="sm:col-start-2">
             <p i18n="@@reports.daysWorked" class="text-sm text-gray-500">Days worked</p>
             <p class="text-2xl font-semibold tabular-nums">{{ month.days_worked }}</p>
             @if (month.average_per_day !== null) {
@@ -179,30 +208,6 @@
             </tbody>
           </table>
         }
-      </section>
-
-      <!-- The month's agenda, done or not: who is booked and the deposits already in hand -->
-      <section class="mt-6 rounded-2xl border border-brand-100 bg-brand-100/40 p-5">
-        <p i18n="@@reports.agenda.title" class="text-sm font-semibold text-brand-700">The month's agenda</p>
-        <div class="mt-2 grid grid-cols-2 gap-4 text-center">
-          <div>
-            <p i18n="@@reports.agenda.clients" class="text-sm text-gray-600">Clients booked</p>
-            <p class="text-2xl font-semibold tabular-nums">{{ month.booked_clients }}</p>
-            <p class="text-xs text-gray-500">
-              <ng-container i18n="@@reports.agenda.appointments">{month.booked_appointments, plural, =0 {no appointments} =1 {1 appointment, done or not} other {{{ month.booked_appointments }} appointments, done or not}}</ng-container>
-            </p>
-          </div>
-          <div>
-            <p i18n="@@reports.agenda.deposits" class="text-sm text-gray-600">Deposits received</p>
-            <p class="text-2xl font-semibold tabular-nums">{{ month.deposits_received_amount | currency: 'EUR' }}</p>
-            <p class="text-xs text-gray-500">
-              <ng-container i18n="@@reports.agenda.depositsCount">{month.deposits_received, plural, =0 {no deposits yet} =1 {1 deposit paid} other {{{ month.deposits_received }} deposits paid}}</ng-container>
-            </p>
-          </div>
-        </div>
-        <p i18n="@@reports.agenda.hint" class="mt-5 text-center text-xs text-gray-500">
-          Cancellations and no-shows do not count as booked. Deposits given back, or still to give back, do not count.
-        </p>
       </section>
     }
 
