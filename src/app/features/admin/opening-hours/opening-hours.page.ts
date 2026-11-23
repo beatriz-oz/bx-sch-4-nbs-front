@@ -76,18 +76,11 @@ export class OpeningHoursPage {
     });
   }
 
-  isMonday(day: string): boolean {
-    return new Date(`${day}T12:00:00Z`).getUTCDay() === 1;
-  }
-
   hasException(day: string): boolean {
     return this.exceptions().some((exception) => exception.day === day);
   }
 
   lockedReason(day: AgendaDay): string | null {
-    if (this.isMonday(day.day)) {
-      return $localize`:@@hours.locked.monday:Mondays are always closed to clients. You can still book a Monday yourself in the calendar.`;
-    }
     if (day.day < this.today) {
       return $localize`:@@hours.locked.past:This day has already passed.`;
     }

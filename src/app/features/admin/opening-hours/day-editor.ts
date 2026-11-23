@@ -22,7 +22,7 @@ export class DayEditor {
 
   readonly day = input.required<AgendaDay>();
   readonly exceptions = input.required<ScheduleException[]>();
-  /** Why the day cannot be changed (a Monday, or the past), or null if it can. */
+  /** Why the day cannot be changed (it has passed), or null if it can. */
   readonly lockedReason = input<string | null>(null);
 
   readonly changed = output<void>();

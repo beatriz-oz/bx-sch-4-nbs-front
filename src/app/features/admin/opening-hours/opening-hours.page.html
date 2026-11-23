@@ -3,7 +3,7 @@
     <div>
       <h2 i18n="@@hours.title" class="text-2xl font-semibold">Opening hours</h2>
       <p i18n="@@hours.subtitle" class="text-sm text-gray-500">
-        The slots clients can book. By default Tuesday to Friday are open, weekends closed, and Mondays always closed to clients.
+        The slots clients can book. By default Tuesday to Friday are open; Mondays and weekends are closed, but you can open any day.
       </p>
     </div>
   </div>
@@ -32,7 +32,7 @@
           <button type="button" (click)="notify()" [disabled]="notifying()"
             class="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100 disabled:opacity-60">
             @if (agenda()?.notified_at) {
-              <ng-container i18n="@@hours.notifyAgain">Send the email again</ng-container>
+              <ng-container i18n="@@hours.notifyAgain">✉️ Send email</ng-container>
             } @else {
               <ng-container i18n="@@hours.notify">✉️ Tell the clients by email</ng-container>
             }
