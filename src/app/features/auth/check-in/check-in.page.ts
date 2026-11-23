@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 import { apiErrorMessage } from '../../../core/api/errors';
 import { AuthService } from '../../../core/auth/auth.service';
+import { PasswordInput } from '../../../shared/password-input';
 import { PhoneInput } from '../../../shared/phone-input';
 
 type Step = 'details' | 'code';
@@ -12,10 +13,12 @@ type Step = 'details' | 'code';
 /**
  * First booking: a client whose Instagram was pre-approved by the studio
  * fills in her details, confirms the code sent by email, and is logged in.
+ * A regular client the studio already approved (often created from her Instagram only) is then asked
+ * whether she wants to book now or only activate her account, i.e. create her password.
  */
 @Component({
   selector: 'app-check-in-page',
-  imports: [ReactiveFormsModule, RouterLink, PhoneInput],
+  imports: [ReactiveFormsModule, RouterLink, PhoneInput, PasswordInput],
   templateUrl: './check-in.page.html',
 })
 export class CheckInPage {
@@ -39,6 +42,14 @@ export class CheckInPage {
   /** Shows the links to log in or create a password, when she already has an account. */
   readonly hasAccount = signal(false);
   readonly notice = signal<string | null>(null);
+
+  /** After the code, for an approved client: 'choose' (book or activate), then 'password'. */
+  readonly popup = signal<'choose' | 'password' | null>(null);
+  readonly passwordForm = this.fb.group({
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    confirmation: ['', Validators.required],
+  });
+  readonly popupError = signal<string | null>(null);
 
   sendCode(): void {
     if (this.form.invalid) {
@@ -65,8 +76,15 @@ export class CheckInPage {
     this.busy.set(true);
     this.error.set(null);
     this.auth.checkInVerify({ instagram: this.form.controls.instagram.value, code: this.code.value }).subscribe({
-      // She came to make her first booking: go straight to it.
-      next: () => this.router.navigateByUrl('/book'),
+      next: (user) => {
+        this.busy.set(false);
+        // A regular client the studio approved: ask. Anyone else came to book: go straight to it.
+        if (user.can_create_password) {
+          this.popup.set('choose');
+        } else {
+          this.router.navigateByUrl('/book');
+        }
+      },
       error: (error: unknown) => {
         this.busy.set(false);
         this.error.set(
@@ -74,6 +92,32 @@ export class CheckInPage {
             ? $localize`:@@code.invalid:This code is not valid or has expired. Check it, or ask for a new one.`
             : apiErrorMessage(error),
         );
+      },
+    });
+  }
+
+  book(): void {
+    this.router.navigateByUrl('/book');
+  }
+
+  /** "Only activate my account": she creates her password, then sees her appointments. */
+  createPassword(): void {
+    const value = this.passwordForm.getRawValue();
+    if (this.passwordForm.invalid) {
+      this.passwordForm.markAllAsTouched();
+      return;
+    }
+    if (value.password !== value.confirmation) {
+      this.popupError.set($localize`:@@activate.error.mismatch:The two passwords are different.`);
+      return;
+    }
+    this.busy.set(true);
+    this.popupError.set(null);
+    this.auth.activateMe(value.password).subscribe({
+      next: () => this.router.navigateByUrl('/appointments'),
+      error: (error: unknown) => {
+        this.busy.set(false);
+        this.popupError.set(apiErrorMessage(error));
       },
     });
   }

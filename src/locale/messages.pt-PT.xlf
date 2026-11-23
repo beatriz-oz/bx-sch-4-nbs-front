@@ -578,6 +578,10 @@
         <source>Clients</source>
         <target>Clientes</target>
       </trans-unit>
+      <trans-unit id="clients.noContact" datatype="html">
+        <source>No email or phone yet: she gives them at her check-in with her Instagram.</source>
+        <target>Ainda sem email nem telemóvel: ela dá-os no check-in com o Instagram.</target>
+      </trans-unit>
       <trans-unit id="profile.registered" datatype="html">
         <source>Registered client</source>
         <target>Cliente registada</target>
@@ -681,6 +685,10 @@
       <trans-unit id="clients.search" datatype="html">
         <source>Search by name, @, email or phone</source>
         <target>Procurar por nome, @, email ou telemóvel</target>
+      </trans-unit>
+      <trans-unit id="clients.noContactShort" datatype="html">
+        <source>No email or phone yet</source>
+        <target>Ainda sem email nem telemóvel</target>
       </trans-unit>
       <trans-unit id="clients.allowedBack" datatype="html">
         <source>Allowed back</source>
@@ -946,6 +954,18 @@
         <source>Published on</source>
         <target>Publicado em</target>
       </trans-unit>
+      <trans-unit id="hours.notifiedOn" datatype="html">
+        <source>Clients told on</source>
+        <target>Clientes avisadas a</target>
+      </trans-unit>
+      <trans-unit id="hours.notifyAgain" datatype="html">
+        <source>Send the email again</source>
+        <target>Enviar o email de novo</target>
+      </trans-unit>
+      <trans-unit id="hours.notify" datatype="html">
+        <source>✉️ Tell the clients by email</source>
+        <target>✉️ Avisar as clientes por email</target>
+      </trans-unit>
       <trans-unit id="hours.notPublished" datatype="html">
         <source>Not published: clients can&apos;t see it yet</source>
         <target>Não publicado: as clientes ainda não o veem</target>
@@ -990,13 +1010,25 @@
         <source>This day has already passed.</source>
         <target>Este dia já passou.</target>
       </trans-unit>
+      <trans-unit id="hours.notify.again" datatype="html">
+        <source>The regular clients were already told about this month. Send the email again?</source>
+        <target>As clientes habituais já foram avisadas deste mês. Enviar o email de novo?</target>
+      </trans-unit>
+      <trans-unit id="hours.notify.question" datatype="html">
+        <source>Email the regular clients that this month is open?</source>
+        <target>Enviar um email às clientes habituais a dizer que este mês está aberto?</target>
+      </trans-unit>
+      <trans-unit id="hours.notified" datatype="html">
+        <source>Email sent to <x id="count" equiv-text="notified.notified_clients"/> regular client(s).</source>
+        <target>Email enviado a <x id="count" equiv-text="notified.notified_clients"/> cliente(s) habitual(is).</target>
+      </trans-unit>
       <trans-unit id="hours.publish.question" datatype="html">
-        <source>Publish this month? Clients will be able to book it, and the regular clients will get an email.</source>
-        <target>Publicar este mês? As clientes vão poder marcar, e as clientes habituais recebem um email.</target>
+        <source>Publish this month? Clients will be able to book it. The email to the regular clients is a separate button, for when you choose.</source>
+        <target>Publicar este mês? As clientes vão poder marcar. O email às clientes habituais é um botão à parte, para quando quiser.</target>
       </trans-unit>
       <trans-unit id="hours.published" datatype="html">
-        <source>Published. <x id="count" equiv-text="published.notified_clients"/> regular client(s) notified by email.</source>
-        <target>Publicado. <x id="count" equiv-text="published.notified_clients"/> cliente(s) habitual(is) avisada(s) por email.</target>
+        <source>Published: clients can book it now. Tell the regular clients by email whenever you want.</source>
+        <target>Publicado: as clientes já podem marcar. Avise as clientes habituais por email quando quiser.</target>
       </trans-unit>
       <trans-unit id="payments.title" datatype="html">
         <source>Payments</source>
@@ -1117,6 +1149,30 @@
       <trans-unit id="preApproved.add" datatype="html">
         <source> Add </source>
         <target> Adicionar </target>
+      </trans-unit>
+      <trans-unit id="preApproved.regular" datatype="html">
+        <source>Regular client: create her account now</source>
+        <target>Cliente regular: criar já a conta</target>
+      </trans-unit>
+      <trans-unit id="preApproved.regularHint" datatype="html">
+        <source> She goes straight to the pending clients, already approved: you can book for her at once. Only the name is needed; she gives her email and phone when she checks in with her Instagram (until then she gets no emails). </source>
+        <target>Fica logo nas clientes pendentes, já aprovada: pode marcar por ela de imediato. Só é preciso o nome; ela dá o email e o telemóvel quando fizer o check-in com o Instagram (até lá não recebe emails).</target>
+      </trans-unit>
+      <trans-unit id="preApproved.lastNameOptional" datatype="html">
+        <source>Last name (optional)</source>
+        <target>Apelido (opcional)</target>
+      </trans-unit>
+      <trans-unit id="preApproved.emailOptional" datatype="html">
+        <source>Email (optional)</source>
+        <target>Email (opcional)</target>
+      </trans-unit>
+      <trans-unit id="preApproved.phoneOptional" datatype="html">
+        <source>Phone (optional)</source>
+        <target>Telemóvel (opcional)</target>
+      </trans-unit>
+      <trans-unit id="preApproved.addedWithAccount" datatype="html">
+        <source>@<x id="INTERPOLATION" equiv-text="{{ handle }}"/> added, and her account was created: you can book for her now. She activates it in &quot;First appointment?&quot; with her Instagram.</source>
+        <target>@<x id="INTERPOLATION" equiv-text="{{ handle }}"/> adicionado, e a conta foi criada: já pode marcar por ela. Ela ativa a conta em &quot;Primeira marcação?&quot;, com o Instagram.</target>
       </trans-unit>
       <trans-unit id="preApproved.added" datatype="html">
         <source>@<x id="INTERPOLATION" equiv-text="{{ handle }}"/> can now check in.</source>
@@ -1505,6 +1561,34 @@
       <trans-unit id="checkin.changeDetails" datatype="html">
         <source> Change my details </source>
         <target> Alterar os meus dados </target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.title" datatype="html">
+        <source>Your account is ready!</source>
+        <target>A sua conta está pronta!</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.text" datatype="html">
+        <source> Do you want to book an appointment now, or did you only want to activate your account? </source>
+        <target>Quer fazer uma marcação agora, ou só queria ativar a sua conta?</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.book" datatype="html">
+        <source> Book an appointment </source>
+        <target>Fazer uma marcação</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.activate" datatype="html">
+        <source> Only activate my account </source>
+        <target>Só ativar a minha conta</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.passwordTitle" datatype="html">
+        <source>Create your password</source>
+        <target>Crie a sua palavra-passe</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.passwordText" datatype="html">
+        <source> From now on you log in with your phone and this password. </source>
+        <target>A partir de agora, entra com o seu telemóvel e esta palavra-passe.</target>
+      </trans-unit>
+      <trans-unit id="checkin.popup.save" datatype="html">
+        <source> Create password </source>
+        <target>Criar palavra-passe</target>
       </trans-unit>
       <trans-unit id="checkin.error.notApproved" datatype="html">
         <source>This Instagram is not on the list yet. Send a message to @nailsbyscooby on Instagram to book your first appointment.</source>

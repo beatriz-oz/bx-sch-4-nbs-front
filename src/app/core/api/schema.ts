@@ -19,7 +19,7 @@ export interface paths {
         put?: never;
         /**
          * Add Pre Approved Instagram
-         * @description Pre-approve an Instagram handle for a first-time booking
+         * @description Pre-approve an Instagram handle for a first-time booking. With `client` (a regular client), her account is created at once and approved: the studio can book for her, and she only creates a password
          */
         post: operations["add_pre_approved_instagram_v1_admin_pre_approved_instagrams_post"];
         delete?: never;
@@ -187,9 +187,29 @@ export interface paths {
         put?: never;
         /**
          * Publish Month
-         * @description Publish a month's agenda and notify the regular clients by email
+         * @description Publish a month's agenda: clients can book it. No email: the studio sends it with /notify
          */
         post: operations["publish_month_v1_admin_published_months_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/published-months/{year}/{month}/notify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Notify Month
+         * @description Email the regular clients (who want it) that this month is open. Can be sent again
+         */
+        post: operations["notify_month_v1_admin_published_months__year___month__notify_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -792,6 +812,26 @@ export interface paths {
         patch: operations["update_me_v1_auth_me_patch"];
         trace?: never;
     };
+    "/v1/auth/me/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate Me
+         * @description An approved client who has just checked in creates her password at once: the check-in code already proved her email. Logs out other devices; the answer has a new token.
+         */
+        post: operations["activate_me_v1_auth_me_activate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/auth/me/password": {
         parameters: {
             query?: never;
@@ -1192,6 +1232,8 @@ export interface components {
             month: number;
             /** Published At */
             published_at: string | null;
+            /** Notified At */
+            notified_at: string | null;
             /** Days */
             days: components["schemas"]["AgendaDay"][];
         };
@@ -1453,14 +1495,14 @@ export interface components {
             status: "OK" | "KO";
             detail: components["schemas"]["FinalPriceEstimate"];
         };
-        /** BaseResponse[MonthPublished] */
-        BaseResponse_MonthPublished_: {
+        /** BaseResponse[MonthNotified] */
+        BaseResponse_MonthNotified_: {
             /**
              * Status
              * @enum {string}
              */
             status: "OK" | "KO";
-            detail: components["schemas"]["MonthPublished"];
+            detail: components["schemas"]["MonthNotified"];
         };
         /** BaseResponse[NailArtPriceResult] */
         BaseResponse_NailArtPriceResult_: {
@@ -1497,6 +1539,15 @@ export interface components {
              */
             status: "OK" | "KO";
             detail: components["schemas"]["PriceList"];
+        };
+        /** BaseResponse[PublishedMonthResult] */
+        BaseResponse_PublishedMonthResult_: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "OK" | "KO";
+            detail: components["schemas"]["PublishedMonthResult"];
         };
         /** BaseResponse[ServicePriceResult] */
         BaseResponse_ServicePriceResult_: {
@@ -1711,9 +1762,9 @@ export interface components {
             /** Instagram */
             instagram: string | null;
             /** Email */
-            email: string;
+            email: string | null;
             /** Phone */
-            phone: string;
+            phone: string | null;
             /** Is Active */
             is_active: boolean;
             /** Email Verified */
@@ -1754,9 +1805,9 @@ export interface components {
             /** Instagram */
             instagram: string | null;
             /** Email */
-            email: string;
+            email: string | null;
             /** Phone */
-            phone: string;
+            phone: string | null;
             /** Is Active */
             is_active: boolean;
         };
@@ -1894,26 +1945,26 @@ export interface components {
              */
             password: string;
         };
+        /** MonthNotified */
+        MonthNotified: {
+            /** Year */
+            year: number;
+            /** Month */
+            month: number;
+            /**
+             * Notified At
+             * Format: date-time
+             */
+            notified_at: string;
+            /** Notified Clients */
+            notified_clients: number;
+        };
         /** MonthPublish */
         MonthPublish: {
             /** Year */
             year: number;
             /** Month */
             month: number;
-        };
-        /** MonthPublished */
-        MonthPublished: {
-            /** Year */
-            year: number;
-            /** Month */
-            month: number;
-            /**
-             * Published At
-             * Format: date-time
-             */
-            published_at: string;
-            /** Notified Clients */
-            notified_clients: number;
         };
         /** MonthReportResult */
         MonthReportResult: {
@@ -2046,6 +2097,7 @@ export interface components {
         NewPreApprovedInstagram: {
             /** Instagram */
             instagram: string;
+            client?: components["schemas"]["PreApprovedClient"] | null;
         };
         /** PasswordChange */
         PasswordChange: {
@@ -2059,6 +2111,14 @@ export interface components {
              * Format: password
              */
             new_password: string;
+        };
+        /** PasswordCreate */
+        PasswordCreate: {
+            /**
+             * Password
+             * Format: password
+             */
+            password: string;
         };
         /** PasswordResetConfirm */
         PasswordResetConfirm: {
@@ -2110,6 +2170,24 @@ export interface components {
             /** Per Unit */
             per_unit: boolean;
         };
+        /**
+         * PreApprovedClient
+         * @description A regular client: her account is created at once, approved, so the studio can book for her.
+         *     Often only her name is known: she gives her email and phone at her check-in (with her Instagram).
+         */
+        PreApprovedClient: {
+            /** Name */
+            name: string;
+            /**
+             * Last Name
+             * @default
+             */
+            last_name: string;
+            /** Email */
+            email?: string | null;
+            /** Phone */
+            phone?: string | null;
+        };
         /** PreApprovedInstagramResult */
         PreApprovedInstagramResult: {
             /** Id */
@@ -2121,6 +2199,8 @@ export interface components {
              * Format: date-time
              */
             created_at: string;
+            /** Client Id */
+            client_id?: number | null;
         };
         /** PriceList */
         PriceList: {
@@ -2147,6 +2227,8 @@ export interface components {
              * Format: date-time
              */
             published_at: string;
+            /** Notified At */
+            notified_at?: string | null;
         };
         /** ScheduleExceptionResult */
         ScheduleExceptionResult: {
@@ -2315,9 +2397,9 @@ export interface components {
             /** Instagram */
             instagram: string | null;
             /** Email */
-            email: string;
+            email: string | null;
             /** Phone */
-            phone: string;
+            phone: string | null;
             role: components["schemas"]["UserRole"];
             /** Is Active */
             is_active: boolean;
@@ -2436,7 +2518,7 @@ export interface operations {
                     "application/json": components["schemas"]["BaseResponse_PreApprovedInstagramResult_"];
                 };
             };
-            /** @description Handle already pre-approved */
+            /** @description Handle already pre-approved, or the client already exists */
             409: {
                 headers: {
                     [name: string]: unknown;
@@ -2794,11 +2876,50 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["BaseResponse_MonthPublished_"];
+                    "application/json": components["schemas"]["BaseResponse_PublishedMonthResult_"];
                 };
             };
             /** @description Month already published */
             409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    notify_month_v1_admin_published_months__year___month__notify_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                year: number;
+                month: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_MonthNotified_"];
+                };
+            };
+            /** @description Month not published */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -4069,6 +4190,53 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["BaseResponse_UserResult_"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    activate_me_v1_auth_me_activate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PasswordCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_TokenResult_"];
+                };
+            };
+            /** @description Not approved by the studio, or email not confirmed */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Account already active */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

@@ -85,7 +85,7 @@
           class="rounded-lg border border-gray-300 px-3 py-2">
           <option [ngValue]="null" disabled>--</option>
           @for (step of minuteSteps; track step) {
-            <option [ngValue]="step">{{ step === 0 ? '00' : step }}</option>
+            <option [ngValue]="step">{{ step < 10 ? '0' + step : step }}</option>
           }
         </select>
         <span>min</span>

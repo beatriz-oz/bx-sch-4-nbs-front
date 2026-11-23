@@ -96,3 +96,58 @@
     </div>
   }
 </section>
+
+<!-- After the code, for a regular client the studio approved: book now, or only activate the account -->
+@if (popup(); as stage) {
+  <div class="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4" role="dialog" aria-modal="true"
+    aria-labelledby="checkin-popup-title">
+    <div class="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl">
+      @if (stage === 'choose') {
+        <h3 id="checkin-popup-title" i18n="@@checkin.popup.title" class="text-lg font-semibold">Your account is ready!</h3>
+        <p i18n="@@checkin.popup.text" class="mt-2 text-sm text-gray-600">
+          Do you want to book an appointment now, or did you only want to activate your account?
+        </p>
+        <div class="mt-5 space-y-2">
+          <button type="button" (click)="book()" i18n="@@checkin.popup.book"
+            class="w-full rounded-full bg-primary px-4 py-3 font-medium text-white hover:bg-primary-hover">
+            Book an appointment
+          </button>
+          <button type="button" (click)="popup.set('password')" i18n="@@checkin.popup.activate"
+            class="w-full rounded-full border border-gray-300 px-4 py-3 font-medium hover:bg-gray-50">
+            Only activate my account
+          </button>
+        </div>
+      } @else {
+        <h3 id="checkin-popup-title" i18n="@@checkin.popup.passwordTitle" class="text-lg font-semibold">Create your password</h3>
+        <p i18n="@@checkin.popup.passwordText" class="mt-2 text-sm text-gray-600">
+          From now on you log in with your phone and this password.
+        </p>
+        <form [formGroup]="passwordForm" (ngSubmit)="createPassword()" class="mt-4 space-y-3" novalidate>
+          <div class="text-sm">
+            <label for="checkin-password" i18n="@@activate.password" class="mb-1 block font-medium">New password</label>
+            <app-password-input inputId="checkin-password" autocomplete="new-password" formControlName="password" />
+            <span i18n="@@activate.passwordHint" class="mt-1 block text-xs text-gray-500">At least 8 characters.</span>
+          </div>
+          <div class="text-sm">
+            <label for="checkin-password-repeat" i18n="@@activate.confirmation" class="mb-1 block font-medium">Repeat the password</label>
+            <app-password-input inputId="checkin-password-repeat" autocomplete="new-password" formControlName="confirmation" />
+          </div>
+          @if (passwordForm.controls.password.touched && passwordForm.controls.password.invalid) {
+            <p i18n="@@activate.error.short" class="text-sm text-red-600">The password needs at least 8 characters.</p>
+          }
+          @if (popupError(); as message) {
+            <p role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{{ message }}</p>
+          }
+          <button type="submit" [disabled]="busy()" i18n="@@checkin.popup.save"
+            class="w-full rounded-full bg-primary px-4 py-3 font-medium text-white hover:bg-primary-hover disabled:opacity-60">
+            Create password
+          </button>
+          <button type="button" (click)="popup.set('choose')" i18n="@@dialog.back"
+            class="w-full text-sm font-medium text-gray-600 underline hover:text-gray-900">
+            Back
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+}

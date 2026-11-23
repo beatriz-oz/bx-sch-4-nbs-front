@@ -17,7 +17,9 @@ import {
   ExpenseSet,
   FinalPriceDetails,
   FinalPriceEstimate,
+  MonthNotified,
   MonthPublished,
+  NewPreApprovedInstagram,
   NailArtLevel,
   NailSize,
   Policy,
@@ -104,9 +106,10 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
-  addPreApproved(instagram: string): Observable<PreApprovedInstagram> {
+  /** With `client`, her account is created at once, approved: she only has to create a password. */
+  addPreApproved(data: NewPreApprovedInstagram): Observable<PreApprovedInstagram> {
     return this.http
-      .post<ApiResponse<PreApprovedInstagram>>(`${environment.apiUrl}/admin/pre-approved-instagrams`, { instagram })
+      .post<ApiResponse<PreApprovedInstagram>>(`${environment.apiUrl}/admin/pre-approved-instagrams`, data)
       .pipe(map((r) => r.detail));
   }
 
@@ -150,9 +153,17 @@ export class AdminApiService {
       .pipe(map(() => undefined));
   }
 
+  /** Clients can book the month from now on. No email: that is notifyMonth, when she chooses. */
   publishMonth(year: number, month: number): Observable<MonthPublished> {
     return this.http
       .post<ApiResponse<MonthPublished>>(`${environment.apiUrl}/admin/published-months`, { year, month })
+      .pipe(map((r) => r.detail));
+  }
+
+  /** Emails the regular clients that the month is open. Can be sent again. */
+  notifyMonth(year: number, month: number): Observable<MonthNotified> {
+    return this.http
+      .post<ApiResponse<MonthNotified>>(`${environment.apiUrl}/admin/published-months/${year}/${month}/notify`, {})
       .pipe(map((r) => r.detail));
   }
 

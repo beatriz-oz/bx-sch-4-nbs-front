@@ -32,6 +32,7 @@ export class OpeningHoursPage {
   readonly error = signal<string | null>(null);
   readonly notice = signal<string | null>(null);
   readonly publishing = signal(false);
+  readonly notifying = signal(false);
   readonly selectedDay = signal<string | null>(null);
 
   /** First day of the month, as YYYY-MM-DD (for the month title). */
@@ -93,8 +94,32 @@ export class OpeningHoursPage {
     return null;
   }
 
+  /** The "agenda is open" email to the regular clients who want it. */
+  notify(): void {
+    const again = !!this.agenda()?.notified_at;
+    const question = again
+      ? $localize`:@@hours.notify.again:The regular clients were already told about this month. Send the email again?`
+      : $localize`:@@hours.notify.question:Email the regular clients that this month is open?`;
+    if (!confirm(question)) {
+      return;
+    }
+    this.notifying.set(true);
+    this.error.set(null);
+    this.api.notifyMonth(this.year(), this.month()).subscribe({
+      next: (notified) => {
+        this.notifying.set(false);
+        this.notice.set($localize`:@@hours.notified:Email sent to ${notified.notified_clients}:count: regular client(s).`);
+        this.load();
+      },
+      error: (error: unknown) => {
+        this.notifying.set(false);
+        this.error.set(apiErrorMessage(error));
+      },
+    });
+  }
+
   publish(): void {
-    const question = $localize`:@@hours.publish.question:Publish this month? Clients will be able to book it, and the regular clients will get an email.`;
+    const question = $localize`:@@hours.publish.question:Publish this month? Clients will be able to book it. The email to the regular clients is a separate button, for when you choose.`;
     if (!confirm(question)) {
       return;
     }
@@ -104,7 +129,7 @@ export class OpeningHoursPage {
       next: (published) => {
         this.publishing.set(false);
         this.notice.set(
-          $localize`:@@hours.published:Published. ${published.notified_clients}:count: regular client(s) notified by email.`,
+          $localize`:@@hours.published:Published: clients can book it now. Tell the regular clients by email whenever you want.`,
         );
         this.load();
       },

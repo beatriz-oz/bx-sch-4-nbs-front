@@ -39,12 +39,19 @@
               @if (client.instagram) {
                 <a [href]="instagramUrl(client.instagram)" target="_blank" rel="noopener" class="text-sm text-gray-500 hover:underline">&#64;{{ client.instagram }}</a>
               }
-              <p class="mt-1 text-sm">
-                <a [href]="'tel:' + client.phone" class="text-gray-700 hover:underline">{{ client.phone }}</a>
-              </p>
-              <p class="truncate text-sm">
-                <a [href]="'mailto:' + client.email" class="text-gray-700 hover:underline">{{ client.email }}</a>
-              </p>
+              @if (client.phone) {
+                <p class="mt-1 text-sm">
+                  <a [href]="'tel:' + client.phone" class="text-gray-700 hover:underline">{{ client.phone }}</a>
+                </p>
+              }
+              @if (client.email) {
+                <p class="truncate text-sm">
+                  <a [href]="'mailto:' + client.email" class="text-gray-700 hover:underline">{{ client.email }}</a>
+                </p>
+              }
+              @if (!client.email && !client.phone) {
+                <p i18n="@@clients.noContactShort" class="mt-1 text-sm text-gray-500">No email or phone yet</p>
+              }
             </div>
           </div>
 

@@ -40,7 +40,8 @@ export class CompleteDialog implements OnInit {
   readonly durationMinutes = signal<number | null>(null);
   readonly notes = signal('');
   readonly approveClient = signal(false);
-  protected readonly minuteSteps = [0, 15, 30, 45];
+  /** Every 5 minutes: 00, 05, 10… 55. */
+  protected readonly minuteSteps = Array.from({ length: 12 }, (_, index) => index * 5);
 
   readonly busy = signal(false);
   readonly error = signal<string | null>(null);

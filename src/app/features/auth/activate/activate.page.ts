@@ -44,7 +44,7 @@ export class ActivatePage {
       if (user?.is_active) {
         // Already has a password: nothing to do here.
         this.router.navigateByUrl(this.auth.homeFor(user));
-      } else if (user) {
+      } else if (user?.phone) {
         // A one-off client after her first booking: we already know her phone.
         this.phone.setValue(user.phone);
       }

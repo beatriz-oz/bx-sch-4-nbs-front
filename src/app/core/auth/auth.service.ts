@@ -82,6 +82,17 @@ export class AuthService {
     );
   }
 
+  /**
+   * An approved client who has just checked in creates her password at once (the check-in code
+   * already proved her email). The API answers with a new token, as other devices are logged out.
+   */
+  activateMe(password: string): Observable<User> {
+    return this.http.post<ApiResponse<TokenResult>>(`${this.api}/auth/me/activate`, { password }).pipe(
+      tap((response) => this.setToken(response.detail.access_token)),
+      switchMap(() => this.loadMe()),
+    );
+  }
+
   activationStart(phone: string): Observable<string> {
     return this.http
       .post<ApiResponse<CodeSent>>(`${this.api}/auth/activation/start`, { phone })
