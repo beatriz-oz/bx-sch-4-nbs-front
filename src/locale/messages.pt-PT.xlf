@@ -706,6 +706,10 @@
         <source>Email not confirmed</source>
         <target>Email por confirmar</target>
       </trans-unit>
+      <trans-unit id="clients.delete" datatype="html">
+        <source> Delete client </source>
+        <target>Apagar cliente</target>
+      </trans-unit>
       <trans-unit id="clients.noMatch" datatype="html">
         <source>No client matches this search.</source>
         <target>Nenhuma cliente corresponde a esta pesquisa.</target>
@@ -713,6 +717,22 @@
       <trans-unit id="clients.empty" datatype="html">
         <source>No clients here yet.</source>
         <target>Ainda não há clientes aqui.</target>
+      </trans-unit>
+      <trans-unit id="clients.previous" datatype="html">
+        <source>Previous clients</source>
+        <target>Clientes anteriores</target>
+      </trans-unit>
+      <trans-unit id="clients.range" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ firstShown() }}"/>–<x id="INTERPOLATION_1" equiv-text="{{ lastShown() }}"/> of <x id="INTERPOLATION_2" equiv-text="{{ visible().length }}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{ firstShown() }}"/>–<x id="INTERPOLATION_1" equiv-text="{{ lastShown() }}"/> de <x id="INTERPOLATION_2" equiv-text="{{ visible().length }}"/></target>
+      </trans-unit>
+      <trans-unit id="clients.next.page" datatype="html">
+        <source>Next clients</source>
+        <target>Clientes seguintes</target>
+      </trans-unit>
+      <trans-unit id="clients.delete.question" datatype="html">
+        <source>Delete <x id="name" equiv-text="name"/>? This cannot be undone.</source>
+        <target>Apagar <x id="name" equiv-text="name"/>? Não é possível desfazer.</target>
       </trans-unit>
       <trans-unit id="complete.title" datatype="html">
         <source>Complete appointment</source>

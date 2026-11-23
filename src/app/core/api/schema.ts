@@ -514,7 +514,11 @@ export interface paths {
         get: operations["get_client_profile_v1_admin_clients__client_id__get"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Delete Client
+         * @description Delete a pending client (no password) who never had an appointment, e.g. one added by mistake
+         */
+        delete: operations["delete_client_v1_admin_clients__client_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1779,6 +1783,8 @@ export interface components {
             last_visit: string | null;
             /** Next Appointment */
             next_appointment: string | null;
+            /** Can Delete */
+            can_delete: boolean;
         };
         /** ClientProfile */
         ClientProfile: {
@@ -3507,6 +3513,51 @@ export interface operations {
             };
             /** @description Client does not exist */
             404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_client_v1_admin_clients__client_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                client_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseResponse_str_"];
+                };
+            };
+            /** @description Client does not exist */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description She has a password, or has appointments */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };

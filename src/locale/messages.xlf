@@ -1430,7 +1430,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">104,107</context>
+          <context context-type="linenumber">125,128</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/payments/payments.page.html</context>
@@ -1526,18 +1526,53 @@
           <context context-type="linenumber">83,85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="clients.delete" datatype="html">
+        <source> Delete client </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">94,95</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="clients.noMatch" datatype="html">
         <source>No client matches this search.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">96,97</context>
+          <context context-type="linenumber">102,103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clients.empty" datatype="html">
         <source>No clients here yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
-          <context context-type="linenumber">98,99</context>
+          <context context-type="linenumber">104,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.previous" datatype="html">
+        <source>Previous clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">113,114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.range" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ firstShown() }}"/>–<x id="INTERPOLATION_1" equiv-text="{{ lastShown() }}"/> of <x id="INTERPOLATION_2" equiv-text="{{ visible().length }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">117,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.next.page" datatype="html">
+        <source>Next clients</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.html</context>
+          <context context-type="linenumber">119,120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clients.delete.question" datatype="html">
+        <source>Delete <x id="name" equiv-text="name"/>? This cannot be undone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/admin/clients/clients.page.ts</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="complete.title" datatype="html">

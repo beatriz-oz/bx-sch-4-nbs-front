@@ -207,6 +207,13 @@ export class AdminApiService {
       .pipe(map((r) => r.detail));
   }
 
+  /** Only a pending client who never booked (the API checks it again). */
+  deleteClient(id: number): Observable<void> {
+    return this.http
+      .delete<ApiResponse<string>>(`${environment.apiUrl}/admin/clients/${id}`)
+      .pipe(map(() => undefined));
+  }
+
   clientProfile(id: number): Observable<ClientProfile> {
     return this.http
       .get<ApiResponse<ClientProfile>>(`${environment.apiUrl}/admin/clients/${id}`)
