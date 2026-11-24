@@ -122,6 +122,22 @@
         <source>Change phone number</source>
         <target>Alterar telemóvel</target>
       </trans-unit>
+      <trans-unit id="nav.open" datatype="html">
+        <source>Open the menu</source>
+        <target>Abrir o menu</target>
+      </trans-unit>
+      <trans-unit id="nav.label" datatype="html">
+        <source>Admin menu</source>
+        <target>Menu do admin</target>
+      </trans-unit>
+      <trans-unit id="nav.title" datatype="html">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="nav.close" datatype="html">
+        <source>Close the menu</source>
+        <target>Fechar o menu</target>
+      </trans-unit>
       <trans-unit id="nav.calendar" datatype="html">
         <source>Calendar</source>
         <target>Agenda</target>
@@ -470,6 +486,10 @@
         <source>Next</source>
         <target>Seguinte</target>
       </trans-unit>
+      <trans-unit id="calendar.new" datatype="html">
+        <source> + New appointment </source>
+        <target> + Nova marcação </target>
+      </trans-unit>
       <trans-unit id="dashboard.overdueCount" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {1 deposit overdue} other {<x id="INTERPOLATION"/> deposits overdue}}</source>
         <target>{VAR_PLURAL, plural, =1 {1 sinal em atraso} other {<x id="INTERPOLATION"/> sinais em atraso}}</target>
@@ -493,10 +513,6 @@
       <trans-unit id="calendar.month" datatype="html">
         <source> Month </source>
         <target> Mês </target>
-      </trans-unit>
-      <trans-unit id="calendar.new" datatype="html">
-        <source> + New appointment </source>
-        <target> + Nova marcação </target>
       </trans-unit>
       <trans-unit id="legend.label" datatype="html">
         <source>Colour legend</source>

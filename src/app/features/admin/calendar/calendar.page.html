@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="flex flex-wrap items-center gap-2 border-b border-gray-200 px-4 py-3">
+<div class="flex flex-wrap items-center gap-x-2 gap-y-3.5 border-b border-gray-200 px-4 py-4 md:gap-y-2 md:py-3">
   <button type="button" (click)="goToToday()" i18n="@@calendar.today"
     class="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100">
     Today
@@ -10,6 +10,11 @@
     <button type="button" (click)="move(1)" aria-label="Next" i18n-aria-label="@@calendar.next"
       class="rounded-full px-2 py-1 text-xl leading-none hover:bg-gray-100">›</button>
   </div>
+  <!-- Phones: in the top right corner, on the same line as "Today" (from md on it is at the end of the toolbar) -->
+  <button type="button" (click)="newBookingNow()" i18n="@@calendar.new"
+    class="ml-auto rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-white hover:bg-primary-hover md:hidden">
+    + New appointment
+  </button>
   <h2 class="text-lg font-semibold capitalize">
     @if (view() === 'month') {
       {{ selectedDay().slice(0, 8) + '01' | studioDate: 'month' }}
@@ -20,14 +25,15 @@
     }
   </h2>
 
-  <div class="ml-auto flex flex-wrap items-center gap-2 text-sm">
+  <div class="flex w-full flex-wrap items-center gap-x-2 gap-y-3 text-sm md:ml-auto md:w-auto md:gap-y-2">
+    <!-- Computer: the overdue/refund tags here, as always (on a phone they go below the filters) -->
     @if (overdueCount()) {
-      <span class="rounded-full bg-red-100 px-3 py-1 text-red-700">
+      <span class="hidden rounded-full bg-red-100 px-3 py-1 text-red-700 md:inline">
         <ng-container i18n="@@dashboard.overdueCount">{overdueCount(), plural, =1 {1 deposit overdue} other {{{ overdueCount() }} deposits overdue}}</ng-container>
       </span>
     }
     @if (refundCount()) {
-      <span class="rounded-full bg-amber-100 px-3 py-1 text-amber-800">
+      <span class="hidden rounded-full bg-amber-100 px-3 py-1 text-amber-800 md:inline">
         <ng-container i18n="@@dashboard.refundCount">{refundCount(), plural, =1 {1 refund to make} other {{{ refundCount() }} refunds to make}}</ng-container>
       </span>
     }
@@ -52,21 +58,39 @@
       </button>
     </div>
 
+    <!-- From md on, at the end of the toolbar; on a phone it is in the top right corner (above). -->
     <button type="button" (click)="newBookingNow()" i18n="@@calendar.new"
-      class="rounded-full bg-primary px-4 py-1.5 font-medium text-white hover:bg-primary-hover">
+      class="hidden rounded-full bg-primary px-4 py-1.5 font-medium text-white hover:bg-primary-hover md:inline-block">
       + New appointment
     </button>
   </div>
+
+  <!-- Phones only: overdue deposits and refunds to make, small, on their own line below the filters -->
+  @if (overdueCount() || refundCount()) {
+    <div class="flex w-full flex-wrap gap-1.5 text-xs md:hidden">
+      @if (overdueCount()) {
+        <span class="rounded-full bg-red-100 px-2 py-0.5 text-red-700">
+          <ng-container i18n="@@dashboard.overdueCount">{overdueCount(), plural, =1 {1 deposit overdue} other {{{ overdueCount() }} deposits overdue}}</ng-container>
+        </span>
+      }
+      @if (refundCount()) {
+        <span class="rounded-full bg-amber-100 px-2 py-0.5 text-amber-800">
+          <ng-container i18n="@@dashboard.refundCount">{refundCount(), plural, =1 {1 refund to make} other {{{ refundCount() }} refunds to make}}</ng-container>
+        </span>
+      }
+    </div>
+  }
 </div>
 
 <!-- Legend: each colour shown as a small appointment block -->
-<div class="flex flex-wrap items-center gap-2 border-b border-gray-200 px-4 py-2 text-xs" aria-label="Colour legend" i18n-aria-label="@@legend.label" role="note">
-  <span i18n="@@legend.title" class="text-gray-500">Colours:</span>
-  <span class="rounded border-l-4 px-1.5 py-0.5 font-medium" [class]="tones.paid" i18n="@@legend.paid">Deposit paid or none needed</span>
-  <span class="rounded border-l-4 px-1.5 py-0.5 font-medium" [class]="tones.awaitingDeposit" i18n="@@legend.awaitingDeposit">Awaiting deposit</span>
-  <span class="rounded border-l-4 px-1.5 py-0.5 font-medium" [class]="tones.past" i18n="@@legend.past">Already happened</span>
+<!-- On a phone: smaller, without the "Colours:" label, all on one line (it slides sideways only if it really cannot fit) -->
+<div class="flex items-center gap-1 overflow-x-auto border-b border-gray-200 px-2 py-2 text-[9px] whitespace-nowrap md:flex-wrap md:gap-2 md:overflow-visible md:px-4 md:text-xs md:whitespace-normal" aria-label="Colour legend" i18n-aria-label="@@legend.label" role="note">
+  <span i18n="@@legend.title" class="hidden text-gray-500 md:inline">Colours:</span>
+  <span class="rounded border-l-2 px-1 py-0.5 font-medium md:border-l-4 md:px-1.5" [class]="tones.paid" i18n="@@legend.paid">Deposit paid or none needed</span>
+  <span class="rounded border-l-2 px-1 py-0.5 font-medium md:border-l-4 md:px-1.5" [class]="tones.awaitingDeposit" i18n="@@legend.awaitingDeposit">Awaiting deposit</span>
+  <span class="rounded border-l-2 px-1 py-0.5 font-medium md:border-l-4 md:px-1.5" [class]="tones.past" i18n="@@legend.past">Already happened</span>
   @if (showCancelled()) {
-    <span class="rounded border-l-4 px-1.5 py-0.5 font-medium" [class]="tones.cancelled" i18n="@@legend.cancelled">Cancelled</span>
+    <span class="rounded border-l-2 px-1 py-0.5 font-medium md:border-l-4 md:px-1.5" [class]="tones.cancelled" i18n="@@legend.cancelled">Cancelled</span>
   }
 </div>
 
@@ -79,11 +103,11 @@
 <div class="relative overflow-auto" style="max-height: calc(100vh - 11rem)" [class.opacity-60]="loading()">
   <div class="flex min-w-fit">
     <!-- Hours column -->
-    <div class="sticky left-0 z-10 w-14 shrink-0 bg-white">
+    <div class="sticky left-0 z-10 w-9 shrink-0 bg-white md:w-14">
       <div class="h-14 border-b border-gray-200"></div>
       <div class="relative" [style.height.px]="gridHeight">
         @for (hour of hours; track hour) {
-          <span class="absolute right-2 -translate-y-1/2 text-xs text-gray-400" [style.top.px]="(hour - hours[0]) * hourHeight">
+          <span class="absolute right-1 -translate-y-1/2 text-[10px] text-gray-400 md:right-2 md:text-xs" [style.top.px]="(hour - hours[0]) * hourHeight">
             @if (hour !== hours[0]) { {{ formatMinutes(hour * 60) }} }
           </span>
         }
@@ -92,10 +116,12 @@
 
     <!-- Days -->
     @for (column of columns(); track column.day) {
-      <div class="min-w-[8rem] flex-1 border-l border-gray-200">
+      <div class="min-w-0 flex-1 border-l border-gray-200 md:min-w-[8rem]">
         <button type="button" (click)="openDay(column.day)"
           class="sticky top-0 z-10 flex h-14 w-full flex-col items-center justify-center border-b border-gray-200 bg-white hover:bg-gray-50">
-          <span class="text-xs text-gray-500 uppercase">{{ column.day | studioDate: 'weekday' }}</span>
+          <!-- On a phone the 3 first letters (SEG, TER...), the whole name from md on -->
+          <span class="text-[10px] text-gray-500 uppercase md:hidden">{{ (column.day | studioDate: 'weekday').slice(0, 3) }}</span>
+          <span class="hidden text-xs text-gray-500 uppercase md:inline">{{ column.day | studioDate: 'weekday' }}</span>
           <span class="flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold"
             [class]="column.day === today() ? 'bg-brand-600 text-white' : 'text-gray-800'">
             {{ column.day.slice(8) }}
@@ -110,7 +136,7 @@
 
           @for (item of column.blocks; track item.appointment.id) {
             <button type="button" (click)="selected.set(item.appointment)"
-              class="absolute flex flex-col justify-start overflow-hidden rounded-md border-l-4 px-1.5 py-1 text-left text-xs shadow-sm hover:z-10 hover:shadow-md"
+              class="absolute flex flex-col justify-start overflow-hidden rounded-md border-l-2 px-0.5 py-0.5 text-left text-[10px] leading-tight shadow-sm hover:z-10 hover:shadow-md md:border-l-4 md:px-1.5 md:py-1 md:text-xs md:leading-normal"
               [class]="toneClasses(item.appointment)"
               [style.top.px]="item.top + 1"
               [style.height.px]="item.height - 2"
@@ -122,8 +148,9 @@
                   <span class="h-2 w-2 rounded-full bg-red-500" title="Deposit overdue" i18n-title="@@badge.depositOverdue"></span>
                 }
               </span>
-              <span class="block truncate">{{ item.appointment.client.name }} {{ item.appointment.client.last_name }}</span>
-              <span class="block truncate opacity-75">{{ serviceLabels[item.appointment.service] }}</span>
+              <!-- On a phone only her first name; the last name and the service from md on -->
+              <span class="block truncate">{{ item.appointment.client.name }}<span class="hidden md:inline"> {{ item.appointment.client.last_name }}</span></span>
+              <span class="hidden truncate opacity-75 md:block">{{ serviceLabels[item.appointment.service] }}</span>
             </button>
           }
 
@@ -140,9 +167,9 @@
 
 } @else {
 <!-- Month grid: each day lists its appointments; a click on a day opens it -->
-<div class="overflow-x-auto p-4" [class.opacity-60]="loading()">
-  <div class="min-w-[44rem] overflow-hidden rounded-2xl border border-gray-200">
-    <div class="grid grid-cols-7 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase">
+<div class="p-2 md:overflow-x-auto md:p-4" [class.opacity-60]="loading()">
+  <div class="overflow-hidden rounded-2xl border border-gray-200 md:min-w-[44rem]">
+    <div class="grid grid-cols-7 border-b border-gray-200 bg-gray-50 text-center text-[10px] font-medium text-gray-500 uppercase md:text-xs">
       <span i18n="@@weekday.mon" class="py-2">Mon</span>
       <span i18n="@@weekday.tue" class="py-2">Tue</span>
       <span i18n="@@weekday.wed" class="py-2">Wed</span>
@@ -154,7 +181,7 @@
     @for (week of monthWeeks(); track week[0].day) {
       <div class="grid grid-cols-7">
         @for (cell of week; track cell.day) {
-          <div class="min-h-28 border-r border-b border-gray-100 p-1.5" [class.bg-gray-50]="!cell.inMonth">
+          <div class="min-h-20 min-w-0 border-r border-b border-gray-100 p-0.5 md:min-h-28 md:p-1.5" [class.bg-gray-50]="!cell.inMonth">
             <button type="button" (click)="openDay(cell.day)"
               class="mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold"
               [class]="cell.day === today() ? 'bg-brand-600 text-white hover:bg-brand-700' : cell.inMonth ? 'text-gray-800 hover:bg-gray-200' : 'text-gray-400 hover:bg-gray-200'">
@@ -163,14 +190,14 @@
             <div class="space-y-0.5">
               @for (appointment of cell.appointments.slice(0, 3); track appointment.id) {
                 <button type="button" (click)="selected.set(appointment)"
-                  class="block w-full truncate rounded border-l-4 px-1 py-0.5 text-left text-[11px]"
+                  class="block w-full truncate rounded border-l-2 px-0.5 py-0.5 text-left text-[9px] md:border-l-4 md:px-1 md:text-[11px]"
                   [class]="toneClasses(appointment)">
                   <span class="font-semibold">{{ appointment.scheduled_at | studioDate: 'time' }}</span>
-                  {{ appointment.client.name }}
+                  <span class="hidden sm:inline"> {{ appointment.client.name }}</span>
                 </button>
               }
               @if (cell.appointments.length > 3) {
-                <button type="button" (click)="openDay(cell.day)" class="px-1 text-[11px] font-medium text-gray-500 hover:underline">
+                <button type="button" (click)="openDay(cell.day)" class="px-0.5 text-[9px] font-medium text-gray-500 hover:underline md:px-1 md:text-[11px]">
                   <ng-container i18n="@@calendar.more">+{{ cell.appointments.length - 3 }} more</ng-container>
                 </button>
               }

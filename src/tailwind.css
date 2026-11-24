@@ -25,3 +25,17 @@
   --color-primary: var(--color-brand-700);
   --color-primary-hover: var(--color-brand-600);
 }
+
+/*
+  iPhone: Safari zooms the whole page in when someone taps a field whose text is under 16px,
+  and it stays zoomed (the page then looks too wide and slides sideways). On phones the fields
+  get 16px, so it never zooms; pinch-to-zoom still works. Outside any @layer on purpose:
+  unlayered CSS wins over Tailwind's utilities (text-sm on the fields) without !important.
+*/
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
